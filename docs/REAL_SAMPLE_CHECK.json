@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-26T13:31:20.356787+00:00",
+  "source": "https://arxiv.org/abs/1706.03762",
+  "title": "Attention Is All You Need",
+  "v7_pages": 15,
+  "renamed_v1_duplicate_status": 409,
+  "v1_v7_content_score": 0.787,
+  "version_advice": "标题/正文内容高度相似（正文 79%）；库中版本较新，建议保留",
+  "retrieval_mode": "evidence_only",
+  "parameter_evidence_pages": [
+    7,
+    8,
+    11
+  ],
+  "references_detected": 40,
+  "not_verified": [
+    "official scanned PDF",
+    "official 541-page textbook",
+    "live model generation",
+    "public deployment"
+  ]
+}
