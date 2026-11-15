@@ -320,7 +320,8 @@ def reference_candidates(pid):
         result.append({**entry,'arxiv_id':identifier,'local_paper_id':local['id'] if local else '',
                        'can_import':bool(identifier and not local),
                        'url':'https://arxiv.org/abs/'+identifier if identifier else ''})
-    return result
+    from . import citations
+    return citations.attach(pid,result)
 
 
 FUTURE_MARKER = re.compile(r'future work|future research|open problem|open question|remain[s]? (?:an )?(?:open|challenge)|limitation|后续工作|未来工作|未解决', re.I)

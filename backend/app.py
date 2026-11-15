@@ -181,6 +181,66 @@ def visual_page(pid: str, body: VisualPage):
     return visual.parse(pid,body.page)
 
 
+class VisualBatch(BaseModel):
+    pages: list[int] = Field(default_factory=list,max_length=20)
+
+
+@app.get('/api/papers/{pid}/visual-status')
+def visual_status(pid: str):
+    paper(pid)
+    return visual.status(pid)
+
+
+@app.get('/api/papers/{pid}/visual-cache/{page}')
+def cached_visual_page(pid: str,page: int):
+    paper(pid)
+    result=visual.cached(pid,page)
+    if result is None:raise HTTPException(404,'当前模型尚未识别此页。')
+    return result
+
+
+@app.post('/api/papers/{pid}/visual-batch')
+def visual_batch(pid: str,body: VisualBatch):
+    paper(pid)
+    return visual.start_batch(pid,body.pages)
+
+
+@app.get('/api/visual-jobs/{jid}')
+def visual_job(jid: str):
+    job=db.one('SELECT * FROM visual_jobs WHERE id=?',(jid,))
+    if not job:raise HTTPException(404,'识别任务不存在')
+    job['results']=json.loads(job['results'])
+    return job
+
+
+@app.post('/api/visual-jobs/{jid}/cancel')
+def cancel_visual_job(jid: str):
+    visual_job(jid)
+    db.execute('UPDATE visual_jobs SET cancelled=1 WHERE id=?',(jid,))
+    return {'ok':True,'note':'已取消后续页面；进行中的识别请求若完成，结果仍会缓存。'}
+
+
+@app.post('/api/papers/{pid}/structure-refresh')
+def structure_refresh(pid: str):
+    value=paper(pid)
+    if value['status'] not in ('ready','partial'):raise ValueError('请先等待文献解析完成。')
+    with documents.LOCK:
+        if db.one("SELECT id FROM jobs WHERE paper_id=? AND status IN ('queued','running')",(pid,)):
+            raise ValueError('文献已有后台任务，请等待完成。')
+        jid=uuid.uuid4().hex
+        db.execute('INSERT INTO jobs(id,paper_id,status,total,message,created) VALUES(?,?,?,?,?,?)',
+                   (jid,pid,'queued',value['page_count'],'等待更新结构清单',documents.now()))
+    def work():
+        db.execute("UPDATE jobs SET status='running' WHERE id=?",(jid,))
+        try:
+            documents.refresh_structure(pid,jid)
+            db.execute("UPDATE jobs SET status='done',message='结构清单更新完成' WHERE id=?",(jid,))
+        except Exception:
+            db.execute("UPDATE jobs SET status='failed',message='结构更新未完成，请稍后重试' WHERE id=?",(jid,))
+    documents.POOL.submit(work)
+    return {'job_id':jid,'total':value['page_count']}
+
+
 async def upload_bytes(file):
     data = bytearray()
     while block := await file.read(65536):
@@ -239,6 +299,8 @@ def delete(pid: str):
     value = paper(pid)
     if value['status'] == 'processing' or db.one("SELECT id FROM jobs WHERE paper_id=? AND status IN ('queued','running')", (pid,)):
         raise HTTPException(409, '后台任务运行中，完成后再删除')
+    if db.one("SELECT id FROM visual_jobs WHERE paper_id=? AND status IN ('queued','running')",(pid,)):
+        raise HTTPException(409,'公式识别运行中，请取消并等待当前页完成后再删除')
     with documents.LOCK:
         with db.connect() as con:
             con.execute('DELETE FROM papers WHERE id=?', (pid,))
@@ -353,6 +415,10 @@ def question_events(body):
     question, scope, context = conversation.prepare(body.question, body.paper_ids, body.history)
     if context['used']:
         yield {'event': 'step', 'data': {'tool': 'resolve_context', 'message': context['message']}}
+    if context.get('needs_clarification'):
+        yield {'event': 'result', 'data': {'mode': 'clarification', 'answer': context['clarification'],
+                                         'sources': [], 'trace': [], 'context': context}}
+        return
     source = agent.run(question, scope, body.allow_external) if body.agent else retrieval.answer_stream(question, scope)
     for event in source:
         if event['event'] == 'result':

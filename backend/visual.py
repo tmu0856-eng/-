@@ -2,6 +2,10 @@
 import base64
 import os
 import threading
+import json
+import uuid
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
 
 import pymupdf as fitz
 
@@ -9,6 +13,8 @@ from . import db, llm
 
 _LOCK = threading.Lock()
 _VERSION = 'visual-page-v1'
+POOL = ThreadPoolExecutor(max_workers=1, thread_name_prefix='visual-parser')
+_JOBS_LOCK = threading.Lock()
 NOTE = '模型视觉转录，尚未人工核对；符号、数字和单元格可能有误，请对照原始页面。此结果不自动写入问答证据。'
 
 
@@ -90,3 +96,66 @@ LaTeX正确转义为JSON字符串，不加代码围栏；没有则返回空列�
         return {**value, 'cached': False}
     finally:
         _LOCK.release()
+
+
+def status(pid):
+    paper=db.one('SELECT sha,metadata,page_count FROM papers WHERE id=?',(pid,))
+    if not paper:raise ValueError('论文不存在。')
+    meta=json.loads(paper['metadata'])
+    key=_VERSION+':'+os.getenv('LLM_MODEL','')+':'+paper['sha']
+    saved=db.rows('SELECT page,content FROM visual_pages WHERE paper_id=? AND model=? ORDER BY page',(pid,key))
+    cached=[row['page'] for row in saved]
+    candidates=meta.get('formula_pages',[])
+    return {'candidate_pages':candidates,'cached_pages':cached,
+            'pending_pages':[p for p in candidates if p not in cached],
+            'formula_count':sum(len(json.loads(row['content']).get('formulas',[])) for row in saved),
+            'batch_limit':20,'note':NOTE}
+
+
+def cached(pid, page):
+    """仅返回当前文献与模型对应的缓存，不触发模型调用。"""
+    paper=db.one('SELECT sha,page_count FROM papers WHERE id=?',(pid,))
+    if not paper or not 1<=page<=paper['page_count']:raise ValueError('页码超出文献范围。')
+    key=_VERSION+':'+os.getenv('LLM_MODEL','')+':'+paper['sha']
+    saved=db.one('SELECT content FROM visual_pages WHERE paper_id=? AND page=? AND model=?',(pid,page,key))
+    return {**json.loads(saved['content']),'cached':True} if saved else None
+
+
+def start_batch(pid, pages=None):
+    """按明确页码或候选页分批转录，复用缓存，限制单次调用数量。"""
+    paper=db.one('SELECT page_count,status FROM papers WHERE id=?',(pid,))
+    if not paper or paper['status'] not in ('ready','partial'):
+        raise ValueError('请先等待文献解析完成。')
+    progress=status(pid)
+    requested=list(dict.fromkeys(pages or progress['pending_pages'][:20]))
+    if not requested:raise ValueError('没有待识别的候选页。请先更新结构清单，或指定需要识别的页面。')
+    if len(requested)>20 or any(not isinstance(p,int) or isinstance(p,bool) or not 1<=p<=paper['page_count'] for p in requested):
+        raise ValueError('每批最多 20 页，且页码必须位于文献范围内。')
+    jid=uuid.uuid4().hex
+    with _JOBS_LOCK:
+        if db.one("SELECT id FROM visual_jobs WHERE paper_id=? AND status IN ('queued','running')",(pid,)):
+            raise ValueError('这篇论文已有识别任务，请等待完成或取消。')
+        db.execute('INSERT INTO visual_jobs(id,paper_id,status,total,created) VALUES(?,?,?,?,?)',
+                   (jid,pid,'queued',len(requested),datetime.now(timezone.utc).isoformat()))
+    def work():
+        results=[]
+        db.execute("UPDATE visual_jobs SET status='running' WHERE id=?",(jid,))
+        try:
+            for page in requested:
+                job=db.one('SELECT cancelled FROM visual_jobs WHERE id=?',(jid,))
+                if not job or job['cancelled']:break
+                try:
+                    value=parse(pid,page)
+                    results.append({'page':page,'status':'done','cached':value['cached'],
+                                    'formulas':len(value['formulas']),'tables':len(value['tables'])})
+                except Exception as exc:
+                    results.append({'page':page,'status':'failed','error':str(exc) if isinstance(exc,(llm.ModelError,ValueError)) else '当前页识别失败，可稍后重试。'})
+                db.execute('UPDATE visual_jobs SET done=?,results=? WHERE id=?',(len(results),db.encode(results),jid))
+            job=db.one('SELECT cancelled FROM visual_jobs WHERE id=?',(jid,))
+            failures=sum(r['status']=='failed' for r in results)
+            final='cancelled' if job and job['cancelled'] else 'failed' if failures==len(requested) else 'partial' if failures else 'done'
+            db.execute('UPDATE visual_jobs SET status=? WHERE id=?',(final,jid))
+        except Exception:
+            db.execute("UPDATE visual_jobs SET status='failed',error='批量任务中断；已识别页面仍可复用' WHERE id=?",(jid,))
+    POOL.submit(work)
+    return {'job_id':jid,'pages':requested,'total':len(requested),'remaining_after_batch':max(0,len(progress['pending_pages'])-len(requested))}

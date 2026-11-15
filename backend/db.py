@@ -57,6 +57,10 @@ def init():
         CREATE TABLE IF NOT EXISTS visual_pages (
           paper_id TEXT REFERENCES papers(id) ON DELETE CASCADE,
           page INTEGER, model TEXT, content TEXT, PRIMARY KEY(paper_id,page,model));
+        CREATE TABLE IF NOT EXISTS visual_jobs (
+          id TEXT PRIMARY KEY, paper_id TEXT REFERENCES papers(id) ON DELETE CASCADE,
+          status TEXT, done INTEGER DEFAULT 0, total INTEGER, results TEXT DEFAULT '[]',
+          error TEXT DEFAULT '', cancelled INTEGER DEFAULT 0, created TEXT);
         CREATE TABLE IF NOT EXISTS discovery_cache (
           query TEXT, result_count INTEGER, fetched_at TEXT, payload TEXT,
           PRIMARY KEY(query,result_count));
@@ -65,6 +69,7 @@ def init():
         con.execute("UPDATE jobs SET status='failed', message='服务重启，任务已中断，请重新导入' WHERE status IN ('queued','running')")
         con.execute("UPDATE papers SET status='failed', warning='解析中断，请删除后重新导入' WHERE status='processing'")
         con.execute("UPDATE reference_imports SET status='failed',error='服务重启，任务已中断，可重新选择未导入条目' WHERE status IN ('queued','running')")
+        con.execute("UPDATE visual_jobs SET status='failed',error='服务重启，批量识别已中断；已缓存页面可继续复用' WHERE status IN ('queued','running')")
 
 
 def rows(sql, args=()):

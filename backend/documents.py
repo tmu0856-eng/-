@@ -13,7 +13,7 @@ import pymupdf as fitz
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from . import db, deduplication, embeddings, llm, metadata
+from . import db, deduplication, embeddings, llm, metadata, structure
 
 POOL = ThreadPoolExecutor(max_workers=1, thread_name_prefix='pdf-parser')
 LOCK = threading.RLock()
@@ -261,6 +261,7 @@ def _ocr_page(page):
 def parse(pid, jid):
     warnings, toc, images, tables = [], [], [], []
     page_sources, review_pages, ocr_engines = {}, [], set()
+    headings, formulas = [], []
     try:
         db.execute("UPDATE jobs SET status='running',message='提取页面与位置锚点' WHERE id=?", (jid,))
         with fitz.open(db.DATA / 'files' / (pid + '.pdf')) as doc:
@@ -291,9 +292,12 @@ def parse(pid, jid):
                     if ordered:
                         text = ordered
                 page_sources[index + 1] = source
-                if index==0 and source=='native':
+                if index==0 and source in ('native','ocr'):
                     current=db.one('SELECT title FROM papers WHERE id=?',(pid,))
                     structured_authors=metadata.authors_from_header(blocks,page.rect.height,current['title'])
+                    if source=='ocr':
+                        for author in structured_authors:
+                            author['method']='ocr-header-estimate'
                 if index == 0 and source == 'ocr':
                     ocr_title = _ocr_title(blocks, page.rect.height)
                 if index < 3:
@@ -306,11 +310,8 @@ def parse(pid, jid):
                         tables.append({'page': index + 1, 'bbox': list(table.bbox), 'cells': table.extract()})
                 except Exception:
                     pass
-                if not native_toc:
-                    for line in text.splitlines():
-                        if re.match(r'^\d+(?:\.\d+){0,2}\s+[A-Z\u4e00-\u9fff]', line) and len(line) < 130:
-                            # 估计得到的标题与原生书签分开记录。
-                            toc.append({'level': min(3, line.split()[0].count('.') + 1), 'title': line, 'page': index + 1, 'estimated': True})
+                items=structure.inspect_page(page,blocks,index+1,source)
+                headings.extend(items['headings']);formulas.extend(items['formulas'])
                 with db.connect() as con:
                     con.execute('INSERT OR REPLACE INTO pages VALUES(?,?,?,?,?,?)', (pid, index + 1, text, db.encode(blocks), page.rect.width, page.rect.height))
                     for block in blocks:
@@ -320,9 +321,9 @@ def parse(pid, jid):
                             if len(piece.strip()) > 15:
                                 con.execute('INSERT INTO chunks VALUES(?,?,?,?,?,?)', (uuid.uuid4().hex, pid, index + 1, piece, db.encode(block['bbox']), None))
                     con.execute('UPDATE jobs SET done=?,message=? WHERE id=?', (index + 1, f'已解析 {index + 1}/{len(doc)} 页', jid))
-            combined = '\n'.join(first_text)
-            abstract_match = re.search(r'\bAbstract\b\s*[:\n]?(.{50,2200}?)(?:\n\s*(?:1\s+|Introduction|Keywords)|$)', combined, re.S | re.I)
-            abstract = abstract_match.group(1).strip() if abstract_match else ''
+            import json
+            abstract = metadata.abstract_from_blocks([json.loads(x['blocks']) for x in db.rows(
+                'SELECT blocks FROM pages WHERE paper_id=? AND page<=2 ORDER BY page',(pid,))])
             author_line = (doc.metadata.get('author') or '').strip() or '; '.join(a['name'] for a in structured_authors)
         blank_pages = sorted(p for p, s in page_sources.items() if s == 'blank')
         drawing_pages = sorted(p for p, s in page_sources.items() if s == 'drawing')
@@ -334,11 +335,12 @@ def parse(pid, jid):
             warnings.append(f'{len(drawing_pages)} 页为纯图形/公式页（无文本层），文本无从提取，原文页图保留可查。')
         if ocr_engines:
             warnings.append('OCR 引擎：' + '、'.join(sorted(ocr_engines)) + '。')
-        warnings.append('公式保留原文页图；复杂公式的 LaTeX 结构还原尚未验收。')
+        warnings.append('已逐页建立公式候选与结构清单；复杂公式需通过批量视觉转录核对，不将候选文本当作可靠 LaTeX。')
         meta = {'toc': toc[:1000], 'images': images, 'tables': tables, 'unreadable_pages': review_pages,
                 'page_sources': page_sources, 'ocr_engines': sorted(ocr_engines),
                 'formula_mode': 'original-page', 'reading_order': 'column-aware-geometric'}
         meta['authors_structured']=structured_authors
+        meta.update(structure.assemble(toc if native_toc else [],headings,formulas,len(page_sources),page_sources,structured_authors))
         paper_info=db.one('SELECT arxiv_id FROM papers WHERE id=?',(pid,))
         meta['publication']=metadata.publication(first_text[0] if first_text else '',paper_info['arxiv_id'])
         if ocr_title:
@@ -366,13 +368,39 @@ def enrich_header(pid):
     import json
     meta=json.loads(paper['metadata'])
     meta['publication']=metadata.publication(page['text'],paper['arxiv_id'])
-    if meta.get('page_sources',{}).get('1')=='ocr':
-        return {'authors':meta.get('authors_structured',[]),'note':'扫描件作者机构需要核对，保留原文首页。'}
     authors=metadata.authors_from_header(json.loads(page['blocks']),page['height'],paper['title'])
+    if meta.get('page_sources',{}).get('1')=='ocr':
+        for author in authors:author['method']='ocr-header-estimate'
     meta['authors_structured']=authors
     db.execute("UPDATE papers SET authors=CASE WHEN COALESCE(authors,'')='' THEN ? ELSE authors END,metadata=? WHERE id=?",
                ('; '.join(a['name'] for a in authors),db.encode(meta),pid))
     return {'authors':authors,'note':'按首页版式提取；请点击原文核对作者、机构关系。'}
+
+
+def refresh_structure(pid, jid=None):
+    """重建已导入文献的结构清单，不删除正文、向量或手工作者信息。"""
+    import json
+    value=db.one('SELECT * FROM papers WHERE id=?',(pid,))
+    if not value or value['status'] not in ('ready','partial'):
+        raise ValueError('请先等待文献解析完成。')
+    meta=json.loads(value['metadata']);headings=[];formulas=[]
+    pages=db.rows('SELECT * FROM pages WHERE paper_id=? ORDER BY page',(pid,))
+    sources=meta.get('page_sources',{})
+    with fitz.open(db.DATA/'files'/(pid+'.pdf')) as doc:
+        native=[{'level':x[0],'title':x[1],'page':x[2]} for x in doc.get_toc()]
+        for saved in pages:
+            blocks=json.loads(saved['blocks'])
+            items=structure.inspect_page(doc[saved['page']-1],blocks,saved['page'],sources.get(str(saved['page']),'native'))
+            headings.extend(items['headings']);formulas.extend(items['formulas'])
+            if jid:db.execute('UPDATE jobs SET done=?,message=? WHERE id=?',(saved['page'],f'已核对结构 {saved["page"]}/{len(doc)} 页',jid))
+    authors=enrich_header(pid)['authors']
+    # enrich_header 可能补充出版信息，重新读取后合并，避免覆盖其他元数据。
+    meta=json.loads(db.one('SELECT metadata FROM papers WHERE id=?',(pid,))['metadata'])
+    meta.update(structure.assemble(native,headings,formulas,len(pages),sources,authors))
+    abstract=metadata.abstract_from_blocks([json.loads(p['blocks']) for p in pages[:2]])
+    db.execute("UPDATE papers SET metadata=?,abstract=CASE WHEN COALESCE(abstract,'')='' THEN ? ELSE abstract END WHERE id=?",
+               (db.encode(meta),abstract,pid))
+    return meta['structure_coverage']
 
 
 def version_diff(left, right):

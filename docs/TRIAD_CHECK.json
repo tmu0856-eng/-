@@ -1,0 +1,2041 @@
+{
+  "date": "2026-11-15",
+  "regression": {
+    "passed": 248,
+    "seconds": 42.25
+  },
+  "scope": "资料包 39 份 PDF 加官方 GPT-2 PDF，在隔离副本核验；日常库 28 篇已更新结构，10299 文本块和向量保留。",
+  "corpus_summary": {
+    "documents": 40,
+    "pages": 2010,
+    "documents_with_author_candidates": 35,
+    "note": "覆盖计数不代表人工核验的准确率。"
+  },
+  "corpus": [
+    {
+      "id": "f5bb67c993934c39bca05e6c5e70e274",
+      "filename": "1607.06450v1.pdf",
+      "title": "Layer Normalization",
+      "page_count": 14,
+      "coverage": {
+        "pages": 14,
+        "author_count": 3,
+        "heading_count": 19,
+        "appendix_count": 1,
+        "formula_candidates": 58,
+        "formula_candidate_pages": 6,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Jimmy Lei Ba",
+        "Jamie Ryan Kiros",
+        "Geoffrey E. Hinton"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Background",
+        "3 Layer normalization",
+        "3.1 Layer normalized recurrent neural networks",
+        "4 Related work",
+        "5 Analysis",
+        "5.1 Invariance under weights and data transformations",
+        "5.2 Geometry of parameter space during learning"
+      ],
+      "appendix_sample": [
+        "Supplementary Material"
+      ],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 19,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.17
+    },
+    {
+      "id": "a2ab34a00bf4473c90a61d559704936d",
+      "filename": "1706.03762v1.pdf",
+      "title": "Attention Is All You Need",
+      "page_count": 15,
+      "coverage": {
+        "pages": 15,
+        "author_count": 8,
+        "heading_count": 22,
+        "appendix_count": 0,
+        "formula_candidates": 28,
+        "formula_candidate_pages": 8,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Background",
+        "3 Model Architecture",
+        "3.1 Encoder and Decoder Stacks",
+        "3.2 Attention",
+        "3.2.1 Scaled Dot-Product Attention",
+        "3.2.2 Multi-Head Attention",
+        "3.2.3 Applications of Attention in our Model"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 36,
+      "anchored_refs": 36,
+      "citation_places": 58,
+      "seconds": 0.44
+    },
+    {
+      "id": "abd2e2c84bc34bd0b1682be9b952ac49",
+      "filename": "1706.03762v1_img.pdf",
+      "title": "Attention Is All You Need",
+      "page_count": 15,
+      "coverage": {
+        "pages": 15,
+        "author_count": 8,
+        "heading_count": 23,
+        "appendix_count": 0,
+        "formula_candidates": 14,
+        "formula_candidate_pages": 6,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Lukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Background",
+        "3 Model Architecture",
+        "3.1 Encoder andDecoderStacks",
+        "3.2 Attention",
+        "3.2.1 Scaled Dot-Product Attention",
+        "3.2.2 Multi-Head Attention",
+        "3.2.3 Applications of Attentionin ourModel"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 35,
+      "anchored_refs": 17,
+      "citation_places": 19,
+      "seconds": 0.06
+    },
+    {
+      "id": "ebd3f4cb9e104702a10201cfb2904d27",
+      "filename": "1706.03762v7.pdf",
+      "title": "Attention Is All You Need",
+      "page_count": 15,
+      "coverage": {
+        "pages": 15,
+        "author_count": 8,
+        "heading_count": 22,
+        "appendix_count": 0,
+        "formula_candidates": 29,
+        "formula_candidate_pages": 9,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Background",
+        "Model Architecture",
+        "Encoder and Decoder Stacks",
+        "Attention",
+        "Scaled Dot-Product Attention",
+        "Multi-Head Attention",
+        "Applications of Attention in our Model"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 40,
+      "anchored_refs": 40,
+      "citation_places": 63,
+      "seconds": 0.45
+    },
+    {
+      "id": "48d06fd721a249eb9edd6f754708fe41",
+      "filename": "1707.06347v2.pdf",
+      "title": "Proximal Policy Optimization Algorithms",
+      "page_count": 12,
+      "coverage": {
+        "pages": 12,
+        "author_count": 5,
+        "heading_count": 0,
+        "appendix_count": 0,
+        "formula_candidates": 25,
+        "formula_candidate_pages": 6,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "John Schulman",
+        "Filip Wolski",
+        "Prafulla Dhariwal",
+        "Alec Radford",
+        "Oleg Klimov"
+      ],
+      "heading_sample": [],
+      "appendix_sample": [],
+      "heading_levels": [],
+      "references": 2,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.2
+    },
+    {
+      "id": "85d49629e1d84790bc33ab234759c3f8",
+      "filename": "1910.02054v3.pdf",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "page_count": 24,
+      "coverage": {
+        "pages": 24,
+        "author_count": 3,
+        "heading_count": 41,
+        "appendix_count": 0,
+        "formula_candidates": 10,
+        "formula_candidate_pages": 6,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Samyam Rajbhandari",
+        "Olatunji Ruwase",
+        "Yuxiong He"
+      ],
+      "heading_sample": [
+        "1 Extended Introduction",
+        "2 Related Work",
+        "2.1 Data, Model and Pipeline Parallelism",
+        "2.2 Non-parallelism based approach to reduce memory",
+        "2.2.1 Reducing Activation Memory",
+        "2.2.2 CPU Offload",
+        "2.2.3 Memory Efficient Optimizer",
+        "2.3 Training Optimizers "
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 26,
+      "anchored_refs": 26,
+      "citation_places": 37,
+      "seconds": 0.61
+    },
+    {
+      "id": "d9797dbe898e4c028150a7c6737381e5",
+      "filename": "1910.10683v4.pdf",
+      "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "page_count": 67,
+      "coverage": {
+        "pages": 67,
+        "author_count": 9,
+        "heading_count": 59,
+        "appendix_count": 23,
+        "formula_candidates": 23,
+        "formula_candidate_pages": 15,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Colin Raffel",
+        "Noam Shazeer",
+        "Adam Roberts",
+        "Katherine Lee",
+        "Sharan Narang",
+        "Michael Matena",
+        "Yanqi Zhou",
+        "Wei Li",
+        "Peter J. Liu"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Contributions",
+        "Setup",
+        "Model",
+        "Converting WNLI to Our Text-to-Text Format",
+        "The Colossal Clean Crawled Corpus",
+        "Downstream Tasks",
+        "Input and Output Format"
+      ],
+      "appendix_sample": [
+        "Appendix A. Contributions",
+        "Appendix B. Converting WNLI to Our Text-to-Text Format",
+        "Appendix C. Example Predictions on CNN/Daily Mail",
+        "Appendix D. Preprocessed Examples",
+        "D.1 CoLA",
+        "D.2 RTE",
+        "D.3 MNLI",
+        "D.4 MRPC"
+      ],
+      "heading_levels": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "references": 94,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.58
+    },
+    {
+      "id": "1450ca6b1bbb4f7ab124612a855f618d",
+      "filename": "2001.08361v1.pdf",
+      "title": "Scaling Laws for Neural Language Models",
+      "page_count": 30,
+      "coverage": {
+        "pages": 30,
+        "author_count": 10,
+        "heading_count": 13,
+        "appendix_count": 1,
+        "formula_candidates": 109,
+        "formula_candidate_pages": 21,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Jared Kaplan",
+        "Sam McCandlish",
+        "Tom Henighan",
+        "Tom B. Brown",
+        "Benjamin Chess",
+        "Rewon Child",
+        "Scott Gray",
+        "Alec Radford",
+        "Jeffrey Wu",
+        "Dario Amodei"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Background and Methods",
+        "3 Empirical Results and Basic Power Laws",
+        "4 Charting the Infinite Data Limit and Overfitting",
+        "5 Scaling Laws with Model Size and Training Time",
+        "6 Optimal Allocation of the Compute Budget",
+        "7 Related Work",
+        "8 Discussion"
+      ],
+      "appendix_sample": [
+        "Appendices"
+      ],
+      "heading_levels": [
+        1
+      ],
+      "references": 3,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.36
+    },
+    {
+      "id": "2c67b825c9a44ca4b0e1021a305cab76",
+      "filename": "2002.04745v2.pdf",
+      "title": "On Layer Normalization in the Transformer Architecture",
+      "page_count": 17,
+      "coverage": {
+        "pages": 17,
+        "author_count": 10,
+        "heading_count": 16,
+        "appendix_count": 0,
+        "formula_candidates": 267,
+        "formula_candidate_pages": 13,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Ruibin Xiong",
+        "Yunchang Yang",
+        "Di He",
+        "Kai Zheng",
+        "Shuxin Zheng",
+        "Chen Xing",
+        "Huishuai Zhang",
+        "Yanyan Lan",
+        "Liwei Wang",
+        "Tie-Yan Liu"
+      ],
+      "heading_sample": [
+        "1. Introduction",
+        "2. Related work",
+        "3. Optimization for the Transformer",
+        "3.1. Transformer with Post-Layer Normalization",
+        "3.2. The learning rate warm-up stage",
+        "3.3. Understanding the Transformer at initialization",
+        "3.4. Empirical veriﬁcation of the theory and discussion",
+        "4. Experiments"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 28,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.25
+    },
+    {
+      "id": "957d6290461642e3972e3c91ad953a51",
+      "filename": "2005.14165v4.pdf",
+      "title": "Language Models are Few-Shot Learners",
+      "page_count": 75,
+      "coverage": {
+        "pages": 75,
+        "author_count": 31,
+        "heading_count": 32,
+        "appendix_count": 0,
+        "formula_candidates": 28,
+        "formula_candidate_pages": 17,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Tom B. Brown",
+        "Benjamin Mann",
+        "Nick Ryder",
+        "Melanie Subbiah",
+        "Jared Kaplan",
+        "Prafulla Dhariwal",
+        "Arvind Neelakantan",
+        "Pranav Shyam",
+        "Girish Sastry",
+        "Amanda Askell",
+        "Sandhini Agarwal",
+        "Ariel Herbert-Voss",
+        "Gretchen Krueger",
+        "Tom Henighan",
+        "Rewon Child",
+        "Aditya Ramesh",
+        "Daniel M. Ziegler",
+        "Jeffrey Wu",
+        "Clemens Winter",
+        "Christopher Hesse",
+        "Mark Chen",
+        "Eric Sigler",
+        "Mateusz Litwin",
+        "Scott Gray",
+        "Benjamin Chess",
+        "Jack Clark",
+        "Christopher Berner",
+        "Sam McCandlish",
+        "Alec Radford",
+        "Ilya Sutskever",
+        "Dario Amodei"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Approach",
+        "2.1 Model and Architectures",
+        "2.2 Training Dataset",
+        "2.3 Training Process",
+        "2.4 Evaluation",
+        "3 Results",
+        "3.1 Language Modeling, Cloze, and Completion Tasks"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 2,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 3.83
+    },
+    {
+      "id": "5201a2ecc072466cb8ba28d7bce36c58",
+      "filename": "2010.11929v2.pdf",
+      "title": "AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE",
+      "page_count": 22,
+      "coverage": {
+        "pages": 22,
+        "author_count": 12,
+        "heading_count": 30,
+        "appendix_count": 1,
+        "formula_candidates": 17,
+        "formula_candidate_pages": 7,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Alexey Dosovitskiy",
+        "Lucas Beyer",
+        "Alexander Kolesnikov",
+        "Dirk Weissenborn",
+        "Xiaohua Zhai",
+        "Thomas Unterthiner",
+        "Mostafa Dehghani",
+        "Matthias Minderer",
+        "Georg Heigold",
+        "Sylvain Gelly",
+        "Jakob Uszkoreit",
+        "Neil Houlsby"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Related Work",
+        "3 Method",
+        "3.1 Vision Transformer (ViT)",
+        "3.2 Fine-tuning and Higher Resolution",
+        "4 Experiments",
+        "4.1 Setup",
+        "4.2 Comparison to State of the Art"
+      ],
+      "appendix_sample": [
+        "APPENDIX"
+      ],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 51,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.42
+    },
+    {
+      "id": "9a98b324b2d1496ab88a0868e0286210",
+      "filename": "209_Emergent_Abilities_of_Larg.pdf",
+      "title": "Emergent Abilities of Large Language Models",
+      "page_count": 30,
+      "coverage": {
+        "pages": 30,
+        "author_count": 15,
+        "heading_count": 28,
+        "appendix_count": 0,
+        "formula_candidates": 15,
+        "formula_candidate_pages": 8,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Yi Tay",
+        "Rishi Bommasani",
+        "Colin Raﬀel",
+        "Barret Zoph",
+        "Sebastian Borgeaud",
+        "Dani Yogatama",
+        "Maarten Bosma",
+        "Denny Zhou",
+        "Donald Metzler",
+        "Ed H. Chi",
+        "Tatsunori Hashimoto",
+        "Oriol Vinyals",
+        "Percy Liang",
+        "William Fedus",
+        "Jason Wei"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Emergent Abilities Definition",
+        "Few-Shot Prompted Tasks",
+        "Augmented Prompting Strategies",
+        "Discussion",
+        "Potential explanations of emergence",
+        "Beyond scaling",
+        "Another view of emergence"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 77,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.23
+    },
+    {
+      "id": "a7d50cda8d514cee9b6a733b19948159",
+      "filename": "2101.03961v3.pdf",
+      "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Eﬃcient Sparsity",
+      "page_count": 40,
+      "coverage": {
+        "pages": 40,
+        "author_count": 3,
+        "heading_count": 31,
+        "appendix_count": 0,
+        "formula_candidates": 60,
+        "formula_candidate_pages": 16,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "William Fedus",
+        "Barret Zoph",
+        "Noam Shazeer"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Switch Transformer",
+        "2.1 Simplifying Sparse Routing",
+        "2.2 Efficient Sparse Routing",
+        "2.3 Putting It All Together: The Switch Transformer",
+        "2.4 Improved Training and Fine-Tuning Techniques",
+        "3 Scaling Properties",
+        "3.1 Scaling Results on a Step-Basis"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 46,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.28
+    },
+    {
+      "id": "2f016e1b5f034441b93aad4b925669ba",
+      "filename": "2103.00020v1.pdf",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "page_count": 48,
+      "coverage": {
+        "pages": 48,
+        "author_count": 12,
+        "heading_count": 31,
+        "appendix_count": 0,
+        "formula_candidates": 13,
+        "formula_candidate_pages": 8,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Alec Radford",
+        "Jong Wook Kim",
+        "Chris Hallacy",
+        "Aditya Ramesh",
+        "Gabriel Goh",
+        "Sandhini Agarwal",
+        "Girish Sastry",
+        "Amanda Askell",
+        "Pamela Mishkin",
+        "Jack Clark",
+        "Gretchen Krueger",
+        "Ilya Sutskever"
+      ],
+      "heading_sample": [
+        "1. Introduction and Motivating Work",
+        "2. Approach",
+        "2.1. Natural Language Supervision",
+        "2.2. Creating a Sufﬁciently Large Dataset",
+        "2.3. Selecting an Efﬁcient Pre-Training Method",
+        "2.4. Choosing and Scaling a Model",
+        "2.5. Training",
+        "3. Experiments"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 37,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.8
+    },
+    {
+      "id": "c99acfbcb75c4b29aab9a17152d3b0f4",
+      "filename": "2106.09685v2.pdf",
+      "title": "LORA: LOW-RANK ADAPTATION OF LARGE LAN- GUAGE MODELS",
+      "page_count": 26,
+      "coverage": {
+        "pages": 26,
+        "author_count": 8,
+        "heading_count": 38,
+        "appendix_count": 0,
+        "formula_candidates": 72,
+        "formula_candidate_pages": 18,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Edward Hu",
+        "Yelong Shen",
+        "Phillip Wallis",
+        "Zeyuan Allen-Zhu",
+        "Yuanzhi Li",
+        "Shean Wang",
+        "Lu Wang",
+        "Weizhu Chen"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Problem Statement",
+        "3 Aren't Existing Solutions Good Enough?",
+        "4 Our Method",
+        "4.1 Low-Rank-Parametrized Update Matrices",
+        "4.2 Applying LoRA to Transformer",
+        "5 Empirical Experiments",
+        "5.1 Baselines"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 44,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.33
+    },
+    {
+      "id": "590cf858bbb6412ba40560f1102ce04e",
+      "filename": "2107.03374v2.pdf",
+      "title": "Evaluating Large Language Models Trained on Code",
+      "page_count": 35,
+      "coverage": {
+        "pages": 35,
+        "author_count": 57,
+        "heading_count": 51,
+        "appendix_count": 0,
+        "formula_candidates": 123,
+        "formula_candidate_pages": 18,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Mark Chen",
+        "Jerry Tworek",
+        "Heewoo Jun",
+        "Qiming Yuan",
+        "Jared Kaplan",
+        "Harri Edwards",
+        "Yuri Burda",
+        "Nicholas Joseph",
+        "Greg Brockman",
+        "Alex Ray",
+        "Raul Puri",
+        "Gretchen Krueger",
+        "Michael Petrov",
+        "Heidy Khlaaf",
+        "Girish Sastry",
+        "Pamela Mishkin",
+        "Brooke Chan",
+        "Scott Gray",
+        "Nick Ryder",
+        "Mikhail Pavlov",
+        "Alethea Power",
+        "Lukasz Kaiser",
+        "Mohammad Bavarian",
+        "Clemens Winter",
+        "Philippe Tillet",
+        "Felipe Petroski Such",
+        "Dave Cummings",
+        "Matthias Plappert",
+        "Fotios Chantzis",
+        "Elizabeth Barnes",
+        "Ariel Herbert-Voss",
+        "William Hebgen Guss",
+        "Alex Nichol",
+        "Alex Paino",
+        "Nikolas Tezak",
+        "Jie Tang",
+        "Igor Babuschkin",
+        "Suchir Balaji",
+        "Shantanu Jain",
+        "William Saunders",
+        "Christopher Hesse",
+        "Andrew N. Carr",
+        "Jan Leike",
+        "Josh Achiam",
+        "Vedant Misra",
+        "Evan Morikawa",
+        "Alec Radford",
+        "Matthew Knight",
+        "Miles Brundage",
+        "Mira Murati",
+        "Katie Mayer",
+        "Peter Welinder",
+        "Bob McGrew",
+        "Dario Amodei",
+        "Sam McCandlish",
+        "Ilya Sutskever",
+        "Wojciech Zaremba"
+      ],
+      "heading_sample": [
+        "1. Introduction",
+        "2. Evaluation Framework",
+        "2.1. Functional Correctness",
+        "2.2. HumanEval: Hand-Written Evaluation Set",
+        "2.3. Sandbox for Executing Generated Programs",
+        "3. Code Fine-Tuning",
+        "3.1. Data Collection",
+        "3.2. Methods"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 106,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.84
+    },
+    {
+      "id": "60dc8795fa8d441bbe647225b6b13771",
+      "filename": "2201.11903v6.pdf",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "page_count": 43,
+      "coverage": {
+        "pages": 43,
+        "author_count": 9,
+        "heading_count": 35,
+        "appendix_count": 4,
+        "formula_candidates": 22,
+        "formula_candidate_pages": 8,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Jason Wei",
+        "Xuezhi Wang",
+        "Dale Schuurmans",
+        "Maarten Bosma",
+        "Brian Ichter",
+        "Fei Xia",
+        "Ed H. Chi",
+        "Quoc V. Le",
+        "Denny Zhou"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Chain-of-Thought Prompting",
+        "3 Arithmetic Reasoning",
+        "3.1 Experimental Setup",
+        "3.2 Results",
+        "3.3 Ablation Study",
+        "3.4 Robustness of Chain of Thought",
+        "4 Commonsense Reasoning"
+      ],
+      "appendix_sample": [
+        "Appendix: Additional Analysis",
+        "Appendix: Input/Output Examples",
+        "Appendix: Full Prompts",
+        "Appendix: Alternate Annotators for MWP"
+      ],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 71,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.28
+    },
+    {
+      "id": "e689675cc65c4d0ebce1124026a1695b",
+      "filename": "2203.02155v1.pdf",
+      "title": "Training language models to follow instructions with human feedback",
+      "page_count": 68,
+      "coverage": {
+        "pages": 68,
+        "author_count": 20,
+        "heading_count": 54,
+        "appendix_count": 0,
+        "formula_candidates": 21,
+        "formula_candidate_pages": 14,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Long Ouyang",
+        "Jeff Wu",
+        "Xu Jiang",
+        "Diogo Almeida",
+        "Carroll L. Wainwright",
+        "Pamela Mishkin",
+        "Chong Zhang",
+        "Sandhini Agarwal",
+        "Katarina Slama",
+        "Alex Ray",
+        "John Schulman",
+        "Jacob Hilton",
+        "Fraser Kelton",
+        "Luke Miller",
+        "Maddie Simens",
+        "Amanda Askell",
+        "Peter Welinder",
+        "Paul Christiano",
+        "Jan Leike",
+        "Ryan Lowe"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Related work",
+        "3 Methods and experimental details",
+        "3.1 High-level methodology",
+        "3.2 Dataset",
+        "3.3 Tasks",
+        "3.4 Human data collection",
+        "3.5 Models"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 102,
+      "anchored_refs": 2,
+      "citation_places": 1,
+      "seconds": 0.62
+    },
+    {
+      "id": "674480feb3c140d5872dde603d621238",
+      "filename": "2205.14135v2.pdf",
+      "title": "FlashAttention: Fast and Memory-Eﬃcient Exact Attention with IO-Awareness",
+      "page_count": 34,
+      "coverage": {
+        "pages": 34,
+        "author_count": 5,
+        "heading_count": 31,
+        "appendix_count": 0,
+        "formula_candidates": 98,
+        "formula_candidate_pages": 12,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Tri Dao",
+        "Daniel Y. Fu",
+        "Stefano Ermon",
+        "Atri Rudra",
+        "Christopher Ré"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Background",
+        "2.1 Hardware Performance",
+        "2.2 Standard Attention Implementation",
+        "3 FlashAttention: Algorithm, Analysis, and Extensions",
+        "3.1 An Efficient Attention Algorithm With Tiling and Recomputation",
+        "3.2 Analysis: IO Complexity of FlashAttention",
+        "3.3 Extension: Block-Sparse FlashAttention"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 103,
+      "anchored_refs": 103,
+      "citation_places": 144,
+      "seconds": 0.56
+    },
+    {
+      "id": "686f655dd6d944e8aee9c4011f7eb763",
+      "filename": "2206.07682v2.pdf",
+      "title": "Emergent Abilities of Large Language Models",
+      "page_count": 30,
+      "coverage": {
+        "pages": 30,
+        "author_count": 15,
+        "heading_count": 28,
+        "appendix_count": 0,
+        "formula_candidates": 15,
+        "formula_candidate_pages": 9,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Yi Tay",
+        "Rishi Bommasani",
+        "Colin Raﬀel",
+        "Barret Zoph",
+        "Sebastian Borgeaud",
+        "Dani Yogatama",
+        "Maarten Bosma",
+        "Denny Zhou",
+        "Donald Metzler",
+        "Ed H. Chi",
+        "Tatsunori Hashimoto",
+        "Oriol Vinyals",
+        "Percy Liang",
+        "William Fedus",
+        "Jason Wei"
+      ],
+      "heading_sample": [
+        "1 Introduction",
+        "2 Emergent Abilities Definition",
+        "3 Few-Shot Prompted Tasks",
+        "4 Augmented Prompting Strategies",
+        "5 Discussion",
+        "5.1 Potential explanations of emergence",
+        "5.2 Beyond scaling",
+        "5.3 Another view of emergence"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 82,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.27
+    },
+    {
+      "id": "91d24201c78a4eac87d10bba95cd36f5",
+      "filename": "2210.02414v2.pdf",
+      "title": "GLM-130B: AN OPEN BILINGUAL PRE-TRAINED",
+      "page_count": 56,
+      "coverage": {
+        "pages": 56,
+        "author_count": 0,
+        "heading_count": 68,
+        "appendix_count": 2,
+        "formula_candidates": 37,
+        "formula_candidate_pages": 14,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [],
+      "heading_sample": [
+        "Introduction",
+        "The Design Choices of GLM-130B",
+        "GLM-130B's Architecture",
+        "GLM-130B's Pre-Training Setup",
+        "Platform-Aware Parallel Strategies and Model Configurations",
+        "The Training Stability of GLM-130B",
+        "GLM-130B Inference on RTX 2080 Ti",
+        "The Results"
+      ],
+      "appendix_sample": [
+        "Appendix",
+        "A BRIEF HISTORY OF GLM-130B"
+      ],
+      "heading_levels": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "references": 116,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 1.06
+    },
+    {
+      "id": "ab2164b3d7064ce49d320ee95797e83c",
+      "filename": "2211.05100v4.pdf",
+      "title": "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model",
+      "page_count": 73,
+      "coverage": {
+        "pages": 73,
+        "author_count": 111,
+        "heading_count": 84,
+        "appendix_count": 0,
+        "formula_candidates": 23,
+        "formula_candidate_pages": 15,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "BigScience Workshop",
+        "Teven Le Scao",
+        "Angela Fan",
+        "Christopher Akiki",
+        "Ellie Pavlick",
+        "Daniel Hesslow",
+        "Alexandra Sasha Luccioni",
+        "Matthias Gallé",
+        "Jonathan Tow",
+        "Alexander M.",
+        "Stella Biderman",
+        "Albert Webson",
+        "Pawan Sasanka Ammanamanchi",
+        "Thomas Wang",
+        "Niklas Muennighoff",
+        "Olatunji Ruwase",
+        "Rachel Bawden",
+        "Angelina McMillan-Major",
+        "Thomas Wolf",
+        "Iz Beltagy",
+        "Huu Nguyen",
+        "Lucile Saulnier",
+        "Pedro Ortiz Suarez",
+        "Victor Sanh",
+        "Yacine Jernite",
+        "Julien Launay",
+        "Colin Raffel",
+        "Aaron Gokaslan",
+        "Adi Simhi",
+        "Aitor Soroa",
+        "Alham Fikri Aji",
+        "Amit Alfassy",
+        "Anna Rogers",
+        "Ariel Kreisberg Nitzav",
+        "Canwen Xu",
+        "Chenghao Mou",
+        "Chris Emezue",
+        "Christopher Klamm",
+        "Colin Leong",
+        "David Ifeoluwa Adelani",
+        "Dragomir Radev",
+        "Efrat Levkovizh",
+        "Ethan Kim",
+        "Eyal Bar Natan",
+        "Francesco De Toni",
+        "Gérard Dupont",
+        "Giada Pistilli",
+        "Hady Elsahar",
+        "Hamza Benyamina",
+        "Hieu Tran",
+        "Ian Yu",
+        "Idris Abdulmumin",
+        "Isaac Johnson",
+        "Itziar Gonzalez-Dios",
+        "Jesse Dodge",
+        "Jian Zhu",
+        "Jonathan Chang",
+        "Joseph Tobing",
+        "Khalid Almubarak",
+        "Kimbo Chen",
+        "Kyle Lo",
+        "Leandro Von Werra",
+        "Leon Weber",
+        "Long Phan",
+        "Ludovic Tanguy",
+        "Manan Dey",
+        "Maraim Masoud",
+        "Margaret Mitchell",
+        "María Grandury",
+        "Max Huang",
+        "Maximin Coavoux",
+        "Mayank Singh",
+        "Mike Tian-Jian Jiang",
+        "Minh Chien Vu",
+        "Mohammad A. Jauhar",
+        "Mustafa Ghaleb",
+        "Nishant Subramani",
+        "Nora Kassner",
+        "Nurulaqilla Khamis",
+        "Olivier Nguyen",
+        "Omar Espejel",
+        "Paulo Villegas",
+        "Peter Henderson",
+        "Pierre Colombo",
+        "Quentin Lhoest",
+        "Rheza Harliman",
+        "Rishi Bommasani",
+        "Roberto Luis López",
+        "Roman Castagné",
+        "Rui Ribeiro",
+        "Salomey Osei",
+        "Sampo Pyysalo",
+        "Samson Tan",
+        "Sebastian Nagel",
+        "Shamik Bose",
+        "Shanya Sharma",
+        "Shayne Longpre",
+        "Somaieh Nikpoor",
+        "Stanislav Silberberg",
+        "Suhas Pai",
+        "Sydney Zink",
+        "Tiago Timponi",
+        "Timo Schick",
+        "Tristan Thrush",
+        "Valentin Danchev",
+        "Vassilina Nikoulina",
+        "Veronika Laippala",
+        "Violette Lepercq",
+        "Vrinda Prabhu",
+        "Zaid Alyafeai",
+        "Zeerak Talat"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Prompts",
+        "Background",
+        "Language Modeling",
+        "BigScience",
+        "BLOOM",
+        "Training Dataset",
+        "Data Governance"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "references": 55,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.67
+    },
+    {
+      "id": "3fb156b33627475eb5761441181e49dc",
+      "filename": "2212.04356v1.pdf",
+      "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+      "page_count": 28,
+      "coverage": {
+        "pages": 28,
+        "author_count": 6,
+        "heading_count": 35,
+        "appendix_count": 0,
+        "formula_candidates": 3,
+        "formula_candidate_pages": 2,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Alec Radford",
+        "Jong Wook Kim",
+        "Tao Xu",
+        "Greg Brockman",
+        "Christine McLeavey",
+        "Ilya Sutskever"
+      ],
+      "heading_sample": [
+        "1. Introduction",
+        "2. Approach",
+        "2.1. Data Processing",
+        "2.2. Model",
+        "2.3. Multitask Format",
+        "2.4. Training Details",
+        "3. Experiments",
+        "3.1. Zero-shot Evaluation"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 101,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.31
+    },
+    {
+      "id": "11fed189139f44a5b04e59d1c6d75b7c",
+      "filename": "2303.08774v6.pdf",
+      "title": "GPT-4 Technical Report",
+      "page_count": 100,
+      "coverage": {
+        "pages": 100,
+        "author_count": 0,
+        "heading_count": 46,
+        "appendix_count": 2,
+        "formula_candidates": 44,
+        "formula_candidate_pages": 13,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [],
+      "heading_sample": [
+        "Introduction",
+        "Scope and Limitations of this Technical Report",
+        "Predictable Scaling",
+        "Loss Prediction",
+        "Scaling of Capabilities on HumanEval",
+        "Capabilities",
+        "Visual Inputs",
+        "Limitations"
+      ],
+      "appendix_sample": [
+        "Appendix",
+        "F.4 Prompt"
+      ],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 85,
+      "anchored_refs": 85,
+      "citation_places": 227,
+      "seconds": 1.03
+    },
+    {
+      "id": "5e24ca48da52417889890cb807369915",
+      "filename": "2304.08485v2.pdf",
+      "title": "Visual Instruction Tuning",
+      "page_count": 25,
+      "coverage": {
+        "pages": 25,
+        "author_count": 4,
+        "heading_count": 16,
+        "appendix_count": 0,
+        "formula_candidates": 12,
+        "formula_candidate_pages": 6,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Haotian Liu",
+        "Chunyuan Li",
+        "Qingyang Wu",
+        "Yong Jae Lee"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Related Work",
+        "GPT-assisted Visual Instruction Data Generation",
+        "Visual Instruction Tuning",
+        "Architecture",
+        "Training",
+        "Experiments",
+        "Multimodal Chatbot"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 63,
+      "anchored_refs": 63,
+      "citation_places": 79,
+      "seconds": 0.62
+    },
+    {
+      "id": "3e555bd4fb78435e8636445ca12f3a15",
+      "filename": "2305.13048v2.pdf",
+      "title": "RWKV: Reinventing RNNs for the Transformer Era",
+      "page_count": 30,
+      "coverage": {
+        "pages": 30,
+        "author_count": 33,
+        "heading_count": 1,
+        "appendix_count": 0,
+        "formula_candidates": 69,
+        "formula_candidate_pages": 11,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Bo Peng",
+        "Eric Alcaide",
+        "Quentin Anthony",
+        "Alon Albalak",
+        "Samuel Arcadinho",
+        "Stella Biderman",
+        "Huanqi Cao",
+        "Xin Cheng",
+        "Michael Chung",
+        "Xingjian Du",
+        "Matteo Grella",
+        "Kranthi Kiran GV",
+        "Xuzheng He",
+        "Haowen Hou",
+        "Jiaju Lin",
+        "Przemysław Kazienko",
+        "Jiaming Kong",
+        "Bartłomiej Koptyra",
+        "Hayden Lau",
+        "Krishna Sri Ipsit Mantri",
+        "Ferdinand Mom",
+        "Atsushi Saito",
+        "Guangyu Song",
+        "Xiangru Tang",
+        "Bolun Wang",
+        "Johan S. Wind",
+        "Ruichong Zhang",
+        "Zhenyuan Zhang",
+        "Qihang Zhao",
+        "Peng Zhou",
+        "Qinghua Zhou",
+        "Jian Zhu",
+        "Rui-Jie Zhu"
+      ],
+      "heading_sample": [
+        "2. We can"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1
+      ],
+      "references": 76,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.48
+    },
+    {
+      "id": "a746ca57513a4ced803610076b113087",
+      "filename": "2305.14314v1.pdf",
+      "title": "QLORA: Efficient Finetuning of Quantized LLMs",
+      "page_count": 26,
+      "coverage": {
+        "pages": 26,
+        "author_count": 4,
+        "heading_count": 27,
+        "appendix_count": 0,
+        "formula_candidates": 30,
+        "formula_candidate_pages": 12,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Tim Dettmers",
+        "Artidoro Pagnoni",
+        "Ari Holtzman",
+        "Luke Zettlemoyer"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Background",
+        "QLoRA Finetuning",
+        "QLoRA vs. Standard Finetuning",
+        "Pushing the Chatbot State-of-the-art with QLoRA",
+        "Experimental setup",
+        "Evaluation",
+        "Guanaco: QLoRA trained on OASST1 is a State-of-the-art Chatbot"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 73,
+      "anchored_refs": 73,
+      "citation_places": 118,
+      "seconds": 0.74
+    },
+    {
+      "id": "bdea1f4050ea40039ddfa5d9281255ba",
+      "filename": "2305.18290v3.pdf",
+      "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+      "page_count": 27,
+      "coverage": {
+        "pages": 27,
+        "author_count": 6,
+        "heading_count": 29,
+        "appendix_count": 0,
+        "formula_candidates": 99,
+        "formula_candidate_pages": 14,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Rafael Rafailov",
+        "Archit Sharma",
+        "Eric Mitchell",
+        "Stefano Ermon",
+        "Christopher D. Manning",
+        "Chelsea Finn"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Related Work",
+        "Preliminaries",
+        "Direct Preference Optimization",
+        "Theoretical Analysis of DPO",
+        "Your Language Model Is Secretly a Reward Model",
+        "Instability of Actor-Critic Algorithms",
+        "Experiments"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 52,
+      "anchored_refs": 51,
+      "citation_places": 55,
+      "seconds": 0.48
+    },
+    {
+      "id": "b6cfbc7f765142e4a88cddf4070fde86",
+      "filename": "2307.09288v2.pdf",
+      "title": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+      "page_count": 77,
+      "coverage": {
+        "pages": 77,
+        "author_count": 5,
+        "heading_count": 60,
+        "appendix_count": 29,
+        "formula_candidates": 22,
+        "formula_candidate_pages": 12,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Hugo Touvron",
+        "Louis Martin",
+        "Kevin Stone",
+        "Sergey Edunov",
+        "Thomas Scialom"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Pretraining",
+        "Pretraining Data",
+        "Training Details",
+        "2.2.1 Training Hardware & Carbon Footprint",
+        "Llama 2 Pretrained Model Evaluation",
+        "Fine-tuning",
+        "Supervised Fine-Tuning (SFT)"
+      ],
+      "appendix_sample": [
+        "Appendix",
+        "A.1 Contributions",
+        "A.1.1 Acknowledgments",
+        "A.2 Additional Details for Pretraining",
+        "A.2.2 Additional Details for Pretrained Models Evaluation",
+        "A.3 Additional Details for Fine-tuning",
+        "A.3.1 Detailed Statistics of Meta Human Preference Data",
+        "A.3.2 Curriculum Strategy for Meta Human Preference Data"
+      ],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 111,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 3.67
+    },
+    {
+      "id": "2da95202148145c797f1a66c22109064",
+      "filename": "2310.06825v1.pdf",
+      "title": "Mistral 7B",
+      "page_count": 9,
+      "coverage": {
+        "pages": 9,
+        "author_count": 17,
+        "heading_count": 8,
+        "appendix_count": 0,
+        "formula_candidates": 4,
+        "formula_candidate_pages": 2,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Albert Q. Jiang",
+        "Alexandre Sablayrolles",
+        "Arthur Mensch",
+        "Chris Bamford",
+        "Devendra Singh Chaplot",
+        "Florian Bressand",
+        "Gianna Lengyel",
+        "Guillaume Lample",
+        "Lucile Saulnier",
+        "Lélio Renard Lavaud",
+        "Marie-Anne Lachaux",
+        "Pierre Stock",
+        "Teven Le Scao",
+        "Thibaut Lavril",
+        "Thomas Wang",
+        "Timothée Lacroix",
+        "William El Sayed"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Architectural details",
+        "Results",
+        "Instruction Finetuning",
+        "Adding guardrails for front-facing applications",
+        "System prompt to enforce guardrails",
+        "Content moderation with self-reflection",
+        "Conclusion"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 29,
+      "anchored_refs": 29,
+      "citation_places": 28,
+      "seconds": 2.22
+    },
+    {
+      "id": "fc851d0f244c45c9a8773eb2de98b609",
+      "filename": "2406.14491v2.pdf",
+      "title": "Instruction Pre-Training: Language Models are Supervised Multitask Learners",
+      "page_count": 22,
+      "coverage": {
+        "pages": 22,
+        "author_count": 6,
+        "heading_count": 22,
+        "appendix_count": 0,
+        "formula_candidates": 0,
+        "formula_candidate_pages": 0,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Daixuan Cheng",
+        "Yuxian Gu",
+        "Shaohan Huang",
+        "B Junyu Bi",
+        "Minlie Huang",
+        "B Furu Wei"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Instruction Pre-Training",
+        "Instruction Synthesizer",
+        "LM Pre-Training",
+        "Experiment Settings",
+        "Instruction Synthesizer",
+        "General Pre-training From Scratch",
+        "Domain-Adaptive Continual Pre-Training"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 95,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.2
+    },
+    {
+      "id": "bb824e2bc5d14359a3aa9a1da64452e1",
+      "filename": "2407.21783v3.pdf",
+      "title": "The Llama 3 Herd of Models",
+      "page_count": 92,
+      "coverage": {
+        "pages": 92,
+        "author_count": 0,
+        "heading_count": 98,
+        "appendix_count": 0,
+        "formula_candidates": 15,
+        "formula_candidate_pages": 11,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [],
+      "heading_sample": [
+        "Introduction",
+        "General Overview",
+        "Pre-Training",
+        "Pre-Training Data",
+        "Web Data Curation",
+        "Determining the Data Mix",
+        "Annealing Data",
+        "Model Architecture"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 243,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 9.17
+    },
+    {
+      "id": "670a44e78b5c4da78350970a7fb99009",
+      "filename": "2412.15115v2.pdf",
+      "title": "Qwen2.5 Technical Report",
+      "page_count": 26,
+      "coverage": {
+        "pages": 26,
+        "author_count": 1,
+        "heading_count": 13,
+        "appendix_count": 0,
+        "formula_candidates": 1,
+        "formula_candidate_pages": 1,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Qwen Team"
+      ],
+      "heading_sample": [
+        "3.1 Pre-training Data",
+        "3.2 Scaling Law for Hyper-parameters",
+        "3.3 Long-context Pre-training",
+        "4.1 Supervised Fine-tuning",
+        "4.2 Offline Reinforcement Learning",
+        "4.3 Online Reinforcement Learning",
+        "4.4 Long Context Fine-tuning",
+        "5.1 Base Models"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        2,
+        3
+      ],
+      "references": 83,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.61
+    },
+    {
+      "id": "f8ad54a4ba7943f8a0eb56c286453f46",
+      "filename": "2412.19437v1.pdf",
+      "title": "DeepSeek-V3 Technical Report",
+      "page_count": 53,
+      "coverage": {
+        "pages": 53,
+        "author_count": 0,
+        "heading_count": 53,
+        "appendix_count": 6,
+        "formula_candidates": 66,
+        "formula_candidate_pages": 14,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [],
+      "heading_sample": [
+        "Introduction",
+        "Architecture",
+        "Basic Architecture",
+        "Multi-Head Latent Attention",
+        "DeepSeekMoE with Auxiliary-Loss-Free Load Balancing",
+        "Multi-Token Prediction",
+        "Infrastructures",
+        "Compute Clusters"
+      ],
+      "appendix_sample": [
+        "Appendix",
+        "A. Contributions and Acknowledgments",
+        "B. Ablation Studies for Low-Precision Training",
+        "B.1. FP8 v.s. BF16 Training",
+        "B.2. Discussion About Block-Wise Quantization",
+        "C. Expert Specialization Patterns of the 16B Aux-Loss-Based and Aux-Loss-"
+      ],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 81,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.39
+    },
+    {
+      "id": "c824ceee197f4d51bd17d366e22da619",
+      "filename": "2501.12948v2.pdf",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "page_count": 86,
+      "coverage": {
+        "pages": 86,
+        "author_count": 0,
+        "heading_count": 63,
+        "appendix_count": 47,
+        "formula_candidates": 155,
+        "formula_candidate_pages": 29,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [],
+      "heading_sample": [
+        "Introduction",
+        " DeepSeek-R1-Zero",
+        "Group Relative Policy Optimization",
+        "Reward Design",
+        "Incentivize Reasoning Capability in LLMs",
+        "DeepSeek-R1",
+        "Model-based Rewards",
+        "Training Details"
+      ],
+      "appendix_sample": [
+        "Appendix",
+        "A. Background",
+        "A.1. DeepSeek-V3",
+        "A.2. Conventional Post-Training Paradigm",
+        "A.3. A Comparison of GRPO and PPO",
+        "B. Training Details",
+        "B.1. RL Infrastructure",
+        "B.2. Reward Model Prompt"
+      ],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 73,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.55
+    },
+    {
+      "id": "374fa2dc76e6492c940fc28b7950b604",
+      "filename": "333078981_693988129081760_4712707815225756708_n.pdf",
+      "title": "LLaMA: Open and Efficient Foundation Language Models",
+      "page_count": 27,
+      "coverage": {
+        "pages": 27,
+        "author_count": 14,
+        "heading_count": 2,
+        "appendix_count": 0,
+        "formula_candidates": 8,
+        "formula_candidate_pages": 6,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Hugo Touvron",
+        "Thibaut Lavril",
+        "Gautier Izacard",
+        "Xavier Martinet",
+        "Marie-Anne Lachaux",
+        "Timothee Lacroix",
+        "Baptiste Rozière",
+        "Naman Goyal",
+        "Eric Hambro",
+        "Faisal Azhar",
+        "Aurelien Rodriguez",
+        "Armand Joulin",
+        "Edouard Grave",
+        "Guillaume Lample"
+      ],
+      "heading_sample": [
+        "3.3 TB",
+        "36 MWh"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 62,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.2
+    },
+    {
+      "id": "ecab925554144ec2bce4964b01916455",
+      "filename": "N19-1423.pdf",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "page_count": 16,
+      "coverage": {
+        "pages": 16,
+        "author_count": 4,
+        "heading_count": 4,
+        "appendix_count": 1,
+        "formula_candidates": 16,
+        "formula_candidate_pages": 8,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "heading_sample": [
+        "0.3 F1 behind ﬁne-tuning the entire model. This",
+        "Appendix for “BERT: Pre-training of",
+        "1. Question:",
+        "2. Question: Does MLM pre-training converge"
+      ],
+      "appendix_sample": [
+        "Appendix for “BERT: Pre-training of"
+      ],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 38,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.19
+    },
+    {
+      "id": "fbe1916e1c8f42cdb4a567e325f90cf7",
+      "filename": "UnderstandingDeepLearning_02_09_26_C.pdf",
+      "title": "Understanding Deep Learning",
+      "page_count": 541,
+      "coverage": {
+        "pages": 541,
+        "author_count": 1,
+        "heading_count": 445,
+        "appendix_count": 51,
+        "formula_candidates": 1365,
+        "formula_candidate_pages": 265,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Simon J.D. Prince"
+      ],
+      "heading_sample": [
+        "Preface",
+        "Acknowledgements",
+        "Introduction",
+        "Supervised learning",
+        "1.1.1 Regression and classification problems",
+        "1.1.2 Inputs",
+        "1.1.3 Machine learning models",
+        "1.1.5 Structured outputs"
+      ],
+      "appendix_sample": [
+        "Appendix A",
+        "Appendix B",
+        "B.1 Functions",
+        "B.1.1 Lipschitz constant",
+        "B.1.2 Convexity",
+        "B.1.3 Special functions",
+        "B.1.4 Stirling’s formula",
+        "B.2 Binomial coeﬀicients"
+      ],
+      "heading_levels": [
+        1,
+        2,
+        3
+      ],
+      "references": 5,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 4.99
+    },
+    {
+      "id": "3307e33e72944428a924bc34325dcc30",
+      "filename": "language_models_are_unsupervised_multitask_learners.pdf",
+      "title": "Language Models are Unsupervised Multitask Learners",
+      "page_count": 24,
+      "coverage": {
+        "pages": 24,
+        "author_count": 6,
+        "heading_count": 26,
+        "appendix_count": 0,
+        "formula_candidates": 16,
+        "formula_candidate_pages": 11,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Alec Radford",
+        "Jeffrey Wu",
+        "Rewon Child",
+        "David Luan",
+        "Dario Amodei",
+        "Ilya Sutskever"
+      ],
+      "heading_sample": [
+        "1. Introduction",
+        "2. Approach",
+        "2.1. Training Dataset",
+        "2.2. Input Representation",
+        "2.3. Model",
+        "3. Experiments",
+        "3.1. Language Modeling",
+        "3.2. Children’s Book Test"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 77,
+      "anchored_refs": 0,
+      "citation_places": 0,
+      "seconds": 0.38
+    },
+    {
+      "id": "b4d42bf79e73458e888e857527ecb45c",
+      "filename": "language_understanding_paper.pdf",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "page_count": 12,
+      "coverage": {
+        "pages": 12,
+        "author_count": 4,
+        "heading_count": 11,
+        "appendix_count": 0,
+        "formula_candidates": 12,
+        "formula_candidate_pages": 4,
+        "note": "计数表示提取覆盖，不代表准确率；公式候选仍需转录，未识别结构不等于原文不存在。"
+      },
+      "authors": [
+        "Alec Radford",
+        "Karthik Narasimhan",
+        "Tim Salimans",
+        "Ilya Sutskever"
+      ],
+      "heading_sample": [
+        "Introduction",
+        "Related Work",
+        "Framework",
+        "Unsupervised pre-training",
+        "Supervised fine-tuning",
+        "Task-specific input transformations",
+        "Experiments",
+        "Setup"
+      ],
+      "appendix_sample": [],
+      "heading_levels": [
+        1,
+        2
+      ],
+      "references": 71,
+      "anchored_refs": 71,
+      "citation_places": 89,
+      "seconds": 0.3
+    }
+  ],
+  "live_followup": {
+    "answer": "《Attention Is All You Need》中训练所用 Adam 优化器的参数 ϵ = 10^-9（同时 β1 = 0.9、β2 = 0.98）。 [S1]",
+    "sources": [
+      {
+        "source_id": "S1",
+        "chunk_id": "1fb33de6a0fc4047828dd0bbc26160f0",
+        "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+        "title": "Attention Is All You Need",
+        "page": 7,
+        "text": "We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning\nrate over the course of training, according to the formula:",
+        "bbox": [
+          107.53199768066406,
+          576.5763549804688,
+          504.0029296875,
+          599.0480346679688
+        ],
+        "score": 0.03333
+      }
+    ],
+    "context": {
+      "used": true,
+      "paper_ids": [
+        "ebd3f4cb9e104702a10201cfb2904d27"
+      ],
+      "message": "承接上一轮引用的 1 篇论文；历史回答不作为事实证据，重新检索原文。 参数对象已明确为Adam 优化器。",
+      "resolved_object": "Adam 优化器"
+    },
+    "mode": "generated"
+  },
+  "live_visual": {
+    "page": 7,
+    "status": "done",
+    "results": [
+      {
+        "page": 7,
+        "status": "done",
+        "cached": false,
+        "formulas": 1,
+        "tables": 0
+      }
+    ]
+  },
+  "browser_checks": [
+    {
+      "action": "v7 第 2 页 [13] → 第 11 页参考条目 → 返回",
+      "result": "条目文本和原图区域高亮；恢复 citation-2-3-50 焦点和右栏滚动 60px。"
+    },
+    {
+      "action": "第 2 页第二个 [9] → 反查第 6 页第二个 [9] → 返回",
+      "result": "分别定位 citation-6-9-62 与 citation-2-10-371，返回右栏滚动 1851px。"
+    },
+    {
+      "action": "打开批量识别与缓存结果",
+      "result": "展示实际候选页、每批上限及费用提示；第 7 页已缓存学习率公式，可回原图核对。"
+    }
+  ],
+  "limits": [
+    "未完成全资料逐公式、逐作者与逐条引用的人工准确率评估。",
+    "扫描件丢失引用括号时不能伪造数字引用锚点。",
+    "作者年份制、团体署名和复杂机构对应仍有缺口。",
+    "公式候选不等于 LaTeX；视觉转录需人工核读，未完成公式排版与逐公式编辑。"
+  ]
+}
