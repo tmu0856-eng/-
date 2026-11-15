@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-11-15T07:24:01.426017+00:00",
+  "data_profile": "data/demo-public",
+  "counts": {
+    "papers": 40,
+    "pages": 2010,
+    "chunks": 25464,
+    "chunk_vectors": 25464
+  },
+  "all_chunks_indexed": true,
+  "active_parse_jobs": 0,
+  "scope": "Independent reviewer library seeded from 39 validated material PDFs plus official GPT-2 paper; no public endpoint created. Main library unchanged."
+}

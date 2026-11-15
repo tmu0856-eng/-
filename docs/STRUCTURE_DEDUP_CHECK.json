@@ -1,0 +1,390 @@
+{
+  "date": "2026-11-14T19:15:38.226270+00:00",
+  "scope": "Selected real native PDFs from user material pack; isolated library, no paid generation calls.",
+  "checks": [
+    {
+      "name": "Author structure 1706.03762v7.pdf",
+      "passed": true,
+      "authors": [
+        {
+          "order": 1,
+          "name": "Ashish Vaswani",
+          "affiliations": [
+            "Google Brain"
+          ],
+          "email": "avaswani@google.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            116.68099975585938,
+            233.53939819335938,
+            216.05787658691406,
+            267.1680908203125
+          ],
+          "source_text": "Ashish Vaswani∗\nGoogle Brain\navaswani@google.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 2,
+          "name": "Noam Shazeer",
+          "affiliations": [
+            "Google Brain"
+          ],
+          "email": "noam@google.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            230.69200134277344,
+            233.53939819335938,
+            309.1475830078125,
+            267.1680908203125
+          ],
+          "source_text": "Noam Shazeer∗\nGoogle Brain\nnoam@google.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 3,
+          "name": "Niki Parmar",
+          "affiliations": [
+            "Google Research"
+          ],
+          "email": "nikip@google.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            323.7870178222656,
+            233.53939819335938,
+            407.4730529785156,
+            267.1680908203125
+          ],
+          "source_text": "Niki Parmar∗\nGoogle Research\nnikip@google.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 4,
+          "name": "Jakob Uszkoreit",
+          "affiliations": [
+            "Google Research"
+          ],
+          "email": "usz@google.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            422.11199951171875,
+            233.53939819335938,
+            497.210693359375,
+            267.1680908203125
+          ],
+          "source_text": "Jakob Uszkoreit∗\nGoogle Research\nusz@google.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 5,
+          "name": "Llion Jones",
+          "affiliations": [
+            "Google Research"
+          ],
+          "email": "llion@google.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            126.88200378417969,
+            283.5364074707031,
+            210.5677947998047,
+            317.1661071777344
+          ],
+          "source_text": "Llion Jones∗\nGoogle Research\nllion@google.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 6,
+          "name": "Aidan N. Gomez",
+          "affiliations": [
+            "University of Toronto"
+          ],
+          "email": "aidan@cs.toronto.edu",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            235.406982421875,
+            283.5364074707031,
+            340.01446533203125,
+            317.1661071777344
+          ],
+          "source_text": "Aidan N. Gomez∗†\nUniversity of Toronto\naidan@cs.toronto.edu\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 7,
+          "name": "Łukasz Kaiser",
+          "affiliations": [
+            "Google Brain"
+          ],
+          "email": "lukaszkaiser@google.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            364.8489990234375,
+            283.5364074707031,
+            485.1377258300781,
+            317.16510009765625
+          ],
+          "source_text": "Łukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 8,
+          "name": "Illia Polosukhin",
+          "affiliations": [],
+          "email": "illia.polosukhin@gmail.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            238.02200317382812,
+            333.53338623046875,
+            374.0018005371094,
+            356.25408935546875
+          ],
+          "source_text": "Illia Polosukhin∗‡\nillia.polosukhin@gmail.com\n",
+          "method": "first-page-layout-estimate"
+        }
+      ]
+    },
+    {
+      "name": "Author structure N19-1423.pdf",
+      "passed": true,
+      "authors": [
+        {
+          "order": 1,
+          "name": "Jacob Devlin",
+          "affiliations": [
+            "Google AI Language"
+          ],
+          "email": "jacobdevlin@google.com",
+          "email_derived_from_group": true,
+          "page": 1,
+          "bbox": [
+            107.78799438476562,
+            130.8321533203125,
+            492.7443542480469,
+            170.3608856201172
+          ],
+          "source_text": "Jacob Devlin\nMing-Wei Chang\nKenton Lee\nKristina Toutanova\nGoogle AI Language\n{jacobdevlin,mingweichang,kentonl,kristout}@google.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 2,
+          "name": "Ming-Wei Chang",
+          "affiliations": [
+            "Google AI Language"
+          ],
+          "email": "mingweichang@google.com",
+          "email_derived_from_group": true,
+          "page": 1,
+          "bbox": [
+            107.78799438476562,
+            130.8321533203125,
+            492.7443542480469,
+            170.3608856201172
+          ],
+          "source_text": "Jacob Devlin\nMing-Wei Chang\nKenton Lee\nKristina Toutanova\nGoogle AI Language\n{jacobdevlin,mingweichang,kentonl,kristout}@google.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 3,
+          "name": "Kenton Lee",
+          "affiliations": [
+            "Google AI Language"
+          ],
+          "email": "kentonl@google.com",
+          "email_derived_from_group": true,
+          "page": 1,
+          "bbox": [
+            107.78799438476562,
+            130.8321533203125,
+            492.7443542480469,
+            170.3608856201172
+          ],
+          "source_text": "Jacob Devlin\nMing-Wei Chang\nKenton Lee\nKristina Toutanova\nGoogle AI Language\n{jacobdevlin,mingweichang,kentonl,kristout}@google.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 4,
+          "name": "Kristina Toutanova",
+          "affiliations": [
+            "Google AI Language"
+          ],
+          "email": "kristout@google.com",
+          "email_derived_from_group": true,
+          "page": 1,
+          "bbox": [
+            107.78799438476562,
+            130.8321533203125,
+            492.7443542480469,
+            170.3608856201172
+          ],
+          "source_text": "Jacob Devlin\nMing-Wei Chang\nKenton Lee\nKristina Toutanova\nGoogle AI Language\n{jacobdevlin,mingweichang,kentonl,kristout}@google.com\n",
+          "method": "first-page-layout-estimate"
+        }
+      ]
+    },
+    {
+      "name": "Author structure 1607.06450v1.pdf",
+      "passed": true,
+      "authors": [
+        {
+          "order": 1,
+          "name": "Jimmy Lei Ba",
+          "affiliations": [
+            "University of Toronto"
+          ],
+          "email": "jimmy@psi.toronto.edu",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            129.31100463867188,
+            161.16949462890625,
+            228.16571044921875,
+            192.80555725097656
+          ],
+          "source_text": "Jimmy Lei Ba\nUniversity of Toronto\njimmy@psi.toronto.edu\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 2,
+          "name": "Jamie Ryan Kiros",
+          "affiliations": [
+            "University of Toronto"
+          ],
+          "email": "rkiros@cs.toronto.edu",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            255.45301818847656,
+            161.16949462890625,
+            354.3077087402344,
+            192.80555725097656
+          ],
+          "source_text": "Jamie Ryan Kiros\nUniversity of Toronto\nrkiros@cs.toronto.edu\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 3,
+          "name": "Geoffrey E. Hinton",
+          "affiliations": [
+            "University of Toronto",
+            "Google Inc."
+          ],
+          "email": "hinton@cs.toronto.edu",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            381.59405517578125,
+            161.16949462890625,
+            480.4487609863281,
+            203.6055450439453
+          ],
+          "source_text": "Geoffrey E. Hinton\nUniversity of Toronto\nand Google Inc.\nhinton@cs.toronto.edu\n",
+          "method": "first-page-layout-estimate"
+        }
+      ]
+    },
+    {
+      "name": "Author structure language_understanding_paper.pdf",
+      "passed": true,
+      "authors": [
+        {
+          "order": 1,
+          "name": "Alec Radford",
+          "affiliations": [
+            "OpenAI"
+          ],
+          "email": "alec@openai.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            115.63499450683594,
+            181.08648681640625,
+            194.09042358398438,
+            213.20606994628906
+          ],
+          "source_text": "Alec Radford\nOpenAI\nalec@openai.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 2,
+          "name": "Karthik Narasimhan",
+          "affiliations": [
+            "OpenAI"
+          ],
+          "email": "karthikn@openai.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            207.6840057373047,
+            181.08648681640625,
+            307.06103515625,
+            213.20606994628906
+          ],
+          "source_text": "Karthik Narasimhan\nOpenAI\nkarthikn@openai.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 3,
+          "name": "Tim Salimans",
+          "affiliations": [
+            "OpenAI"
+          ],
+          "email": "tim@openai.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            320.6500244140625,
+            181.08648681640625,
+            393.87530517578125,
+            213.20606994628906
+          ],
+          "source_text": "Tim Salimans\nOpenAI\ntim@openai.com\n",
+          "method": "first-page-layout-estimate"
+        },
+        {
+          "order": 4,
+          "name": "Ilya Sutskever",
+          "affiliations": [
+            "OpenAI"
+          ],
+          "email": "ilyasu@openai.com",
+          "email_derived_from_group": false,
+          "page": 1,
+          "bbox": [
+            407.47003173828125,
+            181.08648681640625,
+            496.3864440917969,
+            213.20606994628906
+          ],
+          "source_text": "Ilya Sutskever\nOpenAI\nilyasu@openai.com\n",
+          "method": "first-page-layout-estimate"
+        }
+      ]
+    },
+    {
+      "name": "Older version duplicate with semantic evidence",
+      "passed": true,
+      "duplicates": [
+        {
+          "score": 0.763,
+          "reason": "标题/正文内容高度相似（正文 76%）；BGE-M3 正文样本语义相似度 86.0%；库中版本较新，建议保留",
+          "semantic_score": 0.85979,
+          "method": "lexical+semantic",
+          "recommendation": "keep_existing"
+        }
+      ],
+      "warning": ""
+    },
+    {
+      "name": "Related BERT is not a duplicate",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

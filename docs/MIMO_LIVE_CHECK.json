@@ -1,0 +1,49 @@
+{
+  "checked_at": "2026-10-26T14:40:07.390972+00:00",
+  "model": "mimo-v2.6-pro",
+  "source": "https://arxiv.org/abs/1706.03762",
+  "checks": [
+    {
+      "name": "question_parameters",
+      "http_status": 200,
+      "passed": true,
+      "elapsed_seconds": 3.62,
+      "source_pages": [
+        7
+      ]
+    },
+    {
+      "name": "question_missing_detail",
+      "http_status": 200,
+      "passed": true,
+      "elapsed_seconds": 5.39,
+      "source_pages": [
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "academic_translation",
+      "http_status": 200,
+      "passed": true,
+      "elapsed_seconds": 5.3
+    },
+    {
+      "name": "page_translation",
+      "http_status": 200,
+      "passed": true,
+      "elapsed_seconds": 15.56
+    },
+    {
+      "name": "outline",
+      "http_status": 200,
+      "passed": true,
+      "elapsed_seconds": 18.61
+    }
+  ],
+  "all_passed": true,
+  "scope": "Five bounded live workflow checks; not a full factuality, translation-quality or citation-entailment evaluation.",
+  "embedding_configured": false
+}

@@ -1,0 +1,144 @@
+{
+  "checked_at": "2026-10-28T12:32:11.906359+00:00",
+  "model": "mimo-v2.6-pro",
+  "sample": "arXiv:1706.03762v7",
+  "duration_seconds": 16.61,
+  "execution": "agent",
+  "tool_calls": 5,
+  "bounded": true,
+  "trace": [
+    {
+      "tool": "scope",
+      "message": "已锁定 1 篇论文；联网发现未开启",
+      "status": "done"
+    },
+    {
+      "tool": "planning",
+      "message": "第 1 轮：正在选择工具",
+      "status": "running",
+      "round": 1
+    },
+    {
+      "tool": "tool_start",
+      "message": "正在调用 search_evidence",
+      "status": "running",
+      "round": 1
+    },
+    {
+      "tool": "search_evidence",
+      "message": "检索得到 2 条原文证据",
+      "status": "done",
+      "arguments": {
+        "query": "Adam optimizer beta epsilon",
+        "paper_id": "ed3b40377421428996e96b5b407d613f",
+        "limit": 5
+      },
+      "round": 1
+    },
+    {
+      "tool": "tool_start",
+      "message": "正在调用 search_evidence",
+      "status": "running",
+      "round": 1
+    },
+    {
+      "tool": "search_evidence",
+      "message": "检索得到 5 条原文证据",
+      "status": "done",
+      "arguments": {
+        "query": "GPU hardware NVIDIA P80 K80 training",
+        "paper_id": "ed3b40377421428996e96b5b407d613f",
+        "limit": 5
+      },
+      "round": 1
+    },
+    {
+      "tool": "planning",
+      "message": "第 2 轮：正在选择工具",
+      "status": "running",
+      "round": 2
+    },
+    {
+      "tool": "tool_start",
+      "message": "正在调用 read_page",
+      "status": "running",
+      "round": 2
+    },
+    {
+      "tool": "read_page",
+      "message": "读取第 7 页，得到 6 条原文块",
+      "status": "done",
+      "arguments": {
+        "paper_id": "ed3b40377421428996e96b5b407d613f",
+        "page": 7
+      },
+      "round": 2
+    },
+    {
+      "tool": "planning",
+      "message": "第 3 轮：正在选择工具",
+      "status": "running",
+      "round": 3
+    },
+    {
+      "tool": "tool_start",
+      "message": "正在调用 read_page",
+      "status": "running",
+      "round": 3
+    },
+    {
+      "tool": "read_page",
+      "message": "读取第 8 页，得到 6 条原文块",
+      "status": "done",
+      "arguments": {
+        "paper_id": "ed3b40377421428996e96b5b407d613f",
+        "page": 8
+      },
+      "round": 3
+    },
+    {
+      "tool": "planning",
+      "message": "第 4 轮：正在选择工具",
+      "status": "running",
+      "round": 4
+    },
+    {
+      "tool": "tool_start",
+      "message": "正在调用 search_evidence",
+      "status": "running",
+      "round": 4
+    },
+    {
+      "tool": "search_evidence",
+      "message": "检索得到 5 条原文证据",
+      "status": "done",
+      "arguments": {
+        "query": "trained on eight P100 GPUs base model big model",
+        "paper_id": "ed3b40377421428996e96b5b407d613f",
+        "limit": 5
+      },
+      "round": 4
+    },
+    {
+      "tool": "budget",
+      "message": "已达到轮次、调用次数或时间预算，使用已收集的证据结束任务",
+      "status": "limited"
+    },
+    {
+      "tool": "synthesis",
+      "message": "正在根据 22 条原文证据组织回答并校验引用",
+      "status": "running"
+    },
+    {
+      "tool": "validate_citations",
+      "message": "核对 2 个证据编号均存在；事实是否被证据支持仍需核对原文"
+    }
+  ],
+  "answer": "训练使用一台配备8块 NVIDIA P100 GPU 的机器：base 模型每步约0.4秒、共训练100,000步（12小时）；big 模型每步1.0秒、共训练300,000步（3.5天）。 [S18]\n\n优化器采用 Adam，超参数为 β1 = 0.9，β2 = 0.98，ϵ = 10⁻⁹。 [S1]",
+  "source_pages": [
+    7,
+    7
+  ],
+  "passed": true,
+  "limit": "One real tool-calling smoke check; citation IDs and sample facts checked, not a comprehensive agent or entailment evaluation."
+}

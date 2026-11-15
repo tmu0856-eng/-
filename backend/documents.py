@@ -1,6 +1,7 @@
-"""PDF extraction and provenance. Long PDFs are processed page by page."""
+"""逐页解析 PDF 并保存原文出处。"""
 import hashlib
 import logging
+import os
 import re
 import threading
 import uuid
@@ -8,11 +9,11 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 
-import fitz
+import pymupdf as fitz
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from . import db, llm
+from . import db, deduplication, embeddings, llm, metadata
 
 POOL = ThreadPoolExecutor(max_workers=1, thread_name_prefix='pdf-parser')
 LOCK = threading.RLock()
@@ -47,7 +48,7 @@ def preview(raw):
                 candidates = []
                 for block in doc[0].get_text('dict')['blocks']:
                     for line in block.get('lines', []):
-                        # Ignore rotated arXiv stamps and small licensing headers.
+                        # 忽略旋转的 arXiv 水印和小字号版权页眉。
                         if abs(line.get('dir', (1, 0))[1]) > .1:
                             continue
                         value = ''.join(s['text'] for s in line['spans']).strip()
@@ -61,7 +62,9 @@ def preview(raw):
                     title = ' '.join(c[2] for c in chosen if c[1] < top + largest * 4)
                 title = title or (lines[0] if lines else '未识别标题')
             match = re.search(r'(?:arXiv\s*:\s*)?(\d{4}\.\d{4,5})(?:v(\d+))?', text, re.I)
+            body='\n'.join(doc[i].get_text(sort=True) for i in range(1,min(5,len(doc)))) or first_page_text
             return {'title': title[:300], 'sample': first_page_text[:16000], 'page_count': len(doc),
+                    'semantic_sample':body[:60000],
                     'arxiv_id': match.group(1) if match else '',
                     'version': int(match.group(2)) if match and match.group(2) else None,
                     'pdf_metadata': doc.metadata, 'needs_ocr': len(text.strip()) < 80}
@@ -73,9 +76,17 @@ def find_duplicates(raw, info):
     candidates = db.rows("SELECT * FROM papers WHERE status IN ('ready','partial','processing')")
     found = []
     sha = fingerprint(raw)
+    semantic={}
+    if not any(p['sha']==sha for p in candidates):
+        try:
+            # 先检查可能的同篇文献，再进行数量受限的语义比较。
+            ranked=sorted(candidates,key=lambda p:SequenceMatcher(None,normalize(info['title']),normalize(p['title'])).ratio(),reverse=True)
+            semantic=deduplication.similarities(info,ranked)
+        except llm.ModelError as exc:
+            info['dedup_warning']=str(exc)+'；本次使用文件与词频内容对比。'
     for paper in candidates:
         if paper['sha'] == sha:
-            found.append({'paper': paper, 'score': 1.0, 'reason': '文件内容完全一致'})
+            found.append({'paper': paper, 'score': 1.0, 'reason': '文件内容完全一致','method':'sha256','recommendation':'keep_existing'})
             continue
         existing = db.one('SELECT text FROM pages WHERE paper_id=? ORDER BY page LIMIT 1', (paper['id'],))
         old_sample = existing['text'] if existing else ''
@@ -89,12 +100,24 @@ def find_duplicates(raw, info):
             except ValueError:
                 pass
         same_id = bool(info['arxiv_id'] and info['arxiv_id'] == paper['arxiv_id'])
-        # Require content agreement; an arXiv identifier in a reference alone is not identity.
-        if (title_score > .91 and text_score > .65) or text_score > .91 or (same_id and text_score > .72):
+        # 需同时核对正文；参考文献中的 arXiv 编号不能证明文件属于同一论文。
+        semantic_score=semantic.get(paper['id'])
+        semantic_match=semantic_score is not None and semantic_score>=.96 and (same_id or title_score>.7 or text_score>.5)
+        if (title_score > .91 and text_score > .65) or text_score > .91 or (same_id and text_score > .72) or semantic_match:
             reason = f'标题/正文内容高度相似（正文 {text_score:.0%}）'
+            if semantic_score is not None:
+                reason+=f'；BGE-M3 正文样本语义相似度 {semantic_score:.1%}'
+            recommendation='compare'
             if paper['version'] and info['version']:
-                reason += '；库中版本较新，建议保留' if paper['version'] > info['version'] else '；可保留两个版本用于对比'
-            found.append({'paper': paper, 'score': round(text_score, 3), 'reason': reason})
+                if paper['version']>info['version']:
+                    reason+='；库中版本较新，建议保留';recommendation='keep_existing'
+                elif paper['version']<info['version']:
+                    reason+='；新上传版本较新，建议优先保留新版本';recommendation='keep_incoming'
+                else:
+                    reason+='；版本号相同，可对比正文后选择'
+            found.append({'paper': paper, 'score': round(text_score, 3), 'reason': reason,
+                          'semantic_score':round(semantic_score,5) if semantic_score is not None else None,
+                          'method':'lexical+semantic' if semantic_score is not None else 'lexical','recommendation':recommendation})
     return found
 
 
@@ -111,32 +134,171 @@ def enqueue(raw, filename, info):
         path.unlink(missing_ok=True)
         raise
     POOL.submit(parse, pid, jid)
-    return {'paper_id': pid, 'job_id': jid}
+    return {'paper_id': pid, 'job_id': jid, 'warning':info.get('dedup_warning','')}
+
+
+_RAPIDOCR = None
+_RAPIDOCR_LOCK = threading.Lock()
+
+
+def _rapidocr_engine():
+    global _RAPIDOCR
+    if _RAPIDOCR is False:
+        return None
+    with _RAPIDOCR_LOCK:
+        if _RAPIDOCR is None:
+            try:
+                from rapidocr_onnxruntime import RapidOCR
+                _RAPIDOCR = RapidOCR()
+            except Exception:
+                _RAPIDOCR = False
+    return _RAPIDOCR or None
+
+
+def _two_column_order(blocks, width):
+    """明确为双栏时，先读取完整左栏，再读取右栏。"""
+    if len(blocks) < 6 or width <= 0:
+        return blocks
+    centers = sorted((b['bbox'][0] + b['bbox'][2]) / 2 for b in blocks)
+    gap, split_index = max((centers[i + 1] - centers[i], i) for i in range(len(centers) - 1))
+    if gap < width * .05:
+        return blocks
+    mid = (centers[split_index] + centers[split_index + 1]) / 2
+    left = [b for b in blocks if (b['bbox'][0] + b['bbox'][2]) / 2 < mid]
+    right = [b for b in blocks if (b['bbox'][0] + b['bbox'][2]) / 2 >= mid]
+    if len(left) < 2 or len(right) < 2:
+        return blocks
+    order = lambda b: (round(b['bbox'][1], 1), b['bbox'][0])
+    return sorted(left, key=order) + sorted(right, key=order)
+
+
+def _merge_lines(lines, max_chars=900):
+    """将 OCR 行合并为段落块，保留可用于检索的上下文。"""
+    merged = []
+    for line in lines:
+        if merged and len(merged[-1]['text']) + len(line['text']) + 1 <= max_chars:
+            last = merged[-1]
+            previous = last['lines'][-1]
+            gap = line['bbox'][1] - previous['bbox'][3]
+            height = previous['bbox'][3] - previous['bbox'][1]
+            horizontal = min(previous['bbox'][2], line['bbox'][2]) - max(previous['bbox'][0], line['bbox'][0])
+            # 高幅旋转水印不能合并后续全部正文行。
+            if (-2 <= gap < height * 1.5 and horizontal > 0
+                    and previous['bbox'][2] - previous['bbox'][0] > height * 1.5):
+                last['text'] += '\n' + line['text']
+                last['lines'].append(line)
+                last['bbox'] = [min(last['bbox'][0], line['bbox'][0]), min(last['bbox'][1], line['bbox'][1]),
+                                max(last['bbox'][2], line['bbox'][2]), max(last['bbox'][3], line['bbox'][3])]
+                continue
+        merged.append({'bbox': list(line['bbox']), 'text': line['text'], 'lines': [line]})
+    return merged
+
+
+def _ocr_title(blocks, page_height):
+    """根据 OCR 几何信息估计显著的横向题名，不让模型猜测。"""
+    lines = [line for block in blocks for line in block.get('lines', [block])]
+    candidates = []
+    for line in lines:
+        x0, y0, x1, y1 = line['bbox']
+        text = line['text'].strip()
+        height = y1 - y0
+        if (len(text) > 6 and 0 < height and y0 < page_height * .5 and x1-x0 > height * 2
+                and not re.search(r'arxiv|doi:|copyright|permission|provided proper|@|^abstract$', text, re.I)):
+            candidates.append((height, y0, text))
+    if not candidates:
+        return ''
+    largest = max(c[0] for c in candidates)
+    chosen = sorted((c for c in candidates if c[0] >= largest * .88), key=lambda c: c[1])
+    top = chosen[0][1]
+    return ' '.join(c[2] for c in chosen if c[1] < top + largest * 3)[:300]
+
+
+def _classify_page(page):
+    """将无可提取文本的页面分为空白页、矢量图表公式页或纯图像页。"""
+    if page.get_image_info():
+        return 'image-only'
+    if page.get_drawings():
+        return 'drawing'
+    return 'blank'
+
+
+def _ocr_page(page):
+    """先尝试 MuPDF 的 Tesseract，再尝试 150 dpi 页图的 RapidOCR，返回文本、文本块和引擎名称。"""
+    dpi = int(os.getenv('OCR_DPI', '150'))
+    try:
+        text_page = page.get_textpage_ocr(language=os.getenv('OCR_LANG', 'eng'), dpi=dpi, full=True)
+        text = page.get_text(textpage=text_page, sort=True).strip()
+        raw = page.get_text('blocks', textpage=text_page, sort=True)
+        blocks = [{'bbox': list(b[:4]), 'text': b[4].strip()} for b in raw if b[6] == 0 and b[4].strip()]
+        return text, blocks, 'tesseract'
+    except Exception:
+        pass
+    engine = _rapidocr_engine()
+    if engine is None:
+        return '', [], None
+    try:
+        import numpy as np
+        pix = page.get_pixmap(dpi=dpi)
+        image = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)[:, :, :3][:, :, ::-1].copy()
+        result, _ = engine(image)
+        if not result:
+            return '', [], 'rapidocr'
+        scale = dpi / 72
+        lines = []
+        for box, value, _score in result:
+            xs = [p[0] / scale for p in box]
+            ys = [p[1] / scale for p in box]
+            lines.append({'bbox': [min(xs), min(ys), max(xs), max(ys)], 'text': str(value).strip()})
+        lines.sort(key=lambda l: (round(l['bbox'][1], 1), l['bbox'][0]))
+        lines = _two_column_order(lines, page.rect.width)
+        blocks = _merge_lines(lines)
+        return '\n\n'.join(b['text'] for b in blocks).strip(), blocks, 'rapidocr'
+    except Exception:
+        logging.getLogger(__name__).exception('rapidocr failed on a page')
+        return '', [], None
 
 
 def parse(pid, jid):
-    warnings, toc, images, tables, empty_pages = [], [], [], [], []
+    warnings, toc, images, tables = [], [], [], []
+    page_sources, review_pages, ocr_engines = {}, [], set()
     try:
         db.execute("UPDATE jobs SET status='running',message='提取页面与位置锚点' WHERE id=?", (jid,))
         with fitz.open(db.DATA / 'files' / (pid + '.pdf')) as doc:
             toc = [{'level': item[0], 'title': item[1], 'page': item[2]} for item in doc.get_toc()]
             native_toc = bool(toc)
-            first_text = []
+            first_text, ocr_title, structured_authors = [], '', []
             for index, page in enumerate(doc):
-                text_page = None
                 text = page.get_text(sort=True).strip()
-                if len(text) < 30:
-                    try:
-                        import os
-                        text_page = page.get_textpage_ocr(language=os.getenv('OCR_LANG', 'eng'), dpi=150, full=True)
-                        text = page.get_text(textpage=text_page, sort=True).strip()
-                    except Exception:
-                        empty_pages.append(index + 1)
-                raw_blocks = page.get_text('blocks', textpage=text_page, sort=True)
-                blocks = [{'bbox': list(b[:4]), 'text': b[4].strip()} for b in raw_blocks if b[6] == 0 and b[4].strip()]
+                source = 'native' if len(text) >= 30 else None
+                blocks = []
+                if source is None:
+                    ocr_text, ocr_blocks, engine = _ocr_page(page)
+                    if len(ocr_text) >= 30:
+                        text, blocks, source = ocr_text, ocr_blocks, 'ocr'
+                        ocr_engines.add(engine)
+                    else:
+                        source = _classify_page(page)
+                        text = ocr_text
+                        blocks = ocr_blocks or ([{'bbox': [0, 0, page.rect.width, page.rect.height], 'text': ocr_text}] if ocr_text else [])
+                        if source == 'image-only':
+                            review_pages.append(index + 1)
+                else:
+                    raw_blocks = page.get_text('blocks', sort=True)
+                    blocks = [{'bbox': list(b[:4]), 'text': b[4].strip()} for b in raw_blocks if b[6] == 0 and b[4].strip()]
+                    blocks = _two_column_order(blocks, page.rect.width)
+                    ordered = '\n\n'.join(b['text'] for b in blocks).strip()
+                    # 按分栏顺序读取，保持参考文献标题和条目连续。
+                    if ordered:
+                        text = ordered
+                page_sources[index + 1] = source
+                if index==0 and source=='native':
+                    current=db.one('SELECT title FROM papers WHERE id=?',(pid,))
+                    structured_authors=metadata.authors_from_header(blocks,page.rect.height,current['title'])
+                if index == 0 and source == 'ocr':
+                    ocr_title = _ocr_title(blocks, page.rect.height)
                 if index < 3:
                     first_text.append(text)
-                # Keep page rectangles: formula/table images remain verifiable in the original.
+                # 保留页面区域坐标，便于回到原图核对公式和表格。
                 for image in page.get_image_info():
                     images.append({'page': index + 1, 'bbox': list(image['bbox'])})
                 try:
@@ -147,7 +309,7 @@ def parse(pid, jid):
                 if not native_toc:
                     for line in text.splitlines():
                         if re.match(r'^\d+(?:\.\d+){0,2}\s+[A-Z\u4e00-\u9fff]', line) and len(line) < 130:
-                            # Estimated headings, separate from native bookmarks.
+                            # 估计得到的标题与原生书签分开记录。
                             toc.append({'level': min(3, line.split()[0].count('.') + 1), 'title': line, 'page': index + 1, 'estimated': True})
                 with db.connect() as con:
                     con.execute('INSERT OR REPLACE INTO pages VALUES(?,?,?,?,?,?)', (pid, index + 1, text, db.encode(blocks), page.rect.width, page.rect.height))
@@ -158,37 +320,59 @@ def parse(pid, jid):
                             if len(piece.strip()) > 15:
                                 con.execute('INSERT INTO chunks VALUES(?,?,?,?,?,?)', (uuid.uuid4().hex, pid, index + 1, piece, db.encode(block['bbox']), None))
                     con.execute('UPDATE jobs SET done=?,message=? WHERE id=?', (index + 1, f'已解析 {index + 1}/{len(doc)} 页', jid))
-                del text_page
             combined = '\n'.join(first_text)
             abstract_match = re.search(r'\bAbstract\b\s*[:\n]?(.{50,2200}?)(?:\n\s*(?:1\s+|Introduction|Keywords)|$)', combined, re.S | re.I)
             abstract = abstract_match.group(1).strip() if abstract_match else ''
-            author_line = (doc.metadata.get('author') or '').strip()
-        if empty_pages:
-            warnings.append(f'{len(empty_pages)} 页未能提取文本（例如第 {", ".join(map(str, empty_pages[:8]))} 页）；需要 OCR 引擎/语言包，不代表扫描件解析通过。')
+            author_line = (doc.metadata.get('author') or '').strip() or '; '.join(a['name'] for a in structured_authors)
+        blank_pages = sorted(p for p, s in page_sources.items() if s == 'blank')
+        drawing_pages = sorted(p for p, s in page_sources.items() if s == 'drawing')
+        if review_pages:
+            warnings.append(f'{len(review_pages)} 页为扫描/图像页且 OCR 未成功（例如第 {", ".join(map(str, review_pages[:8]))} 页），需人工核对；OCR 引擎缺失时扫描件解析不视为通过。')
+        if blank_pages:
+            warnings.append(f'{len(blank_pages)} 页为空白页（无文本无图像），属正常排版，不计为解析失败。')
+        if drawing_pages:
+            warnings.append(f'{len(drawing_pages)} 页为纯图形/公式页（无文本层），文本无从提取，原文页图保留可查。')
+        if ocr_engines:
+            warnings.append('OCR 引擎：' + '、'.join(sorted(ocr_engines)) + '。')
         warnings.append('公式保留原文页图；复杂公式的 LaTeX 结构还原尚未验收。')
-        meta = {'toc': toc[:1000], 'images': images, 'tables': tables, 'unreadable_pages': empty_pages,
-                'formula_mode': 'original-page', 'reading_order': 'geometric-sort'}
+        meta = {'toc': toc[:1000], 'images': images, 'tables': tables, 'unreadable_pages': review_pages,
+                'page_sources': page_sources, 'ocr_engines': sorted(ocr_engines),
+                'formula_mode': 'original-page', 'reading_order': 'column-aware-geometric'}
+        meta['authors_structured']=structured_authors
+        paper_info=db.one('SELECT arxiv_id FROM papers WHERE id=?',(pid,))
+        meta['publication']=metadata.publication(first_text[0] if first_text else '',paper_info['arxiv_id'])
+        if ocr_title:
+            meta['ocr_title_candidate'] = ocr_title
+            meta['ocr_title_method'] = 'estimated-from-line-geometry'
         with db.connect() as con:
-            con.execute('UPDATE papers SET authors=?,abstract=?,status=?,warning=?,metadata=? WHERE id=?',
-                        (author_line, abstract, 'partial' if empty_pages else 'ready', '\n'.join(warnings), db.encode(meta), pid))
+            if ocr_title:
+                con.execute("UPDATE papers SET title=? WHERE id=? AND title='未识别标题'", (ocr_title, pid))
+            con.execute("UPDATE papers SET authors=CASE WHEN COALESCE(authors,'')='' THEN ? ELSE authors END,abstract=?,status=?,warning=?,metadata=? WHERE id=?",
+                        (author_line, abstract, 'partial' if review_pages else 'ready', '\n'.join(warnings), db.encode(meta), pid))
             con.execute("UPDATE jobs SET status='done',message='解析完成' WHERE id=?", (jid,))
-        # Embeddings are optional. Failure is visible and does not destroy parsed text.
-        if __import__('os').getenv('EMBEDDING_MODEL'):
-            try:
-                chunks = db.rows('SELECT id,text FROM chunks WHERE paper_id=?', (pid,))
-                for offset in range(0, len(chunks), 16):
-                    batch = chunks[offset:offset + 16]
-                    values = llm.embed([c['text'] for c in batch])
-                    if values:
-                        with db.connect() as con:
-                            for c, v in zip(batch, values):
-                                con.execute('UPDATE chunks SET embedding=? WHERE id=?', (db.encode(v), c['id']))
-            except llm.ModelError as exc:
-                db.execute('UPDATE papers SET warning=warning || ? WHERE id=?', ('\n' + str(exc), pid))
+        # 索引独立运行，模型失败不影响 PDF 解析结果。
+        embeddings.start_indexing()
     except Exception as exc:
         logging.getLogger(__name__).exception('PDF parse failed for %s', pid)
         db.execute("UPDATE jobs SET status='failed',message=? WHERE id=?", ('解析失败：' + type(exc).__name__, jid))
         db.execute("UPDATE papers SET status='failed',warning=? WHERE id=?", ('PDF 解析失败，请检查文件。' + type(exc).__name__, pid))
+
+
+def enrich_header(pid):
+    paper=db.one('SELECT * FROM papers WHERE id=?',(pid,))
+    page=db.one('SELECT * FROM pages WHERE paper_id=? AND page=1',(pid,))
+    if not paper or not page:
+        raise ValueError('论文首页尚未解析。')
+    import json
+    meta=json.loads(paper['metadata'])
+    meta['publication']=metadata.publication(page['text'],paper['arxiv_id'])
+    if meta.get('page_sources',{}).get('1')=='ocr':
+        return {'authors':meta.get('authors_structured',[]),'note':'扫描件作者机构需要核对，保留原文首页。'}
+    authors=metadata.authors_from_header(json.loads(page['blocks']),page['height'],paper['title'])
+    meta['authors_structured']=authors
+    db.execute("UPDATE papers SET authors=CASE WHEN COALESCE(authors,'')='' THEN ? ELSE authors END,metadata=? WHERE id=?",
+               ('; '.join(a['name'] for a in authors),db.encode(meta),pid))
+    return {'authors':authors,'note':'按首页版式提取；请点击原文核对作者、机构关系。'}
 
 
 def version_diff(left, right):
@@ -196,7 +380,7 @@ def version_diff(left, right):
     b = db.rows('SELECT text FROM pages WHERE paper_id=? ORDER BY page', (right,))
     if not a or not b:
         raise ValueError('两个版本均需完成解析。')
-    # Compare normalized paragraphs, not bytes or filenames.
+    # 比较规范化后的段落内容，不仅比较文件字节或文件名。
     aa = [p.strip() for page in a for p in page['text'].split('\n') if p.strip()]
     bb = [p.strip() for page in b for p in page['text'].split('\n') if p.strip()]
     matcher = SequenceMatcher(None, aa, bb, autojunk=True)

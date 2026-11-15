@@ -1,0 +1,146 @@
+{
+  "date": "2026-11-14T14:21:37.509246+00:00",
+  "scope": "Real local BGE-M3; synthetic evidence, not a contest accuracy benchmark.",
+  "space": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181:cls:l2:max512",
+  "runtime": {
+    "state": "ready",
+    "device": "cuda",
+    "error": ""
+  },
+  "checks": [
+    {
+      "question": "这项研究采用了哪种计算设备",
+      "expected_top_chunk": "hardware",
+      "passed": true,
+      "retrieval": {
+        "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索）",
+        "chunks": 3,
+        "indexed_chunks": 3,
+        "warning": ""
+      },
+      "sources": [
+        {
+          "source_id": "S1",
+          "chunk_id": "hardware",
+          "paper_id": "bge-smoke",
+          "title": "Synthetic embedding fixtures",
+          "page": 1,
+          "text": "The model was trained on a machine with eight NVIDIA P100 GPUs.",
+          "bbox": [
+            0,
+            0,
+            100,
+            100
+          ],
+          "score": 0.04973
+        },
+        {
+          "source_id": "S2",
+          "chunk_id": "optimizer",
+          "paper_id": "bge-smoke",
+          "title": "Synthetic embedding fixtures",
+          "page": 2,
+          "text": "We used the Adam optimizer with beta1 = 0.9, beta2 = 0.98 and epsilon = 1e-9.",
+          "bbox": [
+            0,
+            0,
+            100,
+            100
+          ],
+          "score": 0.01667
+        }
+      ],
+      "dense_ranking": [
+        {
+          "chunk_id": "optimizer",
+          "cosine": 0.5538092283763612
+        },
+        {
+          "chunk_id": "hardware",
+          "cosine": 0.5464410619155426
+        },
+        {
+          "chunk_id": "distractor",
+          "cosine": 0.342027878085855
+        }
+      ],
+      "lexical_overlap": [
+        "gpus",
+        "machine"
+      ]
+    },
+    {
+      "question": "优化方法的动量衰减系数是多少",
+      "expected_top_chunk": "optimizer",
+      "passed": true,
+      "retrieval": {
+        "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索）",
+        "chunks": 3,
+        "indexed_chunks": 3,
+        "warning": ""
+      },
+      "sources": [
+        {
+          "source_id": "S1",
+          "chunk_id": "optimizer",
+          "paper_id": "bge-smoke",
+          "title": "Synthetic embedding fixtures",
+          "page": 2,
+          "text": "We used the Adam optimizer with beta1 = 0.9, beta2 = 0.98 and epsilon = 1e-9.",
+          "bbox": [
+            0,
+            0,
+            100,
+            100
+          ],
+          "score": 0.01667
+        },
+        {
+          "source_id": "S2",
+          "chunk_id": "hardware",
+          "paper_id": "bge-smoke",
+          "title": "Synthetic embedding fixtures",
+          "page": 1,
+          "text": "The model was trained on a machine with eight NVIDIA P100 GPUs.",
+          "bbox": [
+            0,
+            0,
+            100,
+            100
+          ],
+          "score": 0.01639
+        }
+      ],
+      "dense_ranking": [
+        {
+          "chunk_id": "optimizer",
+          "cosine": 0.5030473380468861
+        },
+        {
+          "chunk_id": "hardware",
+          "cosine": 0.42366640728641547
+        },
+        {
+          "chunk_id": "distractor",
+          "cosine": 0.2673848661163325
+        }
+      ],
+      "lexical_overlap": []
+    }
+  ],
+  "vector_check": {
+    "count": 3,
+    "dimensions": [
+      1024,
+      1024,
+      1024
+    ],
+    "norms": [
+      1.0,
+      1.0,
+      1.0000001192092896
+    ]
+  },
+  "seconds": 16.22,
+  "passed": true
+}

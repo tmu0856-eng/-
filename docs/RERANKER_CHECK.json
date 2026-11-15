@@ -1,0 +1,673 @@
+{
+  "date": "2026-11-14T17:53:20.024080+00:00",
+  "scope": "Eight labeled questions on ten synthetic passages; not a contest benchmark.",
+  "cold_setup_seconds": 23.33,
+  "cases": [
+    {
+      "question": "这项研究采用了哪种运算装备",
+      "gold": "hardware",
+      "before_rank": 2,
+      "after_rank": 4,
+      "before_total_ms": 47.0,
+      "after_total_ms": 125.0,
+      "retrieval": {
+        "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排）",
+        "chunks": 10,
+        "indexed_chunks": 10,
+        "warning": "",
+        "reranker": {
+          "configured": true,
+          "applied": true,
+          "candidates": 9,
+          "elapsed_ms": 78.0,
+          "error": "",
+          "model": "BAAI/bge-reranker-v2-m3",
+          "returned": 8
+        }
+      },
+      "before": [
+        "optimizer",
+        "hardware",
+        "dropout",
+        "mlm",
+        "decoder_mask",
+        "positions",
+        "finetune",
+        "encoder",
+        "nsp"
+      ],
+      "after": [
+        {
+          "chunk_id": "optimizer",
+          "source_id": "S1",
+          "rerank_score": -3.7421875,
+          "page": 2
+        },
+        {
+          "chunk_id": "mlm",
+          "source_id": "S2",
+          "rerank_score": -4.8359375,
+          "page": 7
+        },
+        {
+          "chunk_id": "decoder_mask",
+          "source_id": "S3",
+          "rerank_score": -6.85546875,
+          "page": 3
+        },
+        {
+          "chunk_id": "hardware",
+          "source_id": "S4",
+          "rerank_score": -7.15625,
+          "page": 1
+        },
+        {
+          "chunk_id": "encoder",
+          "source_id": "S5",
+          "rerank_score": -8.0390625,
+          "page": 4
+        },
+        {
+          "chunk_id": "dropout",
+          "source_id": "S6",
+          "rerank_score": -8.0859375,
+          "page": 6
+        },
+        {
+          "chunk_id": "positions",
+          "source_id": "S7",
+          "rerank_score": -8.1015625,
+          "page": 5
+        },
+        {
+          "chunk_id": "finetune",
+          "source_id": "S8",
+          "rerank_score": -9.2734375,
+          "page": 9
+        }
+      ],
+      "anchors_preserved": true
+    },
+    {
+      "question": "优化方法的动量衰减系数是多少",
+      "gold": "optimizer",
+      "before_rank": 1,
+      "after_rank": 1,
+      "before_total_ms": 31.0,
+      "after_total_ms": 94.0,
+      "retrieval": {
+        "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排）",
+        "chunks": 10,
+        "indexed_chunks": 10,
+        "warning": "",
+        "reranker": {
+          "configured": true,
+          "applied": true,
+          "candidates": 5,
+          "elapsed_ms": 47.0,
+          "error": "",
+          "model": "BAAI/bge-reranker-v2-m3",
+          "returned": 5
+        }
+      },
+      "before": [
+        "optimizer",
+        "dropout",
+        "hardware",
+        "finetune",
+        "decoder_mask"
+      ],
+      "after": [
+        {
+          "chunk_id": "optimizer",
+          "source_id": "S1",
+          "rerank_score": -1.951171875,
+          "page": 2
+        },
+        {
+          "chunk_id": "dropout",
+          "source_id": "S2",
+          "rerank_score": -4.1328125,
+          "page": 6
+        },
+        {
+          "chunk_id": "finetune",
+          "source_id": "S3",
+          "rerank_score": -9.7890625,
+          "page": 9
+        },
+        {
+          "chunk_id": "hardware",
+          "source_id": "S4",
+          "rerank_score": -10.96875,
+          "page": 1
+        },
+        {
+          "chunk_id": "decoder_mask",
+          "source_id": "S5",
+          "rerank_score": -11.0390625,
+          "page": 3
+        }
+      ],
+      "anchors_preserved": true
+    },
+    {
+      "question": "怎样避免生成当前词时偷看后面的内容",
+      "gold": "decoder_mask",
+      "before_rank": 1,
+      "after_rank": 1,
+      "before_total_ms": 15.0,
+      "after_total_ms": 78.0,
+      "retrieval": {
+        "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排）",
+        "chunks": 10,
+        "indexed_chunks": 10,
+        "warning": "",
+        "reranker": {
+          "configured": true,
+          "applied": true,
+          "candidates": 8,
+          "elapsed_ms": 46.0,
+          "error": "",
+          "model": "BAAI/bge-reranker-v2-m3",
+          "returned": 8
+        }
+      },
+      "before": [
+        "decoder_mask",
+        "encoder",
+        "positions",
+        "mlm",
+        "nsp",
+        "optimizer",
+        "dropout",
+        "finetune"
+      ],
+      "after": [
+        {
+          "chunk_id": "decoder_mask",
+          "source_id": "S1",
+          "rerank_score": -6.75,
+          "page": 3
+        },
+        {
+          "chunk_id": "encoder",
+          "source_id": "S2",
+          "rerank_score": -7.62109375,
+          "page": 4
+        },
+        {
+          "chunk_id": "positions",
+          "source_id": "S3",
+          "rerank_score": -7.796875,
+          "page": 5
+        },
+        {
+          "chunk_id": "optimizer",
+          "source_id": "S4",
+          "rerank_score": -8.296875,
+          "page": 2
+        },
+        {
+          "chunk_id": "nsp",
+          "source_id": "S5",
+          "rerank_score": -10.09375,
+          "page": 8
+        },
+        {
+          "chunk_id": "mlm",
+          "source_id": "S6",
+          "rerank_score": -10.234375,
+          "page": 7
+        },
+        {
+          "chunk_id": "finetune",
+          "source_id": "S7",
+          "rerank_score": -10.6328125,
+          "page": 9
+        },
+        {
+          "chunk_id": "dropout",
+          "source_id": "S8",
+          "rerank_score": -10.9140625,
+          "page": 6
+        }
+      ],
+      "anchors_preserved": true
+    },
+    {
+      "question": "模型用什么方式知道词语在序列中的先后",
+      "gold": "positions",
+      "before_rank": 3,
+      "after_rank": 1,
+      "before_total_ms": 32.0,
+      "after_total_ms": 109.0,
+      "retrieval": {
+        "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排）",
+        "chunks": 10,
+        "indexed_chunks": 10,
+        "warning": "",
+        "reranker": {
+          "configured": true,
+          "applied": true,
+          "candidates": 9,
+          "elapsed_ms": 62.0,
+          "error": "",
+          "model": "BAAI/bge-reranker-v2-m3",
+          "returned": 8
+        }
+      },
+      "before": [
+        "finetune",
+        "mlm",
+        "positions",
+        "nsp",
+        "encoder",
+        "decoder_mask",
+        "optimizer",
+        "dropout",
+        "hardware"
+      ],
+      "after": [
+        {
+          "chunk_id": "positions",
+          "source_id": "S1",
+          "rerank_score": -3.74609375,
+          "page": 5
+        },
+        {
+          "chunk_id": "decoder_mask",
+          "source_id": "S2",
+          "rerank_score": -3.8671875,
+          "page": 3
+        },
+        {
+          "chunk_id": "encoder",
+          "source_id": "S3",
+          "rerank_score": -4.14453125,
+          "page": 4
+        },
+        {
+          "chunk_id": "mlm",
+          "source_id": "S4",
+          "rerank_score": -5.69140625,
+          "page": 7
+        },
+        {
+          "chunk_id": "nsp",
+          "source_id": "S5",
+          "rerank_score": -7.0546875,
+          "page": 8
+        },
+        {
+          "chunk_id": "optimizer",
+          "source_id": "S6",
+          "rerank_score": -7.76953125,
+          "page": 2
+        },
+        {
+          "chunk_id": "finetune",
+          "source_id": "S7",
+          "rerank_score": -8.90625,
+          "page": 9
+        },
+        {
+          "chunk_id": "dropout",
+          "source_id": "S8",
+          "rerank_score": -8.96875,
+          "page": 6
+        }
+      ],
+      "anchors_preserved": true
+    },
+    {
+      "question": "正则化时随机丢弃的比例是多少",
+      "gold": "dropout",
+      "before_rank": 1,
+      "after_rank": 1,
+      "before_total_ms": 31.0,
+      "after_total_ms": 63.0,
+      "retrieval": {
+        "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排）",
+        "chunks": 10,
+        "indexed_chunks": 10,
+        "warning": "",
+        "reranker": {
+          "configured": true,
+          "applied": true,
+          "candidates": 4,
+          "elapsed_ms": 31.0,
+          "error": "",
+          "model": "BAAI/bge-reranker-v2-m3",
+          "returned": 4
+        }
+      },
+      "before": [
+        "dropout",
+        "optimizer",
+        "mlm",
+        "positions"
+      ],
+      "after": [
+        {
+          "chunk_id": "dropout",
+          "source_id": "S1",
+          "rerank_score": 1.6533203125,
+          "page": 6
+        },
+        {
+          "chunk_id": "optimizer",
+          "source_id": "S2",
+          "rerank_score": -4.44140625,
+          "page": 2
+        },
+        {
+          "chunk_id": "mlm",
+          "source_id": "S3",
+          "rerank_score": -9.0703125,
+          "page": 7
+        },
+        {
+          "chunk_id": "positions",
+          "source_id": "S4",
+          "rerank_score": -10.2890625,
+          "page": 5
+        }
+      ],
+      "anchors_preserved": true
+    },
+    {
+      "question": "怎样利用两边的上下文补全被遮住的词",
+      "gold": "mlm",
+      "before_rank": 1,
+      "after_rank": 1,
+      "before_total_ms": 31.0,
+      "after_total_ms": 78.0,
+      "retrieval": {
+        "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排）",
+        "chunks": 10,
+        "indexed_chunks": 10,
+        "warning": "",
+        "reranker": {
+          "configured": true,
+          "applied": true,
+          "candidates": 8,
+          "elapsed_ms": 47.0,
+          "error": "",
+          "model": "BAAI/bge-reranker-v2-m3",
+          "returned": 8
+        }
+      },
+      "before": [
+        "mlm",
+        "positions",
+        "optimizer",
+        "encoder",
+        "dropout",
+        "decoder_mask",
+        "finetune",
+        "nsp"
+      ],
+      "after": [
+        {
+          "chunk_id": "mlm",
+          "source_id": "S1",
+          "rerank_score": -5.953125,
+          "page": 7
+        },
+        {
+          "chunk_id": "optimizer",
+          "source_id": "S2",
+          "rerank_score": -7.8515625,
+          "page": 2
+        },
+        {
+          "chunk_id": "encoder",
+          "source_id": "S3",
+          "rerank_score": -8.71875,
+          "page": 4
+        },
+        {
+          "chunk_id": "decoder_mask",
+          "source_id": "S4",
+          "rerank_score": -9.171875,
+          "page": 3
+        },
+        {
+          "chunk_id": "positions",
+          "source_id": "S5",
+          "rerank_score": -9.203125,
+          "page": 5
+        },
+        {
+          "chunk_id": "dropout",
+          "source_id": "S6",
+          "rerank_score": -9.8359375,
+          "page": 6
+        },
+        {
+          "chunk_id": "nsp",
+          "source_id": "S7",
+          "rerank_score": -10.6015625,
+          "page": 8
+        },
+        {
+          "chunk_id": "finetune",
+          "source_id": "S8",
+          "rerank_score": -10.8828125,
+          "page": 9
+        }
+      ],
+      "anchors_preserved": true
+    },
+    {
+      "question": "如何判断两个句子是不是原本相邻",
+      "gold": "nsp",
+      "before_rank": 1,
+      "after_rank": 1,
+      "before_total_ms": 31.0,
+      "after_total_ms": 79.0,
+      "retrieval": {
+        "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排）",
+        "chunks": 10,
+        "indexed_chunks": 10,
+        "warning": "",
+        "reranker": {
+          "configured": true,
+          "applied": true,
+          "candidates": 8,
+          "elapsed_ms": 47.0,
+          "error": "",
+          "model": "BAAI/bge-reranker-v2-m3",
+          "returned": 8
+        }
+      },
+      "before": [
+        "nsp",
+        "mlm",
+        "decoder_mask",
+        "positions",
+        "encoder",
+        "optimizer",
+        "dropout",
+        "fruit"
+      ],
+      "after": [
+        {
+          "chunk_id": "nsp",
+          "source_id": "S1",
+          "rerank_score": -2.3671875,
+          "page": 8
+        },
+        {
+          "chunk_id": "optimizer",
+          "source_id": "S2",
+          "rerank_score": -6.1796875,
+          "page": 2
+        },
+        {
+          "chunk_id": "mlm",
+          "source_id": "S3",
+          "rerank_score": -7.12890625,
+          "page": 7
+        },
+        {
+          "chunk_id": "decoder_mask",
+          "source_id": "S4",
+          "rerank_score": -7.328125,
+          "page": 3
+        },
+        {
+          "chunk_id": "positions",
+          "source_id": "S5",
+          "rerank_score": -8.828125,
+          "page": 5
+        },
+        {
+          "chunk_id": "encoder",
+          "source_id": "S6",
+          "rerank_score": -9.0625,
+          "page": 4
+        },
+        {
+          "chunk_id": "fruit",
+          "source_id": "S7",
+          "rerank_score": -9.515625,
+          "page": 10
+        },
+        {
+          "chunk_id": "dropout",
+          "source_id": "S8",
+          "rerank_score": -9.8203125,
+          "page": 6
+        }
+      ],
+      "anchors_preserved": true
+    },
+    {
+      "question": "编码部分能不能看见整段输入",
+      "gold": "encoder",
+      "before_rank": 1,
+      "after_rank": 1,
+      "before_total_ms": 31.0,
+      "after_total_ms": 94.0,
+      "retrieval": {
+        "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排）",
+        "chunks": 10,
+        "indexed_chunks": 10,
+        "warning": "",
+        "reranker": {
+          "configured": true,
+          "applied": true,
+          "candidates": 8,
+          "elapsed_ms": 63.0,
+          "error": "",
+          "model": "BAAI/bge-reranker-v2-m3",
+          "returned": 8
+        }
+      },
+      "before": [
+        "encoder",
+        "positions",
+        "decoder_mask",
+        "mlm",
+        "optimizer",
+        "finetune",
+        "dropout",
+        "hardware"
+      ],
+      "after": [
+        {
+          "chunk_id": "encoder",
+          "source_id": "S1",
+          "rerank_score": -2.166015625,
+          "page": 4
+        },
+        {
+          "chunk_id": "decoder_mask",
+          "source_id": "S2",
+          "rerank_score": -5.61328125,
+          "page": 3
+        },
+        {
+          "chunk_id": "positions",
+          "source_id": "S3",
+          "rerank_score": -6.2578125,
+          "page": 5
+        },
+        {
+          "chunk_id": "optimizer",
+          "source_id": "S4",
+          "rerank_score": -7.84765625,
+          "page": 2
+        },
+        {
+          "chunk_id": "mlm",
+          "source_id": "S5",
+          "rerank_score": -8.375,
+          "page": 7
+        },
+        {
+          "chunk_id": "finetune",
+          "source_id": "S6",
+          "rerank_score": -9.625,
+          "page": 9
+        },
+        {
+          "chunk_id": "dropout",
+          "source_id": "S7",
+          "rerank_score": -10.4765625,
+          "page": 6
+        },
+        {
+          "chunk_id": "hardware",
+          "source_id": "S8",
+          "rerank_score": -11.03125,
+          "page": 1
+        }
+      ],
+      "anchors_preserved": true
+    }
+  ],
+  "fallback_check": {
+    "passed": true,
+    "retrieval": {
+      "mode": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索）",
+      "chunks": 10,
+      "indexed_chunks": 10,
+      "warning": "",
+      "reranker": {
+        "configured": true,
+        "applied": false,
+        "candidates": 9,
+        "elapsed_ms": 0.0,
+        "error": "Reranker 本地文件未就绪，请先下载 bge-reranker-v2-m3。 本次保留混合召回排序。",
+        "returned": 3
+      }
+    }
+  },
+  "summary": {
+    "questions": 8,
+    "top1_before": 6,
+    "top1_after": 7,
+    "top5_before": 8,
+    "top5_after": 8,
+    "median_warm_rerank_ms": 47.0
+  },
+  "model": {
+    "configured": true,
+    "model": "BAAI/bge-reranker-v2-m3",
+    "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "candidates": 40,
+    "max_length": 512,
+    "runtime": {
+      "state": "ready",
+      "device": "cuda",
+      "error": "",
+      "last_candidates": 8,
+      "last_ms": 63.0
+    },
+    "error": ""
+  },
+  "passed": true
+}

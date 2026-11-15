@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="研舟 ResearchDock，把阅读、证据与研究连接起来。">
+  <meta name="description" content="研舟 ResearchDock：PDF 文献管理、论文问答、翻译与写作。">
   <title>研舟 ResearchDock · 科研工作台</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=20261115copy2">
 </head>
 <body>
   <aside class="sidebar">
@@ -12,18 +12,18 @@
     <div class="workspace-label"><span class="workspace-dot"></span>我的研究空间<span class="personal">个人</span></div>
     <div class="nav-label">研究工作台</div>
     <nav id="navigation" aria-label="主要导航"></nav>
-    <div class="sidebar-note"><span class="note-icon">✳</span><strong>让每个结论，都有来处。</strong><p>从第一篇论文，到下一次发现。</p><div class="note-line"></div><span>阅读 · 连接 · 创作</span></div>
+    <div class="sidebar-note"><strong>文献阅读工具</strong><p>导入 PDF，检索正文，查看引用。</p><div class="note-line"></div><span>文献 · 问答 · 写作</span></div>
     <button class="settings-btn" id="settings"><span>⚙</span> 模型与运行配置 <span class="settings-arrow">↗</span></button>
     <div class="sidebar-footer"><span class="avatar">我</span><div>本地研究空间<small>ResearchDock / v0.1</small></div><span class="online-dot"></span></div>
   </aside>
   <div class="shell">
-    <header class="topbar"><button class="mobile-menu" id="mobile-menu" aria-label="展开导航">☰</button><div class="breadcrumb">WORKSPACE <span>/</span> <strong id="breadcrumb-title">文献库</strong></div><div class="top-actions"><span class="model-status" id="model-status"><i></i>正在连接</span><button class="icon-btn" id="help" title="使用说明" aria-label="使用说明">?</button></div></header>
+    <header class="topbar"><button class="mobile-menu" id="mobile-menu" aria-label="展开导航">☰</button><div class="breadcrumb">工作台 <span>/</span> <strong id="breadcrumb-title">文献库</strong></div><div class="top-actions"><span class="model-status" id="model-status"><i></i>正在连接</span><button class="icon-btn" id="help" title="使用说明" aria-label="使用说明">?</button></div></header>
     <main id="main" tabindex="-1"></main>
-    <footer class="page-footer"><span>研舟 ResearchDock</span><span>以证据为起点，让研究向前一步。</span><span>LOCAL WORKSPACE <i></i></span></footer>
+    <footer class="page-footer"><span>研舟 ResearchDock</span><span>PDF 文献管理与阅读</span><span>LOCAL WORKSPACE <i></i></span></footer>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <dialog id="modal"><div id="modal-content"></div></dialog>
   <input id="pdf-input" type="file" accept="application/pdf,.pdf" multiple hidden>
-  <script src="/app.js" defer></script>
+  <script src="/app.js?v=20261115copy2" defer></script>
 </body>
 </html>

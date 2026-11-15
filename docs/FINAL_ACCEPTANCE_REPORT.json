@@ -1,0 +1,1990 @@
+{
+  "started_at": "2026-11-14T19:44:56.197900+00:00",
+  "state": "completed",
+  "scope": "User-provided material pack; real HTTP APIs and isolated storage. Text extraction is not proof of complete layout/formula accuracy.",
+  "data_root": "<workspace>\\data\\system-test-20261115-final",
+  "base_url": "http://127.0.0.1:8766",
+  "with_paid_model_checks": true,
+  "imports": [
+    {
+      "filename": "1706.03762v7.pdf",
+      "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+      "expected_pages": 15,
+      "status": "ready",
+      "title": "Attention Is All You Need",
+      "authors_present": true,
+      "pages": 15,
+      "last_page": 15,
+      "characters": 39952,
+      "seconds": 2.94,
+      "duplicate_warning": null,
+      "toc_entries": 22,
+      "tables": 6,
+      "image_regions": 3,
+      "page_sources": {
+        "native": 15
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "1706.03762v1.pdf",
+      "paper_id": "a2ab34a00bf4473c90a61d559704936d",
+      "expected_pages": 15,
+      "status": "ready",
+      "title": "Attention Is All You Need",
+      "authors_present": true,
+      "pages": 15,
+      "last_page": 15,
+      "characters": 37302,
+      "seconds": 2.41,
+      "duplicate_warning": null,
+      "toc_entries": 22,
+      "tables": 6,
+      "image_regions": 3,
+      "page_sources": {
+        "native": 15
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "1706.03762v1_img.pdf",
+      "paper_id": "abd2e2c84bc34bd0b1682be9b952ac49",
+      "expected_pages": 15,
+      "status": "ready",
+      "title": "Attention Is All You Need",
+      "authors_present": false,
+      "pages": 15,
+      "last_page": 15,
+      "characters": 34980,
+      "seconds": 116.62,
+      "duplicate_warning": null,
+      "toc_entries": 3,
+      "tables": 0,
+      "image_regions": 15,
+      "page_sources": {
+        "ocr": 15
+      },
+      "review_pages": [],
+      "ocr_engines": [
+        "rapidocr"
+      ],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "1607.06450v1.pdf",
+      "paper_id": "f5bb67c993934c39bca05e6c5e70e274",
+      "expected_pages": 14,
+      "status": "ready",
+      "title": "Layer Normalization",
+      "authors_present": true,
+      "pages": 14,
+      "last_page": 14,
+      "characters": 39961,
+      "seconds": 3.74,
+      "duplicate_warning": null,
+      "toc_entries": 19,
+      "tables": 6,
+      "image_regions": 0,
+      "page_sources": {
+        "native": 14
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "1707.06347v2.pdf",
+      "paper_id": "48d06fd721a249eb9edd6f754708fe41",
+      "expected_pages": 12,
+      "status": "ready",
+      "title": "Proximal Policy Optimization Algorithms",
+      "authors_present": false,
+      "pages": 12,
+      "last_page": 12,
+      "characters": 27460,
+      "seconds": 6.94,
+      "duplicate_warning": null,
+      "toc_entries": 0,
+      "tables": 1,
+      "image_regions": 12,
+      "page_sources": {
+        "native": 12
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "1910.02054v3.pdf",
+      "paper_id": "85d49629e1d84790bc33ab234759c3f8",
+      "expected_pages": 24,
+      "status": "ready",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "authors_present": false,
+      "pages": 24,
+      "last_page": 24,
+      "characters": 67186,
+      "seconds": 4.11,
+      "duplicate_warning": null,
+      "toc_entries": 41,
+      "tables": 10,
+      "image_regions": 8,
+      "page_sources": {
+        "native": 24
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "1910.10683v4.pdf",
+      "paper_id": "d9797dbe898e4c028150a7c6737381e5",
+      "expected_pages": 67,
+      "status": "ready",
+      "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "authors_present": true,
+      "pages": 67,
+      "last_page": 67,
+      "characters": 206998,
+      "seconds": 9.84,
+      "duplicate_warning": null,
+      "toc_entries": 59,
+      "tables": 12,
+      "image_regions": 0,
+      "page_sources": {
+        "native": 67
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2001.08361v1.pdf",
+      "paper_id": "1450ca6b1bbb4f7ab124612a855f618d",
+      "expected_pages": 30,
+      "status": "ready",
+      "title": "Scaling Laws for Neural Language Models",
+      "authors_present": false,
+      "pages": 30,
+      "last_page": 30,
+      "characters": 83193,
+      "seconds": 7.5,
+      "duplicate_warning": null,
+      "toc_entries": 13,
+      "tables": 16,
+      "image_regions": 12,
+      "page_sources": {
+        "native": 30
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2002.04745v2.pdf",
+      "paper_id": "2c67b825c9a44ca4b0e1021a305cab76",
+      "expected_pages": 17,
+      "status": "ready",
+      "title": "On Layer Normalization in the Transformer Architecture",
+      "authors_present": true,
+      "pages": 17,
+      "last_page": 17,
+      "characters": 67904,
+      "seconds": 9.99,
+      "duplicate_warning": null,
+      "toc_entries": 0,
+      "tables": 10,
+      "image_regions": 1,
+      "page_sources": {
+        "native": 17
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2005.14165v4.pdf",
+      "paper_id": "957d6290461642e3972e3c91ad953a51",
+      "expected_pages": 75,
+      "status": "ready",
+      "title": "Language Models are Few-Shot Learners",
+      "authors_present": false,
+      "pages": 75,
+      "last_page": 75,
+      "characters": 237431,
+      "seconds": 10.7,
+      "duplicate_warning": null,
+      "toc_entries": 32,
+      "tables": 0,
+      "image_regions": 83,
+      "page_sources": {
+        "native": 75
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2010.11929v2.pdf",
+      "paper_id": "5201a2ecc072466cb8ba28d7bce36c58",
+      "expected_pages": 22,
+      "status": "ready",
+      "title": "AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE",
+      "authors_present": false,
+      "pages": 22,
+      "last_page": 22,
+      "characters": 67650,
+      "seconds": 5.76,
+      "duplicate_warning": null,
+      "toc_entries": 30,
+      "tables": 10,
+      "image_regions": 300,
+      "page_sources": {
+        "native": 22
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "209_Emergent_Abilities_of_Larg.pdf",
+      "paper_id": "9a98b324b2d1496ab88a0868e0286210",
+      "expected_pages": 30,
+      "status": "ready",
+      "title": "Emergent Abilities of Large Language Models",
+      "authors_present": true,
+      "pages": 30,
+      "last_page": 30,
+      "characters": 92986,
+      "seconds": 6.24,
+      "duplicate_warning": null,
+      "toc_entries": 28,
+      "tables": 16,
+      "image_regions": 0,
+      "page_sources": {
+        "native": 30
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2101.03961v3.pdf",
+      "paper_id": "a7d50cda8d514cee9b6a733b19948159",
+      "expected_pages": 40,
+      "status": "ready",
+      "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Eﬃcient Sparsity",
+      "authors_present": true,
+      "pages": 40,
+      "last_page": 40,
+      "characters": 101131,
+      "seconds": 7.61,
+      "duplicate_warning": null,
+      "toc_entries": 31,
+      "tables": 22,
+      "image_regions": 0,
+      "page_sources": {
+        "native": 40
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2103.00020v1.pdf",
+      "paper_id": "2f016e1b5f034441b93aad4b925669ba",
+      "expected_pages": 48,
+      "status": "ready",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "authors_present": true,
+      "pages": 48,
+      "last_page": 48,
+      "characters": 226129,
+      "seconds": 19.73,
+      "duplicate_warning": null,
+      "toc_entries": 1,
+      "tables": 29,
+      "image_regions": 79,
+      "page_sources": {
+        "native": 48
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2106.09685v2.pdf",
+      "paper_id": "c99acfbcb75c4b29aab9a17152d3b0f4",
+      "expected_pages": 26,
+      "status": "ready",
+      "title": "LORA: LOW-RANK ADAPTATION OF LARGE LAN- GUAGE MODELS",
+      "authors_present": true,
+      "pages": 26,
+      "last_page": 26,
+      "characters": 83269,
+      "seconds": 19.91,
+      "duplicate_warning": null,
+      "toc_entries": 37,
+      "tables": 58,
+      "image_regions": 27,
+      "page_sources": {
+        "native": 26
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2107.03374v2.pdf",
+      "paper_id": "590cf858bbb6412ba40560f1102ce04e",
+      "expected_pages": 35,
+      "status": "ready",
+      "title": "Evaluating Large Language Models Trained on Code",
+      "authors_present": true,
+      "pages": 35,
+      "last_page": 35,
+      "characters": 153450,
+      "seconds": 7.94,
+      "duplicate_warning": null,
+      "toc_entries": 0,
+      "tables": 0,
+      "image_regions": 14,
+      "page_sources": {
+        "native": 35
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2201.11903v6.pdf",
+      "paper_id": "60dc8795fa8d441bbe647225b6b13771",
+      "expected_pages": 43,
+      "status": "ready",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "authors_present": false,
+      "pages": 43,
+      "last_page": 43,
+      "characters": 136410,
+      "seconds": 10.58,
+      "duplicate_warning": null,
+      "toc_entries": 35,
+      "tables": 77,
+      "image_regions": 2,
+      "page_sources": {
+        "native": 43
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2203.02155v1.pdf",
+      "paper_id": "e689675cc65c4d0ebce1124026a1695b",
+      "expected_pages": 68,
+      "status": "ready",
+      "title": "Training language models to follow instructions with human feedback",
+      "authors_present": false,
+      "pages": 68,
+      "last_page": 68,
+      "characters": 174419,
+      "seconds": 9.01,
+      "duplicate_warning": null,
+      "toc_entries": 54,
+      "tables": 14,
+      "image_regions": 23,
+      "page_sources": {
+        "native": 68
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2205.14135v2.pdf",
+      "paper_id": "674480feb3c140d5872dde603d621238",
+      "expected_pages": 34,
+      "status": "ready",
+      "title": "FlashAttention: Fast and Memory-Eﬃcient Exact Attention with IO-Awareness",
+      "authors_present": false,
+      "pages": 34,
+      "last_page": 34,
+      "characters": 102677,
+      "seconds": 6.62,
+      "duplicate_warning": null,
+      "toc_entries": 31,
+      "tables": 18,
+      "image_regions": 5,
+      "page_sources": {
+        "native": 34
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2206.07682v2.pdf",
+      "paper_id": "686f655dd6d944e8aee9c4011f7eb763",
+      "expected_pages": 30,
+      "status": "ready",
+      "title": "Emergent Abilities of Large Language Models",
+      "authors_present": true,
+      "pages": 30,
+      "last_page": 30,
+      "characters": 94948,
+      "seconds": 5.94,
+      "duplicate_warning": [
+        {
+          "title": "Emergent Abilities of Large Language Models",
+          "reason": "标题/正文内容高度相似（正文 92%）；BGE-M3 正文样本语义相似度 99.8%",
+          "score": 0.922
+        }
+      ],
+      "toc_entries": 28,
+      "tables": 16,
+      "image_regions": 0,
+      "page_sources": {
+        "native": 30
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2210.02414v2.pdf",
+      "paper_id": "91d24201c78a4eac87d10bba95cd36f5",
+      "expected_pages": 56,
+      "status": "ready",
+      "title": "GLM-130B: AN OPEN BILINGUAL PRE-TRAINED",
+      "authors_present": false,
+      "pages": 56,
+      "last_page": 56,
+      "characters": 184636,
+      "seconds": 18.3,
+      "duplicate_warning": null,
+      "toc_entries": 68,
+      "tables": 16,
+      "image_regions": 11,
+      "page_sources": {
+        "native": 56
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2211.05100v4.pdf",
+      "paper_id": "ab2164b3d7064ce49d320ee95797e83c",
+      "expected_pages": 73,
+      "status": "ready",
+      "title": "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model",
+      "authors_present": false,
+      "pages": 73,
+      "last_page": 73,
+      "characters": 202567,
+      "seconds": 11.83,
+      "duplicate_warning": null,
+      "toc_entries": 83,
+      "tables": 33,
+      "image_regions": 4,
+      "page_sources": {
+        "native": 73
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2212.04356v1.pdf",
+      "paper_id": "3fb156b33627475eb5761441181e49dc",
+      "expected_pages": 28,
+      "status": "ready",
+      "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+      "authors_present": true,
+      "pages": 28,
+      "last_page": 28,
+      "characters": 112920,
+      "seconds": 9.17,
+      "duplicate_warning": null,
+      "toc_entries": 0,
+      "tables": 63,
+      "image_regions": 1,
+      "page_sources": {
+        "native": 28
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2303.08774v6.pdf",
+      "paper_id": "11fed189139f44a5b04e59d1c6d75b7c",
+      "expected_pages": 100,
+      "status": "ready",
+      "title": "GPT-4 Technical Report",
+      "authors_present": false,
+      "pages": 100,
+      "last_page": 100,
+      "characters": 284566,
+      "seconds": 14.0,
+      "duplicate_warning": null,
+      "toc_entries": 26,
+      "tables": 28,
+      "image_regions": 10,
+      "page_sources": {
+        "blank": 1,
+        "native": 99
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2304.08485v2.pdf",
+      "paper_id": "5e24ca48da52417889890cb807369915",
+      "expected_pages": 25,
+      "status": "ready",
+      "title": "Visual Instruction Tuning",
+      "authors_present": false,
+      "pages": 25,
+      "last_page": 25,
+      "characters": 87823,
+      "seconds": 7.23,
+      "duplicate_warning": null,
+      "toc_entries": 16,
+      "tables": 7,
+      "image_regions": 37,
+      "page_sources": {
+        "native": 25
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2305.13048v2.pdf",
+      "paper_id": "3e555bd4fb78435e8636445ca12f3a15",
+      "expected_pages": 30,
+      "status": "ready",
+      "title": "RWKV: Reinventing RNNs for the Transformer Era",
+      "authors_present": false,
+      "pages": 30,
+      "last_page": 30,
+      "characters": 91064,
+      "seconds": 6.53,
+      "duplicate_warning": null,
+      "toc_entries": 8,
+      "tables": 24,
+      "image_regions": 2,
+      "page_sources": {
+        "native": 30
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2305.14314v1.pdf",
+      "paper_id": "a746ca57513a4ced803610076b113087",
+      "expected_pages": 26,
+      "status": "ready",
+      "title": "QLORA: Efficient Finetuning of Quantized LLMs",
+      "authors_present": false,
+      "pages": 26,
+      "last_page": 26,
+      "characters": 88159,
+      "seconds": 5.03,
+      "duplicate_warning": null,
+      "toc_entries": 27,
+      "tables": 1,
+      "image_regions": 2,
+      "page_sources": {
+        "native": 26
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2305.18290v3.pdf",
+      "paper_id": "bdea1f4050ea40039ddfa5d9281255ba",
+      "expected_pages": 27,
+      "status": "ready",
+      "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+      "authors_present": false,
+      "pages": 27,
+      "last_page": 27,
+      "characters": 93696,
+      "seconds": 4.86,
+      "duplicate_warning": null,
+      "toc_entries": 29,
+      "tables": 4,
+      "image_regions": 2,
+      "page_sources": {
+        "native": 27
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2307.09288v2.pdf",
+      "paper_id": "b6cfbc7f765142e4a88cddf4070fde86",
+      "expected_pages": 77,
+      "status": "ready",
+      "title": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+      "authors_present": false,
+      "pages": 77,
+      "last_page": 77,
+      "characters": 265043,
+      "seconds": 22.84,
+      "duplicate_warning": null,
+      "toc_entries": 29,
+      "tables": 36,
+      "image_regions": 25,
+      "page_sources": {
+        "native": 77
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2310.06825v1.pdf",
+      "paper_id": "2da95202148145c797f1a66c22109064",
+      "expected_pages": 9,
+      "status": "ready",
+      "title": "Mistral 7B",
+      "authors_present": false,
+      "pages": 9,
+      "last_page": 9,
+      "characters": 24929,
+      "seconds": 2.44,
+      "duplicate_warning": null,
+      "toc_entries": 8,
+      "tables": 0,
+      "image_regions": 6,
+      "page_sources": {
+        "native": 9
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2406.14491v2.pdf",
+      "paper_id": "fc851d0f244c45c9a8773eb2de98b609",
+      "expected_pages": 22,
+      "status": "ready",
+      "title": "Instruction Pre-Training: Language Models are Supervised Multitask Learners",
+      "authors_present": false,
+      "pages": 22,
+      "last_page": 22,
+      "characters": 88365,
+      "seconds": 5.17,
+      "duplicate_warning": null,
+      "toc_entries": 22,
+      "tables": 10,
+      "image_regions": 0,
+      "page_sources": {
+        "native": 22
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2407.21783v3.pdf",
+      "paper_id": "bb824e2bc5d14359a3aa9a1da64452e1",
+      "expected_pages": 92,
+      "status": "ready",
+      "title": "The Llama 3 Herd of Models",
+      "authors_present": false,
+      "pages": 92,
+      "last_page": 92,
+      "characters": 358275,
+      "seconds": 23.75,
+      "duplicate_warning": null,
+      "toc_entries": 98,
+      "tables": 26,
+      "image_regions": 8,
+      "page_sources": {
+        "native": 92
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2412.15115v2.pdf",
+      "paper_id": "670a44e78b5c4da78350970a7fb99009",
+      "expected_pages": 26,
+      "status": "ready",
+      "title": "Qwen2.5 Technical Report",
+      "authors_present": false,
+      "pages": 26,
+      "last_page": 26,
+      "characters": 95299,
+      "seconds": 5.14,
+      "duplicate_warning": null,
+      "toc_entries": 0,
+      "tables": 3,
+      "image_regions": 15,
+      "page_sources": {
+        "native": 26
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2412.19437v1.pdf",
+      "paper_id": "f8ad54a4ba7943f8a0eb56c286453f46",
+      "expected_pages": 53,
+      "status": "ready",
+      "title": "DeepSeek-V3 Technical Report",
+      "authors_present": false,
+      "pages": 53,
+      "last_page": 53,
+      "characters": 149334,
+      "seconds": 11.36,
+      "duplicate_warning": null,
+      "toc_entries": 53,
+      "tables": 46,
+      "image_regions": 39,
+      "page_sources": {
+        "native": 53
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "2501.12948v2.pdf",
+      "paper_id": "c824ceee197f4d51bd17d366e22da619",
+      "expected_pages": 86,
+      "status": "ready",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "authors_present": true,
+      "pages": 86,
+      "last_page": 86,
+      "characters": 226454,
+      "seconds": 13.76,
+      "duplicate_warning": null,
+      "toc_entries": 61,
+      "tables": 46,
+      "image_regions": 3,
+      "page_sources": {
+        "native": 86
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "333078981_693988129081760_4712707815225756708_n.pdf",
+      "paper_id": "374fa2dc76e6492c940fc28b7950b604",
+      "expected_pages": 27,
+      "status": "ready",
+      "title": "LLaMA: Open and Efficient Foundation Language Models",
+      "authors_present": false,
+      "pages": 27,
+      "last_page": 27,
+      "characters": 88305,
+      "seconds": 5.8,
+      "duplicate_warning": null,
+      "toc_entries": 14,
+      "tables": 4,
+      "image_regions": 0,
+      "page_sources": {
+        "native": 27
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "language_understanding_paper.pdf",
+      "paper_id": "b4d42bf79e73458e888e857527ecb45c",
+      "expected_pages": 12,
+      "status": "ready",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "authors_present": true,
+      "pages": 12,
+      "last_page": 12,
+      "characters": 40685,
+      "seconds": 2.56,
+      "duplicate_warning": null,
+      "toc_entries": 11,
+      "tables": 0,
+      "image_regions": 4,
+      "page_sources": {
+        "native": 12
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "N19-1423.pdf",
+      "paper_id": "ecab925554144ec2bce4964b01916455",
+      "expected_pages": 16,
+      "status": "ready",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "authors_present": true,
+      "pages": 16,
+      "last_page": 16,
+      "characters": 64473,
+      "seconds": 5.75,
+      "duplicate_warning": null,
+      "toc_entries": 1,
+      "tables": 19,
+      "image_regions": 38,
+      "page_sources": {
+        "native": 16
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    },
+    {
+      "filename": "UnderstandingDeepLearning_02_09_26_C.pdf",
+      "paper_id": "fbe1916e1c8f42cdb4a567e325f90cf7",
+      "expected_pages": 541,
+      "status": "ready",
+      "title": "Understanding Deep Learning",
+      "authors_present": false,
+      "pages": 541,
+      "last_page": 541,
+      "characters": 1310505,
+      "seconds": 85.36,
+      "duplicate_warning": null,
+      "toc_entries": 181,
+      "tables": 11,
+      "image_regions": 733,
+      "page_sources": {
+        "drawing": 4,
+        "native": 537
+      },
+      "review_pages": [],
+      "ocr_engines": [],
+      "formula_mode": "original-page",
+      "passed_persistence": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "HTTP home and status",
+      "passed": true
+    },
+    {
+      "name": "Renamed v1 detected against v7 with newer-version advice",
+      "passed": true,
+      "status": 409,
+      "reasons": [
+        "标题/正文内容高度相似（正文 76%）；BGE-M3 正文样本语义相似度 86.0%；库中版本较新，建议保留"
+      ]
+    },
+    {
+      "name": "Scanned PDF all 15 pages OCR persisted",
+      "passed": true,
+      "engines": [
+        "rapidocr"
+      ],
+      "page_sources": {
+        "1": "ocr",
+        "2": "ocr",
+        "3": "ocr",
+        "4": "ocr",
+        "5": "ocr",
+        "6": "ocr",
+        "7": "ocr",
+        "8": "ocr",
+        "9": "ocr",
+        "10": "ocr",
+        "11": "ocr",
+        "12": "ocr",
+        "13": "ocr",
+        "14": "ocr",
+        "15": "ocr"
+      }
+    },
+    {
+      "name": "Scanned PDF has recognized paper title",
+      "passed": true,
+      "actual_title": "Attention Is All You Need"
+    },
+    {
+      "name": "All material PDFs fully persisted",
+      "passed": true,
+      "count": 39,
+      "total_pages": 1986,
+      "failed": []
+    },
+    {
+      "name": "Read page and PNG: 1706.03762v7.pdf",
+      "passed": true,
+      "page": 7
+    },
+    {
+      "name": "Read page and PNG: 1706.03762v1_img.pdf",
+      "passed": true,
+      "page": 7
+    },
+    {
+      "name": "Read page and PNG: UnderstandingDeepLearning_02_09_26_C.pdf",
+      "passed": true,
+      "page": 541
+    },
+    {
+      "name": "Layer Normalization reference is extracted",
+      "passed": true,
+      "count": 40,
+      "matching": [
+        {
+          "label": "1",
+          "page": 10,
+          "text": "Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint arXiv:1607.06450, 2016. ",
+          "arxiv_id": "1607.06450",
+          "local_paper_id": "f5bb67c993934c39bca05e6c5e70e274",
+          "can_import": false,
+          "url": "https://arxiv.org/abs/1607.06450"
+        }
+      ]
+    },
+    {
+      "name": "v1-v7 body differences",
+      "passed": true,
+      "result": {
+        "similarity": 0.737,
+        "change_count": 109,
+        "changes": [
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "Provided proper attribution is provided, Google hereby grants permission to\nreproduce the tables and figures in this paper solely for use in journalistic or\nscholarly works."
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "Łukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com"
+          },
+          {
+            "kind": "replace",
+            "before": "Łukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\nIllia Polosukhin∗",
+            "after": "Illia Polosukhin∗‡"
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "arXiv:1706.03762v7  [cs.CL]  2 Aug 2023"
+          },
+          {
+            "kind": "replace",
+            "before": "convolutional neural networks in an encoder-decoder conﬁguration. The best",
+            "after": "convolutional neural networks that include an encoder and a decoder. The best"
+          },
+          {
+            "kind": "replace",
+            "before": "be superior in quality while being more parallelizable and requiring signiﬁcantly",
+            "after": "be superior in quality while being more parallelizable and requiring significantly"
+          },
+          {
+            "kind": "replace",
+            "before": "ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.0 after",
+            "after": "ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after"
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.\n†Work performed while at Google Brain.\n‡Work performed while at Google Research.\n31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA."
+          },
+          {
+            "kind": "replace",
+            "before": "arXiv:1706.03762v1  [cs.CL]  12 Jun 2017\nRecurrent neural networks, long short-term memory [12] and gated recurrent [7] neural networks\nin particular, have been ﬁrmly established as state of the art approaches in sequence modeling and\ntransduction problems such as language modeling and machine translation [31, 2, 5]. Numerous",
+            "after": "2\nBackground\n3\nModel Architecture\nRecurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks\nin particular, have been firmly established as state of the art approaches in sequence modeling and\ntransduction problems such as language modeling and machine translation [35, 2, 5]. Numerous"
+          },
+          {
+            "kind": "replace",
+            "before": "architectures [34, 22, 14].",
+            "after": "architectures [38, 24, 15]."
+          },
+          {
+            "kind": "replace",
+            "before": "signiﬁcant improvements in computational efﬁciency through factorization tricks [19] and conditional\n∗Equal contribution. Listing order is random.\n†Work performed while at Google Brain.\n2\nBackground\n3\nModel Architecture\n3.1\nEncoder and Decoder Stacks\ncomputation [29], while also improving model performance in case of the latter. The fundamental",
+            "after": "significant improvements in computational efficiency through factorization tricks [21] and conditional\ncomputation [32], while also improving model performance in case of the latter. The fundamental"
+          },
+          {
+            "kind": "replace",
+            "before": "the input or output sequences [2, 17]. In all but a few cases [25], however, such attention mechanisms",
+            "after": "the input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms"
+          },
+          {
+            "kind": "replace",
+            "before": "The Transformer allows for signiﬁcantly more parallelization and can reach a new state of the art in",
+            "after": "The Transformer allows for significantly more parallelization and can reach a new state of the art in"
+          },
+          {
+            "kind": "replace",
+            "before": "[21], ByteNet [16] and ConvS2S [9], all of which use convolutional neural networks as basic building",
+            "after": "[16], ByteNet [18] and ConvS2S [9], all of which use convolutional neural networks as basic building"
+          },
+          {
+            "kind": "replace",
+            "before": "it more difﬁcult to learn dependencies between distant positions [11]. In the Transformer this is",
+            "after": "it more difficult to learn dependencies between distant positions [12]. In the Transformer this is"
+          },
+          {
+            "kind": "replace",
+            "before": "textual entailment and learning task-independent sentence representations [4, 25, 26, 20].\nTo the best of our knowledge, however, the Transformer is the ﬁrst transduction model relying\nentirely on self-attention to compute representations of its input and output without using RNNs or\nconvolution. In the following sections, we will describe the Transformer, motivate self-attention and\ndiscuss its advantages over models such as [15, 16] and [9].\nMost competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 31].",
+            "after": "textual entailment and learning task-independent sentence representations [4, 27, 28, 22].\nEnd-to-end memory networks are based on a recurrent attention mechanism instead of sequence-\naligned recurrence and have been shown to perform well on simple-language question answering and\nlanguage modeling tasks [34].\nTo the best of our knowledge, however, the Transformer is the first transduction model relying\nentirely on self-attention to compute representations of its input and output without using sequence-\naligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate\nself-attention and discuss its advantages over models such as [17, 18] and [9].\nMost competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 35]."
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "2\n3.1\nEncoder and Decoder Stacks\n3.2\nAttention\nFigure 1: The Transformer - model architecture."
+          },
+          {
+            "kind": "replace",
+            "before": "sub-layers. The ﬁrst is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection around each of",
+            "after": "sub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of"
+          },
+          {
+            "kind": "delete",
+            "before": "2\nFigure 1: The Transformer - model architecture.",
+            "after": ""
+          },
+          {
+            "kind": "delete",
+            "before": "3.2\nAttention",
+            "after": ""
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "3\nScaled Dot-Product Attention\nMulti-Head Attention\nFigure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several\nattention layers running in parallel."
+          },
+          {
+            "kind": "replace",
+            "before": "3",
+            "after": "The two most commonly used attention functions are additive attention [2], and dot-product (multi-\nplicative) attention. Dot-product attention is identical to our algorithm, except for the scaling factor\nof\n1\n√dk . Additive attention computes the compatibility function using a feed-forward network with\na single hidden layer. While the two are similar in theoretical complexity, dot-product attention is\nmuch faster and more space-efficient in practice, since it can be implemented using highly optimized\nmatrix multiplication code.\nWhile for small values of dk the two mechanisms perform similarly, additive attention outperforms\ndot product attention without scaling for larger values of dk [3]. We suspect that for large values of\ndk, the dot products grow large in magnitude, pushing the softmax function into regions where it has\nextremely small gradients 4. To counteract this effect, we scale the dot products by\n1\n√dk ."
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "Instead of performing a single attention function with dmodel-dimensional keys, values and queries,\nwe found it beneficial to linearly project the queries, keys and values h times with different, learned\nlinear projections to dk, dk and dv dimensions, respectively. On each of these projected versions of\nqueries, keys and values we then perform the attention function in parallel, yielding dv-dimensional\n4To illustrate why the dot products get large, assume that the components of q and k are independent random\nvariables with mean 0 and variance 1. Then their dot product, q · k = Pdk\ni=1 qiki, has mean 0 and variance dk.\n4"
+          },
+          {
+            "kind": "replace",
+            "before": "Scaled Dot-Product Attention\nMulti-Head Attention\nFigure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several\nattention layers running in parallel.\nThe two most commonly used attention functions are additive attention [2], and dot-product (multi-\nplicative) attention. Dot-product attention is identical to our algorithm, except for the scaling factor\nof √dk. Additive attention computes the compatibility function using a feed-forward network with\na single hidden layer. While the two are similar in theoretical complexity, dot-product attention is\nmuch faster and more space-efﬁcient in practice, since it can be implemented using highly optimized\nmatrix multiplication code.\nWhile for small values of dk the two mechanisms perform similarly, additive attention outperforms\ndot product attention without scaling for larger values of dk [3]. We suspect this to be caused by the\ndot products growing too large in magnitude to result in useful gradients after applying the softmax\nfunction. To counteract this, we scale the dot product by 1/√dk.\nInstead of performing a single attention function with dmodel-dimensional keys, values and queries,\nwe found it beneﬁcial to linearly project the queries, keys and values h times with different, learned\nlinear projections to dk, dk and dv dimensions, respectively. On each of these projected versions of\nqueries, keys and values we then perform the attention function in parallel, yielding dv-dimensional\noutput values. These are concatenated, resulting in the ﬁnal values, as depicted in Figure 2",
+            "after": "3.3\nPosition-wise Feed-Forward Networks\n3.4\nEmbeddings and Softmax\noutput values. These are concatenated and once again projected, resulting in the final values, as\ndepicted in Figure 2."
+          },
+          {
+            "kind": "replace",
+            "before": "MultiHead(Q, K, V ) = Concat(head1, ..., headh)",
+            "after": "MultiHead(Q, K, V ) = Concat(head1, ..., headh)W O"
+          },
+          {
+            "kind": "replace",
+            "before": "∈Rdmodel×dk and W V",
+            "after": "∈Rdmodel×dk, W V"
+          },
+          {
+            "kind": "replace",
+            "before": "∈\nRdmodel×dv.",
+            "after": "∈Rdmodel×dv\nand W O ∈Rhdv×dmodel."
+          },
+          {
+            "kind": "replace",
+            "before": "• In the encoder-decoder attention layers, the queries come from the previous decoder layer,",
+            "after": "• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer,"
+          },
+          {
+            "kind": "delete",
+            "before": "4\n3.3\nPosition-wise Feed-Forward Networks\n3.4\nEmbeddings and Softmax\n3.5\nPositional Encoding\nIn this work, we use sine and cosine functions of different frequencies:\n4\nWhy Self-Attention",
+            "after": ""
+          },
+          {
+            "kind": "replace",
+            "before": "[34, 2, 9].",
+            "after": "[38, 2, 9]."
+          },
+          {
+            "kind": "replace",
+            "before": "information ﬂow in the decoder to preserve the auto-regressive property. We implement this",
+            "after": "information flow in the decoder to preserve the auto-regressive property. We implement this"
+          },
+          {
+            "kind": "replace",
+            "before": "from layer to layer. The dimension of input and output is dmodel, and the inner-layer has dimension\n2048.",
+            "after": "from layer to layer. Another way of describing this is as two convolutions with kernel size 1.\nThe dimensionality of input and output is dmodel = 512, and the inner-layer has dimensionality\ndff = 2048."
+          },
+          {
+            "kind": "replace",
+            "before": "linear transformation. In the embedding layers, we multiply those weights by √dmodel.\nSince our model contains no recurrence and no convolution, in order for the model to make use of the\norder of the sequence, we must inject some information about the relative or absolute position of the\ntokens in the sequence. To this end, we add \"positional encodings\" to the input embeddings at the\nbottoms of the encoder and decoder stacks. The positional encodings have the same dimension dmodel\nas the embeddings, so that the two can be summed. There are many choices of positional encodings,\nlearned and ﬁxed [9].\nPE(pos,2i) = sin(pos/100002i/dmodel)\nPE(pos,2i+1) = cos(pos/100002i/dmodel)\nwhere pos is the position and i is the dimension. That is, each dimension of the positional encoding\ncorresponds to a sinusoid. The wavelengths form a geometric progression from 2π to 10000 · 2π. We\nchose this function because we hypothesized it would allow the model to easily learn to attend by\nrelative positions, since for any ﬁxed offset k, PEpos+k can be represented as a linear function of\nPEpos.\nIn this section we compare various aspects of self-attention layers to the recurrent and convolu-\ntional layers commonly used for mapping one variable-length sequence of symbol representations",
+            "after": "linear transformation, similar to [30]. In the embedding layers, we multiply those weights by √dmodel."
+          },
+          {
+            "kind": "replace",
+            "before": "5\nTraining\nThis section describes the training regime for our models.\n5.1\nTraining Data and Batching",
+            "after": "3.5\nPositional Encoding\n4\nWhy Self-Attention"
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "Since our model contains no recurrence and no convolution, in order for the model to make use of the\norder of the sequence, we must inject some information about the relative or absolute position of the\ntokens in the sequence. To this end, we add \"positional encodings\" to the input embeddings at the\nbottoms of the encoder and decoder stacks. The positional encodings have the same dimension dmodel\nas the embeddings, so that the two can be summed. There are many choices of positional encodings,\nlearned and fixed [9].\nIn this work, we use sine and cosine functions of different frequencies:\nPE(pos,2i) = sin(pos/100002i/dmodel)\nPE(pos,2i+1) = cos(pos/100002i/dmodel)\nwhere pos is the position and i is the dimension. That is, each dimension of the positional encoding\ncorresponds to a sinusoid. The wavelengths form a geometric progression from 2π to 10000 · 2π. We\nchose this function because we hypothesized it would allow the model to easily learn to attend by\nrelative positions, since for any fixed offset k, PEpos+k can be represented as a linear function of\nPEpos.\nWe also experimented with using learned positional embeddings [9] instead, and found that the two\nversions produced nearly identical results (see Table 3 row (E)). We chose the sinusoidal version\nbecause it may allow the model to extrapolate to sequence lengths longer than the ones encountered\nduring training.\nIn this section we compare various aspects of self-attention layers to the recurrent and convolu-\ntional layers commonly used for mapping one variable-length sequence of symbol representations"
+          },
+          {
+            "kind": "replace",
+            "before": "and output sequences, the easier it is to learn long-range dependencies [11]. Hence we also compare",
+            "after": "and output sequences, the easier it is to learn long-range dependencies [12]. Hence we also compare"
+          },
+          {
+            "kind": "delete",
+            "before": "length n is smaller than the representation dimensionality d, which is most often the case with\nsentence representations used by state-of-the-art models in machine translations, such as word-piece\n[34] and byte-pair [28] representations. To improve computational performance for tasks involving\nvery long sequences, self-attention could be restricted to considering only a neighborhood of size r in\nthe input sequence centered around the respective output position. This would increase the maximum\npath length to O(n/r). We plan to investigate this approach further in future work.\nA single convolutional layer with kernel width k < n does not connect all pairs of input and output\npositions. Doing so requires a stack of O(n/k) convolutional layers in the case of contiguous kernels,\nor O(logk(n)) in the case of dilated convolutions [16], increasing the length of the longest paths\nbetween any two positions in the network. Convolutional layers are generally more expensive than\nrecurrent layers, by a factor of k. Separable convolutions [6], however, decrease the complexity\nconsiderably, to O(k · n · d + n · d2). Even with k = n, however, the complexity of a separable\nconvolution is equal to the combination of a self-attention layer and a point-wise feed-forward layer,\nthe approach we take in our model.\nAs side beneﬁt, self-attention could yield more interpretable models. We inspect attention distributions\nfrom our models and present and discuss examples in the appendix. Not only do individual attention\nheads clearly learn to perform different tasks, many appear to exhibit behavior related to the syntactic\nand semantic structure of the sentences.\nWe trained on the standard WMT 2014 English-German dataset consisting of about 4.5 million\nsentence pairs. Sentences were encoded using by",
+            "after": ""
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "5\nTraining\nThis section describes the training regime for our models.\n5.1\nTraining Data and Batching"
+          },
+          {
+            "kind": "replace",
+            "before": "6\nResults\n6.1\nMachine Translation",
+            "after": "length n is smaller than the representation dimensionality d, which is most often the case with\nsentence representations used by state-of-the-art models in machine translations, such as word-piece\n[38] and byte-pair [31] representations. To improve computational performance for tasks involving\nvery long sequences, self-attention could be restricted to considering only a neighborhood of size r in\nthe input sequence centered around the respective output position. This would increase the maximum\npath length to O(n/r). We plan to investigate this approach further in future work.\nA single convolutional layer with kernel width k < n does not connect all pairs of input and output\npositions. Doing so requires a stack of O(n/k) convolutional layers in the case of contiguous kernels,\nor O(logk(n)) in the case of dilated convolutions [18], increasing the length of the longest paths\nbetween any two positions in the network. Convolutional layers are generally more expensive than\nrecurrent layers, by a factor of k. Separable convolutions [6], however, decrease the complexity\nconsiderably, to O(k · n · d + n · d2). Even with k = n, however, the complexity of a separable\nconvolution is equal to the combination of a self-attention layer and a point-wise feed-forward layer,\nthe approach we take in our model.\nAs side benefit, self-attention could yield more interpretable models. We inspect attention distributions\nfrom our models and present and discuss examples in the appendix. Not only do individual attention\nheads clearly learn to perform different tasks, many appear to exhibit behavior related to the syntactic\nand semantic structure of the sentences.\nWe trained on the standard WMT 2014 English-German dataset consisting of about 4.5 million\nsentence pairs. Sentences were encoded using b"
+          },
+          {
+            "kind": "replace",
+            "before": "vocabulary [34]. Sentence pairs were batched together by approximate sequence length. Each training",
+            "after": "vocabulary [38]. Sentence pairs were batched together by approximate sequence length. Each training"
+          },
+          {
+            "kind": "replace",
+            "before": "bottom line of table 3), step time was 1.0 seconds, and the models were trained for 300,000 steps or\n3.5 days.\nWe used the Adam optimizer [18] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning",
+            "after": "bottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps\n(3.5 days).\nWe used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning"
+          },
+          {
+            "kind": "replace",
+            "before": "This corresponds to increasing the learning rate linearly for the ﬁrst warmup_steps training steps,",
+            "after": "This corresponds to increasing the learning rate linearly for the first warmup_steps training steps,"
+          },
+          {
+            "kind": "delete",
+            "before": "Residual Dropout\nWe apply dropout [30] to the output of each sub-layer, before it is added to the\nsub-layer input and normalized. In addition, we apply dropout to the sums of the embeddings and the\npositional encodings in both the encoder and decoder stacks. For the base model, we use a rate of\nPdrop = 0.1.\nAttention Dropout\nQuery to key attentions are structurally similar to hidden-to-hidden weights in\na feed-forward network, albeit across positions. The softmax activations yielding attention weights\ncan then be seen as the analogue of hidden layer activations. A natural possibility is to extend dropout\n[30] to attention. We implement attention dropout by dropping out attention weights as,\nAttention(Q, K, V ) = dropout(softmax(QKT\n√\nd\n))V\nIn addition to residual dropout, we found attention dropout to be beneﬁcial for our parsing experi-\nments.\nLabel Smoothing\nDuring training, we employed label smoothing of value ϵls = 0.1 [32]. This\nhurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.\nOn the WMT 2014 English-to-German translation task, Our big transformer model (Transformer\n(big) in Table 2) outperforms the best previously reported models (including ensembles) by more\nthan 2.0 BLEU, establishing a new state-of-the-art BLEU score of 28.4. The conﬁguration of this\nmodel is listed in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base\nmodel surpasses all previously published models and ensembles, at a fraction of the training cost of\nany of the previous best models.",
+            "after": ""
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "6\nResults\n6.1\nMachine Translation"
+          },
+          {
+            "kind": "delete",
+            "before": "6.3\nEnglish Constituency Parsing",
+            "after": ""
+          },
+          {
+            "kind": "replace",
+            "before": "ByteNet [16]",
+            "after": "ByteNet [18]"
+          },
+          {
+            "kind": "replace",
+            "before": "Deep-Att + PosUnk [35]",
+            "after": "Deep-Att + PosUnk [39]"
+          },
+          {
+            "kind": "replace",
+            "before": "GNMT + RL [34]",
+            "after": "GNMT + RL [38]"
+          },
+          {
+            "kind": "replace",
+            "before": "MoE [29]",
+            "after": "MoE [32]"
+          },
+          {
+            "kind": "replace",
+            "before": "Deep-Att + PosUnk Ensemble [35]",
+            "after": "Deep-Att + PosUnk Ensemble [39]"
+          },
+          {
+            "kind": "replace",
+            "before": "GNMT + RL Ensemble [34]",
+            "after": "GNMT + RL Ensemble [38]"
+          },
+          {
+            "kind": "replace",
+            "before": "41.0",
+            "after": "41.8"
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "Residual Dropout\nWe apply dropout [33] to the output of each sub-layer, before it is added to the\nsub-layer input and normalized. In addition, we apply dropout to the sums of the embeddings and the\npositional encodings in both the encoder and decoder stacks. For the base model, we use a rate of\nPdrop = 0.1.\nLabel Smoothing\nDuring training, we employed label smoothing of value ϵls = 0.1 [36]. This\nhurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.\nOn the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0\nBLEU, establishing a new state-of-the-art BLEU score of 28.4. The configuration of this model is\nlisted in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base model\nsurpasses all previously published models and ensembles, at a fraction of the training cost of any of\nthe competitive models."
+          },
+          {
+            "kind": "replace",
+            "before": "used beam search with a beam size of 4 and length penalty α = 0.6 [34]. These hyperparameters",
+            "after": "used beam search with a beam size of 4 and length penalty α = 0.6 [38]. These hyperparameters"
+          },
+          {
+            "kind": "replace",
+            "before": "inference to input length + 50, but terminate early when possible [34].",
+            "after": "inference to input length + 50, but terminate early when possible [38]."
+          },
+          {
+            "kind": "replace",
+            "before": "architectures from the literature. We estimate the number of ﬂoating point operations used to train a",
+            "after": "architectures from the literature. We estimate the number of floating point operations used to train a"
+          },
+          {
+            "kind": "replace",
+            "before": "single-precision ﬂoating-point capacity of each GPU 3.",
+            "after": "single-precision floating-point capacity of each GPU 5."
+          },
+          {
+            "kind": "replace",
+            "before": "development set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3.\nIn Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2. While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.\nIn Table 3 rows (B), we observe that reducing the attention key size dk hurts model quality. This\nsuggests that determining compatibility is not easy and that a more sophisticated compatibility\nfunction than dot product may be beneﬁcial. We further observe in rows (C) and (D) that, as expected,\nbigger models are better, and dropout is very helpful in avoiding over-ﬁtting.\nTo evaluate if the Transformer can generalize to other tasks we performed experiments on English\nconstituency parsing. This task presents speciﬁc challenges: the output is subject to strong structural\nconstraints and is signiﬁcantly longer than the input. Furthermore, RNN sequence-to-sequence\nmodels have not been able to attain state-of-the-art results in small-data regimes [33].\nWe trained a 4-layer transformer with dmodel = 1024 on the Wall Street Journal (WSJ) portion of the\nPenn Treebank [23], about 40K training sentences. We also trained it in a semi-supervised setting,\nusing the larger high-conﬁdence and BerkleyParser corpora from with approximately 17M sentences\n3We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.",
+            "after": "5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively."
+          },
+          {
+            "kind": "replace",
+            "before": "Table 3: Variations on the Transformer architecture. Unlisted hyperparameter values are identical\nto those of the base model. All metrics are on the English-to-German translation development set,\nnewstest2013. Listed perplexities are per-wordpiece, according to our byte-pair encoding, and should\nnot be compared to per-word perplexities.",
+            "after": "6.3\nEnglish Constituency Parsing\nTable 3: Variations on the Transformer architecture. Unlisted values are identical to those of the base\nmodel. All metrics are on the English-to-German translation development set, newstest2013. Listed\nperplexities are per-wordpiece, according to our byte-pair encoding, and should not be compared to\nper-word perplexities."
+          },
+          {
+            "kind": "replace",
+            "before": "1024",
+            "after": "2048"
+          },
+          {
+            "kind": "delete",
+            "before": "65",
+            "after": ""
+          },
+          {
+            "kind": "delete",
+            "before": "65",
+            "after": ""
+          },
+          {
+            "kind": "delete",
+            "before": "65",
+            "after": ""
+          },
+          {
+            "kind": "delete",
+            "before": "65",
+            "after": ""
+          },
+          {
+            "kind": "delete",
+            "before": "65",
+            "after": ""
+          },
+          {
+            "kind": "delete",
+            "before": "65",
+            "after": ""
+          },
+          {
+            "kind": "delete",
+            "before": "65",
+            "after": ""
+          },
+          {
+            "kind": "replace",
+            "before": "65",
+            "after": "(E)\npositional embedding instead of sinusoids\n4.92\n25.7"
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "development set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3.\nIn Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2. While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.\nIn Table 3 rows (B), we observe that reducing the attention key size dk hurts model quality. This\nsuggests that determining compatibility is not easy and that a more sophisticated compatibility\nfunction than dot product may be beneficial. We further observe in rows (C) and (D) that, as expected,\nbigger models are better, and dropout is very helpful in avoiding over-fitting. In row (E) we replace our\nsinusoidal positional encoding with learned positional embeddings [9], and observe nearly identical\nresults to the base model.\nTo evaluate if the Transformer can generalize to other tasks we performed experiments on English\nconstituency parsing. This task presents specific challenges: the output is subject to strong structural\nconstraints and is significantly longer than the input. Furthermore, RNN sequence-to-sequence\nmodels have not been able to attain state-of-the-art results in small-data regimes [37].\nWe trained a 4-layer transformer with dmodel = 1024 on the Wall Street Journal (WSJ) portion of the\nPenn Treebank [25], about 40K training sentences. We also trained it in a semi-supervised setting,\nusing the larger high-confidence and BerkleyParser corpora from with approximately 17M sentences\n[37]. We used a vocabulary of 16K tokens for the WSJ only setting and a vocabulary of 32K tokens\nfor the semi-supervised setting.\nWe performed "
+          },
+          {
+            "kind": "replace",
+            "before": "Vinyals & Kaiser el al. (2014) [33]",
+            "after": "Vinyals & Kaiser el al. (2014) [37]"
+          },
+          {
+            "kind": "replace",
+            "before": "Petrov et al. (2006) [27]",
+            "after": "Petrov et al. (2006) [29]"
+          },
+          {
+            "kind": "replace",
+            "before": "Zhu et al. (2013) [36]",
+            "after": "Zhu et al. (2013) [40]"
+          },
+          {
+            "kind": "replace",
+            "before": "Zhu et al. (2013) [36]",
+            "after": "Zhu et al. (2013) [40]"
+          },
+          {
+            "kind": "replace",
+            "before": "Huang & Harper (2009) [13]",
+            "after": "Huang & Harper (2009) [14]"
+          },
+          {
+            "kind": "replace",
+            "before": "McClosky et al. (2006) [24]",
+            "after": "McClosky et al. (2006) [26]"
+          },
+          {
+            "kind": "replace",
+            "before": "Vinyals & Kaiser el al. (2014) [33]",
+            "after": "Vinyals & Kaiser el al. (2014) [37]"
+          },
+          {
+            "kind": "insert",
+            "before": "",
+            "after": "Luong et al. (2015) [23]\nmulti-task\n93.0"
+          },
+          {
+            "kind": "delete",
+            "before": "[33]. We used a vocabulary of 16K tokens for the WSJ only setting and a vocabulary of 32K tokens\nfor the semi-supervised setting.\nWe performed only a small number of experiments to select the dropout, both attention and residual\n(section 5.4), learning rates and beam size on the Section 22 development set, all other parameters\nremained unchanged from the English-to-German base translation model. During inference, we",
+            "after": ""
+          },
+          {
+            "kind": "replace",
+            "before": "Our results in Table 4 show that despite the lack of task-speciﬁc tuning our model performs sur-",
+            "after": "Our results in Table 4 show that despite the lack of task-specific tuning our model performs sur-"
+          },
+          {
+            "kind": "replace",
+            "before": "In contrast to RNN sequence-to-sequence models [33], the Transformer outperforms the Berkeley-\nParser [27] even when training only on the WSJ training set of 40K sentences.\n9\n7\nConclusion\nReferences\nIn this work, we presented the Transformer, the ﬁrst sequence transduction model based entirely on",
+            "after": "In contrast to RNN sequence-to-sequence models [37], the Transformer outperforms the Berkeley-\nParser [29] even when training only on the WSJ training set of 40K sentences.\nIn this work, we presented the Transformer, the first sequence transduction model based entirely on"
+          }
+        ],
+        "truncated": true
+      }
+    },
+    {
+      "name": "Material citation graph has anchored edges",
+      "passed": true,
+      "nodes": 39,
+      "edges": 261,
+      "nodes_with_incoming": 31
+    },
+    {
+      "name": "CSV plot and exports: line",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "CSV plot and exports: bar",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "CSV plot and exports: scatter",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "CSV plot and exports: radar",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "CSV plot and exports: radar3d",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "Non-finite CSV rejected",
+      "passed": true,
+      "status": 422
+    },
+    {
+      "name": "Metadata edit and deletion of test-created copy",
+      "passed": true
+    },
+    {
+      "name": "Real arXiv discovery",
+      "passed": true,
+      "status": 200,
+      "results": [
+        {
+          "id": "1706.03762v7",
+          "retrieval": {
+            "source": "arxiv",
+            "cache_state": "fresh",
+            "fetched_at": "2026-11-14T19:54:12.052639+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tracking topic configuration",
+      "passed": true
+    },
+    {
+      "name": "Single-paper GPU and Adam facts",
+      "passed": true,
+      "question": "这篇论文训练用了什么 GPU 型号和数量？Adam 的 beta1、beta2 和 epsilon 是多少？请依据原文回答。",
+      "seconds": 10.14,
+      "result": {
+        "answer": "论文中的模型在一台机器上的 8 块 NVIDIA P100 GPU 上训练。 [S2] [S3]\n\n训练使用 Adam 优化器，其参数为 β1 = 0.9、β2 = 0.98、ϵ = 10^-9。 [S1]",
+        "mode": "generated",
+        "execution": null,
+        "source_pages": [
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 7,
+            "source_id": "S1"
+          },
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 7,
+            "source_id": "S2"
+          },
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 2,
+            "source_id": "S3"
+          }
+        ],
+        "tool_calls": null,
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 4266.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 3 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Sixth author and institution",
+      "passed": true,
+      "question": "Attention Is All You Need 的第六位作者是谁？原文列出的所属机构是什么？请按作者顺序核对。",
+      "seconds": 6.95,
+      "result": {
+        "answer": "按首页作者列表从上到下核对，第六位作者是 Aidan N. Gomez。 [S1]\n\nAidan N. Gomez 在原文首页列出的所属机构为 University of Toronto（多伦多大学）。 [S1]\n\nAidan N. Gomez 姓名旁带有脚注标记，该脚注注明相关工作是在 Google Brain 期间完成的（Work performed while at Google Brain）。 [S1] [S4]\n\n原文脚注说明所有带星号作者为同等贡献（Equal contribution），且署名顺序是随机排列的（Listing order is random）。 [S4]",
+        "mode": "generated",
+        "execution": null,
+        "source_pages": [
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 1,
+            "source_id": "S1"
+          },
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 1,
+            "source_id": "S4"
+          }
+        ],
+        "tool_calls": null,
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 312.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 2 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Scanned paper GPU and Adam facts",
+      "passed": true,
+      "question": "训练使用什么 GPU 型号？Adam 的 beta2 参数是多少？",
+      "seconds": 5.19,
+      "result": {
+        "answer": "论文中训练使用的 GPU 为一台机器上的 8 块 NVIDIA P100。 [S2]\n\nbig 模型在 WMT 2014 英德翻译任务上的训练使用了 8 块 P100 GPU，耗时 3.5 天。 [S5]\n\n训练使用 Adam 优化器，其参数为 β1 = 0.9、β2 = 0.98、ε = 10^-9。 [S1]",
+        "mode": "generated",
+        "execution": null,
+        "source_pages": [
+          {
+            "paper_id": "abd2e2c84bc34bd0b1682be9b952ac49",
+            "page": 7,
+            "source_id": "S1"
+          },
+          {
+            "paper_id": "abd2e2c84bc34bd0b1682be9b952ac49",
+            "page": 7,
+            "source_id": "S2"
+          },
+          {
+            "paper_id": "abd2e2c84bc34bd0b1682be9b952ac49",
+            "page": 7,
+            "source_id": "S5"
+          }
+        ],
+        "tool_calls": null,
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 127 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 328.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 3 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Unsupported hardware serial number is not invented",
+      "passed": true,
+      "question": "原文中训练使用的 GPU 的硬件序列号分别是多少？只报告原文明确给出的硬件序列号。",
+      "seconds": 4.86,
+      "result": {
+        "answer": "不足以确定：原文仅说明训练使用一台机器上的 8 块 NVIDIA P100 GPU，未给出任何 GPU 硬件序列号。",
+        "mode": "generated",
+        "execution": null,
+        "source_pages": [],
+        "tool_calls": null,
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 281.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 0 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Cross-paper BERT vs Transformer evidence coverage",
+      "passed": true,
+      "question": "对比这两篇论文：BERT 的架构与原始 Transformer Encoder 有什么关系？BERT 保留什么、去掉什么？分别引用两篇原文。",
+      "seconds": 21.26,
+      "result": {
+        "answer": "原始 Transformer 采用整体的编码器-解码器架构，其编码器和解码器都由堆叠的自注意力层与逐点全连接层构成。 [S1]\n\nTransformer 架构完全基于注意力机制，完全舍弃了循环（recurrence）和卷积。 [S9]\n\nBERT 的全称是 Bidirectional Encoder Representations from Transformers，即来自 Transformer 的双向编码器表示。 [S4]\n\nBERT 的 Transformer 使用双向自注意力，而 GPT 的 Transformer 使用受限自注意力，每个 token 只能关注其左侧上下文。 [S3]\n\nBERT 论文指出，双向版本通常被称为“Transformer encoder”，而仅左上下文的版本被称为“Transformer decoder”，因为它可用于文本生成。 [S2]\n\nBERT 的表示在所有层中同时以左侧和右侧上下文为条件（联合条件化），这是它区别于单向模型的关键设计。 [S4] [S7]\n\nBERT 保留了 Transformer 的自注意力机制，并利用该机制把文本对拼接后进行编码，从而把编码与双向交叉注意力统一为一个阶段，可端到端微调。 [S8]\n\n不足以确定：所给证据未包含 BERT 相对原始 Transformer Encoder 具体保留或去掉哪些组件的直接描述（例如是否去掉了 Transformer 的解码器、以及 BERT 论文第 3.4 节所述的两处具体差异），无法据此确定细节。",
+        "mode": "generated",
+        "execution": null,
+        "source_pages": [
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 3,
+            "source_id": "S1"
+          },
+          {
+            "paper_id": "ecab925554144ec2bce4964b01916455",
+            "page": 4,
+            "source_id": "S2"
+          },
+          {
+            "paper_id": "ecab925554144ec2bce4964b01916455",
+            "page": 3,
+            "source_id": "S3"
+          },
+          {
+            "paper_id": "ecab925554144ec2bce4964b01916455",
+            "page": 1,
+            "source_id": "S4"
+          },
+          {
+            "paper_id": "ecab925554144ec2bce4964b01916455",
+            "page": 13,
+            "source_id": "S7"
+          },
+          {
+            "paper_id": "ecab925554144ec2bce4964b01916455",
+            "page": 5,
+            "source_id": "S8"
+          },
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 1,
+            "source_id": "S9"
+          }
+        ],
+        "tool_calls": null,
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 444 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 344.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 7 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Native Agent tool execution and synthesis",
+      "passed": true,
+      "question": "请查原文确认训练 GPU，并核读相关页面给出 Adam 参数。",
+      "seconds": 25.05,
+      "result": {
+        "answer": "模型在一台机器的 8 块 NVIDIA P100 GPU 上训练。 [S1]\n\n基础模型每步训练约 0.4 秒，共训练 100,000 步（12 小时）；大模型每步 1.0 秒，共训练 300,000 步（3.5 天）。 [S1]\n\n大模型在 WMT 2014 英德翻译任务上的训练耗时 3.5 天，使用 8 块 P100 GPU。 [S2]\n\n训练使用 Adam 优化器，参数为 β1 = 0.9、β2 = 0.98、ϵ = 10^-9。 [S6]\n\n学习率随训练步数按公式变化：前 warmup_steps 步线性增长，之后与步数的平方根倒数成比例下降；warmup_steps = 4000。 [S7] [S8]\n\nAdam 优化器的引用文献为 Kingma 与 Ba 的《Adam: A method for stochastic optimization》（ICLR, 2015）。 [S16]",
+        "mode": "generated",
+        "execution": "agent",
+        "source_pages": [
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 7,
+            "source_id": "S1"
+          },
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 8,
+            "source_id": "S2"
+          },
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 7,
+            "source_id": "S6"
+          },
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 7,
+            "source_id": "S7"
+          },
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 7,
+            "source_id": "S8"
+          },
+          {
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "page": 11,
+            "source_id": "S16"
+          }
+        ],
+        "tool_calls": 4,
+        "trace": [
+          {
+            "tool": "scope",
+            "message": "已锁定 1 篇论文；联网发现未开启",
+            "status": "done",
+            "role": "核读"
+          },
+          {
+            "tool": "planner",
+            "message": "规划智能体产出 3 条子查询，交接核读智能体执行",
+            "status": "done",
+            "role": "规划",
+            "arguments": {
+              "sub_queries": [
+                {
+                  "query": "训练硬件 GPU 型号 数量 machine configuration",
+                  "paper_id": "ebd3f4cb9e104702a10201cfb2904d27"
+                },
+                {
+                  "query": "Adam optimizer β1 β2 epsilon learning rate warmup",
+                  "paper_id": "ebd3f4cb9e104702a10201cfb2904d27"
+                },
+                {
+                  "query": "Adam optimizer parameter settings",
+                  "paper_id": null
+                }
+              ]
+            }
+          },
+          {
+            "tool": "planning",
+            "message": "第 1 轮：正在选择工具",
+            "status": "running",
+            "round": 1,
+            "role": "核读"
+          },
+          {
+            "tool": "tool_start",
+            "message": "正在调用 search_evidence",
+            "status": "running",
+            "round": 1,
+            "role": "核读"
+          },
+          {
+            "tool": "search_evidence",
+            "message": "混合召回 40 条，精排保留 5 条原文证据",
+            "status": "done",
+            "arguments": {
+              "query": "训练硬件 GPU 型号 数量 machine configuration NVIDIA P100",
+              "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+              "limit": 5
+            },
+            "round": 1,
+            "role": "核读"
+          },
+          {
+            "tool": "tool_start",
+            "message": "正在调用 search_evidence",
+            "status": "running",
+            "round": 1,
+            "role": "核读"
+          },
+          {
+            "tool": "search_evidence",
+            "message": "混合召回 40 条，精排保留 5 条原文证据",
+            "status": "done",
+            "arguments": {
+              "query": "Adam optimizer beta1 beta2 epsilon learning rate warmup",
+              "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+              "limit": 5
+            },
+            "round": 1,
+            "role": "核读"
+          },
+          {
+            "tool": "planning",
+            "message": "第 2 轮：正在选择工具",
+            "status": "running",
+            "round": 2,
+            "role": "核读"
+          },
+          {
+            "tool": "tool_start",
+            "message": "正在调用 read_page",
+            "status": "running",
+            "round": 2,
+            "role": "核读"
+          },
+          {
+            "tool": "read_page",
+            "message": "读取第 7 页，得到 6 条原文块",
+            "status": "done",
+            "arguments": {
+              "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+              "page": 7
+            },
+            "round": 2,
+            "role": "核读"
+          },
+          {
+            "tool": "planning",
+            "message": "第 3 轮：正在选择工具",
+            "status": "running",
+            "round": 3,
+            "role": "核读"
+          },
+          {
+            "tool": "tool_start",
+            "message": "正在调用 search_evidence",
+            "status": "running",
+            "round": 3,
+            "role": "核读"
+          },
+          {
+            "tool": "search_evidence",
+            "message": "混合召回 40 条，精排保留 5 条原文证据",
+            "status": "done",
+            "arguments": {
+              "query": "Adam optimizer parameter settings",
+              "paper_id": null,
+              "limit": 5
+            },
+            "round": 3,
+            "role": "核读"
+          },
+          {
+            "tool": "planning",
+            "message": "第 4 轮：正在选择工具",
+            "status": "running",
+            "round": 4,
+            "role": "核读"
+          },
+          {
+            "tool": "synthesis",
+            "message": "综合智能体：根据 17 条原文证据组织回答并校验引用",
+            "status": "running",
+            "role": "综合"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 6 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Real model SSE token/claim/final sequence",
+      "passed": true,
+      "event_counts": {
+        "claim": 2,
+        "step": 1,
+        "result": 1,
+        "token": 23
+      }
+    },
+    {
+      "name": "Academic translation to 中文",
+      "passed": true,
+      "status": 200,
+      "output": "我们使用了Adam优化器，其中beta1 = 0.9，beta2 = 0.98。"
+    },
+    {
+      "name": "Academic translation to 英文",
+      "passed": true,
+      "status": 200,
+      "output": "This study uses the Adam optimizer, with beta1 of 0.9 and beta2 of 0.98."
+    },
+    {
+      "name": "Real page translation and Markdown export",
+      "passed": true,
+      "status": 200,
+      "excerpt": "5\n训练\n\n本节描述我们模型的训练方案。\n\n5.1\n训练数据与批处理\n\n5.2\n硬件与时间安排\n\n5.3\n优化器\n\n5.4\n正则化\n\n我们在训练过程中使用了三种正则化方法：\n\n\n\n长度 n 小于表示维度 d，这在机器翻译中最先进模型使用的句子表示中最为常见，例如 word-piece [38] 和 byte-pair [31] 表示。为了提高涉及非常长序列的任务的计算性能，可以将自注意力限制为仅考虑输入序列中以相应输出位置为中心、大小为 r 的邻域。这将使最大路径长度增加到 O(n/r)。我们计划在未来的工作中进一步研究这一方法。\n\n单个卷积层的核宽度 k < n 时，无法连接所有输入和输出位置对。要做到这一点，在连续核的情况下需要堆叠 O(n/k) 个卷积层，在空洞卷积 [18] 的情况下需要 O(logk(n)) 个卷积层，从而增加了网络中任意两个位置之间最长路径的长度。卷积层通常比循环层更昂贵，高出 k 倍。然而，可分离卷积 [6] 大幅降低了复杂度，降至 O(k · n · d + n · d2)。即便如此，即使 k = n，可分离卷积的复杂度也等于自注意力层与逐位置前馈层的组合，这正是我们模型所采用的方法。\n\n附带的好处是，自注意力可能产生更具可解释性的模型。我们检查了模型中的注意力分布，并在附录中展示和讨论了示例。不仅单个注意力头明显学会了执行不同的任务，许多注意力头似乎还表现出与句子句法和语义结构相关的行为。\n\n我们在标准 WMT 2014 英语-德语数据集上进行训练，该数据集包含约 450 万个句子对。句子使用字节对编码 [3] 进行编码，共享的源-目标词汇表约"
+    },
+    {
+      "name": "Real writing: outline",
+      "passed": true,
+      "status": 200,
+      "output": "# Transformer 阅读分析工具：方案提纲\n\n（本提纲区分\"已知论文方法\"与\"待验证建议\"；所有实验均为待执行计划，未包含任何结果。）\n\n---\n\n## Abstract\n\nTransformer 架构完全基于注意力机制，摒弃循环与卷积结构，在机器翻译等任务上展现出更高的质量与更强的可并行性 [P:ebd3f4cb9e104702a10201cfb2904d27]。然而，长序列场景下自注意力的计算开销仍是开放问题，且注意力分布的可解释性尚未被系统化利用 [P:ebd3f4cb9e104702a10201cfb2904d27]。本文提出一个面向 Transformer 的\"阅读分析工具\"方案：以已发表论文中的已知组件（缩放点积注意力、多头注意力、无参数位置表示、训练与正则化配置）为基础分析对象，并在此之上提出若干**建议（待验证）**的分析与优化模块。所有验证性实验均为待执行计划。\n\n---\n\n## Introduction\n\n1. **背景**：主流序列转换模型此前依赖复杂的循环或卷积编码器—解码器结构，并通过注意力连接两端 [P:ebd3f4cb9e104702a10201cfb2904d27]。\n2. **已知贡献**：Transformer 仅用注意力机制替代循环与卷积，在 WMT 2014 英德任务上取得 28.4 BLEU，英法任务上单模型取得 41.8 BLEU，并在英语成分句法分析上验证了跨任务泛化能力 [P:ebd3f4cb9e104702a10201cfb2904d27]。\n3. **已知局限（来自论文本身）**：当序列长度 n 小于表示维度 d 时自注意力层计算效率尚可，但对超长序列，论文提出将自注意力限制在以输出位置为中心、半径为 r 的邻域内，可把最大路径长度增至 O(n/r)，并将该思路列为未来工作 [P:ebd3f4cb9e104702a10201cfb2904d27]。\n4. **本文目标**：构建一个简短的阅读分析工具，用于（a）解析并可视化论文中的已知机制；（b）承载后续待验证的建议模块。\n5. **声明**：除明确标注为\"来自论文\"的条目外，其余模块与指标均为**建议（待验证）**，尚无实验数据支持。\n\n---\n\n## Related Work\n\n- **基于注意力的序列转换**：Transformer 之前的最佳模型通过注意力连接编码器与解码器；Transformer 进一步仅保留注意力机制 [P:ebd3f4cb9e104702a10201cfb2904d27]。\n- **与卷积结构的复杂度对比**：单层卷积（核宽 k < n）无法连接所有位置对；连续核需 O(n/k) 层堆叠，扩张卷积需 O(log_k n) 层；可分离卷积的复杂度为 O(k·n·d + n·d²)，即使 k = n 也等于\"一层自注意力 + 逐点前馈\"的组合，即本文所采用的结构 [P:ebd3f4cb9e104702a10201cfb2904d27]。\n- **可解释性线索**：论文指出单个注意力头明显学习了不同功能，许多头的行为与句法、语义结构相关 [P:ebd3f4cb9e104702a10201cfb2904d27]。\n- **说明**：本方案目前仅基于上述单一文献；其他对比基线（如更强的现代架构、其他可解释性工具）属于**建议（待验证）**的后续扩展方向，本文不引用未提供的来源。\n\n---\n\n## 方法计划\n\n### A. 已知论文方法（作为工具的解析与复现对象）\n\n- A1 **缩放点积注意力、多头注意力、无参数位置表示**：作为工具中可交互查看的核心模块 [P:ebd3f4cb9e104702a10201cfb2904d27]。\n- A2 **训练配置的参数化展示**：WMT 2014 英德约 4.5M 句对、BPE 共享词表约 37000；英法 36M 句、32000 词片词表；批大小约 25000 源/目标 token [P:ebd3f4cb9e104702a10201cfb2904d27]。\n- A3 **优化器与学习率调度**：Adam（β₁=0.9, β₂=0.98, ε=1e-9），warmup=4000 的逆平方根调度；三种正则化 [P:ebd3f4cb9e104702a10201cfb2904d27]。\n- A4 **训练成本基线**：8×P100 上 base 模型 100,000 步约 12 小时，big 模型 300,000 步约 3.5 天 [P:ebd3f4cb9e104702a10201cfb2904d27]。\n\n### B. 建议模块（待验证，未有结果）\n\n- B1 **邻域受限注意力可视化模块**（建议）：针对论文提出的半径 r 邻域限制方案 [P:ebd3f4cb9e104702a10201cfb2904d27]，增加 r 的交互式扫描与复杂度/路径长度对比面板。此工具设计为本文建议。\n- B2 **注意力头功能聚类面板**（建议）：在论文观察到的\"不同头学不同功能\"现象基础上 [P:ebd3f4cb9e104702a10201cfb2904d27]，增加无监督聚类视图。该聚类方法为本文建议。\n- B3 **阅读注释层**（建议）：把论文的训练超参、数据规模、BLEU 数值结构化为可查询字段，便于读者对照复现；字段提取规则为本文建议。\n- B4 **（建议，扩展）** 其他架构对比与更长上下文设置，暂不作为本文范围。\n\n---\n\n## 验证计划（全部为待执行实验）\n\n1. **R1 计算开销测量**（待执行）：在不同序列长度 n 与邻域半径 r 下测量时间/显存开销，检验 O(n/r) 路径长度增长趋势 [P:ebd3f4cb9e104702a10201cfb2904d27] 的假设。指标：训练步时间、峰值显存、BLEU 变化。\n2. **R2 训练配置复现检查**（待执行）：按 A2–A4 配置进行小规模训练，对照论文报告的 28.4 / 41.8 BLEU 与训练时长，评估复现偏差来源。\n3. **R3 头功能聚类有效性**（待执行）：对 B2 的聚类视图进行人工标注一致性评估，检验其是否再现\"头功能分化\"的定性观察 [P:ebd3f4cb9e104702a10201cfb2904d27]。\n4. **R4 可用性评估**（待执行）：邀请若干读者使用 B3 阅读注释层，记录任务完成时间与错误率；无预期结果。\n5. **风险与边界**：单文献来源限制了对比结论的普适性；所有 R1–R4 均在无结果状态下规划，任何数值结论需实验完成后补充。\n\n---\n\n## References\n\n- [P:ebd3f4cb9e104702a10201cfb2904d27] Ashish Vaswani; Noam Shazeer; Niki Parmar; Jakob Uszkoreit; Llion Jones; Aidan N. Gomez; Łukasz Kaiser; Illia Polosukhin. 2017. Attention Is All You Need. https://arxiv.org/abs/1706.03762"
+    },
+    {
+      "name": "Real writing: mermaid",
+      "passed": true,
+      "status": 200,
+      "output": "## Transformer 阅读分析工具（方案级流程图）\n\n> 说明：以下为**方案构想**，非已实现系统。图中\"已知方法\"节点仅转述所选论文内容并标注引用；\"待验证建议\"节点为本方案提出的研究构想，均未验证。\n\n```mermaid\nflowchart TD\n  A1 \"论文全文输入（PDF或纯文本）\"\n  A2 \"论文元数据（标题、作者、arXiv标识）\"\n  B1 \"章节切分（摘要、方法、训练、附录）\"\n  B2 \"方法要素抽取（注意力机制、结构、训练设置）\"\n  B3 \"证据定位（页码与段落锚点）\"\n  C1 \"缩放点积注意力（论文核心机制）\"\n  C2 \"多头注意力（不同子空间并行）\"\n  C3 \"参数无关位置表示（正弦位置编码）\"\n  C4 \"编码器-解码器堆叠结构（无循环与卷积）\"\n  C5 \"训练配置（Adam与warmup学习率）\"\n  C6 \"注意力分布可解释性观察（附录示例）\"\n  C7 \"长序列邻域限制自注意力（论文所述future work）\"\n  D1 \"方法条目自动摘要（建议，待验证）\"\n  D2 \"阅读评分与理解自测题生成（建议，待验证）\"\n  D3 \"多论文方法对照矩阵（建议，待验证）\"\n  D4 \"注意力可视化辅助阅读（建议，待验证）\"\n  E1 \"已知方法清单（逐条附引用标记）\"\n  E2 \"建议清单（标注待验证与未实现）\"\n  E3 \"阅读分析报告（两类条目分栏输出）\"\n\n  A1 --> B1\n  A2 --> B1\n  B1 --> B2\n  B2 --> B3\n  B3 --> C1\n  B3 --> C2\n  B3 --> C3\n  B3 --> C4\n  B3 --> C5\n  B3 --> C6\n  B3 --> C7\n  B3 --> D1\n  B3 --> D2\n  D1 --> D3\n  D2 --> D3\n  D4 --> D3\n  C1 --> E1\n  C2 --> E1\n  C3 --> E1\n  C4 --> E1\n  C5 --> E1\n  C6 --> E1\n  C7 --> E1\n  D3 --> E2\n  E1 --> E3\n  E2 --> E3\n```\n\n### 节点依据与边界\n\n**已知论文方法（来自 [P:ebd3f4cb9e104702a10201cfb2904d27]）**\n\n| 节点 | 文献依据 |\n|---|---|\n| C1 缩放点积注意力 | 论文提出 scaled dot-product attention [P:ebd3f4cb9e104702a10201cfb2904d27] |\n| C2 多头注意力 | 论文提出 multi-head attention [P:ebd3f4cb9e104702a10201cfb2904d27] |\n| C3 参数无关位置表示 | 论文提出 parameter-free position representation [P:ebd3f4cb9e104702a10201cfb2904d27] |\n| C4 仅基于注意力的架构 | 提出完全依赖注意力、舍弃循环与卷积的 Transformer [P:ebd3f4cb9e104702a10201cfb2904d27] |\n| C5 训练配置 | 使用 Adam（β1=0.9、β2=0.98、ε=1e-9），warmup_steps=4000 的学习率调度 [P:ebd3f4cb9e104702a10201cfb2904d27] |\n| C6 可解释性观察 | 论文称自注意力可能带来更可解释的模型，并在附录展示注意力分布示例，个别头表现出与句法、语义结构相关的行为 [P:ebd3f4cb9e104702a10201cfb2904d27] |\n| C7 邻域限制自注意力 | 论文提出可将自注意力限制在以输出位置为中心、半径 r 的邻域，最大路径长度增至 O(n/r)，并明确列为 future work 计划进一步研究 [P:ebd3f4cb9e104702a10201cfb2904d27] |\n\n**待验证建议（本方案构想，无文献支持，未实现）**\nD1 自动摘要、D2 评分与自测题生成、D3 多论文对照矩阵、D4 注意力可视化辅助阅读——均为建议性研究方向，效果、可行性与实现细节均待验证。\n\n**边界提醒**：C7 在论文中仅作为未来工作被提出，图中不代表其已被实现或验证；本工具整体尚未开发，仅为方案草图。"
+    }
+  ],
+  "limitations": [
+    "Automated model checks verify selected sample facts and source coverage, not every sentence or full translation quality.",
+    "No deployment, public access, or formal submission is performed.",
+    "Formula LaTeX recovery, full author-affiliation extraction and precise paragraph alignment remain separate capability gaps."
+  ],
+  "initial_status": {
+    "version": "0.1.0",
+    "model": "mimo-v2.6-pro",
+    "llm_configured": true,
+    "embedding_configured": true,
+    "papers": 0
+  },
+  "metadata_quality": {
+    "missing_authors": [
+      "1706.03762v1_img.pdf",
+      "1707.06347v2.pdf",
+      "1910.02054v3.pdf",
+      "2001.08361v1.pdf",
+      "2005.14165v4.pdf",
+      "2010.11929v2.pdf",
+      "2201.11903v6.pdf",
+      "2203.02155v1.pdf",
+      "2205.14135v2.pdf",
+      "2210.02414v2.pdf",
+      "2211.05100v4.pdf",
+      "2303.08774v6.pdf",
+      "2304.08485v2.pdf",
+      "2305.13048v2.pdf",
+      "2305.14314v1.pdf",
+      "2305.18290v3.pdf",
+      "2307.09288v2.pdf",
+      "2310.06825v1.pdf",
+      "2406.14491v2.pdf",
+      "2407.21783v3.pdf",
+      "2412.15115v2.pdf",
+      "2412.19437v1.pdf",
+      "333078981_693988129081760_4712707815225756708_n.pdf",
+      "UnderstandingDeepLearning_02_09_26_C.pdf"
+    ],
+    "unrecognized_titles": [],
+    "partial_papers": [],
+    "unstructured_formula_mode": [
+      "original-page"
+    ]
+  },
+  "graph": {
+    "nodes": 39,
+    "edges": 261,
+    "papers_without_references": [],
+    "note": "Checks anchor existence only, not all reference-match precision/recall."
+  },
+  "summary": {
+    "checks_passed": 32,
+    "checks_total": 32,
+    "failed_checks": [],
+    "imported_pdfs": 39,
+    "imported_pages": 1986,
+    "partial_papers": []
+  },
+  "finished_at": "2026-11-14T19:57:14.433922+00:00"
+}

@@ -1,4 +1,4 @@
-"""Small, durable SQLite store. Every operation owns its connection."""
+"""SQLite 持久化存储，每次操作独立管理连接。"""
 import json
 import os
 import sqlite3
@@ -37,6 +37,16 @@ def init():
         CREATE TABLE IF NOT EXISTS jobs (
           id TEXT PRIMARY KEY, paper_id TEXT, status TEXT, done INTEGER DEFAULT 0,
           total INTEGER DEFAULT 0, message TEXT, created TEXT);
+        CREATE TABLE IF NOT EXISTS chunk_vectors (
+          chunk_id TEXT PRIMARY KEY REFERENCES chunks(id) ON DELETE CASCADE,
+          space TEXT NOT NULL, dimensions INTEGER NOT NULL, vector BLOB NOT NULL);
+        CREATE INDEX IF NOT EXISTS vectors_space ON chunk_vectors(space);
+        CREATE TABLE IF NOT EXISTS document_vectors (
+          paper_id TEXT PRIMARY KEY REFERENCES papers(id) ON DELETE CASCADE,
+          space TEXT NOT NULL, sample_sha TEXT NOT NULL, vector BLOB NOT NULL);
+        CREATE TABLE IF NOT EXISTS reference_imports (
+          id TEXT PRIMARY KEY, paper_id TEXT, status TEXT, done INTEGER, total INTEGER,
+          results TEXT NOT NULL DEFAULT '[]', error TEXT NOT NULL DEFAULT '');
         CREATE TABLE IF NOT EXISTS feedback (arxiv_id TEXT PRIMARY KEY, value INTEGER);
         CREATE TABLE IF NOT EXISTS watches (
           id TEXT PRIMARY KEY, query TEXT, hours REAL, last_run TEXT,
@@ -44,10 +54,17 @@ def init():
         CREATE TABLE IF NOT EXISTS translations (
           paper_id TEXT REFERENCES papers(id) ON DELETE CASCADE,
           page INTEGER, model TEXT, content TEXT, PRIMARY KEY(paper_id,page,model));
+        CREATE TABLE IF NOT EXISTS visual_pages (
+          paper_id TEXT REFERENCES papers(id) ON DELETE CASCADE,
+          page INTEGER, model TEXT, content TEXT, PRIMARY KEY(paper_id,page,model));
+        CREATE TABLE IF NOT EXISTS discovery_cache (
+          query TEXT, result_count INTEGER, fetched_at TEXT, payload TEXT,
+          PRIMARY KEY(query,result_count));
         ''')
-        # A stopped parse cannot be reported as still running after restart.
+        # 服务重启后，不把已停止的解析任务继续标为运行中。
         con.execute("UPDATE jobs SET status='failed', message='服务重启，任务已中断，请重新导入' WHERE status IN ('queued','running')")
         con.execute("UPDATE papers SET status='failed', warning='解析中断，请删除后重新导入' WHERE status='processing'")
+        con.execute("UPDATE reference_imports SET status='failed',error='服务重启，任务已中断，可重新选择未导入条目' WHERE status IN ('queued','running')")
 
 
 def rows(sql, args=()):

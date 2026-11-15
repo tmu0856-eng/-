@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-11-03T15:02:15.563983+00:00",
+  "scope": "Isolated storage; no paid model or embedding calls; runtime performance is machine-specific.",
+  "textbook": {
+    "filename": "UnderstandingDeepLearning_02_09_26_C.pdf",
+    "status": "partial",
+    "job_status": "done",
+    "expected_pages": 541,
+    "pages": 541,
+    "last_page": 541,
+    "characters": 1700687,
+    "seconds": 67.52,
+    "sampled_peak_process_rss_mb": 332.9,
+    "initial_process_rss_mb": 195.6,
+    "unreadable_pages": [
+      2,
+      4,
+      10,
+      12
+    ],
+    "toc_entries": 181,
+    "chunks": 5715,
+    "query": "transformer self attention query key value",
+    "retrieval_mode": "BM25 + TF-IDF（本地词频检索）",
+    "retrieved_pages": [
+      225,
+      239,
+      228,
+      523,
+      530
+    ],
+    "retrieved_excerpts": [
+      "Figure 12.3 Computing attention weights. a) Query vectors qn = βq + Ωqxn\nand key vectors kn = βk + Ωkxn are computed for each input xn. b) The dot\nproducts between each query and the three keys are passed through a softmax\nfunction to form non-negati",
+      "layers, and the value, query, and key dimension is 128. It is trained with 300 billion\ntokens and contains 175 billion parameters.\nHere’s an example of completing text from the GPT3 model where the text provided\nto the model is in orange, and the gen"
+    ]
+  },
+  "raster_ocr": {
+    "filename": "generated-raster-v1-pages-1-and-7.pdf",
+    "status": "ready",
+    "job_status": "done",
+    "expected_pages": 2,
+    "pages": 2,
+    "last_page": 2,
+    "characters": 6849,
+    "seconds": 2.25,
+    "sampled_peak_process_rss_mb": 248.4,
+    "initial_process_rss_mb": 231.9,
+    "unreadable_pages": [],
+    "toc_entries": 6,
+    "chunks": 25,
+    "query": "Adam optimizer NVIDIA P100 GPU",
+    "retrieval_mode": "BM25 + TF-IDF（本地词频检索）",
+    "retrieved_pages": [
+      2,
+      2,
+      2
+    ],
+    "retrieved_excerpts": [
+      "We used the Adam optimizer [18] with 3; = 0.9, 82 = 0.98 and\n« = 10~°. We varied the learning\nrate over the course of training, according to the formula:",
+      "We trained our models on one machine with\n8 NVIDIA P100 GPUs. For our base models using\nthe hyperparameters described throughout the paper, each training step took about 0.4 seconds. We\ntrained the base models for a total of 100,000 steps or 12 hours"
+    ],
+    "scope": "Self-rasterized pages 1 and 7 of public arXiv v1, not the organizer-provided scan; page 2 here corresponds to original page 7."
+  },
+  "limits": "Text/chunk persistence and retrievability only; complex formula LaTeX recovery, table accuracy, all page reading order and translation quality have not been validated."
+}

@@ -1,0 +1,36 @@
+{
+  "checked_at": "2026-11-15T07:08:05.956130+00:00",
+  "image": "researchdock:acceptance-20261115",
+  "scope": "Base CPU container, no local BGE/reranker dependencies, no paid model key",
+  "checks": [
+    {
+      "name": "Anonymous health and protected paper data",
+      "passed": true
+    },
+    {
+      "name": "Reviewer login cookie",
+      "passed": true
+    },
+    {
+      "name": "Native PDF parsed in deployed container",
+      "passed": true,
+      "status": "ready"
+    },
+    {
+      "name": "Container serves original page image",
+      "passed": true
+    },
+    {
+      "name": "Container UI served",
+      "passed": true
+    },
+    {
+      "name": "Container logout protects data",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "total": 6
+  }
+}

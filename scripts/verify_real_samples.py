@@ -1,4 +1,4 @@
-"""Optional real-paper smoke test. Requires v1/v7 under ignored data/samples/."""
+"""可选真实论文检查，需在被忽略的 data/samples/ 中准备 v1/v7 样本。"""
 import json
 import sys
 from datetime import datetime, timezone

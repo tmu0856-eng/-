@@ -1,0 +1,91 @@
+{
+  "started_at": "2026-11-14T14:27:50.204145+00:00",
+  "scope": "Existing main library, local BGE-M3, one paid MiMo answer. Not a comprehensive retrieval benchmark.",
+  "embedding": {
+    "configured": true,
+    "provider": "local",
+    "model": "BAAI/bge-m3",
+    "dimensions": 1024,
+    "space": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181:cls:l2:max512",
+    "indexed_chunks": 10299,
+    "total_chunks": 10299,
+    "pending_chunks": 0,
+    "indexing": false,
+    "runtime": {
+      "state": "ready",
+      "device": "cuda",
+      "error": ""
+    },
+    "error": ""
+  },
+  "rag": {
+    "status": 200,
+    "question": "这篇论文训练使用的 GPU 型号与数量是什么？Adam 的 beta1、beta2 和 epsilon 分别是多少？请引用原文。",
+    "response": {
+      "mode": "generated",
+      "answer": "论文中的模型在一台机器上的 8 块 NVIDIA P100 GPU 上训练。 [S3]\n\n训练使用 Adam 优化器，其参数为 β1 = 0.9、β2 = 0.98、ϵ = 10^-9。 [S1]",
+      "sources": [
+        {
+          "source_id": "S1",
+          "chunk_id": "33228bc1233a471eb63f3b52d533a84d",
+          "paper_id": "ed3b40377421428996e96b5b407d613f",
+          "title": "Attention Is All You Need",
+          "page": 7,
+          "text": "We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning\nrate over the course of training, according to the formula:",
+          "bbox": [
+            107.53199768066406,
+            576.5763549804688,
+            504.0029296875,
+            599.0480346679688
+          ],
+          "score": 0.05
+        },
+        {
+          "source_id": "S3",
+          "chunk_id": "297ace4863364294a180b7773dddeabd",
+          "paper_id": "ed3b40377421428996e96b5b407d613f",
+          "title": "Attention Is All You Need",
+          "page": 7,
+          "text": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using\nthe hyperparameters described throughout the paper, each training step took about 0.4 seconds. We\ntrained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the\nbottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps\n(3.5 days).",
+          "bbox": [
+            107.53199768066406,
+            486.7832946777344,
+            504.0014953613281,
+            540.45703125
+          ],
+          "score": 0.04865
+        }
+      ],
+      "trace": [
+        {
+          "tool": "plan",
+          "message": "确定论文范围，检索原文证据，再组织回答"
+        },
+        {
+          "tool": "retrieve_evidence",
+          "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索），检索 175 个文本块，返回 10 条证据"
+        },
+        {
+          "tool": "validate_citations",
+          "message": "核对 2 个证据编号均存在；事实是否被证据支持仍需核对原文"
+        }
+      ]
+    }
+  },
+  "vector_dimensions": [
+    [
+      1024,
+      10299
+    ]
+  ],
+  "sample_norms": [
+    0.9999999403953552,
+    0.9999999403953552,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "papers": 28,
+  "passed": true,
+  "finished_at": "2026-11-14T14:29:56.358356+00:00"
+}

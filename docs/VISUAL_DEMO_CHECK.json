@@ -1,0 +1,212 @@
+{
+  "checked_at": "2026-11-15T07:05:16.440445+00:00",
+  "checks": [
+    {
+      "name": "Reviewer login protects data",
+      "passed": true
+    },
+    {
+      "name": "Reviewer logout removes access",
+      "passed": true
+    },
+    {
+      "name": "Original v1 visual page 3",
+      "passed": true,
+      "status": 200,
+      "seconds": 0.0,
+      "result": {
+        "formulas": [
+          {
+            "label": "(1)",
+            "latex": "\\mathrm{Attention}(Q, K, V) = \\mathrm{softmax}\\!\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V",
+            "uncertainty": "无"
+          }
+        ],
+        "tables": [],
+        "figures": [
+          {
+            "caption": "Figure 1: The Transformer - model architecture.",
+            "description": "Transformer 模型架构图：左侧为编码器（Inputs → Input Embedding，与 Positional Encoding 相加后，经 N× 堆叠的 Multi-Head Attention → Add & Norm → Feed Forward → Add & Norm）；右侧为解码器（Outputs (shifted right) → Output Embedding，与 Positional Encoding 相加后，经 N× 堆叠的 Masked Multi-Head Attention → Add & Norm → Multi-Head Attention（接收编码器输出）→ Add & Norm → Feed Forward → Add & Norm），最后经 Linear 和 Softmax 输出 Output Probabilities。",
+            "uncertainty": "图中各连线箭头细节按可见结构描述，个别箭头走向可能不完全精确"
+          }
+        ],
+        "paper_id": "3e45c4c11c814fa69b428e3a16dca426",
+        "page": 3,
+        "model": "mimo-v2.6-pro",
+        "note": "模型视觉转录，尚未人工核对；符号、数字和单元格可能有误，请对照原始页面。此结果不自动写入问答证据。",
+        "source": {
+          "page": 3,
+          "bbox": [
+            0.0,
+            0.0,
+            612.0,
+            792.0
+          ],
+          "image": "/api/papers/3e45c4c11c814fa69b428e3a16dca426/pages/3/image"
+        },
+        "verified": false,
+        "cached": true
+      }
+    },
+    {
+      "name": "Original v1 visual page 4",
+      "passed": true,
+      "status": 200,
+      "seconds": 0.02,
+      "result": {
+        "formulas": [
+          {
+            "label": "",
+            "latex": "\\mathrm{MultiHead}(Q,K,V)=\\mathrm{Concat}(\\mathrm{head}_1,\\dots,\\mathrm{head}_h)\\quad \\mathrm{where}\\ \\mathrm{head}_i=\\mathrm{Attention}(QW_i^Q,KW_i^K,VW_i^V)",
+            "uncertainty": "原文未显示公式编号；右端 head_h 的下标 h 疑为表示总头数，按可见字符转录。"
+          }
+        ],
+        "tables": [],
+        "figures": [
+          {
+            "caption": "Figure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several attention layers running in parallel.",
+            "description": "左侧为 Scaled Dot-Product Attention 流程图：Q、K 输入 MatMul，经 Scale、Mask (opt.)、SoftMax 后与 V 一起进入第二个 MatMul，输出向上箭头。右侧为 Multi-Head Attention 流程图：V、K、Q 各自经 Linear 后进入 Split，送入多个并行的 Scaled Dot-Product Attention（标注 h），输出经 Concat 后通过 Linear 输出。",
+            "uncertainty": "图中各框内小号标注（如 H/h）字迹较小，可能与原文排版略有出入。"
+          }
+        ],
+        "paper_id": "3e45c4c11c814fa69b428e3a16dca426",
+        "page": 4,
+        "model": "mimo-v2.6-pro",
+        "note": "模型视觉转录，尚未人工核对；符号、数字和单元格可能有误，请对照原始页面。此结果不自动写入问答证据。",
+        "source": {
+          "page": 4,
+          "bbox": [
+            0.0,
+            0.0,
+            612.0,
+            792.0
+          ],
+          "image": "/api/papers/3e45c4c11c814fa69b428e3a16dca426/pages/4/image"
+        },
+        "verified": false,
+        "cached": true
+      }
+    },
+    {
+      "name": "Original v1 visual page 8",
+      "passed": true,
+      "status": 200,
+      "seconds": 0.0,
+      "result": {
+        "formulas": [],
+        "tables": [
+          {
+            "caption": "Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the English-to-German and English-to-French newstest2014 tests at a fraction of the training cost.",
+            "rows": [
+              [
+                "Model",
+                "BLEU EN-DE",
+                "BLEU EN-FR",
+                "Training Cost (FLOPs) EN-DE",
+                "Training Cost (FLOPs) EN-FR"
+              ],
+              [
+                "ByteNet [16]",
+                "23.75",
+                "",
+                "",
+                ""
+              ],
+              [
+                "Deep-Att + PosUnk [35]",
+                "",
+                "39.2",
+                "",
+                "1.0 \\cdot 10^{20}"
+              ],
+              [
+                "GNMT + RL [34]",
+                "24.6",
+                "39.92",
+                "2.3 \\cdot 10^{19}",
+                "1.4 \\cdot 10^{20}"
+              ],
+              [
+                "ConvS2S [9]",
+                "25.16",
+                "40.46",
+                "9.6 \\cdot 10^{18}",
+                "1.5 \\cdot 10^{20}"
+              ],
+              [
+                "MoE [29]",
+                "26.03",
+                "40.56",
+                "2.0 \\cdot 10^{19}",
+                "1.2 \\cdot 10^{20}"
+              ],
+              [
+                "Deep-Att + PosUnk Ensemble [35]",
+                "",
+                "40.4",
+                "",
+                "8.0 \\cdot 10^{20}"
+              ],
+              [
+                "GNMT + RL Ensemble [34]",
+                "26.30",
+                "41.16",
+                "1.8 \\cdot 10^{20}",
+                "1.1 \\cdot 10^{21}"
+              ],
+              [
+                "ConvS2S Ensemble [9]",
+                "26.36",
+                "41.29",
+                "7.7 \\cdot 10^{19}",
+                "1.2 \\cdot 10^{21}"
+              ],
+              [
+                "Transformer (base model)",
+                "27.3",
+                "38.1",
+                "3.3 \\cdot 10^{18}",
+                ""
+              ],
+              [
+                "Transformer (big)",
+                "28.4",
+                "41.0",
+                "2.3 \\cdot 10^{19}",
+                ""
+              ]
+            ],
+            "uncertainty": "空白单元格为原表空缺。Transformer (base model) 的 3.3·10^18 与 Transformer (big) 的 2.3·10^19 在原表中横跨 EN-DE 与 EN-FR 两列（未按语言分列），此处置于 EN-DE 列。原表中 41.29、3.3·10^18、28.4、41.0、2.3·10^19 为粗体，未在此保留加粗标记。"
+          }
+        ],
+        "figures": [],
+        "paper_id": "3e45c4c11c814fa69b428e3a16dca426",
+        "page": 8,
+        "model": "mimo-v2.6-pro",
+        "note": "模型视觉转录，尚未人工核对；符号、数字和单元格可能有误，请对照原始页面。此结果不自动写入问答证据。",
+        "source": {
+          "page": 8,
+          "bbox": [
+            0.0,
+            0.0,
+            612.0,
+            792.0
+          ],
+          "image": "/api/papers/3e45c4c11c814fa69b428e3a16dca426/pages/8/image"
+        },
+        "verified": false,
+        "cached": true
+      }
+    },
+    {
+      "name": "Visual cache reused",
+      "passed": true
+    }
+  ],
+  "scope": "Single-page transcription spot checks, not formula/table accuracy evaluation.",
+  "note": "An initial check incorrectly expected scaled-dot attention on page 4 of v1. Original-page inspection confirms it is on page 3; page 4 contains MultiHead. No model output was changed to satisfy the check.",
+  "summary": {
+    "passed": 6,
+    "total": 6
+  }
+}

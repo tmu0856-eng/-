@@ -1,0 +1,796 @@
+{
+  "checked_at": "2026-11-09T16:29:09.409473+00:00",
+  "goal": "20 篇真实 arXiv 文献导入后，引用图谱应基于原文 References 生成可核对连边。",
+  "method": "arXiv 官方 PDF 下载 → 与上传一致的解析入库 → reference_entries 抽取 → 规范化标题在参考文献文本中匹配成边；每条边保留原文页码与证据文本。",
+  "selected_ids": [
+    "1706.03762",
+    "1810.04805",
+    "1907.11692",
+    "2005.14165",
+    "1910.10683",
+    "1412.6980",
+    "1512.03385",
+    "1607.06450",
+    "1802.05365",
+    "1801.06146",
+    "1901.02860",
+    "1906.08237",
+    "1909.11942",
+    "2003.10555",
+    "2002.08505",
+    "2103.00020",
+    "1707.06347",
+    "1409.0575",
+    "1606.05250",
+    "1804.07461"
+  ],
+  "downloads": {
+    "imported": [],
+    "reused_existing": [
+      "3e45c4c11c814fa69b428e3a16dca426",
+      "ea2fe1fd41d44de2af182d66aa22d017",
+      "5f14264da1b540e386c04a6611640755",
+      "9613fdb72c8d494f9082d0d3616d3dcf",
+      "9da23c9b62794825af4e8bcca94686dd",
+      "3430e84195bb49a3b68c9efd1228cbaf",
+      "6bfb3e49c5e44ab1b422948dfd0c4c39",
+      "5e0032e9e0a24b0f8a9d10e30cbc3e29",
+      "abdcb54b94e2416eaaa4c63713f5086a",
+      "a605266d077640cabd07b7bf2ef25e2b",
+      "32d89c32986d443e803e7f350a8d1c63",
+      "be65d9b9842943f48be6f0b68ab34ee6",
+      "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "7f60708397e6469cac0e431264103d39",
+      "b48844a82cce4783bfe8ed91d7a5c3dc",
+      "eff60e67bbe045edb7255aa32780168e",
+      "2d604c5f465440d8bb705136faa3f513",
+      "af28829f0c924b9485ba65e5740d4a13",
+      "ff947c56622b4496af4df3170999d2ab",
+      "37b8a77b36e04007b5a5d4c3a523decd"
+    ],
+    "failed": []
+  },
+  "parse_jobs_finished": true,
+  "library_nodes_total": 22,
+  "core_papers": [
+    {
+      "paper_id": "3e45c4c11c814fa69b428e3a16dca426",
+      "arxiv_id": "1706.03762",
+      "title": "Attention Is All You Need",
+      "status": "ready",
+      "pages": 15,
+      "references_parsed": 36,
+      "in_degree": 10,
+      "out_degree": 2,
+      "rank": 0.06008
+    },
+    {
+      "paper_id": "ea2fe1fd41d44de2af182d66aa22d017",
+      "arxiv_id": "1810.04805",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "status": "ready",
+      "pages": 16,
+      "references_parsed": 40,
+      "in_degree": 9,
+      "out_degree": 4,
+      "rank": 0.05154
+    },
+    {
+      "paper_id": "5f14264da1b540e386c04a6611640755",
+      "arxiv_id": "1907.11692",
+      "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+      "status": "ready",
+      "pages": 13,
+      "references_parsed": 39,
+      "in_degree": 5,
+      "out_degree": 8,
+      "rank": 0.03317
+    },
+    {
+      "paper_id": "9613fdb72c8d494f9082d0d3616d3dcf",
+      "arxiv_id": "2005.14165",
+      "title": "Language Models are Few-Shot Learners",
+      "status": "ready",
+      "pages": 75,
+      "references_parsed": 2,
+      "in_degree": 1,
+      "out_degree": 6,
+      "rank": 0.02208
+    },
+    {
+      "paper_id": "9da23c9b62794825af4e8bcca94686dd",
+      "arxiv_id": "1910.10683",
+      "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "status": "ready",
+      "pages": 67,
+      "references_parsed": 94,
+      "in_degree": 0,
+      "out_degree": 13,
+      "rank": 0.01996
+    },
+    {
+      "paper_id": "3430e84195bb49a3b68c9efd1228cbaf",
+      "arxiv_id": "1412.6980",
+      "title": "Adam: A Method for Stochastic Optimization",
+      "status": "ready",
+      "pages": 15,
+      "references_parsed": 5,
+      "in_degree": 9,
+      "out_degree": 0,
+      "rank": 0.18822
+    },
+    {
+      "paper_id": "6bfb3e49c5e44ab1b422948dfd0c4c39",
+      "arxiv_id": "1512.03385",
+      "title": "Deep Residual Learning for Image Recognition",
+      "status": "ready",
+      "pages": 12,
+      "references_parsed": 54,
+      "in_degree": 4,
+      "out_degree": 1,
+      "rank": 0.04889
+    },
+    {
+      "paper_id": "5e0032e9e0a24b0f8a9d10e30cbc3e29",
+      "arxiv_id": "1607.06450",
+      "title": "Layer Normalization",
+      "status": "ready",
+      "pages": 14,
+      "references_parsed": 19,
+      "in_degree": 4,
+      "out_degree": 1,
+      "rank": 0.08236
+    },
+    {
+      "paper_id": "abdcb54b94e2416eaaa4c63713f5086a",
+      "arxiv_id": "1802.05365",
+      "title": "Deep contextualized word representations",
+      "status": "ready",
+      "pages": 15,
+      "references_parsed": 39,
+      "in_degree": 10,
+      "out_degree": 3,
+      "rank": 0.06544
+    },
+    {
+      "paper_id": "a605266d077640cabd07b7bf2ef25e2b",
+      "arxiv_id": "1801.06146",
+      "title": "Universal Language Model Fine-tuning for Text Classiﬁcation",
+      "status": "ready",
+      "pages": 12,
+      "references_parsed": 34,
+      "in_degree": 0,
+      "out_degree": 2,
+      "rank": 0.01996
+    },
+    {
+      "paper_id": "32d89c32986d443e803e7f350a8d1c63",
+      "arxiv_id": "1901.02860",
+      "title": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+      "status": "ready",
+      "pages": 20,
+      "references_parsed": 44,
+      "in_degree": 0,
+      "out_degree": 4,
+      "rank": 0.01996
+    },
+    {
+      "paper_id": "be65d9b9842943f48be6f0b68ab34ee6",
+      "arxiv_id": "1906.08237",
+      "title": "XLNet: Generalized Autoregressive Pretraining for Language Understanding",
+      "status": "ready",
+      "pages": 18,
+      "references_parsed": 41,
+      "in_degree": 4,
+      "out_degree": 8,
+      "rank": 0.02993
+    },
+    {
+      "paper_id": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "arxiv_id": "1909.11942",
+      "title": "ALBERT: A LITE BERT FOR SELF-SUPERVISED LEARNING OF LANGUAGE REPRESENTATIONS",
+      "status": "ready",
+      "pages": 17,
+      "references_parsed": 49,
+      "in_degree": 4,
+      "out_degree": 7,
+      "rank": 0.02958
+    },
+    {
+      "paper_id": "7f60708397e6469cac0e431264103d39",
+      "arxiv_id": "2003.10555",
+      "title": "ELECTRA: PRE-TRAINING TEXT ENCODERS AS DISCRIMINATORS RATHER THAN GENERATORS",
+      "status": "ready",
+      "pages": 18,
+      "references_parsed": 47,
+      "in_degree": 1,
+      "out_degree": 9,
+      "rank": 0.02126
+    },
+    {
+      "paper_id": "eff60e67bbe045edb7255aa32780168e",
+      "arxiv_id": "2103.00020",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "status": "ready",
+      "pages": 48,
+      "references_parsed": 37,
+      "in_degree": 0,
+      "out_degree": 8,
+      "rank": 0.01996
+    },
+    {
+      "paper_id": "2d604c5f465440d8bb705136faa3f513",
+      "arxiv_id": "1707.06347",
+      "title": "Proximal Policy Optimization Algorithms",
+      "status": "ready",
+      "pages": 12,
+      "references_parsed": 2,
+      "in_degree": 0,
+      "out_degree": 1,
+      "rank": 0.01996
+    },
+    {
+      "paper_id": "af28829f0c924b9485ba65e5740d4a13",
+      "arxiv_id": "1409.0575",
+      "title": "ImageNet Large Scale Visual Recognition Challenge",
+      "status": "ready",
+      "pages": 43,
+      "references_parsed": 96,
+      "in_degree": 2,
+      "out_degree": 0,
+      "rank": 0.06282
+    },
+    {
+      "paper_id": "ff947c56622b4496af4df3170999d2ab",
+      "arxiv_id": "1606.05250",
+      "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+      "status": "ready",
+      "pages": 10,
+      "references_parsed": 15,
+      "in_degree": 8,
+      "out_degree": 0,
+      "rank": 0.06913
+    },
+    {
+      "paper_id": "37b8a77b36e04007b5a5d4c3a523decd",
+      "arxiv_id": "1804.07461",
+      "title": "GLUE: A MULTI-TASK BENCHMARK AND ANALYSIS PLATFORM FOR NATURAL LANGUAGE UNDERSTAND-",
+      "status": "ready",
+      "pages": 20,
+      "references_parsed": 40,
+      "in_degree": 6,
+      "out_degree": 5,
+      "rank": 0.03569
+    },
+    {
+      "paper_id": "b48844a82cce4783bfe8ed91d7a5c3dc",
+      "arxiv_id": "2002.08505",
+      "title": "A Bayes Factor Approach with Informative Prior for Rare Genetic Variant Analysis from Next Generation Sequencing Data",
+      "status": "ready",
+      "pages": 71,
+      "references_parsed": 37,
+      "in_degree": 0,
+      "out_degree": 0,
+      "rank": 0.01996
+    }
+  ],
+  "stats": {
+    "core_papers_count": 20,
+    "edges_total_in_library": 87,
+    "edges_among_core_20": 72,
+    "core_papers_with_incoming_edge": 14,
+    "core_papers_with_outgoing_edge": 16
+  },
+  "edges_among_core_20": [
+    {
+      "source": "3e45c4c11c814fa69b428e3a16dca426",
+      "target": "3430e84195bb49a3b68c9efd1228cbaf",
+      "page": 11,
+      "evidence": "Diederik Kingma and Jimmy Ba. Adam: A method for stochastic optimization. In ICLR, 2015. ",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "3e45c4c11c814fa69b428e3a16dca426",
+      "target": "5e0032e9e0a24b0f8a9d10e30cbc3e29",
+      "page": 10,
+      "evidence": "Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint arXiv:1607.06450, 2016. ",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "ea2fe1fd41d44de2af182d66aa22d017",
+      "target": "3e45c4c11c814fa69b428e3a16dca426",
+      "page": 11,
+      "evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Advances in Neural Information Pro- cessing Systems, pages 6000–6010.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "ea2fe1fd41d44de2af182d66aa22d017",
+      "target": "abdcb54b94e2416eaaa4c63713f5086a",
+      "page": 11,
+      "evidence": "Matthew Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. 2018a. Deep contextualized word rep- resentations. In NAACL.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "ea2fe1fd41d44de2af182d66aa22d017",
+      "target": "ff947c56622b4496af4df3170999d2ab",
+      "page": 11,
+      "evidence": "Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. 2016. Squad: 100,000+ questions for machine comprehension of text. In Proceedings of the 2016 Conference on Empirical Methods in Nat- ural Language Processing, pages 2383–2392.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "5f14264da1b540e386c04a6611640755",
+      "target": "3e45c4c11c814fa69b428e3a16dca426",
+      "page": 12,
+      "evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Advances in neural information pro- cessing systems.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "5f14264da1b540e386c04a6611640755",
+      "target": "ea2fe1fd41d44de2af182d66aa22d017",
+      "page": 10,
+      "evidence": "Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2019. BERT: Pre-training of deep bidirectional transformers for language under- standing. In North American Association for Com- putational Linguistics (NAACL). William B Dolan and Chris Brockett. 2005. Auto- matically constructing a corpus of sentential para- phrases. In Proceedings of the International Work- shop on Paraphrasing.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "5f14264da1b540e386c04a6611640755",
+      "target": "3430e84195bb49a3b68c9efd1228cbaf",
+      "page": 11,
+      "evidence": "Mandar Joshi, Danqi Chen, Yinhan Liu, Daniel S. Weld, Luke Zettlemoyer, and Omer Levy. 2019. SpanBERT: Improving pre-training by repre- senting and predicting spans. arXiv preprint arXiv:1907.10529. Diederik Kingma and Jimmy Ba. 2015. Adam: A method for stochastic optimization. In International Conference on Learning Representations (ICLR).",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "5f14264da1b540e386c04a6611640755",
+      "target": "abdcb54b94e2416eaaa4c63713f5086a",
+      "page": 11,
+      "evidence": "Matthew Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. 2018. Deep contextualized word repre- sentations. In North American Association for Com- putational Linguistics (NAACL).",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "5f14264da1b540e386c04a6611640755",
+      "target": "be65d9b9842943f48be6f0b68ab34ee6",
+      "page": 12,
+      "evidence": "Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Car- bonell, Ruslan Salakhutdinov, and Quoc V Le. 2019. Xlnet: Generalized autoregressive pretrain- ing for language understanding. arXiv preprint arXiv:1906.08237.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "5f14264da1b540e386c04a6611640755",
+      "target": "ff947c56622b4496af4df3170999d2ab",
+      "page": 11,
+      "evidence": "Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. 2016. SQuAD: 100,000+ questions for machine comprehension of text. In Empirical Meth- ods in Natural Language Processing (EMNLP).",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "5f14264da1b540e386c04a6611640755",
+      "target": "37b8a77b36e04007b5a5d4c3a523decd",
+      "page": 12,
+      "evidence": "Alex Wang, Amanpreet Singh, Julian Michael, Felix Hill, Omer Levy, and Samuel R. Bowman. 2019b. GLUE: A multi-task benchmark and analysis plat- form for natural language understanding. In Inter- national Conference on Learning Representations (ICLR).",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9613fdb72c8d494f9082d0d3616d3dcf",
+      "target": "3e45c4c11c814fa69b428e3a16dca426",
+      "page": 69,
+      "evidence": "Data can be found at https://github.com/mcdm/CommitmentBank/.  [DSC+16] Yan Duan, John Schulman, Xi Chen, Peter L. Bartlett, Ilya Sutskever, and Pieter Abbeel. Rl2: Fast reinforcement learning via slow reinforcement learning. ArXiv, abs/1611.02779, 2016.  [DWD+19] Dheeru Dua, Yizhong Wang, Pradeep Dasigi, Gabriel Stanovsky, Sameer Singh, and Matt Gardner. Drop: A reading comprehension benchmark requiring discrete reasoning over paragraphs. arXiv preprint arXiv:1903.00161, 2019.  [DYY+19] Zihang Dai, Zhilin Yang, Yiming Yang, Jaime G. Carbonell, Quoc V. Le, and Ruslan Salakhutdinov. Transformer-xl: Attentive language models beyond a ﬁxed-length context. Arxiv, 2019.  [EOAG18] Sergey Edunov, Myle Ott, Michael Auli, and David Grangier. Understanding back-translation at scale. arXiv preprint arXiv:1808.09381, 2018.  [FAL17] Chelsea Finn, Pieter Abbeel, and Sergey Levine. Model-agnostic meta-learning for fast adaptation of deep networks. ArXiv, abs/1703.03400, 2017.  [GG19] Hila Gonen and Yoav Goldberg. Lipstick on a pig: Debiasing methods cover up systematic gender biases in word embeddings but do not remove them. arXiv preprint arXiv:1903.03862, 2019.  [GLT+20] Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, and Ming-Wei Chang. Realm: Retrieval- augmented language model pre-training. arXiv preprint arXiv:2002.08909, 2020.  [GMDD07] Danilo Giampiccolo, Bernardo Magnini, Ido Dagan, and Bill Dolan. The third PASCAL recognizing textual entailment challenge. In Proceedings of the ACL-PASCAL workshop on textual entailment and paraphrasing, pages 1–9. Association for Computational Linguistics, 2007.  [Gra16] Alex Graves. Adaptive computation time for recurrent neural networks. Arxiv, 2016.  [GSL+18] Suchin Gururangan, Swabha Swayamdipta, Omer Levy, Roy Schwartz, Samuel R Bowman, and Noah A Smith. Annotation artifacts in natural language inference data. arXiv preprint arXiv:1803.02324, 2018.  [GSR19] Sebastian Gehrmann, Hendrik Strobelt, and Alexander M. Rush. Gltr: Statistical detection and visualiza- tion of generated text. arXiv preprint arXiv: 1906.04043, 2019.  [GWC+18] Jiatao Gu, Yong Wang, Yun Chen, Kyunghyun Cho, and Victor OK Li. Meta-learning for low-resource neural machine translation. arXiv preprint arXiv:1808.08437, 2018.  [HBFC19] Ari Holtzman, Jan Buys, Maxwell Forbes, and Yejin Choi. The curious case of neural text degeneration. CoRR, abs/1904.09751, 2019.  [HLW+20] Dan Hendrycks, Xiaoyuan Liu, Eric Wallace, Adam Dziedzic, Rishabh Krishnan, and Dawn Song. Pretrained transformers improve out of distribution robustness. arXiv preprint arXiv:2004.06100, 2020.  [HNA+17] Joel Hestness, Sharan Narang, Newsha Ardalani, Gregory Diamos, Heewoo Jun, Hassan Kianinejad, Md. Mostofa Ali Patwary, Yang Yang, and Yanqi Zhou. Deep learning scaling is predictable, empirically. arXiv preprint arXiv:1712.00409, 2017.  [HR18] Jeremy Howard and Sebastian Ruder. Universal language model ﬁne-tuning for text classiﬁcation. arXiv preprint arXiv:1801.06146, 2018.  [HVD15] Geoffrey Hinton, Oriol Vinyals, and Jeff Dean. Distilling the knowledge in a neural network. arXiv preprint arXiv:1503.02531, 2015.  [HYC01] Sepp Hochreiter, A Steven Younger, and Peter R Conwell. Learning to Learn Using Gradient Descent. In International Conference on Artiﬁcial Neural Networks, pages 87–94. Springer, 2001.  [HZJ+19] Po-Sen Huang, Huan Zhang, Ray Jiang, Robert Stanforth, Johannes Welbl, Jack Rae, Vishal Maini, Dani Yogatama, and Pushmeet Kohli. Reducing sentiment bias in language models via counterfactual evaluation. arXiv preprint arXiv:1911.03064, 2019.  [IBGC+14] Mohit Iyyer, Jordan Boyd-Graber, Leonardo Claudino, Richard Socher, and Hal Daum´e III. A neural network for factoid question answering over paragraphs. In Empirical Methods in Natural Language Processing, 2014.  [IDCBE19] Daphne Ippolito, Daniel Duckworth, Chris Callison-Burch, and Douglas Eck. Automatic detection of generated text is easiest when humans are fooled. arXiv preprint arXiv:1911.00650, 2019.  [JCWZ17] Mandar Joshi, Eunsol Choi, Daniel S. Weld, and Luke Zettlemoyer. TriviaQA: A large scale distantly supervised challenge dataset for reading comprehension. arXiv preprint arXiv:1705.03551, 2017.  [JN20] Zheng Junyuan and Gamma Lab NYC. Numeric transformer - albert, March 2020.  [JVS+16] Rafal Jozefowicz, Oriol Vinyals, Mike Schuster, Noam Shazeer, and Yonghui Wu. Exploring the limits of language modeling. arXiv preprint arXiv:1602.02410, 2016.  [JYS+19] Xiaoqi Jiao, Yichun Yin, Lifeng Shang, Xin Jiang, Xiao Chen, Linlin Li, Fang Wang, and Qun Liu. TinyBERT: Distilling BERT for natural language understanding. arXiv preprint arXiv:1909.10351, 2019.  [JZC+19] Ying Ju, Fubang Zhao, Shijie Chen, Bowen Zheng, Xuefeng Yang, and Yunfeng Liu. Technical report on conversational question answering. arXiv preprint arXiv:1909.10772, 2019.  [KCR+18] Daniel Khashabi, Snigdha Chaturvedi, Michael Roth, Shyam Upadhyay, and Dan Roth. Looking beyond the surface: A challenge set for readi",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9613fdb72c8d494f9082d0d3616d3dcf",
+      "target": "ea2fe1fd41d44de2af182d66aa22d017",
+      "page": 68,
+      "evidence": "[ADG+16] Marcin Andrychowicz, Misha Denil, Sergio Gomez, Matthew W Hoffman, David Pfau, Tom Schaul, Brendan Shillingford, and Nando De Freitas. Learning to learn by gradient descent by gradient descent. In Advances in neural information processing systems, pages 3981–3989, 2016. [AI19] WeChat AI. Tr-mt (ensemble), December 2019. [AJF19] Roee Aharoni, Melvin Johnson, and Orhan Firat. Massively multilingual neural machine translation. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), 2019. [BBDIW20] Su Lin Blodgett, Solon Barocas, Hal Daum´e III, and Hanna Wallach. Language (technology) is power: A critical survey of “bias” in nlp. arXiv preprint arXiv:2005.14050, 2020. [BCFL13] Jonathan Berant, Andrew Chou, Roy Frostig, and Percy Liang. Semantic parsing on freebase from question-answer pairs. In Proceedings of the 2013 conference on empirical methods in natural language processing, pages 1533–1544, 2013. [BDD+09] Luisa Bentivogli, Ido Dagan, Hoa Trang Dang, Danilo Giampiccolo, and Bernardo Magnini. The ﬁfth PASCAL recognizing textual entailment challenge. 2009. [BES10] Stefano Baccianella, Andrea Esuli, and Fabrizio Sebastiani. Sentiwordnet 3.0: an enhanced lexical resource for sentiment analysis and opinion mining. In Lrec, volume 10, pages 2200–2204, 2010. [BHDD+06] Roy Bar Haim, Ido Dagan, Bill Dolan, Lisa Ferro, Danilo Giampiccolo, Bernardo Magnini, and Idan Szpektor. The second PASCAL recognising textual entailment challenge. 2006. [BHT+20] Yonatan Bisk, Ari Holtzman, Jesse Thomason, Jacob Andreas, Yoshua Bengio, Joyce Chai, Mirella Lapata, Angeliki Lazaridou, Jonathan May, Aleksandr Nisnevich, et al. Experience grounds language. arXiv preprint arXiv:2004.10151, 2020. [BLC13] Yoshua Bengio, Nicholas L´eonard, and Aaron C. Courville. Estimating or propagating gradients through stochastic neurons for conditional computation. Arxiv, 2013. [BZB+19] Yonatan Bisk, Rowan Zellers, Ronan Le Bras, Jianfeng Gao, and Yejin Choi. Piqa: Reasoning about physical commonsense in natural language. arXiv preprint arXiv:1911.11641, 2019. [Car97] Rich Caruana. Multitask learning. Machine learning, 28(1), 1997. [CB78] Susan Carey and Elsa Bartlett. Acquiring a single new word. Proceedings of the Stanford Child Language Conference, 1978. [CCE+18] Peter Clark, Isaac Cowhey, Oren Etzioni, Tushar Khot, Ashish Sabharwal, Carissa Schoenick, and Oyvind Tafjord. Think you have solved question answering? try arc, the ai2 reasoning challenge. ArXiv, abs/1803.05457, 2018. [CGRS19] Rewon Child, Scott Gray, Alec Radford, and Ilya Sutskever. Generating long sequences with sparse transformers, 2019. [CHI+18] Eunsol Choi, He He, Mohit Iyyer, Mark Yatskar, Wen-tau Yih, Yejin Choi, Percy Liang, and Luke Zettlemoyer. Quac : Question answering in context. Arxiv, 2018. [CLC+19] Christopher Clark, Kenton Lee, Ming-Wei Chang, Tom Kwiatkowski, Michael Collins, and Kristina Toutanova. BoolQ: Exploring the surprising difﬁculty of natural yes/no questions. arXiv preprint arXiv:1905.10044, 2019. [CLY+19] Yen-Chun Chen, Linjie Li, Licheng Yu, Ahmed El Kholy, Faisal Ahmed, Zhe Gan, Yu Cheng, and Jingjing Liu. Uniter: Learning universal image-text representations. arXiv preprint arXiv:1909.11740, 2019. [Cra17] Kate Crawford. The trouble with bias. NIPS 2017 Keynote, 2017. [DCLT18] Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. BERT: Pre-training of deep bidirectional transformers for language understanding. arXiv preprint arXiv:1810.04805, 2018. 68",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9613fdb72c8d494f9082d0d3616d3dcf",
+      "target": "5f14264da1b540e386c04a6611640755",
+      "page": 69,
+      "evidence": "Data can be found at https://github.com/mcdm/CommitmentBank/.  [DSC+16] Yan Duan, John Schulman, Xi Chen, Peter L. Bartlett, Ilya Sutskever, and Pieter Abbeel. Rl2: Fast reinforcement learning via slow reinforcement learning. ArXiv, abs/1611.02779, 2016.  [DWD+19] Dheeru Dua, Yizhong Wang, Pradeep Dasigi, Gabriel Stanovsky, Sameer Singh, and Matt Gardner. Drop: A reading comprehension benchmark requiring discrete reasoning over paragraphs. arXiv preprint arXiv:1903.00161, 2019.  [DYY+19] Zihang Dai, Zhilin Yang, Yiming Yang, Jaime G. Carbonell, Quoc V. Le, and Ruslan Salakhutdinov. Transformer-xl: Attentive language models beyond a ﬁxed-length context. Arxiv, 2019.  [EOAG18] Sergey Edunov, Myle Ott, Michael Auli, and David Grangier. Understanding back-translation at scale. arXiv preprint arXiv:1808.09381, 2018.  [FAL17] Chelsea Finn, Pieter Abbeel, and Sergey Levine. Model-agnostic meta-learning for fast adaptation of deep networks. ArXiv, abs/1703.03400, 2017.  [GG19] Hila Gonen and Yoav Goldberg. Lipstick on a pig: Debiasing methods cover up systematic gender biases in word embeddings but do not remove them. arXiv preprint arXiv:1903.03862, 2019.  [GLT+20] Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, and Ming-Wei Chang. Realm: Retrieval- augmented language model pre-training. arXiv preprint arXiv:2002.08909, 2020.  [GMDD07] Danilo Giampiccolo, Bernardo Magnini, Ido Dagan, and Bill Dolan. The third PASCAL recognizing textual entailment challenge. In Proceedings of the ACL-PASCAL workshop on textual entailment and paraphrasing, pages 1–9. Association for Computational Linguistics, 2007.  [Gra16] Alex Graves. Adaptive computation time for recurrent neural networks. Arxiv, 2016.  [GSL+18] Suchin Gururangan, Swabha Swayamdipta, Omer Levy, Roy Schwartz, Samuel R Bowman, and Noah A Smith. Annotation artifacts in natural language inference data. arXiv preprint arXiv:1803.02324, 2018.  [GSR19] Sebastian Gehrmann, Hendrik Strobelt, and Alexander M. Rush. Gltr: Statistical detection and visualiza- tion of generated text. arXiv preprint arXiv: 1906.04043, 2019.  [GWC+18] Jiatao Gu, Yong Wang, Yun Chen, Kyunghyun Cho, and Victor OK Li. Meta-learning for low-resource neural machine translation. arXiv preprint arXiv:1808.08437, 2018.  [HBFC19] Ari Holtzman, Jan Buys, Maxwell Forbes, and Yejin Choi. The curious case of neural text degeneration. CoRR, abs/1904.09751, 2019.  [HLW+20] Dan Hendrycks, Xiaoyuan Liu, Eric Wallace, Adam Dziedzic, Rishabh Krishnan, and Dawn Song. Pretrained transformers improve out of distribution robustness. arXiv preprint arXiv:2004.06100, 2020.  [HNA+17] Joel Hestness, Sharan Narang, Newsha Ardalani, Gregory Diamos, Heewoo Jun, Hassan Kianinejad, Md. Mostofa Ali Patwary, Yang Yang, and Yanqi Zhou. Deep learning scaling is predictable, empirically. arXiv preprint arXiv:1712.00409, 2017.  [HR18] Jeremy Howard and Sebastian Ruder. Universal language model ﬁne-tuning for text classiﬁcation. arXiv preprint arXiv:1801.06146, 2018.  [HVD15] Geoffrey Hinton, Oriol Vinyals, and Jeff Dean. Distilling the knowledge in a neural network. arXiv preprint arXiv:1503.02531, 2015.  [HYC01] Sepp Hochreiter, A Steven Younger, and Peter R Conwell. Learning to Learn Using Gradient Descent. In International Conference on Artiﬁcial Neural Networks, pages 87–94. Springer, 2001.  [HZJ+19] Po-Sen Huang, Huan Zhang, Ray Jiang, Robert Stanforth, Johannes Welbl, Jack Rae, Vishal Maini, Dani Yogatama, and Pushmeet Kohli. Reducing sentiment bias in language models via counterfactual evaluation. arXiv preprint arXiv:1911.03064, 2019.  [IBGC+14] Mohit Iyyer, Jordan Boyd-Graber, Leonardo Claudino, Richard Socher, and Hal Daum´e III. A neural network for factoid question answering over paragraphs. In Empirical Methods in Natural Language Processing, 2014.  [IDCBE19] Daphne Ippolito, Daniel Duckworth, Chris Callison-Burch, and Douglas Eck. Automatic detection of generated text is easiest when humans are fooled. arXiv preprint arXiv:1911.00650, 2019.  [JCWZ17] Mandar Joshi, Eunsol Choi, Daniel S. Weld, and Luke Zettlemoyer. TriviaQA: A large scale distantly supervised challenge dataset for reading comprehension. arXiv preprint arXiv:1705.03551, 2017.  [JN20] Zheng Junyuan and Gamma Lab NYC. Numeric transformer - albert, March 2020.  [JVS+16] Rafal Jozefowicz, Oriol Vinyals, Mike Schuster, Noam Shazeer, and Yonghui Wu. Exploring the limits of language modeling. arXiv preprint arXiv:1602.02410, 2016.  [JYS+19] Xiaoqi Jiao, Yichun Yin, Lifeng Shang, Xin Jiang, Xiao Chen, Linlin Li, Fang Wang, and Qun Liu. TinyBERT: Distilling BERT for natural language understanding. arXiv preprint arXiv:1909.10351, 2019.  [JZC+19] Ying Ju, Fubang Zhao, Shijie Chen, Bowen Zheng, Xuefeng Yang, and Yunfeng Liu. Technical report on conversational question answering. arXiv preprint arXiv:1909.10772, 2019.  [KCR+18] Daniel Khashabi, Snigdha Chaturvedi, Michael Roth, Shyam Upadhyay, and Dan Roth. Looking beyond the surface: A challenge set for readi",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9613fdb72c8d494f9082d0d3616d3dcf",
+      "target": "be65d9b9842943f48be6f0b68ab34ee6",
+      "page": 69,
+      "evidence": "Data can be found at https://github.com/mcdm/CommitmentBank/.  [DSC+16] Yan Duan, John Schulman, Xi Chen, Peter L. Bartlett, Ilya Sutskever, and Pieter Abbeel. Rl2: Fast reinforcement learning via slow reinforcement learning. ArXiv, abs/1611.02779, 2016.  [DWD+19] Dheeru Dua, Yizhong Wang, Pradeep Dasigi, Gabriel Stanovsky, Sameer Singh, and Matt Gardner. Drop: A reading comprehension benchmark requiring discrete reasoning over paragraphs. arXiv preprint arXiv:1903.00161, 2019.  [DYY+19] Zihang Dai, Zhilin Yang, Yiming Yang, Jaime G. Carbonell, Quoc V. Le, and Ruslan Salakhutdinov. Transformer-xl: Attentive language models beyond a ﬁxed-length context. Arxiv, 2019.  [EOAG18] Sergey Edunov, Myle Ott, Michael Auli, and David Grangier. Understanding back-translation at scale. arXiv preprint arXiv:1808.09381, 2018.  [FAL17] Chelsea Finn, Pieter Abbeel, and Sergey Levine. Model-agnostic meta-learning for fast adaptation of deep networks. ArXiv, abs/1703.03400, 2017.  [GG19] Hila Gonen and Yoav Goldberg. Lipstick on a pig: Debiasing methods cover up systematic gender biases in word embeddings but do not remove them. arXiv preprint arXiv:1903.03862, 2019.  [GLT+20] Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, and Ming-Wei Chang. Realm: Retrieval- augmented language model pre-training. arXiv preprint arXiv:2002.08909, 2020.  [GMDD07] Danilo Giampiccolo, Bernardo Magnini, Ido Dagan, and Bill Dolan. The third PASCAL recognizing textual entailment challenge. In Proceedings of the ACL-PASCAL workshop on textual entailment and paraphrasing, pages 1–9. Association for Computational Linguistics, 2007.  [Gra16] Alex Graves. Adaptive computation time for recurrent neural networks. Arxiv, 2016.  [GSL+18] Suchin Gururangan, Swabha Swayamdipta, Omer Levy, Roy Schwartz, Samuel R Bowman, and Noah A Smith. Annotation artifacts in natural language inference data. arXiv preprint arXiv:1803.02324, 2018.  [GSR19] Sebastian Gehrmann, Hendrik Strobelt, and Alexander M. Rush. Gltr: Statistical detection and visualiza- tion of generated text. arXiv preprint arXiv: 1906.04043, 2019.  [GWC+18] Jiatao Gu, Yong Wang, Yun Chen, Kyunghyun Cho, and Victor OK Li. Meta-learning for low-resource neural machine translation. arXiv preprint arXiv:1808.08437, 2018.  [HBFC19] Ari Holtzman, Jan Buys, Maxwell Forbes, and Yejin Choi. The curious case of neural text degeneration. CoRR, abs/1904.09751, 2019.  [HLW+20] Dan Hendrycks, Xiaoyuan Liu, Eric Wallace, Adam Dziedzic, Rishabh Krishnan, and Dawn Song. Pretrained transformers improve out of distribution robustness. arXiv preprint arXiv:2004.06100, 2020.  [HNA+17] Joel Hestness, Sharan Narang, Newsha Ardalani, Gregory Diamos, Heewoo Jun, Hassan Kianinejad, Md. Mostofa Ali Patwary, Yang Yang, and Yanqi Zhou. Deep learning scaling is predictable, empirically. arXiv preprint arXiv:1712.00409, 2017.  [HR18] Jeremy Howard and Sebastian Ruder. Universal language model ﬁne-tuning for text classiﬁcation. arXiv preprint arXiv:1801.06146, 2018.  [HVD15] Geoffrey Hinton, Oriol Vinyals, and Jeff Dean. Distilling the knowledge in a neural network. arXiv preprint arXiv:1503.02531, 2015.  [HYC01] Sepp Hochreiter, A Steven Younger, and Peter R Conwell. Learning to Learn Using Gradient Descent. In International Conference on Artiﬁcial Neural Networks, pages 87–94. Springer, 2001.  [HZJ+19] Po-Sen Huang, Huan Zhang, Ray Jiang, Robert Stanforth, Johannes Welbl, Jack Rae, Vishal Maini, Dani Yogatama, and Pushmeet Kohli. Reducing sentiment bias in language models via counterfactual evaluation. arXiv preprint arXiv:1911.03064, 2019.  [IBGC+14] Mohit Iyyer, Jordan Boyd-Graber, Leonardo Claudino, Richard Socher, and Hal Daum´e III. A neural network for factoid question answering over paragraphs. In Empirical Methods in Natural Language Processing, 2014.  [IDCBE19] Daphne Ippolito, Daniel Duckworth, Chris Callison-Burch, and Douglas Eck. Automatic detection of generated text is easiest when humans are fooled. arXiv preprint arXiv:1911.00650, 2019.  [JCWZ17] Mandar Joshi, Eunsol Choi, Daniel S. Weld, and Luke Zettlemoyer. TriviaQA: A large scale distantly supervised challenge dataset for reading comprehension. arXiv preprint arXiv:1705.03551, 2017.  [JN20] Zheng Junyuan and Gamma Lab NYC. Numeric transformer - albert, March 2020.  [JVS+16] Rafal Jozefowicz, Oriol Vinyals, Mike Schuster, Noam Shazeer, and Yonghui Wu. Exploring the limits of language modeling. arXiv preprint arXiv:1602.02410, 2016.  [JYS+19] Xiaoqi Jiao, Yichun Yin, Lifeng Shang, Xin Jiang, Xiao Chen, Linlin Li, Fang Wang, and Qun Liu. TinyBERT: Distilling BERT for natural language understanding. arXiv preprint arXiv:1909.10351, 2019.  [JZC+19] Ying Ju, Fubang Zhao, Shijie Chen, Bowen Zheng, Xuefeng Yang, and Yunfeng Liu. Technical report on conversational question answering. arXiv preprint arXiv:1909.10772, 2019.  [KCR+18] Daniel Khashabi, Snigdha Chaturvedi, Michael Roth, Shyam Upadhyay, and Dan Roth. Looking beyond the surface: A challenge set for readi",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9613fdb72c8d494f9082d0d3616d3dcf",
+      "target": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "page": 69,
+      "evidence": "Data can be found at https://github.com/mcdm/CommitmentBank/.  [DSC+16] Yan Duan, John Schulman, Xi Chen, Peter L. Bartlett, Ilya Sutskever, and Pieter Abbeel. Rl2: Fast reinforcement learning via slow reinforcement learning. ArXiv, abs/1611.02779, 2016.  [DWD+19] Dheeru Dua, Yizhong Wang, Pradeep Dasigi, Gabriel Stanovsky, Sameer Singh, and Matt Gardner. Drop: A reading comprehension benchmark requiring discrete reasoning over paragraphs. arXiv preprint arXiv:1903.00161, 2019.  [DYY+19] Zihang Dai, Zhilin Yang, Yiming Yang, Jaime G. Carbonell, Quoc V. Le, and Ruslan Salakhutdinov. Transformer-xl: Attentive language models beyond a ﬁxed-length context. Arxiv, 2019.  [EOAG18] Sergey Edunov, Myle Ott, Michael Auli, and David Grangier. Understanding back-translation at scale. arXiv preprint arXiv:1808.09381, 2018.  [FAL17] Chelsea Finn, Pieter Abbeel, and Sergey Levine. Model-agnostic meta-learning for fast adaptation of deep networks. ArXiv, abs/1703.03400, 2017.  [GG19] Hila Gonen and Yoav Goldberg. Lipstick on a pig: Debiasing methods cover up systematic gender biases in word embeddings but do not remove them. arXiv preprint arXiv:1903.03862, 2019.  [GLT+20] Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, and Ming-Wei Chang. Realm: Retrieval- augmented language model pre-training. arXiv preprint arXiv:2002.08909, 2020.  [GMDD07] Danilo Giampiccolo, Bernardo Magnini, Ido Dagan, and Bill Dolan. The third PASCAL recognizing textual entailment challenge. In Proceedings of the ACL-PASCAL workshop on textual entailment and paraphrasing, pages 1–9. Association for Computational Linguistics, 2007.  [Gra16] Alex Graves. Adaptive computation time for recurrent neural networks. Arxiv, 2016.  [GSL+18] Suchin Gururangan, Swabha Swayamdipta, Omer Levy, Roy Schwartz, Samuel R Bowman, and Noah A Smith. Annotation artifacts in natural language inference data. arXiv preprint arXiv:1803.02324, 2018.  [GSR19] Sebastian Gehrmann, Hendrik Strobelt, and Alexander M. Rush. Gltr: Statistical detection and visualiza- tion of generated text. arXiv preprint arXiv: 1906.04043, 2019.  [GWC+18] Jiatao Gu, Yong Wang, Yun Chen, Kyunghyun Cho, and Victor OK Li. Meta-learning for low-resource neural machine translation. arXiv preprint arXiv:1808.08437, 2018.  [HBFC19] Ari Holtzman, Jan Buys, Maxwell Forbes, and Yejin Choi. The curious case of neural text degeneration. CoRR, abs/1904.09751, 2019.  [HLW+20] Dan Hendrycks, Xiaoyuan Liu, Eric Wallace, Adam Dziedzic, Rishabh Krishnan, and Dawn Song. Pretrained transformers improve out of distribution robustness. arXiv preprint arXiv:2004.06100, 2020.  [HNA+17] Joel Hestness, Sharan Narang, Newsha Ardalani, Gregory Diamos, Heewoo Jun, Hassan Kianinejad, Md. Mostofa Ali Patwary, Yang Yang, and Yanqi Zhou. Deep learning scaling is predictable, empirically. arXiv preprint arXiv:1712.00409, 2017.  [HR18] Jeremy Howard and Sebastian Ruder. Universal language model ﬁne-tuning for text classiﬁcation. arXiv preprint arXiv:1801.06146, 2018.  [HVD15] Geoffrey Hinton, Oriol Vinyals, and Jeff Dean. Distilling the knowledge in a neural network. arXiv preprint arXiv:1503.02531, 2015.  [HYC01] Sepp Hochreiter, A Steven Younger, and Peter R Conwell. Learning to Learn Using Gradient Descent. In International Conference on Artiﬁcial Neural Networks, pages 87–94. Springer, 2001.  [HZJ+19] Po-Sen Huang, Huan Zhang, Ray Jiang, Robert Stanforth, Johannes Welbl, Jack Rae, Vishal Maini, Dani Yogatama, and Pushmeet Kohli. Reducing sentiment bias in language models via counterfactual evaluation. arXiv preprint arXiv:1911.03064, 2019.  [IBGC+14] Mohit Iyyer, Jordan Boyd-Graber, Leonardo Claudino, Richard Socher, and Hal Daum´e III. A neural network for factoid question answering over paragraphs. In Empirical Methods in Natural Language Processing, 2014.  [IDCBE19] Daphne Ippolito, Daniel Duckworth, Chris Callison-Burch, and Douglas Eck. Automatic detection of generated text is easiest when humans are fooled. arXiv preprint arXiv:1911.00650, 2019.  [JCWZ17] Mandar Joshi, Eunsol Choi, Daniel S. Weld, and Luke Zettlemoyer. TriviaQA: A large scale distantly supervised challenge dataset for reading comprehension. arXiv preprint arXiv:1705.03551, 2017.  [JN20] Zheng Junyuan and Gamma Lab NYC. Numeric transformer - albert, March 2020.  [JVS+16] Rafal Jozefowicz, Oriol Vinyals, Mike Schuster, Noam Shazeer, and Yonghui Wu. Exploring the limits of language modeling. arXiv preprint arXiv:1602.02410, 2016.  [JYS+19] Xiaoqi Jiao, Yichun Yin, Lifeng Shang, Xin Jiang, Xiao Chen, Linlin Li, Fang Wang, and Qun Liu. TinyBERT: Distilling BERT for natural language understanding. arXiv preprint arXiv:1909.10351, 2019.  [JZC+19] Ying Ju, Fubang Zhao, Shijie Chen, Bowen Zheng, Xuefeng Yang, and Yunfeng Liu. Technical report on conversational question answering. arXiv preprint arXiv:1909.10772, 2019.  [KCR+18] Daniel Khashabi, Snigdha Chaturvedi, Michael Roth, Shyam Upadhyay, and Dan Roth. Looking beyond the surface: A challenge set for readi",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "3e45c4c11c814fa69b428e3a16dca426",
+      "page": 66,
+      "evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Advances in neural information processing systems, 2017.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "ea2fe1fd41d44de2af182d66aa22d017",
+      "page": 59,
+      "evidence": "Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. BERT: Pre- training of deep bidirectional transformers for language understanding. arXiv preprint arXiv:1810.04805, 2018. William B. Dolan and Chris Brockett. Automatically constructing a corpus of sentential para- phrases. In Proceedings of the Third International Workshop on Paraphrasing (IWP2005), 2005.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "5f14264da1b540e386c04a6611640755",
+      "page": 63,
+      "evidence": "Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, and Veselin Stoyanov. RoBERTa: A robustly optimized BERT pretraining approach. arXiv preprint arXiv:1907.11692, 2019c. Lajanugen Logeswaran and Honglak Lee. An efficient framework for learning sentence representations. arXiv preprint arXiv:1803.02893, 2018.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "6bfb3e49c5e44ab1b422948dfd0c4c39",
+      "page": 60,
+      "evidence": "Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, 2016.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "5e0032e9e0a24b0f8a9d10e30cbc3e29",
+      "page": 58,
+      "evidence": "Naveen Arivazhagan, Ankur Bapna, Orhan Firat, Dmitry Lepikhin, Melvin Johnson, Maxim Krikun, Mia Xu Chen, Yuan Cao, George Foster, Colin Cherry, et al. Massively multi- lingual neural machine translation in the wild: Findings and challenges. arXiv preprint arXiv:1907.05019, 2019. Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E. Hinton. Layer normalization. arXiv preprint arXiv:1607.06450, 2016.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "abdcb54b94e2416eaaa4c63713f5086a",
+      "page": 64,
+      "evidence": "Matthew Peters, Sebastian Ruder, and Noah A. Smith. To tune or not to tune? adapting pretrained representations to diverse tasks. arXiv preprint arXiv:1903.05987, 2019. Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. Deep contextualized word representations. arXiv preprint arXiv:1802.05365, 2018.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "be65d9b9842943f48be6f0b68ab34ee6",
+      "page": 67,
+      "evidence": "Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, and Quoc V. Le. XLNet: Generalized autoregressive pretraining for language understanding. arXiv preprint arXiv:1906.08237, 2019.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "page": 62,
+      "evidence": "Zhenzhong Lan, Mingda Chen, Sebastian Goodman, Kevin Gimpel, Piyush Sharma, and Radu Soricut. ALBERT: A lite BERT for self-supervised learning of language representa- tions. arXiv preprint arXiv:1909.11942, 2019.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "7f60708397e6469cac0e431264103d39",
+      "page": 59,
+      "evidence": "Kevin Clark, Minh-Thang Luong, Quoc V Le, and Christopher D Manning. Electra: Pre-training text encoders as discriminators rather than generators. arXiv preprint arXiv:2003.10555, 2020. Alexis Conneau and Douwe Kiela. SentEval: An evaluation toolkit for universal sentence representations. arXiv preprint arXiv:1803.05449, 2018.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "af28829f0c924b9485ba65e5740d4a13",
+      "page": 65,
+      "evidence": "Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma, Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein, et al. ImageNet large scale visual recognition challenge. International journal of computer vision, 2015.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "ff947c56622b4496af4df3170999d2ab",
+      "page": 64,
+      "evidence": "Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. Squad: 100,000+ questions for machine comprehension of text. arXiv preprint arXiv:1606.05250, 2016.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "9da23c9b62794825af4e8bcca94686dd",
+      "target": "37b8a77b36e04007b5a5d4c3a523decd",
+      "page": 66,
+      "evidence": "Alex Wang, Amapreet Singh, Julian Michael, Felix Hill, Omer Levy, and Samuel R. Bowman. GLUE: A multi-task benchmark and analysis platform for natural language understanding. arXiv preprint arXiv:1804.07461, 2018.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "6bfb3e49c5e44ab1b422948dfd0c4c39",
+      "target": "af28829f0c924b9485ba65e5740d4a13",
+      "page": 9,
+      "evidence": "O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang, A. Karpathy, A. Khosla, M. Bernstein, et al. Imagenet large scale visual recognition challenge. arXiv:1409.0575, 2014.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "5e0032e9e0a24b0f8a9d10e30cbc3e29",
+      "target": "3430e84195bb49a3b68c9efd1228cbaf",
+      "page": 11,
+      "evidence": "Ryan Kiros, Ruslan Salakhutdinov, and Richard S Zemel. Unifying visual-semantic embeddings with multi- modal neural language models. arXiv preprint arXiv:1411.2539, 2014. D. Kingma and J. L. Ba. Adam: a method for stochastic optimization. ICLR, 2014. arXiv:1412.6980.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "abdcb54b94e2416eaaa4c63713f5086a",
+      "target": "3430e84195bb49a3b68c9efd1228cbaf",
+      "page": 9,
+      "evidence": "Yoon Kim, Yacine Jernite, David Sontag, and Alexan- der M Rush. 2015. Character-aware neural language models. In AAAI 2016. Diederik P. Kingma and Jimmy Ba. 2015. Adam: A method for stochastic optimization. In ICLR.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "abdcb54b94e2416eaaa4c63713f5086a",
+      "target": "5e0032e9e0a24b0f8a9d10e30cbc3e29",
+      "page": 9,
+      "evidence": "Jimmy Ba, Ryan Kiros, and Geoffrey E. Hinton. 2016. Layer normalization. CoRR abs/1607.06450.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "abdcb54b94e2416eaaa4c63713f5086a",
+      "target": "ff947c56622b4496af4df3170999d2ab",
+      "page": 10,
+      "evidence": "Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. 2016. Squad: 100, 000+ questions for machine comprehension of text. In EMNLP.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "a605266d077640cabd07b7bf2ef25e2b",
+      "target": "6bfb3e49c5e44ab1b422948dfd0c4c39",
+      "page": 10,
+      "evidence": "Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. 2016. Deep Residual Learning for Image Recognition. In Proceedings of the IEEE Confer- ence on Computer Vision and Pattern Recognition.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "a605266d077640cabd07b7bf2ef25e2b",
+      "target": "abdcb54b94e2416eaaa4c63713f5086a",
+      "page": 11,
+      "evidence": "EWT Ngai, Yong Hu, YH Wong, Yijun Chen, and Xin Sun. 2011. The application of data mining tech- niques in ﬁnancial fraud detection: A classiﬁca- tion framework and an academic review of literature. Decision Support Systems 50(3):559–569. Sinno Jialin Pan and Qiang Yang. 2010. A survey on transfer learning. IEEE Transactions on Knowledge and Data Engineering 22(10):1345–1359. Matthew E Peters, Waleed Ammar, Chandra Bhagavat- ula, and Russell Power. 2017. Semi-supervised se- quence tagging with bidirectional language models. In Proceedings of ACL 2017. Matthew E Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. 2018. Deep contextualized word rep- resentations. In Proceedings of NAACL 2018.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "32d89c32986d443e803e7f350a8d1c63",
+      "target": "3e45c4c11c814fa69b428e3a16dca426",
+      "page": 11,
+      "evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Advances in Neural Information Pro- cessing Systems, pages 5998–6008. Tian Wang and Kyunghyun Cho. 2015. Larger- context language modelling. arXiv preprint arXiv:1511.03729.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "32d89c32986d443e803e7f350a8d1c63",
+      "target": "ea2fe1fd41d44de2af182d66aa22d017",
+      "page": 9,
+      "evidence": "Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2018. Bert: Pre-training of deep bidirectional transformers for language understand- ing. arXiv preprint arXiv:1810.04805. Adji B Dieng, Chong Wang, Jianfeng Gao, and John Paisley. 2016. Topicrnn: A recurrent neural net- work with long-range semantic dependency. arXiv preprint arXiv:1611.01702. Yarin Gal and Zoubin Ghahramani. 2016. A theoret- ically grounded application of dropout in recurrent neural networks. In Advances in neural information processing systems, pages 1019–1027.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "32d89c32986d443e803e7f350a8d1c63",
+      "target": "abdcb54b94e2416eaaa4c63713f5086a",
+      "page": 10,
+      "evidence": "Razvan Pascanu, Tomas Mikolov, and Yoshua Bengio. 2012. Understanding the exploding gradient prob- lem. CoRR, abs/1211.5063. Matthew E Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. 2018. Deep contextualized word rep- resentations. arXiv preprint arXiv:1802.05365.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "be65d9b9842943f48be6f0b68ab34ee6",
+      "target": "3e45c4c11c814fa69b428e3a16dca426",
+      "page": 11,
+      "evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Advances in neural information processing systems, pages 5998–6008, 2017.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "be65d9b9842943f48be6f0b68ab34ee6",
+      "target": "ea2fe1fd41d44de2af182d66aa22d017",
+      "page": 10,
+      "evidence": "Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. Bert: Pre-training of deep bidirectional transformers for language understanding. arXiv preprint arXiv:1810.04805, 2018.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "be65d9b9842943f48be6f0b68ab34ee6",
+      "target": "5f14264da1b540e386c04a6611640755",
+      "page": 10,
+      "evidence": "Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, and Veselin Stoyanov. Roberta: A robustly optimized bert pretraining approach. arXiv preprint arXiv:1907.11692, 2019.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "be65d9b9842943f48be6f0b68ab34ee6",
+      "target": "abdcb54b94e2416eaaa4c63713f5086a",
+      "page": 11,
+      "evidence": "Matthew E Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Ken- ton Lee, and Luke Zettlemoyer. Deep contextualized word representations. arXiv preprint arXiv:1802.05365, 2018.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "be65d9b9842943f48be6f0b68ab34ee6",
+      "target": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "page": 10,
+      "evidence": "Zhenzhong Lan, Mingda Chen, Sebastian Goodman, Kevin Gimpel, Piyush Sharma, and Radu Soricut. Albert: A lite bert for self-supervised learning of language representations. arXiv preprint arXiv:1909.11942, 2019.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "be65d9b9842943f48be6f0b68ab34ee6",
+      "target": "ff947c56622b4496af4df3170999d2ab",
+      "page": 11,
+      "evidence": "Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. Squad: 100,000+ questions for machine comprehension of text. arXiv preprint arXiv:1606.05250, 2016.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "be65d9b9842943f48be6f0b68ab34ee6",
+      "target": "37b8a77b36e04007b5a5d4c3a523decd",
+      "page": 11,
+      "evidence": "Alex Wang, Amanpreet Singh, Julian Michael, Felix Hill, Omer Levy, and Samuel R. Bowman. GLUE: A multi-task benchmark and analysis platform for natural language understanding. 2019. In the Proceedings of ICLR.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "target": "3e45c4c11c814fa69b428e3a16dca426",
+      "page": 14,
+      "evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Advances in neural information processing systems, pp. 5998–6008, 2017.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "target": "ea2fe1fd41d44de2af182d66aa22d017",
+      "page": 11,
+      "evidence": "Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. BERT: Pre-training of deep bidirectional transformers for language understanding. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), pp. 4171–4186, Minneapolis, Minnesota, June 2019. Association for Computational Linguistics. doi: 10.18653/v1/N19-1423. URL https: //www.aclweb.org/anthology/N19-1423. William B. Dolan and Chris Brockett. Automatically constructing a corpus of sentential paraphrases. In Proceedings of the Third International Workshop on Paraphrasing (IWP2005), 2005. URL https://www.aclweb.org/anthology/I05-5002.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "target": "5f14264da1b540e386c04a6611640755",
+      "page": 13,
+      "evidence": "Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, and Veselin Stoyanov. RoBERTa: A robustly optimized BERT pre- training approach. arXiv preprint arXiv:1907.11692, 2019.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "target": "abdcb54b94e2416eaaa4c63713f5086a",
+      "page": 13,
+      "evidence": "Matthew Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. Deep contextualized word representations. In Proceedings of the 2018 Con- ference of the North American Chapter of the Association for Computational Linguistics: Hu- man Language Technologies, Volume 1 (Long Papers), pp. 2227–2237, New Orleans, Louisiana, June 2018. Association for Computational Linguistics. doi: 10.18653/v1/N18-1202. URL https://www.aclweb.org/anthology/N18-1202.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "target": "ff947c56622b4496af4df3170999d2ab",
+      "page": 14,
+      "evidence": "Published as a conference paper at ICLR 2020 Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. SQuAD: 100,000+ questions for machine comprehension of text. In Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing, pp. 2383–2392, Austin, Texas, November 2016. Association for Computational Linguistics. doi: 10.18653/v1/D16-1264. URL https://www.aclweb. org/anthology/D16-1264.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "target": "37b8a77b36e04007b5a5d4c3a523decd",
+      "page": 14,
+      "evidence": "Alex Wang, Amanpreet Singh, Julian Michael, Felix Hill, Omer Levy, and Samuel Bowman. GLUE: A multi-task benchmark and analysis platform for natural language understanding. In Proceed- ings of the 2018 EMNLP Workshop BlackboxNLP: Analyzing and Interpreting Neural Networks for NLP, pp. 353–355, Brussels, Belgium, November 2018. Association for Computational Lin- guistics. doi: 10.18653/v1/W18-5446. URL https://www.aclweb.org/anthology/ W18-5446.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7f60708397e6469cac0e431264103d39",
+      "target": "3e45c4c11c814fa69b428e3a16dca426",
+      "page": 12,
+      "evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. In NeurIPS, 2017.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7f60708397e6469cac0e431264103d39",
+      "target": "ea2fe1fd41d44de2af182d66aa22d017",
+      "page": 11,
+      "evidence": "Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. BERT: Pre-training of deep bidirectional transformers for language understanding. In NAACL-HLT, 2019. William B. Dolan and Chris Brockett. Automatically constructing a corpus of sentential paraphrases. In IWP@IJCNLP, 2005.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7f60708397e6469cac0e431264103d39",
+      "target": "5f14264da1b540e386c04a6611640755",
+      "page": 11,
+      "evidence": "Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, and Veselin Stoyanov. RoBERTa: A robustly optimized BERT pre- training approach. arXiv preprint arXiv:1907.11692, 2019.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7f60708397e6469cac0e431264103d39",
+      "target": "abdcb54b94e2416eaaa4c63713f5086a",
+      "page": 12,
+      "evidence": "Published as a conference paper at ICLR 2020 Jeffrey Pennington, Richard Socher, and Christopher Manning. Glove: Global vectors for word representation. In EMNLP, 2014. Matthew E Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. Deep contextualized word representations. In NAACL-HLT, 2018.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7f60708397e6469cac0e431264103d39",
+      "target": "be65d9b9842943f48be6f0b68ab34ee6",
+      "page": 13,
+      "evidence": "Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, and Quoc V Le. XLNet: Generalized autoregressive pretraining for language understanding. In NeurIPS, 2019.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7f60708397e6469cac0e431264103d39",
+      "target": "7e97a6fdcb2e4812963ff99f1ecf0bc9",
+      "page": 11,
+      "evidence": "Zhenzhong Lan, Mingda Chen, Sebastian Goodman, Kevin Gimpel, Piyush Sharma, and Radu Sori- cut. ALBERT: A lite bert for self-supervised learning of language representations. arXiv preprint arXiv:1909.11942, 2019.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7f60708397e6469cac0e431264103d39",
+      "target": "ff947c56622b4496af4df3170999d2ab",
+      "page": 12,
+      "evidence": "Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy S. Liang. Squad: 100, 000+ questions for machine comprehension of text. In EMNLP, 2016.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "7f60708397e6469cac0e431264103d39",
+      "target": "37b8a77b36e04007b5a5d4c3a523decd",
+      "page": 12,
+      "evidence": "Alex Wang, Amapreet Singh, Julian Michael, Felix Hill, Omer Levy, and Samuel R Bowman. GLUE: A multi-task benchmark and analysis platform for natural language understanding. In ICLR, 2019. Xiaolong Wang and Abhinav Gupta. Unsupervised learning of visual representations using videos. ICCV, 2015.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "eff60e67bbe045edb7255aa32780168e",
+      "target": "3e45c4c11c814fa69b428e3a16dca426",
+      "page": 29,
+      "evidence": "IEEE, 2017.  Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., et al. An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929, 2020.  Elhoseiny, M., Saleh, B., and Elgammal, A. Write a classi- ﬁer: Zero-shot learning using purely textual descriptions. In Proceedings of the IEEE International Conference on Computer Vision, pp. 2584–2591, 2013.  Faghri, F., Fleet, D. J., Kiros, J. R., and Fidler, S. Vse++: Im- proving visual-semantic embeddings with hard negatives. arXiv preprint arXiv:1707.05612, 2017.  Fergus, R., Fei-Fei, L., Perona, P., and Zisserman, A. Learn- ing object categories from google’s image search. In Tenth IEEE International Conference on Computer Vision (ICCV’05) Volume 1, volume 2, pp. 1816–1823. IEEE, 2005.  Frome, A., Corrado, G. S., Shlens, J., Bengio, S., Dean, J., Ranzato, M., and Mikolov, T. Devise: A deep visual- semantic embedding model. In Advances in neural infor- mation processing systems, pp. 2121–2129, 2013.  Gan, Z., Chen, Y.-C., Li, L., Zhu, C., Cheng, Y., and Liu, J. Large-scale adversarial training for vision-and-language representation learning. arXiv preprint arXiv:2006.06195, 2020.  Gao, T., Fisch, A., and Chen, D. Making pre-trained lan- guage models better few-shot learners. arXiv preprint arXiv:2012.15723, 2020.  Garvie, C., May 2019. URL https://www. flawedfacedata.com/.  Geiger, A., Lenz, P., and Urtasun, R. Are we ready for autonomous driving? the kitti vision benchmark suite. In Conference on Computer Vision and Pattern Recognition (CVPR), 2012.  Geirhos, R., Rubisch, P., Michaelis, C., Bethge, M., Wich- mann, F. A., and Brendel, W. Imagenet-trained cnns are  biased towards texture; increasing shape bias improves ac- curacy and robustness. arXiv preprint arXiv:1811.12231, 2018.  Geirhos, R., Jacobsen, J.-H., Michaelis, C., Zemel, R., Brendel, W., Bethge, M., and Wichmann, F. A. Short- cut learning in deep neural networks. arXiv preprint arXiv:2004.07780, 2020.  Gomez, L., Patel, Y., Rusi˜nol, M., Karatzas, D., and Jawahar, C. Self-supervised learning of visual features through embedding images into text topic spaces. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 4230–4239, 2017.  Goodfellow, I. J., Shlens, J., and Szegedy, C. Explain- ing and harnessing adversarial examples. arXiv preprint arXiv:1412.6572, 2014.  Goodfellow, I. J., Erhan, D., Carrier, P. L., Courville, A., Mirza, M., Hamner, B., Cukierski, W., Tang, Y., Thaler, D., Lee, D.-H., et al. Challenges in representation learn- ing: A report on three machine learning contests. Neural Networks, 64:59–63, 2015.  Google. Google cloud api: Celebrity recognition. URL  https://cloud.google.com/vision/docs/ celebrity-recognition.  Griewank, A. and Walther, A. Algorithm 799: revolve: an implementation of checkpointing for the reverse or ad- joint mode of computational differentiation. ACM Trans- actions on Mathematical Software (TOMS), 26(1):19–45, 2000.  Grill, J.-B., Strub, F., Altch´e, F., Tallec, C., Richemond, P. H., Buchatskaya, E., Doersch, C., Pires, B. A., Guo, Z. D., Azar, M. G., et al. Bootstrap your own latent: A new approach to self-supervised learning. arXiv preprint arXiv:2006.07733, 2020.  Ha, D., Dai, A., and Le, Q. V. Hypernetworks. arXiv preprint arXiv:1609.09106, 2016.  Hancock, B., Bringmann, M., Varma, P., Liang, P., Wang, S., and R´e, C. Training classiﬁers with natural language explanations. In Proceedings of the conference. Associ- ation for Computational Linguistics. Meeting, volume 2018, pp. 1884. NIH Public Access, 2018.  Hancock, B., Bordes, A., Mazare, P.-E., and Weston, J. Learning from dialogue after deployment: Feed yourself, chatbot! arXiv preprint arXiv:1901.05415, 2019.  Harris, C. R., Millman, K. J., van der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., van Kerkwijk, M. H., Brett, M., Haldane, A., Fern´andez del Learning Transferable Visual Models From Natural Language Supervision  R´ıo, J., Wiebe, M., Peterson, P., G´erard-Marchant, P., Sheppard, K., Reddy, T., Weckesser, W., Abbasi, H., Gohlke, C., and Oliphant, T. E. Array programming with NumPy. Nature, 585:357–362, 2020. doi: 10.1038/ s41586-020-2649-2.  Hays, J. and Efros, A. A. Im2gps: estimating geographic information from a single image. In 2008 ieee confer- ence on computer vision and pattern recognition, pp. 1–8. IEEE, 2008.  He, K., Zhang, X., Ren, S., and Sun, J. Delving deep into rectiﬁers: Surpassing human-level performance on imagenet classiﬁcation. In Proceedings of the IEEE inter- national conference on computer vision, pp. 1026–1034, 2015.  He, K., Zhang, X., Ren, S., and Sun, J. Deep residual learn- ing for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, pp. 770–778, 2016a.  He, K., Zhang,",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "eff60e67bbe045edb7255aa32780168e",
+      "target": "ea2fe1fd41d44de2af182d66aa22d017",
+      "page": 28,
+      "evidence": "Devlin, J., Chang, M.-W., Lee, K., and Toutanova, K. Bert: Pre-training of deep bidirectional transformers for lan- guage understanding. arXiv preprint arXiv:1810.04805, 2018.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "eff60e67bbe045edb7255aa32780168e",
+      "target": "9613fdb72c8d494f9082d0d3616d3dcf",
+      "page": 28,
+      "evidence": "Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A., et al. Language models are few-shot learners. arXiv preprint arXiv:2005.14165, 2020.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "eff60e67bbe045edb7255aa32780168e",
+      "target": "3430e84195bb49a3b68c9efd1228cbaf",
+      "page": 29,
+      "evidence": "IEEE, 2017.  Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., et al. An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929, 2020.  Elhoseiny, M., Saleh, B., and Elgammal, A. Write a classi- ﬁer: Zero-shot learning using purely textual descriptions. In Proceedings of the IEEE International Conference on Computer Vision, pp. 2584–2591, 2013.  Faghri, F., Fleet, D. J., Kiros, J. R., and Fidler, S. Vse++: Im- proving visual-semantic embeddings with hard negatives. arXiv preprint arXiv:1707.05612, 2017.  Fergus, R., Fei-Fei, L., Perona, P., and Zisserman, A. Learn- ing object categories from google’s image search. In Tenth IEEE International Conference on Computer Vision (ICCV’05) Volume 1, volume 2, pp. 1816–1823. IEEE, 2005.  Frome, A., Corrado, G. S., Shlens, J., Bengio, S., Dean, J., Ranzato, M., and Mikolov, T. Devise: A deep visual- semantic embedding model. In Advances in neural infor- mation processing systems, pp. 2121–2129, 2013.  Gan, Z., Chen, Y.-C., Li, L., Zhu, C., Cheng, Y., and Liu, J. Large-scale adversarial training for vision-and-language representation learning. arXiv preprint arXiv:2006.06195, 2020.  Gao, T., Fisch, A., and Chen, D. Making pre-trained lan- guage models better few-shot learners. arXiv preprint arXiv:2012.15723, 2020.  Garvie, C., May 2019. URL https://www. flawedfacedata.com/.  Geiger, A., Lenz, P., and Urtasun, R. Are we ready for autonomous driving? the kitti vision benchmark suite. In Conference on Computer Vision and Pattern Recognition (CVPR), 2012.  Geirhos, R., Rubisch, P., Michaelis, C., Bethge, M., Wich- mann, F. A., and Brendel, W. Imagenet-trained cnns are  biased towards texture; increasing shape bias improves ac- curacy and robustness. arXiv preprint arXiv:1811.12231, 2018.  Geirhos, R., Jacobsen, J.-H., Michaelis, C., Zemel, R., Brendel, W., Bethge, M., and Wichmann, F. A. Short- cut learning in deep neural networks. arXiv preprint arXiv:2004.07780, 2020.  Gomez, L., Patel, Y., Rusi˜nol, M., Karatzas, D., and Jawahar, C. Self-supervised learning of visual features through embedding images into text topic spaces. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 4230–4239, 2017.  Goodfellow, I. J., Shlens, J., and Szegedy, C. Explain- ing and harnessing adversarial examples. arXiv preprint arXiv:1412.6572, 2014.  Goodfellow, I. J., Erhan, D., Carrier, P. L., Courville, A., Mirza, M., Hamner, B., Cukierski, W., Tang, Y., Thaler, D., Lee, D.-H., et al. Challenges in representation learn- ing: A report on three machine learning contests. Neural Networks, 64:59–63, 2015.  Google. Google cloud api: Celebrity recognition. URL  https://cloud.google.com/vision/docs/ celebrity-recognition.  Griewank, A. and Walther, A. Algorithm 799: revolve: an implementation of checkpointing for the reverse or ad- joint mode of computational differentiation. ACM Trans- actions on Mathematical Software (TOMS), 26(1):19–45, 2000.  Grill, J.-B., Strub, F., Altch´e, F., Tallec, C., Richemond, P. H., Buchatskaya, E., Doersch, C., Pires, B. A., Guo, Z. D., Azar, M. G., et al. Bootstrap your own latent: A new approach to self-supervised learning. arXiv preprint arXiv:2006.07733, 2020.  Ha, D., Dai, A., and Le, Q. V. Hypernetworks. arXiv preprint arXiv:1609.09106, 2016.  Hancock, B., Bringmann, M., Varma, P., Liang, P., Wang, S., and R´e, C. Training classiﬁers with natural language explanations. In Proceedings of the conference. Associ- ation for Computational Linguistics. Meeting, volume 2018, pp. 1884. NIH Public Access, 2018.  Hancock, B., Bordes, A., Mazare, P.-E., and Weston, J. Learning from dialogue after deployment: Feed yourself, chatbot! arXiv preprint arXiv:1901.05415, 2019.  Harris, C. R., Millman, K. J., van der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., van Kerkwijk, M. H., Brett, M., Haldane, A., Fern´andez del Learning Transferable Visual Models From Natural Language Supervision  R´ıo, J., Wiebe, M., Peterson, P., G´erard-Marchant, P., Sheppard, K., Reddy, T., Weckesser, W., Abbasi, H., Gohlke, C., and Oliphant, T. E. Array programming with NumPy. Nature, 585:357–362, 2020. doi: 10.1038/ s41586-020-2649-2.  Hays, J. and Efros, A. A. Im2gps: estimating geographic information from a single image. In 2008 ieee confer- ence on computer vision and pattern recognition, pp. 1–8. IEEE, 2008.  He, K., Zhang, X., Ren, S., and Sun, J. Delving deep into rectiﬁers: Surpassing human-level performance on imagenet classiﬁcation. In Proceedings of the IEEE inter- national conference on computer vision, pp. 1026–1034, 2015.  He, K., Zhang, X., Ren, S., and Sun, J. Deep residual learn- ing for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, pp. 770–778, 2016a.  He, K., Zhang,",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "eff60e67bbe045edb7255aa32780168e",
+      "target": "6bfb3e49c5e44ab1b422948dfd0c4c39",
+      "page": 29,
+      "evidence": "IEEE, 2017.  Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., et al. An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929, 2020.  Elhoseiny, M., Saleh, B., and Elgammal, A. Write a classi- ﬁer: Zero-shot learning using purely textual descriptions. In Proceedings of the IEEE International Conference on Computer Vision, pp. 2584–2591, 2013.  Faghri, F., Fleet, D. J., Kiros, J. R., and Fidler, S. Vse++: Im- proving visual-semantic embeddings with hard negatives. arXiv preprint arXiv:1707.05612, 2017.  Fergus, R., Fei-Fei, L., Perona, P., and Zisserman, A. Learn- ing object categories from google’s image search. In Tenth IEEE International Conference on Computer Vision (ICCV’05) Volume 1, volume 2, pp. 1816–1823. IEEE, 2005.  Frome, A., Corrado, G. S., Shlens, J., Bengio, S., Dean, J., Ranzato, M., and Mikolov, T. Devise: A deep visual- semantic embedding model. In Advances in neural infor- mation processing systems, pp. 2121–2129, 2013.  Gan, Z., Chen, Y.-C., Li, L., Zhu, C., Cheng, Y., and Liu, J. Large-scale adversarial training for vision-and-language representation learning. arXiv preprint arXiv:2006.06195, 2020.  Gao, T., Fisch, A., and Chen, D. Making pre-trained lan- guage models better few-shot learners. arXiv preprint arXiv:2012.15723, 2020.  Garvie, C., May 2019. URL https://www. flawedfacedata.com/.  Geiger, A., Lenz, P., and Urtasun, R. Are we ready for autonomous driving? the kitti vision benchmark suite. In Conference on Computer Vision and Pattern Recognition (CVPR), 2012.  Geirhos, R., Rubisch, P., Michaelis, C., Bethge, M., Wich- mann, F. A., and Brendel, W. Imagenet-trained cnns are  biased towards texture; increasing shape bias improves ac- curacy and robustness. arXiv preprint arXiv:1811.12231, 2018.  Geirhos, R., Jacobsen, J.-H., Michaelis, C., Zemel, R., Brendel, W., Bethge, M., and Wichmann, F. A. Short- cut learning in deep neural networks. arXiv preprint arXiv:2004.07780, 2020.  Gomez, L., Patel, Y., Rusi˜nol, M., Karatzas, D., and Jawahar, C. Self-supervised learning of visual features through embedding images into text topic spaces. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 4230–4239, 2017.  Goodfellow, I. J., Shlens, J., and Szegedy, C. Explain- ing and harnessing adversarial examples. arXiv preprint arXiv:1412.6572, 2014.  Goodfellow, I. J., Erhan, D., Carrier, P. L., Courville, A., Mirza, M., Hamner, B., Cukierski, W., Tang, Y., Thaler, D., Lee, D.-H., et al. Challenges in representation learn- ing: A report on three machine learning contests. Neural Networks, 64:59–63, 2015.  Google. Google cloud api: Celebrity recognition. URL  https://cloud.google.com/vision/docs/ celebrity-recognition.  Griewank, A. and Walther, A. Algorithm 799: revolve: an implementation of checkpointing for the reverse or ad- joint mode of computational differentiation. ACM Trans- actions on Mathematical Software (TOMS), 26(1):19–45, 2000.  Grill, J.-B., Strub, F., Altch´e, F., Tallec, C., Richemond, P. H., Buchatskaya, E., Doersch, C., Pires, B. A., Guo, Z. D., Azar, M. G., et al. Bootstrap your own latent: A new approach to self-supervised learning. arXiv preprint arXiv:2006.07733, 2020.  Ha, D., Dai, A., and Le, Q. V. Hypernetworks. arXiv preprint arXiv:1609.09106, 2016.  Hancock, B., Bringmann, M., Varma, P., Liang, P., Wang, S., and R´e, C. Training classiﬁers with natural language explanations. In Proceedings of the conference. Associ- ation for Computational Linguistics. Meeting, volume 2018, pp. 1884. NIH Public Access, 2018.  Hancock, B., Bordes, A., Mazare, P.-E., and Weston, J. Learning from dialogue after deployment: Feed yourself, chatbot! arXiv preprint arXiv:1901.05415, 2019.  Harris, C. R., Millman, K. J., van der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., van Kerkwijk, M. H., Brett, M., Haldane, A., Fern´andez del Learning Transferable Visual Models From Natural Language Supervision  R´ıo, J., Wiebe, M., Peterson, P., G´erard-Marchant, P., Sheppard, K., Reddy, T., Weckesser, W., Abbasi, H., Gohlke, C., and Oliphant, T. E. Array programming with NumPy. Nature, 585:357–362, 2020. doi: 10.1038/ s41586-020-2649-2.  Hays, J. and Efros, A. A. Im2gps: estimating geographic information from a single image. In 2008 ieee confer- ence on computer vision and pattern recognition, pp. 1–8. IEEE, 2008.  He, K., Zhang, X., Ren, S., and Sun, J. Delving deep into rectiﬁers: Surpassing human-level performance on imagenet classiﬁcation. In Proceedings of the IEEE inter- national conference on computer vision, pp. 1026–1034, 2015.  He, K., Zhang, X., Ren, S., and Sun, J. Deep residual learn- ing for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, pp. 770–778, 2016a.  He, K., Zhang,",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "eff60e67bbe045edb7255aa32780168e",
+      "target": "abdcb54b94e2416eaaa4c63713f5086a",
+      "page": 29,
+      "evidence": "IEEE, 2017.  Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., et al. An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929, 2020.  Elhoseiny, M., Saleh, B., and Elgammal, A. Write a classi- ﬁer: Zero-shot learning using purely textual descriptions. In Proceedings of the IEEE International Conference on Computer Vision, pp. 2584–2591, 2013.  Faghri, F., Fleet, D. J., Kiros, J. R., and Fidler, S. Vse++: Im- proving visual-semantic embeddings with hard negatives. arXiv preprint arXiv:1707.05612, 2017.  Fergus, R., Fei-Fei, L., Perona, P., and Zisserman, A. Learn- ing object categories from google’s image search. In Tenth IEEE International Conference on Computer Vision (ICCV’05) Volume 1, volume 2, pp. 1816–1823. IEEE, 2005.  Frome, A., Corrado, G. S., Shlens, J., Bengio, S., Dean, J., Ranzato, M., and Mikolov, T. Devise: A deep visual- semantic embedding model. In Advances in neural infor- mation processing systems, pp. 2121–2129, 2013.  Gan, Z., Chen, Y.-C., Li, L., Zhu, C., Cheng, Y., and Liu, J. Large-scale adversarial training for vision-and-language representation learning. arXiv preprint arXiv:2006.06195, 2020.  Gao, T., Fisch, A., and Chen, D. Making pre-trained lan- guage models better few-shot learners. arXiv preprint arXiv:2012.15723, 2020.  Garvie, C., May 2019. URL https://www. flawedfacedata.com/.  Geiger, A., Lenz, P., and Urtasun, R. Are we ready for autonomous driving? the kitti vision benchmark suite. In Conference on Computer Vision and Pattern Recognition (CVPR), 2012.  Geirhos, R., Rubisch, P., Michaelis, C., Bethge, M., Wich- mann, F. A., and Brendel, W. Imagenet-trained cnns are  biased towards texture; increasing shape bias improves ac- curacy and robustness. arXiv preprint arXiv:1811.12231, 2018.  Geirhos, R., Jacobsen, J.-H., Michaelis, C., Zemel, R., Brendel, W., Bethge, M., and Wichmann, F. A. Short- cut learning in deep neural networks. arXiv preprint arXiv:2004.07780, 2020.  Gomez, L., Patel, Y., Rusi˜nol, M., Karatzas, D., and Jawahar, C. Self-supervised learning of visual features through embedding images into text topic spaces. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 4230–4239, 2017.  Goodfellow, I. J., Shlens, J., and Szegedy, C. Explain- ing and harnessing adversarial examples. arXiv preprint arXiv:1412.6572, 2014.  Goodfellow, I. J., Erhan, D., Carrier, P. L., Courville, A., Mirza, M., Hamner, B., Cukierski, W., Tang, Y., Thaler, D., Lee, D.-H., et al. Challenges in representation learn- ing: A report on three machine learning contests. Neural Networks, 64:59–63, 2015.  Google. Google cloud api: Celebrity recognition. URL  https://cloud.google.com/vision/docs/ celebrity-recognition.  Griewank, A. and Walther, A. Algorithm 799: revolve: an implementation of checkpointing for the reverse or ad- joint mode of computational differentiation. ACM Trans- actions on Mathematical Software (TOMS), 26(1):19–45, 2000.  Grill, J.-B., Strub, F., Altch´e, F., Tallec, C., Richemond, P. H., Buchatskaya, E., Doersch, C., Pires, B. A., Guo, Z. D., Azar, M. G., et al. Bootstrap your own latent: A new approach to self-supervised learning. arXiv preprint arXiv:2006.07733, 2020.  Ha, D., Dai, A., and Le, Q. V. Hypernetworks. arXiv preprint arXiv:1609.09106, 2016.  Hancock, B., Bringmann, M., Varma, P., Liang, P., Wang, S., and R´e, C. Training classiﬁers with natural language explanations. In Proceedings of the conference. Associ- ation for Computational Linguistics. Meeting, volume 2018, pp. 1884. NIH Public Access, 2018.  Hancock, B., Bordes, A., Mazare, P.-E., and Weston, J. Learning from dialogue after deployment: Feed yourself, chatbot! arXiv preprint arXiv:1901.05415, 2019.  Harris, C. R., Millman, K. J., van der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., van Kerkwijk, M. H., Brett, M., Haldane, A., Fern´andez del Learning Transferable Visual Models From Natural Language Supervision  R´ıo, J., Wiebe, M., Peterson, P., G´erard-Marchant, P., Sheppard, K., Reddy, T., Weckesser, W., Abbasi, H., Gohlke, C., and Oliphant, T. E. Array programming with NumPy. Nature, 585:357–362, 2020. doi: 10.1038/ s41586-020-2649-2.  Hays, J. and Efros, A. A. Im2gps: estimating geographic information from a single image. In 2008 ieee confer- ence on computer vision and pattern recognition, pp. 1–8. IEEE, 2008.  He, K., Zhang, X., Ren, S., and Sun, J. Delving deep into rectiﬁers: Surpassing human-level performance on imagenet classiﬁcation. In Proceedings of the IEEE inter- national conference on computer vision, pp. 1026–1034, 2015.  He, K., Zhang, X., Ren, S., and Sun, J. Deep residual learn- ing for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, pp. 770–778, 2016a.  He, K., Zhang,",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "eff60e67bbe045edb7255aa32780168e",
+      "target": "37b8a77b36e04007b5a5d4c3a523decd",
+      "page": 29,
+      "evidence": "IEEE, 2017.  Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., et al. An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929, 2020.  Elhoseiny, M., Saleh, B., and Elgammal, A. Write a classi- ﬁer: Zero-shot learning using purely textual descriptions. In Proceedings of the IEEE International Conference on Computer Vision, pp. 2584–2591, 2013.  Faghri, F., Fleet, D. J., Kiros, J. R., and Fidler, S. Vse++: Im- proving visual-semantic embeddings with hard negatives. arXiv preprint arXiv:1707.05612, 2017.  Fergus, R., Fei-Fei, L., Perona, P., and Zisserman, A. Learn- ing object categories from google’s image search. In Tenth IEEE International Conference on Computer Vision (ICCV’05) Volume 1, volume 2, pp. 1816–1823. IEEE, 2005.  Frome, A., Corrado, G. S., Shlens, J., Bengio, S., Dean, J., Ranzato, M., and Mikolov, T. Devise: A deep visual- semantic embedding model. In Advances in neural infor- mation processing systems, pp. 2121–2129, 2013.  Gan, Z., Chen, Y.-C., Li, L., Zhu, C., Cheng, Y., and Liu, J. Large-scale adversarial training for vision-and-language representation learning. arXiv preprint arXiv:2006.06195, 2020.  Gao, T., Fisch, A., and Chen, D. Making pre-trained lan- guage models better few-shot learners. arXiv preprint arXiv:2012.15723, 2020.  Garvie, C., May 2019. URL https://www. flawedfacedata.com/.  Geiger, A., Lenz, P., and Urtasun, R. Are we ready for autonomous driving? the kitti vision benchmark suite. In Conference on Computer Vision and Pattern Recognition (CVPR), 2012.  Geirhos, R., Rubisch, P., Michaelis, C., Bethge, M., Wich- mann, F. A., and Brendel, W. Imagenet-trained cnns are  biased towards texture; increasing shape bias improves ac- curacy and robustness. arXiv preprint arXiv:1811.12231, 2018.  Geirhos, R., Jacobsen, J.-H., Michaelis, C., Zemel, R., Brendel, W., Bethge, M., and Wichmann, F. A. Short- cut learning in deep neural networks. arXiv preprint arXiv:2004.07780, 2020.  Gomez, L., Patel, Y., Rusi˜nol, M., Karatzas, D., and Jawahar, C. Self-supervised learning of visual features through embedding images into text topic spaces. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 4230–4239, 2017.  Goodfellow, I. J., Shlens, J., and Szegedy, C. Explain- ing and harnessing adversarial examples. arXiv preprint arXiv:1412.6572, 2014.  Goodfellow, I. J., Erhan, D., Carrier, P. L., Courville, A., Mirza, M., Hamner, B., Cukierski, W., Tang, Y., Thaler, D., Lee, D.-H., et al. Challenges in representation learn- ing: A report on three machine learning contests. Neural Networks, 64:59–63, 2015.  Google. Google cloud api: Celebrity recognition. URL  https://cloud.google.com/vision/docs/ celebrity-recognition.  Griewank, A. and Walther, A. Algorithm 799: revolve: an implementation of checkpointing for the reverse or ad- joint mode of computational differentiation. ACM Trans- actions on Mathematical Software (TOMS), 26(1):19–45, 2000.  Grill, J.-B., Strub, F., Altch´e, F., Tallec, C., Richemond, P. H., Buchatskaya, E., Doersch, C., Pires, B. A., Guo, Z. D., Azar, M. G., et al. Bootstrap your own latent: A new approach to self-supervised learning. arXiv preprint arXiv:2006.07733, 2020.  Ha, D., Dai, A., and Le, Q. V. Hypernetworks. arXiv preprint arXiv:1609.09106, 2016.  Hancock, B., Bringmann, M., Varma, P., Liang, P., Wang, S., and R´e, C. Training classiﬁers with natural language explanations. In Proceedings of the conference. Associ- ation for Computational Linguistics. Meeting, volume 2018, pp. 1884. NIH Public Access, 2018.  Hancock, B., Bordes, A., Mazare, P.-E., and Weston, J. Learning from dialogue after deployment: Feed yourself, chatbot! arXiv preprint arXiv:1901.05415, 2019.  Harris, C. R., Millman, K. J., van der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., van Kerkwijk, M. H., Brett, M., Haldane, A., Fern´andez del Learning Transferable Visual Models From Natural Language Supervision  R´ıo, J., Wiebe, M., Peterson, P., G´erard-Marchant, P., Sheppard, K., Reddy, T., Weckesser, W., Abbasi, H., Gohlke, C., and Oliphant, T. E. Array programming with NumPy. Nature, 585:357–362, 2020. doi: 10.1038/ s41586-020-2649-2.  Hays, J. and Efros, A. A. Im2gps: estimating geographic information from a single image. In 2008 ieee confer- ence on computer vision and pattern recognition, pp. 1–8. IEEE, 2008.  He, K., Zhang, X., Ren, S., and Sun, J. Delving deep into rectiﬁers: Surpassing human-level performance on imagenet classiﬁcation. In Proceedings of the IEEE inter- national conference on computer vision, pp. 1026–1034, 2015.  He, K., Zhang, X., Ren, S., and Sun, J. Deep residual learn- ing for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, pp. 770–778, 2016a.  He, K., Zhang,",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "2d604c5f465440d8bb705136faa3f513",
+      "target": "3430e84195bb49a3b68c9efd1228cbaf",
+      "page": 9,
+      "evidence": "[Bel+15] M. Bellemare, Y. Naddaf, J. Veness, and M. Bowling. “The arcade learning environ- ment: An evaluation platform for general agents”. In: Twenty-Fourth International Joint Conference on Artiﬁcial Intelligence. 2015. [Bro+16] G. Brockman, V. Cheung, L. Pettersson, J. Schneider, J. Schulman, J. Tang, and W. Zaremba. “OpenAI Gym”. In: arXiv preprint arXiv:1606.01540 (2016). [Dua+16] Y. Duan, X. Chen, R. Houthooft, J. Schulman, and P. Abbeel. “Benchmarking Deep Reinforcement Learning for Continuous Control”. In: arXiv preprint arXiv:1604.06778 (2016). [Hee+17] N. Heess, S. Sriram, J. Lemmon, J. Merel, G. Wayne, Y. Tassa, T. Erez, Z. Wang, A. Eslami, M. Riedmiller, et al. “Emergence of Locomotion Behaviours in Rich Envi- ronments”. In: arXiv preprint arXiv:1707.02286 (2017). [KL02] S. Kakade and J. Langford. “Approximately optimal approximate reinforcement learn- ing”. In: ICML. Vol. 2. 2002, pp. 267–274. [KB14] D. Kingma and J. Ba. “Adam: A method for stochastic optimization”. In: arXiv preprint arXiv:1412.6980 (2014). [Mni+15] V. Mnih, K. Kavukcuoglu, D. Silver, A. A. Rusu, J. Veness, M. G. Bellemare, A. Graves, M. Riedmiller, A. K. Fidjeland, G. Ostrovski, et al. “Human-level control through deep reinforcement learning”. In: Nature 518.7540 (2015), pp. 529–533. [Mni+16] V. Mnih, A. P. Badia, M. Mirza, A. Graves, T. P. Lillicrap, T. Harley, D. Silver, and K. Kavukcuoglu. “Asynchronous methods for deep reinforcement learning”. In: arXiv preprint arXiv:1602.01783 (2016). [Sch+15a] J. Schulman, P. Moritz, S. Levine, M. Jordan, and P. Abbeel. “High-dimensional contin- uous control using generalized advantage estimation”. In: arXiv preprint arXiv:1506.02438 (2015). [Sch+15b] J. Schulman, S. Levine, P. Moritz, M. I. Jordan, and P. Abbeel. “Trust region policy optimization”. In: CoRR, abs/1502.05477 (2015). [SL06] I. Szita and A. L¨orincz. “Learning Tetris using the noisy cross-entropy method”. In: Neural computation 18.12 (2006), pp. 2936–2941. [TET12] E. Todorov, T. Erez, and Y. Tassa. “MuJoCo: A physics engine for model-based con- trol”. In: Intelligent Robots and Systems (IROS), 2012 IEEE/RSJ International Con- ference on. IEEE. 2012, pp. 5026–5033. [Wan+16] Z. Wang, V. Bapst, N. Heess, V. Mnih, R. Munos, K. Kavukcuoglu, and N. de Freitas. “Sample Eﬃcient Actor-Critic with Experience Replay”. In: arXiv preprint arXiv:1611.01224 (2016). [Wil92] R. J. Williams. “Simple statistical gradient-following algorithms for connectionist re- inforcement learning”. In: Machine learning 8.3-4 (1992), pp. 229–256. 9",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "37b8a77b36e04007b5a5d4c3a523decd",
+      "target": "3e45c4c11c814fa69b428e3a16dca426",
+      "page": 12,
+      "evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Advances in Neural Infor- mation Processing Systems, pp. 6000–6010, 2017. Ellen M Voorhees et al. The TREC-8 question answering track report. In TREC, volume 99, pp. 77–82, 1999.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "37b8a77b36e04007b5a5d4c3a523decd",
+      "target": "3430e84195bb49a3b68c9efd1228cbaf",
+      "page": 11,
+      "evidence": "Armand Joulin, Edouard Grave, Piotr Bojanowski, and Tomas Mikolov. Bag of tricks for efﬁcient text classiﬁcation. arXiv preprint 1607.01759, 2016. Diederik P Kingma and Jimmy Ba. Adam: A method for stochastic optimization. In Proceedings of the International Conference on Learning Representations, 2015.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "37b8a77b36e04007b5a5d4c3a523decd",
+      "target": "abdcb54b94e2416eaaa4c63713f5086a",
+      "page": 12,
+      "evidence": "Published as a conference paper at ICLR 2019 Jeffrey Pennington, Richard Socher, and Christopher Manning. GloVe: Global vectors for word representation. In Proceedings of the Conference on Empirical Methods in Natural Language processing, pp. 1532–1543, 2014. Matthew E Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, and Luke Zettlemoyer. Deep contextualized word representations. In Proceedings of the North Amer- ican Chapter of the Association for Computational Linguistics: Human Language Technologies, 2018.",
+      "method": "normalized-title-in-references"
+    },
+    {
+      "source": "37b8a77b36e04007b5a5d4c3a523decd",
+      "target": "ff947c56622b4496af4df3170999d2ab",
+      "page": 12,
+      "evidence": "Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. SQuAD: 100,000+ questions for machine comprehension of text. In Proceedings of the Conference on Empirical Methods in Natural Language Processing, pp. 2383–2392. Association for Computational Linguistics, 2016. Tim Rockt¨aschel, Edward Grefenstette, Moritz Hermann, Karl, Tom´aˇs Koˇcisk`y, and Phil Blunsom. Reasoning about entailment with neural attention. In Proceedings of the International Conference on Learning Representations, 2016.",
+      "method": "normalized-title-in-references"
+    }
+  ],
+  "note": "仅为已导入论文之间可核对的局域引用；无连边时 PageRank 不具有区分意义。未匹配不等于没有引用。",
+  "honesty": [
+    "连边仅当引用方 References 中出现被引用论文的规范化标题；漏配不等于没有引用关系。",
+    "标题抽取依赖 PDF 首页排版，个别论文标题可能不完整，从而漏边。",
+    "图中其余节点为库中原有文献，不属于本次 20 篇验收范围。"
+  ]
+}

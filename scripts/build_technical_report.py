@@ -1,0 +1,176 @@
+"""依据已验证记录生成技术说明，不写入个人身份或密钥。需要 reportlab 与中文字体；参赛信息及公网地址在最终登记时补充。"""
+import json
+from pathlib import Path
+from xml.sax.saxutils import escape
+
+from reportlab.lib import colors
+from reportlab.lib.enums import TA_CENTER
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import ParagraphStyle,getSampleStyleSheet
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import (SimpleDocTemplate,Paragraph,Spacer,PageBreak,Table,TableStyle,Flowable)
+
+ROOT=Path(__file__).resolve().parents[1]
+OUT=ROOT/'output/pdf/ResearchDock_技术说明_校核稿.pdf'
+FONT=Path('C:/Windows/Fonts/simhei.ttf')
+if not FONT.exists():
+    raise SystemExit('Provide a Chinese TTF font in FONT before rebuilding this report.')
+pdfmetrics.registerFont(TTFont('ReportCJK',str(FONT)))
+pdfmetrics.registerFontFamily('ReportCJK',normal='ReportCJK',bold='ReportCJK',italic='ReportCJK',boldItalic='ReportCJK')
+GREEN=colors.HexColor('#31675A');INK=colors.HexColor('#20332D');GRAY=colors.HexColor('#65736E')
+styles=getSampleStyleSheet()
+styles.add(ParagraphStyle(name='BodyCJK',fontName='ReportCJK',fontSize=10.5,leading=18,spaceAfter=11,textColor=INK,wordWrap='CJK'))
+styles.add(ParagraphStyle(name='HeadingCJK',fontName='ReportCJK',fontSize=20,leading=29,spaceAfter=24,textColor=GREEN,wordWrap='CJK'))
+styles.add(ParagraphStyle(name='SubCJK',fontName='ReportCJK',fontSize=12,leading=20,spaceBefore=8,spaceAfter=10,textColor=GREEN,wordWrap='CJK'))
+styles.add(ParagraphStyle(name='SmallCJK',fontName='ReportCJK',fontSize=8.7,leading=14,textColor=GRAY,wordWrap='CJK'))
+styles.add(ParagraphStyle(name='CoverCJK',fontName='ReportCJK',fontSize=34,leading=48,textColor=INK,spaceAfter=26))
+
+
+def p(text,style='BodyCJK'):
+    return Paragraph(escape(str(text)).replace('\n','<br/>'),styles[style])
+
+
+def table(rows,widths):
+    cells=[[p(cell,'SmallCJK') for cell in row] for row in rows]
+    t=Table(cells,colWidths=widths,hAlign='LEFT')
+    t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),colors.HexColor('#E3EEE8')),
+                          ('VALIGN',(0,0),(-1,-1),'TOP'),('BOTTOMPADDING',(0,0),(-1,-1),10),
+                          ('TOPPADDING',(0,0),(-1,-1),10),('LEFTPADDING',(0,0),(-1,-1),10),
+                          ('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#D5E0DA'))]))
+    return t
+
+
+class Architecture(Flowable):
+    def __init__(self):
+        super().__init__();self.width=480;self.height=206
+    def draw(self):
+        c=self.canv
+        labels=[['浏览器六模块','FastAPI / SSE','证据与结果校验'],['PDF / OCR / 块坐标','混合召回 + 精排','MiMo 文本 / 工具 / 视觉'],['SQLite + 向量缓存','本地 BGE 双模型','arXiv / 原文 PDF']]
+        for row,items in enumerate(labels):
+            for col,label in enumerate(items):
+                x=col*162;y=155-row*68
+                c.setFillColor(colors.HexColor('#EFF5F0'));c.setStrokeColor(colors.HexColor('#BCD0C3'))
+                c.roundRect(x,y,151,43,6,stroke=1,fill=1)
+                c.setFillColor(INK);c.setFont('ReportCJK',9.5);c.drawCentredString(x+75.5,y+17,label)
+                if row<2:
+                    c.setStrokeColor(GREEN);c.line(x+75.5,y,x+75.5,y-22)
+                    c.line(x+75.5,y-22,x+72.5,y-18);c.line(x+75.5,y-22,x+78.5,y-18)
+
+
+SECTIONS=[
+('01  项目用途与功能',[
+('text','研舟 ResearchDock 用于管理论文、检索正文和整理写作材料。系统保存原始 PDF、页码和文本坐标，回答中的引用可跳回原文。功能分为文件管理、论文问答、双语阅读、文献检索、引用图谱和写作绘图六个模块。'),
+('table',[['模块','当前实现','主要验证边界'],['PDF 管理','批量解析、版本提示、作者结构、按页视觉转录','复杂版式与所有署名未全面核验'],['证据问答','多路召回、精排、动态工具与追问','引用存在不等于每句话被支持'],['对照阅读','目录、页图、选段/逐页/全文翻译','按滚动比例联动，不是精确段落对齐'],['检索追踪','arXiv 检索、受限下载、主题定时刷新','外部可用性与召回完整性不保证'],['引用图谱','有出处连边、局域 PageRank、综述核验','题名匹配仍有漏配及消歧限制'],['写作绘图','框架、真实条目、架构脚本、CSV 五类图','草稿、描述性图注均需人工审核']]),
+('sub','使用流程'),
+('text','上传论文并等待解析后，即可提问、阅读译文、查看图谱或生成草稿。重复文献可跳过，也可保留两个版本比较。开发库和评审库使用不同数据目录。')]),
+('02  系统架构与数据流',[
+('diagram',None),
+('text','前端使用 HTML、CSS 和原生 JavaScript；后端采用 FastAPI，SSE 传送真实执行事件与模型增量输出。SQLite 使用 WAL 和外键约束，PDF 文件保存在单独目录。原始页、文本块、区域坐标、引用条目、向量与翻译缓存相互关联。'),
+('text','上传文件先做格式、大小与重复检查，再进入单工作线程逐页解析。原生 PDF 采用 PyMuPDF；图像扫描页使用 RapidOCR 或可用的 Tesseract。解析任务保存逐页进度，服务重启后会将未完成的任务标为中断。'),
+('text','查询走向量、词项与字符特征多路检索，融合后由交叉编码器精排；所选片段与真实页码再传给 MiMo。回答校验使用来源编号与原文引用约束，失败时显示真实错误或证据不足提示。外部检索元信息与本地原文证据分开展示。'),
+('sub','实现特点'),
+('text','项目使用已有模型，主要工作是文献处理和检索流程的集成：限定检索范围、保存引用出处、校验文献时间、隔离不同模型的向量，并在模型失败时回退到本地检索。未训练基础模型。')]),
+('03  PDF 解析、结构与版本管理',[
+('sub','结构化抽取'),
+('text','每页保留宽高、文本块与 bbox 坐标，长文档逐页处理。优先使用 PDF 原生目录，缺失时根据几何和编号估计章节；自动估计目录有明确标识。表格提取保存单元格与原文区域，内嵌图像按区域保存，其中也可能包含扫描整页。'),
+('text','作者机构提取基于首页署名区、几何行序、机构词与邮箱标记。作者姓名、顺序、机构、邮箱及来源区域分项保存；分组邮箱展开会标明来源。用户手工编辑的作者信息不会被静默覆盖。四篇原生论文的作者顺序与机构检查通过，但完整资料包仍有多篇署名缺失，扫描件署名需核对。'),
+('sub','内容级重复检测'),
+('text','先比较文件字节哈希、arXiv 编号、版本与正文近似度，再对原生正文的三个采样窗口使用 BGE-M3 编码。文档签名按模型空间缓存，相似度结合题名或编号等条件保守提示。v1 与 v7 实测能识别相关版本并建议保留较新版本。旧文献由用户决定是否保留。扫描文件缺少原生正文时，仅使用已有的文件和词项比较。'),
+('sub','按页公式与图表识别'),
+('text','阅读页可主动将当前页图片发送给配置的视觉模型，转录 LaTeX、表格单元格与图注。结果缓存并关联原始页面，始终标为未人工核对，不自动注入问答证据。每次处理一页并复用缓存。MiMo 实测覆盖缩放点积公式、多头注意力公式和 BLEU 表；其他公式、合并单元格和图形描述仍需逐项核对。'),
+('text','出版时间来自 arXiv 编号或可核对的出版文字，保留日/月/年精度及来源；PDF 创建时间和导入时间不用于证明出版先后。附录可随目录和原页阅读，尚无独立完整的附录语义分类器。')]),
+('04  模型选择与两阶段检索',[
+('table',[['组件','选择','本项目使用方式'],['生成 / 工具 / 视觉','mimo-v2.6-pro','兼容接口、原生工具、JSON 输出、单页图像输入'],['语义向量','BAAI/bge-m3','本地 dense 1024 维；CLS + L2；默认截断 512 tokens'],['精排','BAAI/bge-reranker-v2-m3','本地交叉编码器，对查询和候选块联合打分'],['本地检索','BM25 + TF-IDF','与语义通道融合，模型不可用时仍能检索']]),
+('text','召回通道通过倒数排名融合（RRF）合并。默认最多 40 个候选进入 reranker，再按调用路径截取最终证据；Agent 每次工具检索限制数量。来源编号在最终证据集合中重新分配，保留原文本、页码和区域。作者问题保留首页证据，多文问题保留跨论文覆盖及请求的上下文指标；表格数值问题补充原生同页表头和说明，并使用整页来源区域。'),
+('text','本项目使用 BGE-M3 的 dense 向量，未启用稀疏输出或 ColBERT 多向量。默认最大长度为 512 tokens，用于控制显存和耗时；较长片段会截断。向量以 float32 BLOB 保存，检索时按模型空间匹配；更换模型需重新建索引。'),
+('text','向量模型与精排模型共享推理锁，降低后台索引和前台请求同时计算时的显存峰值。本机使用 CUDA FP16；无 GPU 可采用 CPU 配置，但云主机 CPU 双模型延迟尚未测量。'),
+('sub','小样本排序结果'),
+('text','八道合成排序题：首条命中从 6/8 到 7/8，前五条均为 8/8；其中一道硬件问题从第 2 名下降到第 4 名。小候选集预热后精排中位数约 47 ms，一次真实 40 候选约 469 ms。结果来自本机小样本，适用范围有限。')]),
+('05  论文问答与工具调用',[
+('text','系统支持直接检索与自主工具调用两种路径。Agent 分为规划、核读和综合三个阶段，均由同一模型执行。实际工具包括文献列表、范围内原文搜索、指定页读取，以及用户明确开启后的 arXiv 发现；工具不执行任意代码，也不自行删除或导入论文。'),
+('text','工具参数由后端校验，范围由后端锁定，来源编号跨工具调用保持稳定。设有轮次、调用次数、证据数量和时间预算，重复或无效调用被跳过或停止。前端显示实际工具名称、参数及结果，不展示模型私有推理。'),
+('sub','多轮追问'),
+('text','前端提交有限的近期对话；后端只在检测到追问且前次来源仍存在时继承已引用的文献范围。显式选择的不同范围优先，新主题不盲目继承。上一轮生成的答案不作为新的证据，后续问题仍须重新查原文；删除的来源要求用户重新选文献。'),
+('sub','证据约束与流式输出'),
+('text','模型输出按结构化声明解析。未完成校验的流式内容只作生成过程提示，来源编号与逐字原句检查通过后才展示为有出处的声明。模型无法给出有效来源、输出截断或外部服务失败时，保留执行状态并如实提示。'),
+('text','引用编号存在只能证明来源记录存在，不能独立证明每个结论的语义蕴含。因此系统保留原文回跳，仍要求核读。样例验证涵盖 GPU、Adam 参数、作者机构、无原文支持的硬件序列号、BERT 对比与 Agent 综合；其余问题尚未做完整的事实支持评估。')]),
+('06  阅读、检索与写作',[
+('sub','阅读与翻译'),
+('text','左侧原始页图、右侧可选择文本或译文；目录和证据可跳页，引用编号可打开原文参考条目。支持选段、当前页、后台逐页全文翻译及 Markdown 导出。已有页译文按模型缓存，数值、公式和代码要求尽量保留。'),
+('text','原文和译文按滚动比例联动，尚未实现句子或段落对齐，也没有悬停翻译。扫描识别、中文换行、跨页与复杂表格可能影响对照体验。公开演示默认限制全文翻译页数，避免对长书意外发起大量调用。'),
+('sub','文献检索、追踪与引用入库'),
+('text','arXiv 查询使用真实接口，具备有限重试、缓存时间标签、官方地址校验和错误提示。用户可配置定时主题刷新并保存反馈；推荐使用查询相关性和本地反馈，未使用多用户协同过滤。'),
+('text','参考文献列表标记本地匹配文献。带可识别 arXiv 编号的条目可一批选择 1-5 篇下载，逐条记录已存在、下载成功或失败，之后等待解析。不含可靠编号的条目提供检索入口；未实现对所有 DOI、出版社或题名变体的自动全文解析。'),
+('sub','写作与数据绘图'),
+('text','生成论文框架、文献综述和 Mermaid 架构图脚本；References 由实际库中条目组装，缺失作者或年份明确标记待核对。生成脚本不会自动执行。支持中英学术翻译。'),
+('text','CSV 输入校验后生成折线、柱状、散点、雷达和三维雷达图，提供 PNG、SVG、Python 脚本与数据下载。图注描述上传的数据，不提供统计显著性或因果判断。Mermaid 当前输出脚本，未内嵌完整图编辑器。')]),
+('07  引用图谱与时间核验',[
+('text','引用图基于本地 References 中的规范化题名匹配。边保存引用方、被引方、原始页码及证据片段，供点击回查。PageRank 仅表示当前文献集合内的结构指标，不等同于全领域影响力或学术质量。'),
+('text','本轮 39 篇资料构成的图谱有 261 条带出处连边，全部文献均检测到参考文献区。此前 20 篇交叉引用样本中有 72 条组内边。检查确认了边和出处存在，尚未给出完整的连边精确率、召回率；同名、版本、DOI 和变体题名仍可能误配或漏配。'),
+('sub','图谱驱动的综述'),
+('text','综述提示输入真实的范围内引用边和重新计算的局域 PageRank，要求根据实际文献组织关系。References 最终使用库内真实条目重建，避免模型随意增加不存在的文献。元数据缺失时不会补造作者和出版年。'),
+('sub','Future Work 核验'),
+('text','候选方向必须来自含有未来研究标记的原文段落。“已解决 / 部分解决”必须包含候选论文的逐字原句，且出版日期能确认晚于原方向。明显更早的文献被排除，年份精度重叠、时间未知或缺逐字证据时降为待核实。导入时间不参与新旧判断。'),
+('text','可选“联网核查最近研究”最多查询三个方向，将主题关键词发送给 arXiv。返回内容仅作为摘要级线索，不据此断言已解决；无命中只表示本次查询未找到候选。该新增分支已有格式与时间约束测试，尚未完成大规模人工方向核读或穷尽性评估。')]),
+('08  测试结果',[
+('table',[['验证记录','结果','边界'],['回归测试','223 passed / 48.08 s','单元与集成场景，模型主要使用测试替身'],['完整资料包真实流程','39 PDF / 1986 页；32/32','包含真实模型和外部检索；非全文准确率'],['署名结构与语义去重','6/6','四篇原生署名样例 + v1/v7 与相关论文'],['视觉与评审服务','6/6','三页样例、缓存与登录；不是 OCR 通用评估'],['部署基础容器','6/6','不含本地双模型依赖，不是公网长期运行测试'],['本地 BGE 主库','28 篇 / 10299 块','主库不变；独立评审库 40 篇 / 25464 块已索引'],['补充问答','6/6','连续追问、BLEU、LN 引用和 GPT 比较'],['精排排序题','首条 6/8 到 7/8','一题变差；不作全面准确率宣传']]),
+('text','完整资料包中包括主办材料扫描件 15 页、v1/v7 版本对、BERT、Layer Normalization 与 541 页 Understanding Deep Learning 教材。全部页写入完成，状态无 partial；但“有提取结果”不证明每页版面、数学符号和所有结构项都正确。'),
+('text','真实流程覆盖：上传与重复提示、页图和原文读取、References、版本差异、有出处图谱、五类绘图与导出、无穷数输入拒绝、测试副本编辑删除、arXiv 查询、主题配置、单文/扫描/跨文问答、Agent、SSE、翻译和写作。'),
+('sub','记录与复现'),
+('text','主记录为 docs/FINAL_ACCEPTANCE_REPORT.json；结构去重、精排、视觉与部署分别见 STRUCTURE_DEDUP_CHECK.json、RERANKER_CHECK.json、VISUAL_DEMO_CHECK.json、DEPLOYMENT_CHECK.json。真实测试脚本放在 scripts/；调用付费模型的脚本会说明用途，不默认作为普通单测执行。')]),
+('09  部署、访问控制与运行边界',[
+('text','本机开发服务为 8765。独立评审服务为 8767，使用 data/demo-public，不直接共享主库。prepare_demo.py 创建被 Git 忽略的私有配置与随机评审凭据，run_demo.py 检查密码后启动；缺少密码的强制演示模式启动失败。'),
+('text','评审 Cookie 使用 HMAC 签名、HttpOnly、SameSite=Strict 和 8 小时有效期。公开 HTTPS 配置应启用 Secure Cookie。匿名只允许健康检查和认证入口，文献数据及模型操作需登录。默认每 IP 每分钟 5 次登录尝试、10 次 POST，全文翻译 20 页、文献数量 80 篇。请求限额不能替代模型服务商总费用控制。'),
+('sub','无需自有服务器的验证方式'),
+('text','现有 Windows 电脑可运行独立服务，再使用用户自己的 ngrok 账号映射 HTTPS。该方式依赖电脑持续开机联网，并受免费方案流量、请求量和提示页影响，不等于稳定无限托管。尚未配置隧道账号、创建公网地址或进行外网 SSE 验证。'),
+('sub','容器方式'),
+('text','Dockerfile 默认构建基础环境；LOCAL_MODELS=1 才安装 CPU Torch 和双模型依赖。compose.demo.yaml 仅监听本机 8767，独立数据可写，模型目录只读。公开使用需要 HTTPS 反向代理，并正确设置 Host、协议头、SSE 缓冲和读取超时。基础容器已实际构建和运行，本地双模型 Compose 镜像尚未执行完整构建验收。'),
+('text','镜像和 Git 排除密钥、私有配置、模型权重与论文数据。运行期间用 SQLite 备份接口保存数据库，同时备份原始 PDF，避免只复制主数据库而遗漏 WAL。主机异常、磁盘不足与外部服务不可用仍需运维监控。')]),
+('10  已知限制与参考资料',[
+('text','当前提交前边界：复杂公式只完成主动单页转录；全资料作者机构未补齐；扫描署名、附录独立分类、精确双语段落对齐、悬停翻译、DOI/题名变体自动解析、Mermaid 图形编辑及大规模事实支持评估均未完整实现。详细状态见验收记录。'),
+('text','本文件为技术校核稿。参赛姓名、学校、仓库权限、公网网址与评审账号登记尚未完成。演示视频已制作：约 7 分 03 秒，1920×1080、MP4，实际操作录屏，AI 普通话配音及中文字幕；视频单独提交，不进入源码仓库。技术 PDF 不超过 30 页，最终提交仍以主办平台补充要求为准。'),
+('text','工程交付包含环境说明、依赖、源码及真实验证记录。保留可追溯开发过程，密钥、私有配置、模型权重和测试论文不进入公开代码仓库。最终仓库权限和演示地址在登记时复核。'),
+('sub','公开参考资料（访问核对：2026-11-15）'),
+('text','[1] MiMo 图片理解与兼容接口文档：\nhttps://mimo.mi.com/docs/zh-CN/quick-start/usage-guide/multimodal-understanding/image-understanding\nhttps://mimo.mi.com/docs/zh-CN/api/chat/openai-api'),
+('text','[2] BGE 官方模型说明：\nhttps://huggingface.co/BAAI/bge-m3\nhttps://huggingface.co/BAAI/bge-reranker-v2-m3'),
+('text','[3] ngrok 免费方案限制：\nhttps://ngrok.com/docs/pricing-limits/free-plan-limits\n[4] Cloudflare Quick Tunnel 限制（含 SSE）：\nhttps://developers.cloudflare.com/tunnel/get-started/quick-tunnels/'),
+('text','[5] GPT-2 原始公开论文：\nhttps://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf'),
+('text','[6] 赛项要求来源：用户提供的《科研小助手Agent-AI大模型》资料；具体提交权限和时间以主办平台当期通知为准。')])]
+
+
+def footer(c,doc):
+    c.setStrokeColor(colors.HexColor('#D7E3DC'));c.line(52,46,A4[0]-52,46)
+    c.setFillColor(GRAY);c.setFont('ReportCJK',8)
+    c.drawString(52,30,'RESEARCHDOCK / 技术校核稿 / 2026-11-15')
+    c.drawRightString(A4[0]-52,30,f'{doc.page}')
+
+
+def main():
+    OUT.parent.mkdir(parents=True,exist_ok=True)
+    story=[Spacer(1,68),p('研舟\nResearchDock','CoverCJK'),p('基于大模型与 Agent 的科研辅助工作台','SubCJK'),Spacer(1,26),
+           p('技术说明 · 提交前校核稿','HeadingCJK'),p('版本日期：2026 年 11 月 15 日'),Spacer(1,24),
+           table([['文献实测','真实流程','自动回归'],['39 份 / 1,986 页','32 / 32 项通过','223 项通过']],[163,163,163]),Spacer(1,30),
+           p('支持 PDF 上传、正文检索、论文问答、翻译、引用分析和 CSV 绘图。'),
+           p('本稿记录功能、实现和测试结果。参赛信息、公网地址和仓库权限待最终登记。','SmallCJK')]
+    markdown=['# 研舟 ResearchDock 技术说明（提交前校核稿）','日期：2026-11-15','参赛信息和公网地址待最终登记。']
+    for title,items in SECTIONS:
+        story.extend([PageBreak(),p(title,'HeadingCJK')]);markdown.extend(['','## '+title])
+        for kind,value in items:
+            if kind=='diagram':
+                story.extend([Architecture(),Spacer(1,12)]);markdown.append('前端 → FastAPI/SSE → PDF/OCR、检索精排、MiMo → SQLite/本地模型/arXiv（详见 PDF 架构图）。')
+            elif kind=='table':
+                widths=[110,175,204] if len(value[0])==3 else [489/len(value[0])]*len(value[0])
+                story.extend([table(value,widths),Spacer(1,16)])
+                markdown.extend(['| '+' | '.join(row)+' |' for row in value[:1]]+['| '+' | '.join(['---']*len(value[0]))+' |']+['| '+' | '.join(row)+' |' for row in value[1:]])
+            else:
+                story.append(p(value,'SubCJK' if kind=='sub' else 'BodyCJK'))
+                markdown.extend(['',('### ' if kind=='sub' else '')+value])
+    doc=SimpleDocTemplate(str(OUT),pagesize=A4,leftMargin=52,rightMargin=52,topMargin=52,bottomMargin=64,
+                          title='研舟 ResearchDock 技术说明（校核稿）',author='ResearchDock',pageCompression=1)
+    doc.build(story,onFirstPage=footer,onLaterPages=footer)
+    (ROOT/'docs/TECHNICAL_REPORT.md').write_text('\n'.join(markdown)+'\n',encoding='utf-8')
+    print(str(OUT))
+
+
+if __name__=='__main__':main()

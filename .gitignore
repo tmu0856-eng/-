@@ -1,4 +1,6 @@
 .env
+.env.*
+!.env.example
 .venv/
 data/
 __pycache__/
@@ -6,3 +8,11 @@ __pycache__/
 *.pyc
 tmp/
 node_modules/
+# 本地工作笔记，不纳入提交材料。
+PLAN.md
+.local/
+
+# 视频和技术 PDF 单独提交，不进入源码仓库。
+output/video/
+output/github/
+output/pdf/

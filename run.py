@@ -1,4 +1,4 @@
-"""Run the local workspace: python run.py"""
+"""启动本地工作台：python run.py。"""
 import os
 from pathlib import Path
 from dotenv import load_dotenv

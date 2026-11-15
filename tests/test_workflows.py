@@ -1,9 +1,9 @@
-"""Integration checks use synthetic PDFs, never pretend these are official test results."""
+"""集成测试使用合成 PDF，不将其作为官方资料包的验收结果。"""
 import io
 import json
 import time
 
-import fitz
+import pymupdf as fitz
 import pytest
 from fastapi.testclient import TestClient
 
@@ -43,7 +43,7 @@ def client(tmp_path, monkeypatch):
         monkeypatch.delenv(key, raising=False)
     with TestClient(app) as c:
         yield c
-    # No background parse may escape this isolated storage fixture.
+    # 后台解析任务必须留在隔离的测试存储环境内。
     for job in db.rows("SELECT status FROM jobs WHERE status IN ('queued','running')"):
         raise AssertionError(f'Outstanding job: {job}')
 
@@ -161,7 +161,7 @@ def test_invalid_model_source_is_rejected(client, monkeypatch):
     pid = upload(client).json()['paper_id']
     wait_paper(client, pid)
     monkeypatch.setattr(llm, 'configured', lambda: True)
-    monkeypatch.setattr(llm, 'complete', lambda *args: {'claims': [{'text': 'unsupported', 'source_ids': ['FAKE']}]})
+    monkeypatch.setattr(llm, 'complete_stream', lambda *a, **kw: iter(['unsupported ||| FAKE\n']))
     response = client.post('/api/ask', json={'question': 'optimizer'})
     assert response.status_code == 503
     assert '不存在' in response.json()['detail']
@@ -171,7 +171,7 @@ def test_claim_without_source_is_rejected(client, monkeypatch):
     pid = upload(client).json()['paper_id']
     wait_paper(client, pid)
     monkeypatch.setattr(llm, 'configured', lambda: True)
-    monkeypatch.setattr(llm, 'complete', lambda *args: {'claims': [{'text': 'The GPU was a fictional machine.', 'source_ids': []}]})
+    monkeypatch.setattr(llm, 'complete_stream', lambda *a, **kw: iter(['The GPU was a fictional machine. ||| -\n']))
     assert client.post('/api/ask', json={'question': 'optimizer'}).status_code == 503
 
 

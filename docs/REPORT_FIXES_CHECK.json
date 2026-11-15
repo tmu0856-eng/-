@@ -1,0 +1,768 @@
+{
+  "started_at": "2026-11-14T13:38:08.419213+00:00",
+  "checks": [
+    {
+      "name": "Scanned title and all 15 OCR pages",
+      "passed": true,
+      "title": "Attention Is All You Need",
+      "status": "ready",
+      "seconds": 145.22
+    },
+    {
+      "name": "Native GPU and Adam remain correct",
+      "passed": true,
+      "status": 200,
+      "seconds": 5.26,
+      "response": {
+        "mode": "generated",
+        "answer": "模型在一台配备 8 块 NVIDIA P100 GPU 的机器上训练。 [S2]\n\n训练使用 Adam 优化器，β1 = 0.9、β2 = 0.98、ϵ = 10⁻⁹。 [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "eb2e9a16aee844fcb7f7cfaced85448d",
+            "paper_id": "b57c325313904de7a918a6bc5739c09d",
+            "title": "Attention Is All You Need",
+            "page": 7,
+            "text": "We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning\nrate over the course of training, according to the formula:",
+            "bbox": [
+              107.53199768066406,
+              576.5763549804688,
+              504.0029296875,
+              599.0480346679688
+            ],
+            "score": 0.03333
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "0fe222d8dc5c49edbc727025017e9b96",
+            "paper_id": "b57c325313904de7a918a6bc5739c09d",
+            "title": "Attention Is All You Need",
+            "page": 7,
+            "text": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using\nthe hyperparameters described throughout the paper, each training step took about 0.4 seconds. We\ntrained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the\nbottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps\n(3.5 days).",
+            "bbox": [
+              107.53199768066406,
+              486.7832946777344,
+              504.0014953613281,
+              540.45703125
+            ],
+            "score": 0.03252
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF（本地词频检索），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 2 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Sixth author and institution",
+      "passed": true,
+      "status": 200,
+      "seconds": 4.44,
+      "response": {
+        "mode": "generated",
+        "answer": "根据首页作者署名，按从上到下的顺序排列的作者依次为：Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser、Illia Polosukhin。 [S1]\n\n该论文的第六位作者是 Aidan N. Gomez，其署名下方列出的所属机构为 University of Toronto（多伦多大学）。 [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "29f3615e0d5249f4b675cc4b4b1342f5",
+            "paper_id": "b57c325313904de7a918a6bc5739c09d",
+            "title": "Attention Is All You Need",
+            "page": 1,
+            "text": "Attention Is All You Need\n\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\n\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\n\nNiki Parmar∗\nGoogle Research\nnikip@google.com\n\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\n\nLlion Jones∗\nGoogle Research\nllion@google.com\n\nAidan N. Gomez∗†\nUniversity of Toronto\naidan@cs.toronto.edu\n\nŁukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\n\nIllia Polosukhin∗‡\nillia.polosukhin@gmail.com",
+            "bbox": [
+              116.68099975585938,
+              148.8298797607422,
+              497.210693359375,
+              356.25408935546875
+            ],
+            "score": 1.0
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF（本地词频检索），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 1 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Scanned GPU and Adam facts",
+      "passed": true,
+      "status": 200,
+      "seconds": 3.28,
+      "response": {
+        "mode": "generated",
+        "answer": "该研究在一台配备 8 块 NVIDIA P100 GPU 的机器上训练模型。 [S2]\n\n训练使用 Adam 优化器，其参数为 β1 = 0.9、β2 = 0.98、ε = 10^-9。 [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "389472f1a34a4c4db1986239028b3436",
+            "paper_id": "a633575b041d4ee7b65fbc82e47a8889",
+            "title": "Attention Is All You Need",
+            "page": 7,
+            "text": "3.5 days.\n5.3Optimizer\nWe used the Adam optimizer 18 with β1 = 0.9, β2 = 0.98 and e = 10-9. We varied the learning\nrate over the course of training,according totheformula:",
+            "bbox": [
+              106.08,
+              195.83999999999997,
+              505.43999999999994,
+              264.47999999999996
+            ],
+            "score": 0.03333
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "6277ce3d0806463581fd45f65a99bd27",
+            "paper_id": "a633575b041d4ee7b65fbc82e47a8889",
+            "title": "Attention Is All You Need",
+            "page": 7,
+            "text": "2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece\nbatch contained a set of sentence pairs containing approximately 25000 source tokens and 25000\ntarget tokens.\n5.2Hardware andSchedule\nWe trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using\nthe hyperparameters described throughout the paper, each training step took about 0.4 seconds. We\ntrained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the\nbottom line of table, step time was 1.0 seconds, and the models were trained for 300,000 steps or",
+            "bbox": [
+              106.55999999999999,
+              73.44,
+              505.43999999999994,
+              198.23999999999998
+            ],
+            "score": 0.03279
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF（本地词频检索），检索 127 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 2 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Unsupported hardware serial is not invented",
+      "passed": true,
+      "status": 200,
+      "seconds": 9.38,
+      "response": {
+        "mode": "generated",
+        "answer": "原文明确给出训练使用的是8块NVIDIA P100 GPU，但未提供任何GPU的硬件序列号。 [S2]\n\n不足以确定：原文中未明确给出训练所用GPU的硬件序列号。",
+        "sources": [
+          {
+            "source_id": "S2",
+            "chunk_id": "0fe222d8dc5c49edbc727025017e9b96",
+            "paper_id": "b57c325313904de7a918a6bc5739c09d",
+            "title": "Attention Is All You Need",
+            "page": 7,
+            "text": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using\nthe hyperparameters described throughout the paper, each training step took about 0.4 seconds. We\ntrained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the\nbottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps\n(3.5 days).",
+            "bbox": [
+              107.53199768066406,
+              486.7832946777344,
+              504.0014953613281,
+              540.45703125
+            ],
+            "score": 0.03306
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF（本地词频检索），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 1 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Cross-paper BERT and Transformer sources",
+      "passed": true,
+      "status": 200,
+      "seconds": 24.0,
+      "response": {
+        "mode": "generated",
+        "answer": "原始 Transformer 论文指出，编码器中的自注意力层里 keys、values 和 queries 都来自同一处（即编码器前一层的输出），编码器中每个位置都可以关注前一层的所有位置。 [S1]\n\nBERT 论文说明，双向的 Transformer 版本常被称为“Transformer encoder”，而仅左侧上下文的版本被称为“Transformer decoder”（因其可用于文本生成）。 [S4]\n\nBERT 使用双向 Transformer，其表示在所有层中同时以左侧和右侧上下文为条件；相比之下 OpenAI GPT 使用从左到右的 Transformer。 [S3] [S9]\n\nBERT 的 Transformer 采用双向自注意力，而 GPT 的 Transformer 采用受限自注意力，每个 token 只能关注其左侧的上下文；BERT_BASE 与 OpenAI GPT 模型规模相同（L=12, H=768, A=12，共 110M 参数）。 [S7]\n\n综合来看，BERT 保留了原始 Transformer 编码器的自注意力结构（每个位置可关注所有位置、queries/keys/values 同源），并将其用于双向建模，而不是采用仅看左侧上下文的解码器式受限自注意力。 [S1] [S3] [S4] [S7]\n\n预训练的 BERT 模型只需增加一个输出层即可微调，无需大量任务特定的架构修改。 [S9]\n\n不足以确定：BERT 具体去掉或改动了原始 Transformer 的哪些组件（如是否省略解码器堆栈、交叉注意力层，以及层数/维度以外的结构差异），提供的原文证据未直接说明。",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "a52ebaac010d42fb9ac05504006d3c21",
+            "paper_id": "b57c325313904de7a918a6bc5739c09d",
+            "title": "Attention Is All You Need",
+            "page": 5,
+            "text": "• The encoder contains self-attention layers. In a self-attention layer all of the keys, values\nand queries come from the same place, in this case, the output of the previous layer in the\nencoder. Each position in the encoder can attend to all positions in the previous layer of the\nencoder.",
+            "bbox": [
+              135.39700317382812,
+              379.6593017578125,
+              504.00323486328125,
+              422.424072265625
+            ],
+            "score": 0.03009
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "e303b14ed62f41b890d2ae0a3571a0c4",
+            "paper_id": "2885fcee6b8a42bd99a3f8b5028f93c3",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+            "page": 13,
+            "text": "Figure 3: Differences in pre-training model architectures. BERT uses a bidirectional Transformer. OpenAI GPT\nuses a left-to-right Transformer. ELMo uses the concatenation of independently trained left-to-right and right-to-\nleft LSTMs to generate features for downstream tasks. Among the three, only BERT representations are jointly\nconditioned on both left and right context in all layers. In addition to the architecture differences, BERT and\nOpenAI GPT are ﬁne-tuning approaches, while ELMo is a feature-based approach.",
+            "bbox": [
+              72.0,
+              183.46546936035156,
+              525.54736328125,
+              241.24813842773438
+            ],
+            "score": 0.03101
+          },
+          {
+            "source_id": "S4",
+            "chunk_id": "603d229733c5459a8c60ef9a407d5b42",
+            "paper_id": "2885fcee6b8a42bd99a3f8b5028f93c3",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+            "page": 4,
+            "text": "former is often referred to as a “Transformer encoder” while\nthe left-context-only version is referred to as a “Transformer\ndecoder” since it can be used for text generation.",
+            "bbox": [
+              72.0,
+              736.240966796875,
+              290.26904296875,
+              765.1323852539062
+            ],
+            "score": 0.03048
+          },
+          {
+            "source_id": "S7",
+            "chunk_id": "5966e7ff387344178c3add1c17a8ffd7",
+            "paper_id": "2885fcee6b8a42bd99a3f8b5028f93c3",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+            "page": 3,
+            "text": "We primarily report results on two model sizes:\nBERTBASE (L=12, H=768, A=12, Total Param-\neters=110M) and BERTLARGE (L=24, H=1024,\nA=16, Total Parameters=340M).\nBERTBASE was chosen to have the same model\nsize as OpenAI GPT for comparison purposes.\nCritically, however, the BERT Transformer uses\nbidirectional self-attention, while the GPT Trans-\nformer uses constrained self-attention where every\ntoken can only attend to context to its left.4",
+            "bbox": [
+              307.2760009765625,
+              567.6907958984375,
+              525.5484619140625,
+              701.1948852539062
+            ],
+            "score": 0.02895
+          },
+          {
+            "source_id": "S9",
+            "chunk_id": "df71bae432b14725939f0bb53ebd76b2",
+            "paper_id": "2885fcee6b8a42bd99a3f8b5028f93c3",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+            "page": 1,
+            "text": "We introduce a new language representa-\ntion model called BERT, which stands for\nBidirectional Encoder Representations from\nTransformers. Unlike recent language repre-\nsentation models (Peters et al., 2018a; Rad-\nford et al., 2018), BERT is designed to pre-\ntrain deep bidirectional representations from\nunlabeled text by jointly conditioning on both\nleft and right context in all layers. As a re-\nsult, the pre-trained BERT model can be ﬁne-\ntuned with just one additional output layer\nto create state-of-the-art models for a wide\nrange of tasks, such as question answering and\nlanguage inference, without substantial task-\nspeciﬁc architecture modiﬁcations.",
+            "bbox": [
+              89.00794982910156,
+              245.81947326660156,
+              273.2627868652344,
+              423.1550598144531
+            ],
+            "score": 0.02862
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF（本地词频检索），检索 444 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 5 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Agent tool execution and synthesis",
+      "passed": true,
+      "status": 200,
+      "seconds": 20.22,
+      "response": {
+        "mode": "generated",
+        "answer": "该论文的模型在一台配备 8 块 NVIDIA P100 GPU 的机器上训练。 [S1]\n\n训练使用 Adam 优化器，参数为 β1 = 0.9、β2 = 0.98、ϵ = 10⁻⁹。 [S6]\n\n学习率随训练进程按公式变化：前 warmup_steps 步线性增大，之后按步数的平方根倒数递减，其中 warmup_steps = 4000。 [S17]\n\n基础模型每步约 0.4 秒，共训练 100,000 步（约 12 小时）；大模型每步 1.0 秒，共训练 300,000 步（3.5 天）。 [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "0fe222d8dc5c49edbc727025017e9b96",
+            "paper_id": "b57c325313904de7a918a6bc5739c09d",
+            "title": "Attention Is All You Need",
+            "page": 7,
+            "text": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using\nthe hyperparameters described throughout the paper, each training step took about 0.4 seconds. We\ntrained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the\nbottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps\n(3.5 days).",
+            "bbox": [
+              107.53199768066406,
+              486.7832946777344,
+              504.0014953613281,
+              540.45703125
+            ],
+            "score": 0.03333
+          },
+          {
+            "source_id": "S6",
+            "chunk_id": "eb2e9a16aee844fcb7f7cfaced85448d",
+            "paper_id": "b57c325313904de7a918a6bc5739c09d",
+            "title": "Attention Is All You Need",
+            "page": 7,
+            "text": "We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning\nrate over the course of training, according to the formula:",
+            "bbox": [
+              107.53199768066406,
+              576.5763549804688,
+              504.0029296875,
+              599.0480346679688
+            ],
+            "score": 0.03333
+          },
+          {
+            "source_id": "S17",
+            "chunk_id": "f5f92ae8e09e4075b32c238ec7742270",
+            "paper_id": "b57c325313904de7a918a6bc5739c09d",
+            "title": "Attention Is All You Need",
+            "page": 7,
+            "text": "This corresponds to increasing the learning rate linearly for the first warmup_steps training steps,\nand decreasing it thereafter proportionally to the inverse square root of the step number. We used\nwarmup_steps = 4000.",
+            "bbox": [
+              107.69100189208984,
+              642.7139282226562,
+              505.243896484375,
+              674.7250366210938
+            ],
+            "score": 0.032
+          }
+        ],
+        "trace": [
+          {
+            "tool": "scope",
+            "message": "已锁定 1 篇论文；联网发现未开启",
+            "status": "done",
+            "role": "核读"
+          },
+          {
+            "tool": "planner",
+            "message": "规划智能体产出 3 条子查询，交接核读智能体执行",
+            "status": "done",
+            "role": "规划",
+            "arguments": {
+              "sub_queries": [
+                {
+                  "query": "训练硬件 GPU TPU 8xP100",
+                  "paper_id": "b57c325313904de7a918a6bc5739c09d"
+                },
+                {
+                  "query": "Adam optimizer β1 β2 ε 参数",
+                  "paper_id": "b57c325313904de7a918a6bc5739c09d"
+                },
+                {
+                  "query": "Adam learning rate warmup schedule",
+                  "paper_id": null
+                }
+              ]
+            }
+          },
+          {
+            "tool": "planning",
+            "message": "第 1 轮：正在选择工具",
+            "status": "running",
+            "round": 1,
+            "role": "核读"
+          },
+          {
+            "tool": "tool_start",
+            "message": "正在调用 search_evidence",
+            "status": "running",
+            "round": 1,
+            "role": "核读"
+          },
+          {
+            "tool": "search_evidence",
+            "message": "检索得到 5 条原文证据",
+            "status": "done",
+            "arguments": {
+              "query": "训练硬件 GPU TPU 8xP100",
+              "paper_id": "b57c325313904de7a918a6bc5739c09d",
+              "limit": 5
+            },
+            "round": 1,
+            "role": "核读"
+          },
+          {
+            "tool": "tool_start",
+            "message": "正在调用 search_evidence",
+            "status": "running",
+            "round": 1,
+            "role": "核读"
+          },
+          {
+            "tool": "search_evidence",
+            "message": "检索得到 5 条原文证据",
+            "status": "done",
+            "arguments": {
+              "query": "Adam optimizer β1 β2 ε 参数",
+              "paper_id": "b57c325313904de7a918a6bc5739c09d",
+              "limit": 5
+            },
+            "round": 1,
+            "role": "核读"
+          },
+          {
+            "tool": "planning",
+            "message": "第 2 轮：正在选择工具",
+            "status": "running",
+            "round": 2,
+            "role": "核读"
+          },
+          {
+            "tool": "tool_start",
+            "message": "正在调用 read_page",
+            "status": "running",
+            "round": 2,
+            "role": "核读"
+          },
+          {
+            "tool": "read_page",
+            "message": "读取第 7 页，得到 6 条原文块",
+            "status": "done",
+            "arguments": {
+              "paper_id": "b57c325313904de7a918a6bc5739c09d",
+              "page": 7
+            },
+            "round": 2,
+            "role": "核读"
+          },
+          {
+            "tool": "tool_start",
+            "message": "正在调用 search_evidence",
+            "status": "running",
+            "round": 2,
+            "role": "核读"
+          },
+          {
+            "tool": "search_evidence",
+            "message": "检索得到 5 条原文证据",
+            "status": "done",
+            "arguments": {
+              "query": "Adam learning rate warmup schedule",
+              "paper_id": null,
+              "limit": 5
+            },
+            "round": 2,
+            "role": "核读"
+          },
+          {
+            "tool": "planning",
+            "message": "第 3 轮：正在选择工具",
+            "status": "running",
+            "round": 3,
+            "role": "核读"
+          },
+          {
+            "tool": "synthesis",
+            "message": "综合智能体：根据 17 条原文证据组织回答并校验引用",
+            "status": "running",
+            "role": "综合"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 3 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "execution": "agent",
+        "tool_calls": 4,
+        "bounded": false,
+        "discoveries": []
+      }
+    },
+    {
+      "name": "Real SSE token, claim and result",
+      "passed": true,
+      "event_counts": {
+        "result": 1,
+        "claim": 3,
+        "step": 1,
+        "token": 27
+      },
+      "events": [
+        {
+          "event": "step",
+          "data": {
+            "message": "正在检索论文原文并核对证据范围"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "在《Attention Is All You"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "在《Attention Is All You Need》的训练设置"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "在《Attention Is All You Need》的训练设置中，Adam 优化器的超"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "在《Attention Is All You Need》的训练设置中，Adam 优化器的超参数"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "在《Attention Is All You Need》的训练设置中，Adam 优化器的超参数为 β1 = 0.9"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "在《Attention Is All You Need》的训练设置中，Adam 优化器的超参数为 β1 = 0.9、β2 = 0.9"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "在《Attention Is All You Need》的训练设置中，Adam 优化器的超参数为 β1 = 0.9、β2 = 0.98、ϵ"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "在《Attention Is All You Need》的训练设置中，Adam 优化器的超参数为 β1 = 0.9、β2 = 0.98、ϵ = 10⁻⁹"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "在《Attention Is All You Need》的训练设置中，Adam 优化器的超参数为 β1 = 0.9、β2 = 0.98、ϵ = 10⁻⁹。"
+          }
+        },
+        {
+          "event": "claim",
+          "data": {
+            "text": "在《Attention Is All You Need》的训练设置中，Adam 优化器的超参数为 β1 = 0.9、β2 = 0.98、ϵ = 10⁻⁹。",
+            "source_ids": [
+              "S1"
+            ]
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "该文"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "该文引用的 Adam 优化器"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "该文引用的 Adam 优化器文献"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "该文引用的 Adam 优化器文献为 D"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "该文引用的 Adam 优化器文献为 Diederik Kingma "
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "该文引用的 Adam 优化器文献为 Diederik Kingma 与 Jimmy Ba 的《"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "该文引用的 Adam 优化器文献为 Diederik Kingma 与 Jimmy Ba 的《Adam: A method"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "该文引用的 Adam 优化器文献为 Diederik Kingma 与 Jimmy Ba 的《Adam: A method for stochastic optimization》，发表于 ICLR"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "该文引用的 Adam 优化器文献为 Diederik Kingma 与 Jimmy Ba 的《Adam: A method for stochastic optimization》，发表于 ICLR 2015。"
+          }
+        },
+        {
+          "event": "claim",
+          "data": {
+            "text": "该文引用的 Adam 优化器文献为 Diederik Kingma 与 Jimmy Ba 的《Adam: A method for stochastic optimization》，发表于 ICLR 2015。",
+            "source_ids": [
+              "S2"
+            ]
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "Adam "
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "Adam 优化器在原始"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "Adam 优化器在原始论文"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "Adam 优化器在原始论文中定义"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "Adam 优化器在原始论文中定义的默认 β"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "Adam 优化器在原始论文中定义的默认 β2 "
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "Adam 优化器在原始论文中定义的默认 β2 取值，依据"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "Adam 优化器在原始论文中定义的默认 β2 取值，依据现有"
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "text": "Adam 优化器在原始论文中定义的默认 β2 取值，依据现有证据不足以确定。"
+          }
+        },
+        {
+          "event": "claim",
+          "data": {
+            "text": "Adam 优化器在原始论文中定义的默认 β2 取值，依据现有证据不足以确定。",
+            "source_ids": []
+          }
+        },
+        {
+          "event": "result",
+          "data": {
+            "mode": "generated",
+            "answer": "在《Attention Is All You Need》的训练设置中，Adam 优化器的超参数为 β1 = 0.9、β2 = 0.98、ϵ = 10⁻⁹。 [S1]\n\n该文引用的 Adam 优化器文献为 Diederik Kingma 与 Jimmy Ba 的《Adam: A method for stochastic optimization》，发表于 ICLR 2015。 [S2]\n\nAdam 优化器在原始论文中定义的默认 β2 取值，依据现有证据不足以确定。",
+            "sources": [
+              {
+                "source_id": "S1",
+                "chunk_id": "eb2e9a16aee844fcb7f7cfaced85448d",
+                "paper_id": "b57c325313904de7a918a6bc5739c09d",
+                "title": "Attention Is All You Need",
+                "page": 7,
+                "text": "We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning\nrate over the course of training, according to the formula:",
+                "bbox": [
+                  107.53199768066406,
+                  576.5763549804688,
+                  504.0029296875,
+                  599.0480346679688
+                ],
+                "score": 0.03333
+              },
+              {
+                "source_id": "S2",
+                "chunk_id": "ac7b0c7c8d544dd9848aa43c685e375b",
+                "paper_id": "b57c325313904de7a918a6bc5739c09d",
+                "title": "Attention Is All You Need",
+                "page": 11,
+                "text": "[20] Diederik Kingma and Jimmy Ba. Adam: A method for stochastic optimization. In ICLR, 2015.",
+                "bbox": [
+                  108.0,
+                  578.5616455078125,
+                  505.745361328125,
+                  588.6570434570312
+                ],
+                "score": 0.03279
+              }
+            ],
+            "trace": [
+              {
+                "tool": "plan",
+                "message": "确定论文范围，检索原文证据，再组织回答"
+              },
+              {
+                "tool": "retrieve_evidence",
+                "message": "BM25 + TF-IDF（本地词频检索），检索 175 个文本块，返回 3 条证据"
+              },
+              {
+                "tool": "validate_citations",
+                "message": "核对 2 个证据编号均存在；事实是否被证据支持仍需核对原文"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "Focused fixes regression on isolated port 8766, not a repeat of the complete 32-check material run.",
+  "finished_at": "2026-11-14T13:41:50.155520+00:00",
+  "summary": {
+    "passed": 8,
+    "total": 8
+  }
+}

@@ -1,0 +1,407 @@
+{
+  "checked_at": "2026-11-15T07:19:33.673653+00:00",
+  "checks": [
+    {
+      "name": "Sixth author for conversation context",
+      "passed": true,
+      "status": 200,
+      "seconds": 28.0,
+      "response": {
+        "mode": "generated",
+        "answer": "《Attention Is All You Need》首页署名顺序中第六位作者是 Aidan N. Gomez，其标注机构为 University of Toronto。 [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "frontmatter:ebd3f4cb9e104702a10201cfb2904d27:1",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 1,
+            "text": "Attention Is All You Need\n\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\n\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\n\nNiki Parmar∗\nGoogle Research\nnikip@google.com\n\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\n\nLlion Jones∗\nGoogle Research\nllion@google.com\n\nAidan N. Gomez∗†\nUniversity of Toronto\naidan@cs.toronto.edu\n\nŁukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\n\nIllia Polosukhin∗‡\nillia.polosukhin@gmail.com",
+            "bbox": [
+              116.68099975585938,
+              148.8298797607422,
+              497.210693359375,
+              356.25408935546875
+            ],
+            "score": 1.0,
+            "rerank_score": -7.08984375
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 5547.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 1 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": false,
+          "paper_ids": [
+            "ebd3f4cb9e104702a10201cfb2904d27"
+          ],
+          "message": ""
+        }
+      }
+    },
+    {
+      "name": "Follow-up inherits cited document scope",
+      "passed": true,
+      "status": 200,
+      "seconds": 5.67,
+      "response": {
+        "mode": "generated",
+        "answer": "该论文训练中使用的 Adam 优化器参数为 β1 = 0.9、β2 = 0.98、ϵ = 10^-9。 [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "1fb33de6a0fc4047828dd0bbc26160f0",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 7,
+            "text": "We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning\nrate over the course of training, according to the formula:",
+            "bbox": [
+              107.53199768066406,
+              576.5763549804688,
+              504.0029296875,
+              599.0480346679688
+            ],
+            "score": 0.04945,
+            "rerank_score": 2.66796875
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 563.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 1 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": true,
+          "paper_ids": [
+            "ebd3f4cb9e104702a10201cfb2904d27"
+          ],
+          "message": "承接上一轮引用的 1 篇论文；历史回答不作为事实证据，重新检索原文。"
+        }
+      }
+    },
+    {
+      "name": "Translation results and previous system comparison",
+      "passed": true,
+      "status": 200,
+      "seconds": 21.83,
+      "response": {
+        "mode": "generated",
+        "answer": "按表 2，Transformer (big) 在 WMT 2014 English-to-German（newstest2014）上的 BLEU 为 28.4，在 English-to-French 上的 BLEU 为 41.8。 [S1]\n\n按表 2，Transformer (big) 之前 EN-DE 上表现最好的单模型是 MoE，BLEU 26.03；Transformer (big) 相对高 2.37 BLEU（28.4−26.03）。 [S1]\n\n按表 2，之前 EN-DE 上表现最好的 ensemble 是 ConvS2S Ensemble，BLEU 26.36；Transformer (big) 相对高 2.04 BLEU（28.4−26.36），正文表述为超过此前最好模型（含 ensemble）2.0 BLEU 以上。 [S1]\n\n按表 2，Transformer (big) 之前 EN-FR 上表现最好的单模型是 MoE，BLEU 40.56；Transformer (big) 相对高 1.24 BLEU（41.8−40.56）。 [S1]\n\n按表 2，之前 EN-FR 上表现最好的 ensemble 是 ConvS2S Ensemble，BLEU 41.29；Transformer (big) 相对高 0.51 BLEU（41.8−41.29）。 [S1]\n\nTransformer (big) 在表 2 中为单模型结果而非 ensemble；摘要称其在 EN-FR 上以 41.8 建立新的单模型最好成绩（new single-model state-of-the-art），并在 EN-DE 上以 28.4 超过此前包括 ensemble 在内的最好结果 2 BLEU 以上。 [S2]\n\nTransformer (base model) 的 EN-DE BLEU 为 27.3，高于此前最好的单模型 MoE（26.03，+1.27）和最好的 ensemble ConvS2S Ensemble（26.36，+0.94）；而其 EN-FR BLEU 为 38.1，低于此前最好的单模型 MoE（40.56，差 −2.46）和 ConvS2S Ensemble（41.29，差 −3.19），因此 EN-FR 上 base 模型并非提升。 [S1]\n\n表 2 给出 Transformer (big) 的 EN-FR BLEU 为 41.8，而同一节正文称 big model 在 EN-FR 上取得 41.0 BLEU，两处数值不一致，原文未解释该差异，不足以确定以哪个为准。 [S1] [S2]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "page-context:ebd3f4cb9e104702a10201cfb2904d27:8",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 8,
+            "text": "6\nResults\n\n6.1\nMachine Translation\n\n6.2\nModel Variations\n\nTable 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the\nEnglish-to-German and English-to-French newstest2014 tests at a fraction of the training cost.\n\nModel\nBLEU\nTraining Cost (FLOPs)\n\nEN-DE\nEN-FR\nEN-DE\nEN-FR\nByteNet [18]\n23.75\nDeep-Att + PosUnk [39]\n39.2\n1.0 · 1020\n\nGNMT + RL [38]\n24.6\n39.92\n2.3 · 1019\n1.4 · 1020\n\nConvS2S [9]\n25.16\n40.46\n9.6 · 1018\n1.5 · 1020\n\nMoE [32]\n26.03\n40.56\n2.0 · 1019\n1.2 · 1020\n\nDeep-Att + PosUnk Ensemble [39]\n40.4\n8.0 · 1020\n\nGNMT + RL Ensemble [38]\n26.30\n41.16\n1.8 · 1020\n1.1 · 1021\n\nConvS2S Ensemble [9]\n26.36\n41.29\n7.7 · 1019\n1.2 · 1021\n\nTransformer (base model)\n27.3\n38.1\n3.3 · 1018\n\nTransformer (big)\n28.4\n41.8\n2.3 · 1019\n\nResidual Dropout\nWe apply dropout [33] to the output of each sub-layer, before it is added to the\nsub-layer input and normalized. In addition, we apply dropout to the sums of the embeddings and the\npositional encodings in both the encoder and decoder stacks. For the base model, we use a rate of\nPdrop = 0.1.\n\nLabel Smoothing\nDuring training, we employed label smoothing of value ϵls = 0.1 [36]. This\nhurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.\n\nOn the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0\nBLEU, establishing a new state-of-the-art BLEU score of 28.4. The configuration of this model is\nlisted in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base model\nsurpasses all previously published models and ensembles, at a fraction of the training cost of any of\nthe competitive models.\n\nOn the WMT 2014 English-to-French translation task, our big model achieves a BLEU score of 41.0,\noutperforming all of the previously published single models, at less than 1/4 the training cost of the\nprevious state-of-the-art model. The Transformer (big) model trained for English-to-French used\ndropout rate Pdrop = 0.1, instead of 0.3.\n\nFor the base models, we used a single model obtained by averaging the last 5 checkpoints, which\nwere written at 10-minute intervals. For the big models, we averaged the last 20 checkpoints. We\nused beam search with a beam size of 4 and length penalty α = 0.6 [38]. These hyperparameters\nwere chosen after experimentation on the development set. We set the maximum output length during\ninference to input length + 50, but terminate early when possible [38].\n\nTable 2 summarizes our results and compares our translation quality and training costs to other model\narchitectures from the literature. We estimate the number of floating point operations used to train a\nmodel by multiplying the training time, the number of GPUs used, and an estimate of the sustained\nsingle-precision floating-point capacity of each GPU 5.\n\nTo evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\n\n5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.\n\n8",
+            "bbox": [
+              0,
+              0,
+              612.0,
+              792.0
+            ],
+            "score": 0.04945,
+            "rerank_score": 2.1796875,
+            "origin_chunk_id": "8d0cf983b5af449ebdea78e7f9430cdb",
+            "context_scope": "original-page"
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "page-context:ebd3f4cb9e104702a10201cfb2904d27:1",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 1,
+            "text": "Provided proper attribution is provided, Google hereby grants permission to\nreproduce the tables and figures in this paper solely for use in journalistic or\nscholarly works.\n\nAttention Is All You Need\n\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\n\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\n\nNiki Parmar∗\nGoogle Research\nnikip@google.com\n\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\n\nŁukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\n\nLlion Jones∗\nGoogle Research\nllion@google.com\n\nAidan N. Gomez∗†\nUniversity of Toronto\naidan@cs.toronto.edu\n\nIllia Polosukhin∗‡\nillia.polosukhin@gmail.com\n\nAbstract\n\narXiv:1706.03762v7  [cs.CL]  2 Aug 2023\n\nThe dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.\n\n∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.\n†Work performed while at Google Brain.\n‡Work performed while at Google Research.\n\n31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.",
+            "bbox": [
+              0,
+              0,
+              612.0,
+              792.0
+            ],
+            "score": 0.04599,
+            "rerank_score": 0.45703125,
+            "origin_chunk_id": "85c46e7fc4274514aeb3c99cf5041a91",
+            "context_scope": "original-page"
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 5 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 5 条证据，用时 656.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 2 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": false,
+          "paper_ids": [
+            "ebd3f4cb9e104702a10201cfb2904d27"
+          ],
+          "message": ""
+        }
+      }
+    },
+    {
+      "name": "Layer Normalization reference authors and year",
+      "passed": true,
+      "status": 200,
+      "seconds": 4.47,
+      "response": {
+        "mode": "generated",
+        "answer": "《Attention Is All You Need》参考文献[1]列出的 Layer normalization 论文作者为 Jimmy Lei Ba、Jamie Ryan Kiros 和 Geoffrey E Hinton，年份为 2016（arXiv preprint arXiv:1607.06450）。 [S2]",
+        "sources": [
+          {
+            "source_id": "S2",
+            "chunk_id": "38811392ab9d4054b028bf3a7a08ee59",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 10,
+            "text": "[1] Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint\narXiv:1607.06450, 2016.",
+            "bbox": [
+              112.98100280761719,
+              615.0363159179688,
+              504.0028381347656,
+              636.030029296875
+            ],
+            "score": 0.05,
+            "rerank_score": 3.7734375
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 532.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 1 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": false,
+          "paper_ids": [
+            "ebd3f4cb9e104702a10201cfb2904d27"
+          ],
+          "message": ""
+        }
+      }
+    },
+    {
+      "name": "GPT 1 2 3 context and parameter comparison",
+      "passed": true,
+      "status": 200,
+      "seconds": 13.27,
+      "response": {
+        "mode": "generated",
+        "answer": "GPT-1 原文（Improving Language Understanding by Generative Pre-Training）在所提供证据中仅说明上下文窗口大小记为 k，未给出参数总量的明确数值，因此其最大模型参数量在该证据中未明示。 [S1]\n\nGPT-1 原文在所提供证据中未给出上下文窗口长度的具体数值（仅以符号 k 表示），因此其上下文长度未明示。 [S1]\n\nGPT-2 原文的四种模型规模表中，最大模型（即 GPT-2）的参数量为 1542M（48 层，d_model=1600）。 [S4]\n\nGPT-2 原文明确说明其将上下文大小从 512 增加到 1024 tokens，因此 GPT-2 的上下文长度为 1024 tokens。 [S4]\n\nGPT-3 原文明确说明训练了一个 175 billion 参数的自回归语言模型 GPT-3，因此其最大模型参数量为 1750 亿。 [S3]\n\nGPT-3 原文明确给出模型的上下文窗口为 nctx = 2048 tokens。 [S5]\n\n因此逐篇比较：GPT-1 原文所给证据中参数总量与上下文长度均未明示；GPT-2 为 1542M 参数、1024 tokens 上下文；GPT-3 为 1750 亿参数、2048 tokens 上下文。 [S1] [S4] [S3] [S5]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "page-context:b4d42bf79e73458e888e857527ecb45c:3",
+            "paper_id": "b4d42bf79e73458e888e857527ecb45c",
+            "title": "Improving Language Understanding by Generative Pre-Training",
+            "page": 3,
+            "text": "pre-trained language or machine translation model as auxiliary features while training a supervised\nmodel on the target task. This involves a substantial amount of new parameters for each separate\ntarget task, whereas we require minimal changes to our model architecture during transfer.\n\nAuxiliary training objectives\nAdding auxiliary unsupervised training objectives is an alternative\nform of semi-supervised learning. Early work by Collobert and Weston [10] used a wide variety of\nauxiliary NLP tasks such as POS tagging, chunking, named entity recognition, and language modeling\nto improve semantic role labeling. More recently, Rei [50] added an auxiliary language modeling\nobjective to their target task objective and demonstrated performance gains on sequence labeling\ntasks. Our experiments also use an auxiliary objective, but as we show, unsupervised pre-training\nalready learns several linguistic aspects relevant to target tasks.\n\n3\nFramework\n\nOur training procedure consists of two stages. The ﬁrst stage is learning a high-capacity language\nmodel on a large corpus of text. This is followed by a ﬁne-tuning stage, where we adapt the model to\na discriminative task with labeled data.\n\n3.1\nUnsupervised pre-training\n\nGiven an unsupervised corpus of tokens U = {u1, . . . , un}, we use a standard language modeling\nobjective to maximize the following likelihood:\n\nL1(U) =\nX\n\nwhere k is the size of the context window, and the conditional probability P is modeled using a neural\nnetwork with parameters Θ. These parameters are trained using stochastic gradient descent [51].\n\nIn our experiments, we use a multi-layer Transformer decoder [34] for the language model, which is\na variant of the transformer [62]. This model applies a multi-headed self-attention operation over the\ninput context tokens followed by position-wise feedforward layers to produce an output distribution\nover target tokens:\nh0 = UWe + Wp\nhl = transformer_block(hl−1)∀i ∈[1, n]\n\nwhere U = (u−k, . . . , u−1) is the context vector of tokens, n is the number of layers, We is the token\nembedding matrix, and Wp is the position embedding matrix.\n\n3.2\nSupervised ﬁne-tuning\n\nAfter training the model with the objective in Eq. 1, we adapt the parameters to the supervised target\ntask. We assume a labeled dataset C, where each instance consists of a sequence of input tokens,\nx1, . . . , xm, along with a label y. The inputs are passed through our pre-trained model to obtain\nthe ﬁnal transformer block’s activation hm\nl , which is then fed into an added linear output layer with\nparameters Wy to predict y:\nP(y|x1, . . . , xm) = softmax(hm\nl Wy).\n(3)\n\nThis gives us the following objective to maximize:\n\nL2(C) =\nX\n\nWe additionally found that including language modeling as an auxiliary objective to the ﬁne-tuning\nhelped learning by (a) improving generalization of the supervised model, and (b) accelerating\nconvergence. This is in line with prior work [50, 43], who also observed improved performance with\nsuch an auxiliary objective. Speciﬁcally, we optimize the following objective (with weight λ):\nL3(C) = L2(C) + λ ∗L1(C)\n(5)\nOverall, the only extra parameters we require during ﬁne-tuning are Wy, and embeddings for delimiter\ntokens (described below in Section 3.3).\n\n3\n\ni\nlog P(ui|ui−k, . . . , ui−1; Θ)\n(1)\n\nP(u) = softmax(hnW T\ne )\n(2)\n\n(x,y)\nlog P(y|x1, . . . , xm).\n(4)",
+            "bbox": [
+              0,
+              0,
+              612.0,
+              792.0
+            ],
+            "score": 0.03079,
+            "rerank_score": -3.673828125,
+            "origin_chunk_id": "1d06677fcc0e41438212971d46aab38e",
+            "context_scope": "original-page"
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "page-context:957d6290461642e3972e3c91ad953a51:5",
+            "paper_id": "957d6290461642e3972e3c91ad953a51",
+            "title": "Language Models are Few-Shot Learners",
+            "page": 5,
+            "text": "Figure 1.3: Aggregate performance for all 42 accuracy-denominated benchmarks While zero-shot performance\nimproves steadily with model size, few-shot performance increases more rapidly, demonstrating that larger models are\nmore proﬁcient at in-context learning. See Figure 3.8 for a more detailed analysis on SuperGLUE, a standard NLP\nbenchmark suite.\n\nIn this paper, we test this hypothesis by training a 175 billion parameter autoregressive language model, which we call\nGPT-3, and measuring its in-context learning abilities. Speciﬁcally, we evaluate GPT-3 on over two dozen NLP datasets,\nas well as several novel tasks designed to test rapid adaptation to tasks unlikely to be directly contained in the training\nset. For each task, we evaluate GPT-3 under 3 conditions: (a) “few-shot learning”, or in-context learning where we\nallow as many demonstrations as will ﬁt into the model’s context window (typically 10 to 100), (b) “one-shot learning”,\nwhere we allow only one demonstration, and (c) “zero-shot” learning, where no demonstrations are allowed and only\nan instruction in natural language is given to the model. GPT-3 could also in principle be evaluated in the traditional\nﬁne-tuning setting, but we leave this to future work.\n\nFigure 1.2 illustrates the conditions we study, and shows few-shot learning of a simple task requiring the model to\nremove extraneous symbols from a word. Model performance improves with the addition of a natural language task\ndescription, and with the number of examples in the model’s context, K. Few-shot learning also improves dramatically\nwith model size. Though the results in this case are particularly striking, the general trends with both model size and\nnumber of examples in-context hold for most tasks we study. We emphasize that these “learning” curves involve no\ngradient updates or ﬁne-tuning, just increasing numbers of demonstrations given as conditioning.\n\nBroadly, on NLP tasks GPT-3 achieves promising results in the zero-shot and one-shot settings, and in the the few-shot\nsetting is sometimes competitive with or even occasionally surpasses state-of-the-art (despite state-of-the-art being held\nby ﬁne-tuned models). For example, GPT-3 achieves 81.5 F1 on CoQA in the zero-shot setting, 84.0 F1 on CoQA in\nthe one-shot setting, 85.0 F1 in the few-shot setting. Similarly, GPT-3 achieves 64.3% accuracy on TriviaQA in the\nzero-shot setting, 68.0% in the one-shot setting, and 71.2% in the few-shot setting, the last of which is state-of-the-art\nrelative to ﬁne-tuned models operating in the same closed-book setting.\n\nGPT-3 also displays one-shot and few-shot proﬁciency at tasks designed to test rapid adaption or on-the-ﬂy reasoning,\nwhich include unscrambling words, performing arithmetic, and using novel words in a sentence after seeing them\ndeﬁned only once. We also show that in the few-shot setting, GPT-3 can generate synthetic news articles which human\nevaluators have difﬁculty distinguishing from human-generated articles.\n\nAt the same time, we also ﬁnd some tasks on which few-shot performance struggles, even at the scale of GPT-3. This\nincludes natural language inference tasks like the ANLI dataset, and some reading comprehension datasets like RACE\nor QuAC. By presenting a broad characterization of GPT-3’s strengths and weaknesses, including these limitations, we\nhope to stimulate study of few-shot learning in language models and draw attention to where progress is most needed.\n\nA heuristic sense of the overall results can be seen in Figure 1.3, which aggregates the various tasks (though it should\nnot be seen as a rigorous or meaningful benchmark in itself).\n\n5",
+            "bbox": [
+              0,
+              0,
+              612.0,
+              792.0
+            ],
+            "score": 0.03095,
+            "rerank_score": 0.4140625,
+            "origin_chunk_id": "f946c41339be411aa7eb39df1df65509",
+            "context_scope": "original-page"
+          },
+          {
+            "source_id": "S4",
+            "chunk_id": "page-context:3307e33e72944428a924bc34325dcc30:4",
+            "paper_id": "3307e33e72944428a924bc34325dcc30",
+            "title": "Language Models are Unsupervised Multitask Learners",
+            "page": 4,
+            "text": "lapping training data with test evaluation tasks.\n\n2.2. Input Representation\n\nA general language model (LM) should be able to compute\nthe probability of (and also generate) any string. Current\nlarge scale LMs include pre-processing steps such as lower-\ncasing, tokenization, and out-of-vocabulary tokens which\nrestrict the space of model-able strings. While processing\nUnicode strings as a sequence of UTF-8 bytes elegantly ful-\nﬁlls this requirement as exempliﬁed in work such as Gillick\net al. (2015), current byte-level LMs are not competitive\nwith word-level LMs on large scale datasets such as the\nOne Billion Word Benchmark (Al-Rfou et al., 2018). We\nobserved a similar performance gap in our own attempts to\ntrain standard byte-level LMs on WebText.\n\nByte Pair Encoding (BPE) (Sennrich et al., 2015) is a\npractical middle ground between character and word level\nlanguage modeling which effectively interpolates between\nword level inputs for frequent symbol sequences and char-\nacter level inputs for infrequent symbol sequences. Despite\nits name, reference BPE implementations often operate on\nUnicode code points and not byte sequences. These imple-\nmentations would require including the full space of Uni-\ncode symbols in order to model all Unicode strings. This\nwould result in a base vocabulary of over 130,000 before\nany multi-symbol tokens are added. This is prohibitively\nlarge compared to the 32,000 to 64,000 token vocabularies\noften used with BPE. In contrast, a byte-level version of\nBPE only requires a base vocabulary of size 256. However,\ndirectly applying BPE to the byte sequence results in sub-\noptimal merges due to BPE using a greedy frequency based\nheuristic for building the token vocabulary. We observed\nBPE including many versions of common words like dog\nsince they occur in many variations such as dog. dog!\ndog? . This results in a sub-optimal allocation of limited\nvocabulary slots and model capacity. To avoid this, we pre-\nvent BPE from merging across character categories for any\nbyte sequence. We add an exception for spaces which sig-\nniﬁcantly improves the compression efﬁciency while adding\nonly minimal fragmentation of words across multiple vocab\ntokens.\n\nThis input representation allows us to combine the empirical\nbeneﬁts of word-level LMs with the generality of byte-level\napproaches. Since our approach can assign a probability to\nany Unicode string, this allows us to evaluate our LMs on\nany dataset regardless of pre-processing, tokenization, or\nvocab size.\n\n2.3. Model\n\nWe use a Transformer (Vaswani et al., 2017) based archi-\ntecture for our LMs. The model largely follows the details\nof the OpenAI GPT model (Radford et al., 2018) with a\n\nLanguage Models are Unsupervised Multitask Learners\n\nParameters\nLayers\ndmodel\n\n117M\n12\n768\n345M\n24\n1024\n762M\n36\n1280\n1542M\n48\n1600\n\nTable 2. Architecture hyperparameters for the 4 model sizes.\n\nfew modiﬁcations. Layer normalization (Ba et al., 2016)\nwas moved to the input of each sub-block, similar to a\npre-activation residual network (He et al., 2016) and an\nadditional layer normalization was added after the ﬁnal self-\nattention block. A modiﬁed initialization which accounts\nfor the accumulation on the residual path with model depth\nis used. We scale the weights of residual layers at initial-\nization by a factor of 1/\n√\n\nN where N is the number of\nresidual layers. The vocabulary is expanded to 50,257. We\nalso increase the context size from 512 to 1024 tokens and\na larger batchsize of 512 is used.\n\n3. Experiments\n\nWe trained and benchmarked four LMs with approximately\nlog-uniformly spaced sizes. The architectures are summa-\nrized in Table 2. The smallest model is equivalent to the\noriginal GPT, and the second smallest equivalent to the\nlargest model from BERT (Devlin et al., 2018). Our largest\nmodel, which we call GPT-2, has over an order of magni-\ntude more parameters than GPT. The learning rate of each\nmodel was manually tuned for the best perplexity on a 5%\nheld-out sample of WebText. All models still underﬁt Web-\nText and held-out perplexity has as of yet improved given\nmore training time.\n\n3.1. Language Modeling\n\nAs an initial step towards zero-shot task transfer, we are\ninterested in understanding how WebText LM’s perform\nat zero-shot domain transfer on the primary task they are\ntrained for – language modeling. Since our model operates\non a byte level and does not require lossy pre-processing\nor tokenization, we can evaluate it on any language model\nbenchmark. Results on language modeling datasets are\ncommonly reported in a quantity which is a scaled or ex-\nponentiated version of the average negative log probability\nper canonical prediction unit - usually a character, a byte, or\na word. We evaluate the same quantity by computing the\nlog-probability of a dataset according to a WebText LM and\ndividing by the number of canonical units. For many of these\ndatasets, WebText LMs would be tested signiﬁcantly out-\nof-distribution, having to predict aggressively standardized\ntext, tokenization artifacts such as disconnected punctuation\nand contractions, shufﬂed sentences, and even the string",
+            "bbox": [
+              0,
+              0,
+              612.0,
+              792.0
+            ],
+            "score": 0.02586,
+            "rerank_score": 2.375,
+            "origin_chunk_id": "e47cceb101b74b40b643eec3c6f6fcca",
+            "context_scope": "original-page"
+          },
+          {
+            "source_id": "S5",
+            "chunk_id": "page-context:957d6290461642e3972e3c91ad953a51:6",
+            "paper_id": "957d6290461642e3972e3c91ad953a51",
+            "title": "Language Models are Few-Shot Learners",
+            "page": 6,
+            "text": "We also undertake a systematic study of “data contamination” – a growing problem when training high capacity models\non datasets such as Common Crawl, which can potentially include content from test datasets simply because such\ncontent often exists on the web. In this paper we develop systematic tools to measure data contamination and quantify\nits distorting effects. Although we ﬁnd that data contamination has a minimal effect on GPT-3’s performance on most\ndatasets, we do identify a few datasets where it could be inﬂating results, and we either do not report results on these\ndatasets or we note them with an asterisk, depending on the severity.\n\nIn addition to all the above, we also train a series of smaller models (ranging from 125 million parameters to 13 billion\nparameters) in order to compare their performance to GPT-3 in the zero, one and few-shot settings. Broadly, for most\ntasks we ﬁnd relatively smooth scaling with model capacity in all three settings; one notable pattern is that the gap\nbetween zero-, one-, and few-shot performance often grows with model capacity, perhaps suggesting that larger models\nare more proﬁcient meta-learners.\n\nFinally, given the broad spectrum of capabilities displayed by GPT-3, we discuss concerns about bias, fairness, and\nbroader societal impacts, and attempt a preliminary analysis of GPT-3’s characteristics in this regard.\n\nThe remainder of this paper is organized as follows. In Section 2, we describe our approach and methods for training\nGPT-3 and evaluating it. Section 3 presents results on the full range of tasks in the zero-, one- and few-shot settings.\nSection 4 addresses questions of data contamination (train-test overlap). Section 5 discusses limitations of GPT-3.\nSection 6 discusses broader impacts. Section 7 reviews related work and Section 8 concludes.\n\n2\nApproach\n\nOur basic pre-training approach, including model, data, and training, is similar to the process described in [RWC+19],\nwith relatively straightforward scaling up of the model size, dataset size and diversity, and length of training. Our use\nof in-context learning is also similar to [RWC+19], but in this work we systematically explore different settings for\nlearning within the context. Therefore, we start this section by explicitly deﬁning and contrasting the different settings\nthat we will be evaluating GPT-3 on or could in principle evaluate GPT-3 on. These settings can be seen as lying on a\nspectrum of how much task-speciﬁc data they tend to rely on. Speciﬁcally, we can identify at least four points on this\nspectrum (see Figure 2.1 for an illustration):\n\n• Fine-Tuning (FT) has been the most common approach in recent years, and involves updating the weights of\na pre-trained model by training on a supervised dataset speciﬁc to the desired task. Typically thousands to\nhundreds of thousands of labeled examples are used. The main advantage of ﬁne-tuning is strong performance\non many benchmarks. The main disadvantages are the need for a new large dataset for every task, the potential\nfor poor generalization out-of-distribution [MPL19], and the potential to exploit spurious features of the\ntraining data [GSL+18, NK19], potentially resulting in an unfair comparison with human performance. In\nthis work we do not ﬁne-tune GPT-3 because our focus is on task-agnostic performance, but GPT-3 can be\nﬁne-tuned in principle and this is a promising direction for future work.\n\n• Few-Shot (FS) is the term we will use in this work to refer to the setting where the model is given a few\ndemonstrations of the task at inference time as conditioning [RWC+19], but no weight updates are allowed.\nAs shown in Figure 2.1, for a typical dataset an example has a context and a desired completion (for example\nan English sentence and the French translation), and few-shot works by giving K examples of context and\ncompletion, and then one ﬁnal example of context, with the model expected to provide the completion. We\ntypically set K in the range of 10 to 100 as this is how many examples can ﬁt in the model’s context window\n(nctx = 2048). The main advantages of few-shot are a major reduction in the need for task-speciﬁc data and\nreduced potential to learn an overly narrow distribution from a large but narrow ﬁne-tuning dataset. The main\ndisadvantage is that results from this method have so far been much worse than state-of-the-art ﬁne-tuned\nmodels. Also, a small amount of task speciﬁc data is still required. As indicated by the name, few-shot\nlearning as described here for language models is related to few-shot learning as used in other contexts in\nML [HYC01, VBL+16] – both involve learning based on a broad distribution of tasks (in this case implicit in\nthe pre-training data) and then rapidly adapting to a new task.\n\n• One-Shot (1S) is the same as few-shot except that only one demonstration is allowed, in addition to a natural\nlanguage description of the task, as shown in Figure 1. The reason to distinguish one-shot from few-shot and\nzero-shot (below) is that it most closely matches the way in which some tasks are communicated to humans.\nFor example, when asking humans to generate a dataset on a human worker service (for example Mechanical\nTurk), it is common to give one demonstration of the task. By contrast it is sometimes difﬁcult to communicate\nthe content or format of a task if no examples are given.\n\n6",
+            "bbox": [
+              0,
+              0,
+              612.0,
+              792.0
+            ],
+            "score": 0.02831,
+            "rerank_score": 1.32421875,
+            "origin_chunk_id": "448a9d3851ae47159950ff9830e1ef86",
+            "context_scope": "original-page"
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 1367 个文本块，返回 9 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 9 条证据，用时 843.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 4 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": false,
+          "paper_ids": [
+            "b4d42bf79e73458e888e857527ecb45c",
+            "3307e33e72944428a924bc34325dcc30",
+            "957d6290461642e3972e3c91ad953a51"
+          ],
+          "message": ""
+        }
+      }
+    },
+    {
+      "name": "GPT 2 pre-normalization architectural change",
+      "passed": true,
+      "status": 200,
+      "seconds": 3.98,
+      "response": {
+        "mode": "generated",
+        "answer": "GPT-2 将 Layer Normalization 移到每个子块（sub-block）的输入处，类似预激活残差网络的做法。 [S1]\n\nGPT-2 在最后一个 self-attention 块之后额外增加了一处 layer normalization。 [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "9d42b7da30f745b8bdfd01f1a022ea65",
+            "paper_id": "3307e33e72944428a924bc34325dcc30",
+            "title": "Language Models are Unsupervised Multitask Learners",
+            "page": 4,
+            "text": "few modiﬁcations. Layer normalization (Ba et al., 2016)\nwas moved to the input of each sub-block, similar to a\npre-activation residual network (He et al., 2016) and an\nadditional layer normalization was added after the ﬁnal self-\nattention block. A modiﬁed initialization which accounts\nfor the accumulation on the residual path with model depth\nis used. We scale the weights of residual layers at initial-\nization by a factor of 1/\n√",
+            "bbox": [
+              307.0820007324219,
+              185.32028198242188,
+              543.0980224609375,
+              279.06805419921875
+            ],
+            "score": 0.04945,
+            "rerank_score": 2.3203125
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 389 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 766.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 1 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": false,
+          "paper_ids": [
+            "3307e33e72944428a924bc34325dcc30"
+          ],
+          "message": ""
+        }
+      }
+    }
+  ],
+  "scope": "Selected official-style sample questions; source coverage and named values only, not a universal factual score.",
+  "version_note": "Attention v7 table 2 says EN-FR 41.8, unlike v1 table 2 (41.0). The v7 prose still says 41.0, so a faithful response may flag the inconsistency. Initial record retained separately.",
+  "summary": {
+    "passed": 6,
+    "total": 6
+  }
+}

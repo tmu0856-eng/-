@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-10-28T15:22:50.077986+00:00",
+  "filename": "UnderstandingDeepLearning_02_09_26_C.pdf",
+  "pages": 541,
+  "bytes": 22344992,
+  "sha256": "f8237d393163900fa8e43210e680a3f987b45ccac7750b372e156fae3df0bf32",
+  "author_release": "https://github.com/udlbook/udlbook/releases/download/v5.0.3/UnderstandingDeepLearning_02_09_26_C.pdf",
+  "download_source": "https://sites.astro.caltech.edu/~george/ay119/UnderstandingDeepLearning_02_09_26_C.pdf",
+  "matches_author_digest": true,
+  "note": "Same filename specified by the competition, downloaded from a public university mirror and matched to the author release. This is not an organizer-provided test archive, and parsing/performance tests have not yet been run."
+}

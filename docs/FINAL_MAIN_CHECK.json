@@ -1,0 +1,118 @@
+{
+  "checked_at": "2026-11-15T07:25:02.063926+00:00",
+  "scope": "Final main-service smoke check; existing 28-paper library preserved.",
+  "paper_count": 28,
+  "question_status": 200,
+  "passed": true,
+  "response": {
+    "mode": "generated",
+    "answer": "训练在一台机器上使用 8 块 NVIDIA P100 GPU 完成。 [S3]\n\nbig 模型（Transformer big）在 8 块 P100 GPU 上训练了 3.5 天。 [S2]\n\n优化器为 Adam，其中 β1 = 0.9、β2 = 0.98、ϵ = 10^-9。 [S1]",
+    "sources": [
+      {
+        "source_id": "S1",
+        "chunk_id": "33228bc1233a471eb63f3b52d533a84d",
+        "paper_id": "ed3b40377421428996e96b5b407d613f",
+        "title": "Attention Is All You Need",
+        "page": 7,
+        "text": "We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning\nrate over the course of training, according to the formula:",
+        "bbox": [
+          107.53199768066406,
+          576.5763549804688,
+          504.0029296875,
+          599.0480346679688
+        ],
+        "score": 0.05,
+        "rerank_score": 0.7060546875
+      },
+      {
+        "source_id": "S2",
+        "chunk_id": "b8a3d350b7344ec29744b82483dbec9f",
+        "paper_id": "ed3b40377421428996e96b5b407d613f",
+        "title": "Attention Is All You Need",
+        "page": 8,
+        "text": "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0\nBLEU, establishing a new state-of-the-art BLEU score of 28.4. The configuration of this model is\nlisted in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base model\nsurpasses all previously published models and ensembles, at a fraction of the training cost of any of\nthe competitive models.",
+        "bbox": [
+          108.0,
+          418.3014221191406,
+          504.6652526855469,
+          482.73406982421875
+        ],
+        "score": 0.02837,
+        "rerank_score": -1.9716796875
+      },
+      {
+        "source_id": "S3",
+        "chunk_id": "297ace4863364294a180b7773dddeabd",
+        "paper_id": "ed3b40377421428996e96b5b407d613f",
+        "title": "Attention Is All You Need",
+        "page": 7,
+        "text": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using\nthe hyperparameters described throughout the paper, each training step took about 0.4 seconds. We\ntrained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the\nbottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps\n(3.5 days).",
+        "bbox": [
+          107.53199768066406,
+          486.7832946777344,
+          504.0014953613281,
+          540.45703125
+        ],
+        "score": 0.04892,
+        "rerank_score": -2.32421875
+      }
+    ],
+    "trace": [
+      {
+        "tool": "plan",
+        "message": "确定论文范围，检索原文证据，再组织回答"
+      },
+      {
+        "tool": "retrieve_evidence",
+        "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+      },
+      {
+        "tool": "rerank_evidence",
+        "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 4907.0 ms；保留论文范围和首页署名证据"
+      },
+      {
+        "tool": "validate_citations",
+        "message": "核对 3 个证据编号均存在；事实是否被证据支持仍需核对原文"
+      }
+    ],
+    "context": {
+      "used": false,
+      "paper_ids": [
+        "ed3b40377421428996e96b5b407d613f"
+      ],
+      "message": ""
+    }
+  },
+  "embedding": {
+    "configured": true,
+    "provider": "local",
+    "model": "BAAI/bge-m3",
+    "dimensions": 1024,
+    "space": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181:cls:l2:max512",
+    "indexed_chunks": 10299,
+    "total_chunks": 10299,
+    "pending_chunks": 0,
+    "indexing": false,
+    "runtime": {
+      "state": "ready",
+      "device": "cuda",
+      "error": ""
+    },
+    "error": ""
+  },
+  "reranker": {
+    "configured": true,
+    "model": "BAAI/bge-reranker-v2-m3",
+    "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "candidates": 40,
+    "max_length": 512,
+    "runtime": {
+      "state": "ready",
+      "device": "cuda",
+      "error": "",
+      "last_candidates": 40,
+      "last_ms": 4907.0
+    },
+    "error": ""
+  }
+}

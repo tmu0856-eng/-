@@ -1,4 +1,4 @@
-"""CSV visualisation with deterministic plotting; no model-generated code is executed."""
+"""基于固定模板绘制 CSV 图表，不执行模型生成的代码。"""
 import csv
 import io
 import math
@@ -121,8 +121,8 @@ fig.savefig(Path(__file__).with_suffix(".png"), facecolor="white")
 fig.savefig(Path(__file__).with_suffix(".svg"), facecolor="white")
 plt.close(fig)
 '''
-    # Compile and execute only our fixed template with validated data; never external generated source.
-    # The exported source is exactly what renders the preview.
+    # 只编译执行固定绘图模板和已校验数据，不执行外部生成的代码。
+    # 导出的脚本与生成预览图的脚本一致。
     target = db.DATA / 'charts' / chart_id
     with PLOT_LOCK:
         exec(compile(script, str(target.with_suffix('.py')), 'exec'), {'__file__': str(target.with_suffix('.py'))})

@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-26T15:20:36.104936+00:00",
+  "query": "attention",
+  "http_status": 200,
+  "paper_count": 12,
+  "first_retrieval": {
+    "source": "arxiv",
+    "cache_state": "fresh",
+    "fetched_at": "2026-10-26T15:20:36.034191+00:00"
+  },
+  "repeat_retrieval": {
+    "source": "arxiv",
+    "cache_state": "cached",
+    "fetched_at": "2026-10-26T15:20:36.034191+00:00"
+  },
+  "example_ids": [
+    "2610.32664v1",
+    "2610.32696v1",
+    "2610.32977v1"
+  ],
+  "passed": true,
+  "limit": "A successful live check does not guarantee future upstream availability; retry and offline-cache cases are covered by mocked tests."
+}

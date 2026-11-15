@@ -1,0 +1,752 @@
+{
+  "date": "2026-11-14T17:55:58.782501+00:00",
+  "scope": "Real main-library question answering and Agent SSE; two paid MiMo calls, no paper edits.",
+  "direct": {
+    "status": 200,
+    "total_ms": 22750.0,
+    "response": {
+      "mode": "generated",
+      "answer": "论文中的模型在一台机器上的 8 块 NVIDIA P100 GPU 上训练：base 模型共训练 100,000 步（12 小时），big 模型训练 300,000 步（3.5 天）。 [S2]\n\nWMT 2014 英德翻译任务上的 Transformer (big) 模型在 8 块 P100 GPU 上训练 3.5 天。 [S4]\n\n论文摘要中也说明模型在八块 P100 GPU 上训练约十二小时即可达到新的翻译质量水平。 [S5]\n\n训练使用 Adam 优化器，其参数为 β1 = 0.9、β2 = 0.98、ϵ = 10⁻⁹。 [S1]",
+      "sources": [
+        {
+          "source_id": "S1",
+          "chunk_id": "33228bc1233a471eb63f3b52d533a84d",
+          "paper_id": "ed3b40377421428996e96b5b407d613f",
+          "title": "Attention Is All You Need",
+          "page": 7,
+          "text": "We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning\nrate over the course of training, according to the formula:",
+          "bbox": [
+            107.53199768066406,
+            576.5763549804688,
+            504.0029296875,
+            599.0480346679688
+          ],
+          "score": 0.05,
+          "rerank_score": -0.373046875
+        },
+        {
+          "source_id": "S2",
+          "chunk_id": "297ace4863364294a180b7773dddeabd",
+          "paper_id": "ed3b40377421428996e96b5b407d613f",
+          "title": "Attention Is All You Need",
+          "page": 7,
+          "text": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using\nthe hyperparameters described throughout the paper, each training step took about 0.4 seconds. We\ntrained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the\nbottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps\n(3.5 days).",
+          "bbox": [
+            107.53199768066406,
+            486.7832946777344,
+            504.0014953613281,
+            540.45703125
+          ],
+          "score": 0.04892,
+          "rerank_score": -0.9912109375
+        },
+        {
+          "source_id": "S4",
+          "chunk_id": "b8a3d350b7344ec29744b82483dbec9f",
+          "paper_id": "ed3b40377421428996e96b5b407d613f",
+          "title": "Attention Is All You Need",
+          "page": 8,
+          "text": "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0\nBLEU, establishing a new state-of-the-art BLEU score of 28.4. The configuration of this model is\nlisted in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base model\nsurpasses all previously published models and ensembles, at a fraction of the training cost of any of\nthe competitive models.",
+          "bbox": [
+            108.0,
+            418.3014221191406,
+            504.6652526855469,
+            482.73406982421875
+          ],
+          "score": 0.02821,
+          "rerank_score": -1.798828125
+        },
+        {
+          "source_id": "S5",
+          "chunk_id": "bd28a1097b29425fa1cf94e8aa4eed44",
+          "paper_id": "ed3b40377421428996e96b5b407d613f",
+          "title": "Attention Is All You Need",
+          "page": 2,
+          "text": "In this work we propose the Transformer, a model architecture eschewing recurrence and instead\nrelying entirely on an attention mechanism to draw global dependencies between input and output.\nThe Transformer allows for significantly more parallelization and can reach a new state of the art in\ntranslation quality after being trained for as little as twelve hours on eight P100 GPUs.",
+          "bbox": [
+            107.69100189208984,
+            300.9082946777344,
+            505.73870849609375,
+            343.6730651855469
+          ],
+          "score": 0.02826,
+          "rerank_score": -2.013671875
+        }
+      ],
+      "trace": [
+        {
+          "tool": "plan",
+          "message": "确定论文范围，检索原文证据，再组织回答"
+        },
+        {
+          "tool": "retrieve_evidence",
+          "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+        },
+        {
+          "tool": "rerank_evidence",
+          "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 3907.0 ms；保留论文范围和首页署名证据"
+        },
+        {
+          "tool": "validate_citations",
+          "message": "核对 4 个证据编号均存在；事实是否被证据支持仍需核对原文"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "agent_sse": {
+    "status": 200,
+    "events": [
+      {
+        "event": "step",
+        "data": {
+          "message": "正在检索论文原文并核对证据范围"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "scope",
+          "message": "已锁定 1 篇论文；联网发现未开启",
+          "status": "done",
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "planner",
+          "message": "规划智能体产出 3 条子查询，交接核读智能体执行",
+          "status": "done",
+          "role": "规划",
+          "arguments": {
+            "sub_queries": [
+              {
+                "query": "训练硬件 GPU 型号 数量 training hardware NVIDIA P100",
+                "paper_id": "ed3b40377421428996e96b5b407d613f"
+              },
+              {
+                "query": "Adam optimizer beta2 超参数 β2=0.98 learning rate schedule",
+                "paper_id": "ed3b40377421428996e96b5b407d613f"
+              },
+              {
+                "query": "training procedure 8 GPU P100 12 hours 3.5 days",
+                "paper_id": "ed3b40377421428996e96b5b407d613f"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "planning",
+          "message": "第 1 轮：正在选择工具",
+          "status": "running",
+          "round": 1,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "tool_start",
+          "message": "正在调用 search_evidence",
+          "status": "running",
+          "round": 1,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "search_evidence",
+          "message": "混合召回 40 条，精排保留 5 条原文证据",
+          "status": "done",
+          "arguments": {
+            "query": "训练硬件 GPU 型号 数量 training hardware NVIDIA P100",
+            "paper_id": "ed3b40377421428996e96b5b407d613f",
+            "limit": 5
+          },
+          "round": 1,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "tool_start",
+          "message": "正在调用 search_evidence",
+          "status": "running",
+          "round": 1,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "search_evidence",
+          "message": "混合召回 40 条，精排保留 5 条原文证据",
+          "status": "done",
+          "arguments": {
+            "query": "Adam optimizer beta2 超参数 β2=0.98 learning rate schedule",
+            "paper_id": "ed3b40377421428996e96b5b407d613f",
+            "limit": 5
+          },
+          "round": 1,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "tool_start",
+          "message": "正在调用 search_evidence",
+          "status": "running",
+          "round": 1,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "search_evidence",
+          "message": "混合召回 40 条，精排保留 5 条原文证据",
+          "status": "done",
+          "arguments": {
+            "query": "training procedure 8 GPU P100 12 hours 3.5 days",
+            "paper_id": "ed3b40377421428996e96b5b407d613f",
+            "limit": 5
+          },
+          "round": 1,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "planning",
+          "message": "第 2 轮：正在选择工具",
+          "status": "running",
+          "round": 2,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "tool_start",
+          "message": "正在调用 read_page",
+          "status": "running",
+          "round": 2,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "read_page",
+          "message": "读取第 7 页，得到 6 条原文块",
+          "status": "done",
+          "arguments": {
+            "paper_id": "ed3b40377421428996e96b5b407d613f",
+            "page": 7
+          },
+          "round": 2,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "planning",
+          "message": "第 3 轮：正在选择工具",
+          "status": "running",
+          "round": 3,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "tool_start",
+          "message": "正在调用 search_evidence",
+          "status": "running",
+          "round": 3,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "search_evidence",
+          "message": "混合召回 40 条，精排保留 4 条原文证据",
+          "status": "done",
+          "arguments": {
+            "query": "We used the Adam optimizer β2 = 0.98 ϵ = 10−9 regularization label smoothing",
+            "paper_id": "ed3b40377421428996e96b5b407d613f",
+            "limit": 4
+          },
+          "round": 3,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "tool_start",
+          "message": "正在调用 read_page",
+          "status": "running",
+          "round": 3,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "read_page",
+          "message": "读取第 8 页，得到 6 条原文块",
+          "status": "done",
+          "arguments": {
+            "paper_id": "ed3b40377421428996e96b5b407d613f",
+            "page": 8
+          },
+          "round": 3,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "planning",
+          "message": "第 4 轮：正在选择工具",
+          "status": "running",
+          "round": 4,
+          "role": "核读"
+        }
+      },
+      {
+        "event": "step",
+        "data": {
+          "tool": "synthesis",
+          "message": "综合智能体：根据 23 条原文证据组织回答并校验引用",
+          "status": "running",
+          "role": "综合"
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "模型在一台"
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "模型在一台配备"
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "模型在一台配备 8 块 NVIDIA P1"
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "模型在一台配备 8 块 NVIDIA P100 GPU 的机器上训练。"
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "模型在一台配备 8 块 NVIDIA P100 GPU 的机器上训练。"
+        }
+      },
+      {
+        "event": "claim",
+        "data": {
+          "text": "模型在一台配备 8 块 NVIDIA P100 GPU 的机器上训练。",
+          "source_ids": [
+            "S1"
+          ]
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "big"
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "big 模型在 8 "
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "big 模型在 8 块 P100 GPU 上"
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "big 模型在 8 块 P100 GPU 上训练耗时 3."
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "big 模型在 8 块 P100 GPU 上训练耗时 3.5 天。"
+        }
+      },
+      {
+        "event": "claim",
+        "data": {
+          "text": "big 模型在 8 块 P100 GPU 上训练耗时 3.5 天。",
+          "source_ids": [
+            "S2"
+          ]
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "训练使用"
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "训练使用 Adam 优化器，"
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "训练使用 Adam 优化器，参数为 β1 = 0."
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "训练使用 Adam 优化器，参数为 β1 = 0.9、β2 = 0."
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "训练使用 Adam 优化器，参数为 β1 = 0.9、β2 = 0.98、ϵ = 10"
+        }
+      },
+      {
+        "event": "token",
+        "data": {
+          "text": "训练使用 Adam 优化器，参数为 β1 = 0.9、β2 = 0.98、ϵ = 10−9。"
+        }
+      },
+      {
+        "event": "claim",
+        "data": {
+          "text": "训练使用 Adam 优化器，参数为 β1 = 0.9、β2 = 0.98、ϵ = 10−9。",
+          "source_ids": [
+            "S6"
+          ]
+        }
+      },
+      {
+        "event": "result",
+        "data": {
+          "mode": "generated",
+          "answer": "模型在一台配备 8 块 NVIDIA P100 GPU 的机器上训练。 [S1]\n\nbig 模型在 8 块 P100 GPU 上训练耗时 3.5 天。 [S2]\n\n训练使用 Adam 优化器，参数为 β1 = 0.9、β2 = 0.98、ϵ = 10−9。 [S6]",
+          "sources": [
+            {
+              "source_id": "S1",
+              "chunk_id": "297ace4863364294a180b7773dddeabd",
+              "paper_id": "ed3b40377421428996e96b5b407d613f",
+              "title": "Attention Is All You Need",
+              "page": 7,
+              "text": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using\nthe hyperparameters described throughout the paper, each training step took about 0.4 seconds. We\ntrained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the\nbottom line of table 3), step time was 1.0 seconds. The big models were trained for 300,000 steps\n(3.5 days).",
+              "bbox": [
+                107.53199768066406,
+                486.7832946777344,
+                504.0014953613281,
+                540.45703125
+              ],
+              "score": 0.04946,
+              "rerank_score": 3.9921875
+            },
+            {
+              "source_id": "S2",
+              "chunk_id": "b8a3d350b7344ec29744b82483dbec9f",
+              "paper_id": "ed3b40377421428996e96b5b407d613f",
+              "title": "Attention Is All You Need",
+              "page": 8,
+              "text": "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0\nBLEU, establishing a new state-of-the-art BLEU score of 28.4. The configuration of this model is\nlisted in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base model\nsurpasses all previously published models and ensembles, at a fraction of the training cost of any of\nthe competitive models.",
+              "bbox": [
+                108.0,
+                418.3014221191406,
+                504.6652526855469,
+                482.73406982421875
+              ],
+              "score": 0.04691,
+              "rerank_score": 2.71484375
+            },
+            {
+              "source_id": "S6",
+              "chunk_id": "33228bc1233a471eb63f3b52d533a84d",
+              "paper_id": "ed3b40377421428996e96b5b407d613f",
+              "title": "Attention Is All You Need",
+              "page": 7,
+              "text": "We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning\nrate over the course of training, according to the formula:",
+              "bbox": [
+                107.53199768066406,
+                576.5763549804688,
+                504.0029296875,
+                599.0480346679688
+              ],
+              "score": 0.05,
+              "rerank_score": 3.42578125
+            }
+          ],
+          "trace": [
+            {
+              "tool": "scope",
+              "message": "已锁定 1 篇论文；联网发现未开启",
+              "status": "done",
+              "role": "核读"
+            },
+            {
+              "tool": "planner",
+              "message": "规划智能体产出 3 条子查询，交接核读智能体执行",
+              "status": "done",
+              "role": "规划",
+              "arguments": {
+                "sub_queries": [
+                  {
+                    "query": "训练硬件 GPU 型号 数量 training hardware NVIDIA P100",
+                    "paper_id": "ed3b40377421428996e96b5b407d613f"
+                  },
+                  {
+                    "query": "Adam optimizer beta2 超参数 β2=0.98 learning rate schedule",
+                    "paper_id": "ed3b40377421428996e96b5b407d613f"
+                  },
+                  {
+                    "query": "training procedure 8 GPU P100 12 hours 3.5 days",
+                    "paper_id": "ed3b40377421428996e96b5b407d613f"
+                  }
+                ]
+              }
+            },
+            {
+              "tool": "planning",
+              "message": "第 1 轮：正在选择工具",
+              "status": "running",
+              "round": 1,
+              "role": "核读"
+            },
+            {
+              "tool": "tool_start",
+              "message": "正在调用 search_evidence",
+              "status": "running",
+              "round": 1,
+              "role": "核读"
+            },
+            {
+              "tool": "search_evidence",
+              "message": "混合召回 40 条，精排保留 5 条原文证据",
+              "status": "done",
+              "arguments": {
+                "query": "训练硬件 GPU 型号 数量 training hardware NVIDIA P100",
+                "paper_id": "ed3b40377421428996e96b5b407d613f",
+                "limit": 5
+              },
+              "round": 1,
+              "role": "核读"
+            },
+            {
+              "tool": "tool_start",
+              "message": "正在调用 search_evidence",
+              "status": "running",
+              "round": 1,
+              "role": "核读"
+            },
+            {
+              "tool": "search_evidence",
+              "message": "混合召回 40 条，精排保留 5 条原文证据",
+              "status": "done",
+              "arguments": {
+                "query": "Adam optimizer beta2 超参数 β2=0.98 learning rate schedule",
+                "paper_id": "ed3b40377421428996e96b5b407d613f",
+                "limit": 5
+              },
+              "round": 1,
+              "role": "核读"
+            },
+            {
+              "tool": "tool_start",
+              "message": "正在调用 search_evidence",
+              "status": "running",
+              "round": 1,
+              "role": "核读"
+            },
+            {
+              "tool": "search_evidence",
+              "message": "混合召回 40 条，精排保留 5 条原文证据",
+              "status": "done",
+              "arguments": {
+                "query": "training procedure 8 GPU P100 12 hours 3.5 days",
+                "paper_id": "ed3b40377421428996e96b5b407d613f",
+                "limit": 5
+              },
+              "round": 1,
+              "role": "核读"
+            },
+            {
+              "tool": "planning",
+              "message": "第 2 轮：正在选择工具",
+              "status": "running",
+              "round": 2,
+              "role": "核读"
+            },
+            {
+              "tool": "tool_start",
+              "message": "正在调用 read_page",
+              "status": "running",
+              "round": 2,
+              "role": "核读"
+            },
+            {
+              "tool": "read_page",
+              "message": "读取第 7 页，得到 6 条原文块",
+              "status": "done",
+              "arguments": {
+                "paper_id": "ed3b40377421428996e96b5b407d613f",
+                "page": 7
+              },
+              "round": 2,
+              "role": "核读"
+            },
+            {
+              "tool": "planning",
+              "message": "第 3 轮：正在选择工具",
+              "status": "running",
+              "round": 3,
+              "role": "核读"
+            },
+            {
+              "tool": "tool_start",
+              "message": "正在调用 search_evidence",
+              "status": "running",
+              "round": 3,
+              "role": "核读"
+            },
+            {
+              "tool": "search_evidence",
+              "message": "混合召回 40 条，精排保留 4 条原文证据",
+              "status": "done",
+              "arguments": {
+                "query": "We used the Adam optimizer β2 = 0.98 ϵ = 10−9 regularization label smoothing",
+                "paper_id": "ed3b40377421428996e96b5b407d613f",
+                "limit": 4
+              },
+              "round": 3,
+              "role": "核读"
+            },
+            {
+              "tool": "tool_start",
+              "message": "正在调用 read_page",
+              "status": "running",
+              "round": 3,
+              "role": "核读"
+            },
+            {
+              "tool": "read_page",
+              "message": "读取第 8 页，得到 6 条原文块",
+              "status": "done",
+              "arguments": {
+                "paper_id": "ed3b40377421428996e96b5b407d613f",
+                "page": 8
+              },
+              "round": 3,
+              "role": "核读"
+            },
+            {
+              "tool": "planning",
+              "message": "第 4 轮：正在选择工具",
+              "status": "running",
+              "round": 4,
+              "role": "核读"
+            },
+            {
+              "tool": "synthesis",
+              "message": "综合智能体：根据 23 条原文证据组织回答并校验引用",
+              "status": "running",
+              "role": "综合"
+            },
+            {
+              "tool": "validate_citations",
+              "message": "核对 3 个证据编号均存在；事实是否被证据支持仍需核对原文"
+            }
+          ],
+          "execution": "agent",
+          "tool_calls": 6,
+          "bounded": false,
+          "discoveries": []
+        }
+      }
+    ],
+    "event_counts": {
+      "step": 20,
+      "result": 1,
+      "token": 16,
+      "claim": 3
+    },
+    "passed": true
+  },
+  "status": {
+    "name": "研舟 ResearchDock",
+    "version": "0.1.0",
+    "llm_configured": true,
+    "model": "mimo-v2.6-pro",
+    "embedding_configured": true,
+    "embedding": {
+      "configured": true,
+      "provider": "local",
+      "model": "BAAI/bge-m3",
+      "dimensions": 1024,
+      "space": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181:cls:l2:max512",
+      "indexed_chunks": 10299,
+      "total_chunks": 10299,
+      "pending_chunks": 0,
+      "indexing": false,
+      "runtime": {
+        "state": "ready",
+        "device": "cuda",
+        "error": ""
+      },
+      "error": ""
+    },
+    "reranker": {
+      "configured": true,
+      "model": "BAAI/bge-reranker-v2-m3",
+      "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+      "candidates": 40,
+      "max_length": 512,
+      "runtime": {
+        "state": "ready",
+        "device": "cuda",
+        "error": "",
+        "last_candidates": 40,
+        "last_ms": 469.0
+      },
+      "error": ""
+    },
+    "papers": 28,
+    "notice": "本地开发版。上线前需配置访问控制、请求限流与备份；官方 PDF 测试待执行。"
+  },
+  "passed": true
+}

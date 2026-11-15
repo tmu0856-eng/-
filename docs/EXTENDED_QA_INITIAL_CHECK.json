@@ -1,0 +1,474 @@
+{
+  "checked_at": "2026-11-15T07:09:45.151512+00:00",
+  "checks": [
+    {
+      "name": "Sixth author for conversation context",
+      "passed": true,
+      "status": 200,
+      "seconds": 9.81,
+      "response": {
+        "mode": "generated",
+        "answer": "《Attention Is All You Need》首页署名顺序从上到下为：Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser、Illia Polosukhin，因此第六位作者是 Aidan N. Gomez，其标注机构为 University of Toronto。 [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "frontmatter:ebd3f4cb9e104702a10201cfb2904d27:1",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 1,
+            "text": "Attention Is All You Need\n\nAshish Vaswani∗\nGoogle Brain\navaswani@google.com\n\nNoam Shazeer∗\nGoogle Brain\nnoam@google.com\n\nNiki Parmar∗\nGoogle Research\nnikip@google.com\n\nJakob Uszkoreit∗\nGoogle Research\nusz@google.com\n\nLlion Jones∗\nGoogle Research\nllion@google.com\n\nAidan N. Gomez∗†\nUniversity of Toronto\naidan@cs.toronto.edu\n\nŁukasz Kaiser∗\nGoogle Brain\nlukaszkaiser@google.com\n\nIllia Polosukhin∗‡\nillia.polosukhin@gmail.com",
+            "bbox": [
+              116.68099975585938,
+              148.8298797607422,
+              497.210693359375,
+              356.25408935546875
+            ],
+            "score": 1.0,
+            "rerank_score": -7.08984375
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 4594.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 1 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": false,
+          "paper_ids": [
+            "ebd3f4cb9e104702a10201cfb2904d27"
+          ],
+          "message": ""
+        }
+      }
+    },
+    {
+      "name": "Follow-up inherits cited document scope",
+      "passed": true,
+      "status": 200,
+      "seconds": 3.05,
+      "response": {
+        "mode": "generated",
+        "answer": "《Attention Is All You Need》中训练使用 Adam 优化器，其中 β1 = 0.9、β2 = 0.98、ϵ = 10⁻⁹。 [S1]\n\n该文引用的 Adam 优化器文献为 Kingma 与 Ba 的 ICLR 2015 论文。 [S9]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "1fb33de6a0fc4047828dd0bbc26160f0",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 7,
+            "text": "We used the Adam optimizer [20] with β1 = 0.9, β2 = 0.98 and ϵ = 10−9. We varied the learning\nrate over the course of training, according to the formula:",
+            "bbox": [
+              107.53199768066406,
+              576.5763549804688,
+              504.0029296875,
+              599.0480346679688
+            ],
+            "score": 0.04945,
+            "rerank_score": 2.66796875
+          },
+          {
+            "source_id": "S9",
+            "chunk_id": "1c9be19cf4d9444382532cb4553442b4",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 11,
+            "text": "[20] Diederik Kingma and Jimmy Ba. Adam: A method for stochastic optimization. In ICLR, 2015.",
+            "bbox": [
+              108.0,
+              578.5616455078125,
+              505.745361328125,
+              588.6570434570312
+            ],
+            "score": 0.04973,
+            "rerank_score": -6.83984375
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 406.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 2 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": true,
+          "paper_ids": [
+            "ebd3f4cb9e104702a10201cfb2904d27"
+          ],
+          "message": "承接上一轮引用的 1 篇论文；历史回答不作为事实证据，重新检索原文。"
+        }
+      }
+    },
+    {
+      "name": "Translation results and previous system comparison",
+      "passed": false,
+      "status": 200,
+      "seconds": 48.58,
+      "response": {
+        "mode": "generated",
+        "answer": "按原文表 2，Transformer (big) 的 BLEU 为 EN-DE 28.4、EN-FR 41.8（该行训练代价为 2.3×10^19）。 [S7] [S2]\n\n在 WMT 2014 EN-DE 上，Transformer (big) 以 28.4 BLEU 超过此前已报告的最佳模型（包括 ensemble），高出 2.0 BLEU 以上，创下新的最优结果。 [S1] [S3]\n\n在 WMT 2014 EN-FR 上，big 模型超过所有此前已发表的单模型，训练成本不到此前最优模型的 1/4。 [S4]\n\n表 2 片段中出现的此前系统结果包括：ByteNet 的 EN-DE 为 23.75，Deep-Att + PosUnk 的 EN-FR 为 39.2（训练代价 1.0×10^20）。 [S9]\n\n按上述片段数值计算，Transformer (big) 相对 ByteNet 在 EN-DE 上差值为 +4.65 BLEU，相对 Deep-Att + PosUnk 在 EN-FR 上差值为 +2.6 BLEU；但证据不足以确定这两行是否即表 2 中的『此前最佳』，故这些差值不能直接等同于对最佳此前系统的提升幅度。 [S7] [S9]\n\n不足以确定：表 2 中此前最佳 ensemble 系统的具体 BLEU 数值及其与 Transformer (big) 的精确差值（尤其 EN-FR 的 ensemble 对比）在所给证据中缺失。\n\n原文正文称 EN-FR big 模型 BLEU 为 41.0，而表 2 中 Transformer (big) 的 EN-FR 值为 41.8，两处数字不一致，不足以确定应以哪个为准。 [S4] [S7]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "8d0cf983b5af449ebdea78e7f9430cdb",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 8,
+            "text": "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0\nBLEU, establishing a new state-of-the-art BLEU score of 28.4. The configuration of this model is\nlisted in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base model\nsurpasses all previously published models and ensembles, at a fraction of the training cost of any of\nthe competitive models.",
+            "bbox": [
+              108.0,
+              418.3014221191406,
+              504.6652526855469,
+              482.73406982421875
+            ],
+            "score": 0.04945,
+            "rerank_score": 2.1796875
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "53a8e7da51804c72bd11b61cac5dfb22",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 8,
+            "text": "Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the\nEnglish-to-German and English-to-French newstest2014 tests at a fraction of the training cost.",
+            "bbox": [
+              107.69100189208984,
+              71.19947814941406,
+              504.00311279296875,
+              92.07107543945312
+            ],
+            "score": 0.04717,
+            "rerank_score": 0.736328125
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "85c46e7fc4274514aeb3c99cf5041a91",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 1,
+            "text": "The dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.",
+            "bbox": [
+              143.5570068359375,
+              413.33428955078125,
+              469.78717041015625,
+              576.0990600585938
+            ],
+            "score": 0.04599,
+            "rerank_score": 0.45703125
+          },
+          {
+            "source_id": "S4",
+            "chunk_id": "f2e91ba4bcdc4b73896d1aed3af1c894",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 8,
+            "text": "On the WMT 2014 English-to-French translation task, our big model achieves a BLEU score of 41.0,\noutperforming all of the previously published single models, at less than 1/4 the training cost of the\nprevious state-of-the-art model. The Transformer (big) model trained for English-to-French used\ndropout rate Pdrop = 0.1, instead of 0.3.",
+            "bbox": [
+              108.0,
+              488.9289245605469,
+              505.2453308105469,
+              533.113525390625
+            ],
+            "score": 0.04813,
+            "rerank_score": -0.1710205078125
+          },
+          {
+            "source_id": "S7",
+            "chunk_id": "30c6f4451dac4d7ebae13153d98003cc",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 8,
+            "text": "Transformer (big)\n28.4\n41.8\n2.3 · 1019",
+            "bbox": [
+              136.67098999023438,
+              229.0757598876953,
+              447.96112060546875,
+              240.54806518554688
+            ],
+            "score": 0.04501,
+            "rerank_score": -2.71484375
+          },
+          {
+            "source_id": "S9",
+            "chunk_id": "d4f01af218ac4a7f89be5d07c6d4a87b",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 8,
+            "text": "EN-DE\nEN-FR\nEN-DE\nEN-FR\nByteNet [18]\n23.75\nDeep-Att + PosUnk [39]\n39.2\n1.0 · 1020",
+            "bbox": [
+              136.67100524902344,
+              113.82844543457031,
+              473.10211181640625,
+              146.48104858398438
+            ],
+            "score": 0.04762,
+            "rerank_score": -3.212890625
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 360.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 6 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": false,
+          "paper_ids": [
+            "ebd3f4cb9e104702a10201cfb2904d27"
+          ],
+          "message": ""
+        }
+      }
+    },
+    {
+      "name": "Layer Normalization reference authors and year",
+      "passed": true,
+      "status": 200,
+      "seconds": 3.06,
+      "response": {
+        "mode": "generated",
+        "answer": "该论文参考文献 [1] 的 \"Layer normalization\" 为 arXiv preprint arXiv:1607.06450，作者依次为 Jimmy Lei Ba、Jamie Ryan Kiros 和 Geoffrey E Hinton，年份为 2016。 [S2]\n\n文中在编码器每个子层后使用 layer normalization [1]，即 LayerNorm(x + Sublayer(x))，与参考文献 [1] 对应。 [S3]",
+        "sources": [
+          {
+            "source_id": "S2",
+            "chunk_id": "38811392ab9d4054b028bf3a7a08ee59",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 10,
+            "text": "[1] Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint\narXiv:1607.06450, 2016.",
+            "bbox": [
+              112.98100280761719,
+              615.0363159179688,
+              504.0028381347656,
+              636.030029296875
+            ],
+            "score": 0.05,
+            "rerank_score": 3.7734375
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "76467aa03e964531b80e951d828f88ca",
+            "paper_id": "ebd3f4cb9e104702a10201cfb2904d27",
+            "title": "Attention Is All You Need",
+            "page": 3,
+            "text": "Encoder:\nThe encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers, produce outputs of dimension dmodel = 512.",
+            "bbox": [
+              107.64099884033203,
+              502.8299255371094,
+              505.6571960449219,
+              579.7415161132812
+            ],
+            "score": 0.04363,
+            "rerank_score": -2.357421875
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 175 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 312.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 2 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": false,
+          "paper_ids": [
+            "ebd3f4cb9e104702a10201cfb2904d27"
+          ],
+          "message": ""
+        }
+      }
+    },
+    {
+      "name": "GPT 1 2 3 context and parameter comparison",
+      "passed": false,
+      "status": 200,
+      "seconds": 39.56,
+      "response": {
+        "mode": "generated",
+        "answer": "GPT-1（《Improving Language Understanding by Generative Pre-Training》）：所给证据仅为第 8 页 Table 5 消融实验表的标题，未明示最大模型的参数总量，也未明示上下文长度，不足以确定。 [S1]\n\nGPT-2（《Language Models are Unsupervised Multitask Learners》）：原文称其最大模型 GPT-2 的参数量比 GPT 多一个数量级以上（over an order of magnitude more parameters than GPT），但该段未给出具体参数总量数值；上下文长度亦未明示，不足以确定。 [S2]\n\nGPT-3（《Language Models are Few-Shot Learners》）：原文表格明确给出最大模型 GPT-3 175B（“GPT-3”）的参数量为 175.0B。 [S3]\n\nGPT-3 的上下文长度在所给证据中未明示：该表格行仅给出 175.0B、96、12288、96、128、3.2M、0.6×10⁻⁴ 等数值而无列标题，无法判定其中某项为上下文长度，不足以确定。 [S3]\n\n三篇原文横向比较：只有 GPT-3 最大模型的参数总量被明示为 175.0B；GPT-1 与 GPT-2 最大模型的参数总量在所给证据中均未明示，且三篇的最大模型上下文长度均无可直接引用的明示值，不能凭常识补全。 [S1] [S2] [S3]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "c23cd06a2e8f424fbda4a167c4cd1a52",
+            "paper_id": "b4d42bf79e73458e888e857527ecb45c",
+            "title": "Improving Language Understanding by Generative Pre-Training",
+            "page": 8,
+            "text": "Table 5: Analysis of various model ablations on different tasks. Avg. score is a unweighted average\nof all the results. (mc= Mathews correlation, acc=Accuracy, pc=Pearson correlation)",
+            "bbox": [
+              107.69100189208984,
+              71.19947814941406,
+              504.0030517578125,
+              92.07107543945312
+            ],
+            "score": 0.00883,
+            "rerank_score": -2.146484375
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "e47cceb101b74b40b643eec3c6f6fcca",
+            "paper_id": "3307e33e72944428a924bc34325dcc30",
+            "title": "Language Models are Unsupervised Multitask Learners",
+            "page": 4,
+            "text": "We trained and benchmarked four LMs with approximately\nlog-uniformly spaced sizes. The architectures are summa-\nrized in Table 2. The smallest model is equivalent to the\noriginal GPT, and the second smallest equivalent to the\nlargest model from BERT (Devlin et al., 2018). Our largest\nmodel, which we call GPT-2, has over an order of magni-\ntude more parameters than GPT. The learning rate of each\nmodel was manually tuned for the best perplexity on a 5%\nheld-out sample of WebText. All models still underﬁt Web-\nText and held-out perplexity has as of yet improved given\nmore training time.",
+            "bbox": [
+              306.97198486328125,
+              352.9195556640625,
+              543.09765625,
+              482.3990783691406
+            ],
+            "score": 0.02384,
+            "rerank_score": 2.375
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "4f334c28ff2745889deabac4893f66d2",
+            "paper_id": "957d6290461642e3972e3c91ad953a51",
+            "title": "Language Models are Few-Shot Learners",
+            "page": 8,
+            "text": "GPT-3 175B or “GPT-3”\n175.0B\n96\n12288\n96\n128\n3.2M\n0.6 × 10−4",
+            "bbox": [
+              98.81600952148438,
+              170.12631225585938,
+              507.11407470703125,
+              181.68899536132812
+            ],
+            "score": 0.01955,
+            "rerank_score": 2.875
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 1367 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 469.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 3 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": false,
+          "paper_ids": [
+            "b4d42bf79e73458e888e857527ecb45c",
+            "3307e33e72944428a924bc34325dcc30",
+            "957d6290461642e3972e3c91ad953a51"
+          ],
+          "message": ""
+        }
+      }
+    },
+    {
+      "name": "GPT 2 pre-normalization architectural change",
+      "passed": true,
+      "status": 200,
+      "seconds": 2.73,
+      "response": {
+        "mode": "generated",
+        "answer": "GPT-2 将 Layer Normalization 移到每个子块（sub-block）的输入处，类似于预激活残差网络（pre-activation residual network）的做法。 [S1]\n\nGPT-2 在最后一个 self-attention 块之后额外增加了一处 Layer Normalization。 [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "9d42b7da30f745b8bdfd01f1a022ea65",
+            "paper_id": "3307e33e72944428a924bc34325dcc30",
+            "title": "Language Models are Unsupervised Multitask Learners",
+            "page": 4,
+            "text": "few modiﬁcations. Layer normalization (Ba et al., 2016)\nwas moved to the input of each sub-block, similar to a\npre-activation residual network (He et al., 2016) and an\nadditional layer normalization was added after the ﬁnal self-\nattention block. A modiﬁed initialization which accounts\nfor the accumulation on the residual path with model depth\nis used. We scale the weights of residual layers at initial-\nization by a factor of 1/\n√",
+            "bbox": [
+              307.0820007324219,
+              185.32028198242188,
+              543.0980224609375,
+              279.06805419921875
+            ],
+            "score": 0.04945,
+            "rerank_score": 2.3203125
+          }
+        ],
+        "trace": [
+          {
+            "tool": "plan",
+            "message": "确定论文范围，检索原文证据，再组织回答"
+          },
+          {
+            "tool": "retrieve_evidence",
+            "message": "BM25 + TF-IDF + BAAI/bge-m3（语义混合检索） → BAAI/bge-reranker-v2-m3（精排），检索 389 个文本块，返回 10 条证据"
+          },
+          {
+            "tool": "rerank_evidence",
+            "message": "BAAI/bge-reranker-v2-m3 精排 40 条候选，保留 10 条证据，用时 390.0 ms；保留论文范围和首页署名证据"
+          },
+          {
+            "tool": "validate_citations",
+            "message": "核对 1 个证据编号均存在；事实是否被证据支持仍需核对原文"
+          }
+        ],
+        "context": {
+          "used": false,
+          "paper_ids": [
+            "3307e33e72944428a924bc34325dcc30"
+          ],
+          "message": ""
+        }
+      }
+    }
+  ],
+  "scope": "Selected official-style sample questions; source coverage and named values only, not a universal factual score.",
+  "summary": {
+    "passed": 4,
+    "total": 6
+  }
+}

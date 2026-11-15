@@ -1,1 +1,1 @@
-"""ResearchDock application."""
+"""研舟应用。"""

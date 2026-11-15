@@ -1,0 +1,28 @@
+services:
+  researchdock-demo:
+    build:
+      context: .
+      args:
+        LOCAL_MODELS: "1"
+    ports:
+      - "127.0.0.1:8767:8765"
+    env_file:
+      - .env.demo
+    environment:
+      DEMO_REQUIRE_LOGIN: "1"
+      APP_HOST: 0.0.0.0
+      APP_PORT: "8765"
+      RESEARCHDOCK_DATA: /app/data
+      EMBEDDING_DEVICE: cpu
+      RERANKER_DEVICE: cpu
+      RERANKER_CANDIDATES: "20"
+      RERANKER_BATCH_SIZE: "2"
+    volumes:
+      - ./data/demo-public:/app/data
+      - ./.local/models:/app/.local/models:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8765/api/health',timeout=5)"]
+      interval: 30s
+      timeout: 8s
+      retries: 3

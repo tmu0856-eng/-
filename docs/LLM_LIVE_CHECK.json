@@ -1,0 +1,275 @@
+{
+  "checked_at": "2026-11-09T16:31:31.604498+00:00",
+  "model": "mimo-v2.6-pro",
+  "scope": "Embedding 语义检索可用性、多文推理、References 核验、学术翻译质量（真实调用）。",
+  "embedding": {
+    "model_env": "",
+    "candidates": [],
+    "attempts": [],
+    "models_http_status": 200,
+    "listed_models": [
+      "mimo-v2.5-asr",
+      "mimo-v2.5-tts",
+      "mimo-v2.5-tts-voiceclone",
+      "mimo-v2.5-tts-voicedesign",
+      "mimo-v2.6-flash",
+      "mimo-v2.6-pro",
+      "mimo-v2.6-pro-ultraspeed"
+    ],
+    "verdict": "unavailable",
+    "reason": "服务商模型列表中没有 embedding 模型；语义检索保持 BM25+TF-IDF，属服务能力限制"
+  },
+  "multi_doc_reasoning": {
+    "papers": [
+      {
+        "paper_id": "3e45c4c11c814fa69b428e3a16dca426",
+        "arxiv_id": "1706.03762",
+        "title": "Attention Is All You Need"
+      },
+      {
+        "paper_id": "ea2fe1fd41d44de2af182d66aa22d017",
+        "arxiv_id": "1810.04805",
+        "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+      }
+    ],
+    "evidence_chunks": 8,
+    "evidence_papers": [
+      "3e45c4c11c814fa69b428e3a16dca426",
+      "ea2fe1fd41d44de2af182d66aa22d017"
+    ],
+    "mode": "generated",
+    "claims": 7,
+    "cited_papers": [
+      "3e45c4c11c814fa69b428e3a16dca426",
+      "ea2fe1fd41d44de2af182d66aa22d017"
+    ],
+    "answer_excerpt": "S1 论文（Attention Is All You Need）在 WMT 2014 英德数据集上训练与验证，约 450 万句对，使用 BPE 共享源-目标词表约 37000 个 token [S1]\n\nS1 论文在 WMT 2014 英法数据集上验证，含 3600 万句，使用 32000 词的 word-piece 词表，任务为机器翻译 [S8]\n\nS1 论文核心方法的具体架构设计（如注意力层数、维度等）在所给证据中未展开描述，不足以确定\n\nBERT 的核心方法是采用双向自注意力的深度 Transformer 预训练模型，BERT_BASE 为 L=12、H=768、A=12、约 110M 参数，BERT_LARGE 为 L=24、H=1024、A=16、约 340M 参数 [S7]\n\nBERT 与 OpenAI GPT 的关键区别在于 BERT 使用双向自注意力，而 GPT 使用每个 token 只能关注左侧上下文的受限自注意力 [S7]\n\nBERT 在 Stanford Question Answering Dataset（SQuAD v1.1，约 10 万众包问答对）上验证阅读理解/问答能力 [S5]\n\nBERT 在 GLUE 基准上验证，并在附录中讨论 WNLI 子集的构造问题、为公平比较而将其排除 [S4]\n\nTriviaQA 与 SWAG 在 BERT 论文证据中仅以",
+    "verdict": "passed",
+    "reason": "回答覆盖两篇论文的可核对引用"
+  },
+  "references": {
+    "per_paper": [
+      {
+        "arxiv_id": "1706.03762",
+        "title": "Attention Is All You Need",
+        "references_parsed": 36,
+        "matched_targets": 2,
+        "in_degree": 10,
+        "out_degree": 2,
+        "sample_evidence": "Diederik Kingma and Jimmy Ba. Adam: A method for stochastic optimization. In ICLR, 2015. "
+      },
+      {
+        "arxiv_id": "1810.04805",
+        "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Und",
+        "references_parsed": 40,
+        "matched_targets": 4,
+        "in_degree": 9,
+        "out_degree": 4,
+        "sample_evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In"
+      },
+      {
+        "arxiv_id": "1907.11692",
+        "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+        "references_parsed": 39,
+        "matched_targets": 8,
+        "in_degree": 5,
+        "out_degree": 8,
+        "sample_evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In"
+      },
+      {
+        "arxiv_id": "2005.14165",
+        "title": "Language Models are Few-Shot Learners",
+        "references_parsed": 2,
+        "matched_targets": 6,
+        "in_degree": 1,
+        "out_degree": 6,
+        "sample_evidence": "Data can be found at https://github.com/mcdm/CommitmentBank/.  [DSC+16] Yan Duan, John Schulman, Xi Chen, Peter L. Bartlett, Ilya Sutskever, and Pieter Abbeel. "
+      },
+      {
+        "arxiv_id": "1910.10683",
+        "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text ",
+        "references_parsed": 94,
+        "matched_targets": 13,
+        "in_degree": 0,
+        "out_degree": 13,
+        "sample_evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Adva"
+      },
+      {
+        "arxiv_id": "1412.6980",
+        "title": "Adam: A Method for Stochastic Optimization",
+        "references_parsed": 5,
+        "matched_targets": 0,
+        "in_degree": 9,
+        "out_degree": 0
+      },
+      {
+        "arxiv_id": "1512.03385",
+        "title": "Deep Residual Learning for Image Recognition",
+        "references_parsed": 54,
+        "matched_targets": 1,
+        "in_degree": 4,
+        "out_degree": 1,
+        "sample_evidence": "O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang, A. Karpathy, A. Khosla, M. Bernstein, et al. Imagenet large scale visual recognition ch"
+      },
+      {
+        "arxiv_id": "1607.06450",
+        "title": "Layer Normalization",
+        "references_parsed": 19,
+        "matched_targets": 1,
+        "in_degree": 4,
+        "out_degree": 1,
+        "sample_evidence": "Ryan Kiros, Ruslan Salakhutdinov, and Richard S Zemel. Unifying visual-semantic embeddings with multi- modal neural language models. arXiv preprint arXiv:1411.2"
+      },
+      {
+        "arxiv_id": "1802.05365",
+        "title": "Deep contextualized word representations",
+        "references_parsed": 39,
+        "matched_targets": 3,
+        "in_degree": 10,
+        "out_degree": 3,
+        "sample_evidence": "Yoon Kim, Yacine Jernite, David Sontag, and Alexan- der M Rush. 2015. Character-aware neural language models. In AAAI 2016. Diederik P. Kingma and Jimmy Ba. 201"
+      },
+      {
+        "arxiv_id": "1801.06146",
+        "title": "Universal Language Model Fine-tuning for Text Classiﬁcation",
+        "references_parsed": 34,
+        "matched_targets": 2,
+        "in_degree": 0,
+        "out_degree": 2,
+        "sample_evidence": "Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. 2016. Deep Residual Learning for Image Recognition. In Proceedings of the IEEE Confer- ence on Computer V"
+      },
+      {
+        "arxiv_id": "1901.02860",
+        "title": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Contex",
+        "references_parsed": 44,
+        "matched_targets": 4,
+        "in_degree": 0,
+        "out_degree": 4,
+        "sample_evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In"
+      },
+      {
+        "arxiv_id": "1906.08237",
+        "title": "XLNet: Generalized Autoregressive Pretraining for Language Understandi",
+        "references_parsed": 41,
+        "matched_targets": 8,
+        "in_degree": 4,
+        "out_degree": 8,
+        "sample_evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Advan"
+      },
+      {
+        "arxiv_id": "1909.11942",
+        "title": "ALBERT: A LITE BERT FOR SELF-SUPERVISED LEARNING OF LANGUAGE REPRESENT",
+        "references_parsed": 49,
+        "matched_targets": 7,
+        "in_degree": 4,
+        "out_degree": 7,
+        "sample_evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Advan"
+      },
+      {
+        "arxiv_id": "2003.10555",
+        "title": "ELECTRA: PRE-TRAINING TEXT ENCODERS AS DISCRIMINATORS RATHER THAN GENE",
+        "references_parsed": 47,
+        "matched_targets": 9,
+        "in_degree": 1,
+        "out_degree": 9,
+        "sample_evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Neur"
+      },
+      {
+        "arxiv_id": "2103.00020",
+        "title": "Learning Transferable Visual Models From Natural Language Supervision",
+        "references_parsed": 37,
+        "matched_targets": 8,
+        "in_degree": 0,
+        "out_degree": 8,
+        "sample_evidence": "IEEE, 2017.  Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., et al. "
+      },
+      {
+        "arxiv_id": "1707.06347",
+        "title": "Proximal Policy Optimization Algorithms",
+        "references_parsed": 2,
+        "matched_targets": 1,
+        "in_degree": 0,
+        "out_degree": 1,
+        "sample_evidence": "[Bel+15] M. Bellemare, Y. Naddaf, J. Veness, and M. Bowling. “The arcade learning environ- ment: An evaluation platform for general agents”. In: Twenty-Fourth I"
+      },
+      {
+        "arxiv_id": "1409.0575",
+        "title": "ImageNet Large Scale Visual Recognition Challenge",
+        "references_parsed": 96,
+        "matched_targets": 0,
+        "in_degree": 2,
+        "out_degree": 0
+      },
+      {
+        "arxiv_id": "1606.05250",
+        "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+        "references_parsed": 15,
+        "matched_targets": 0,
+        "in_degree": 8,
+        "out_degree": 0
+      },
+      {
+        "arxiv_id": "1804.07461",
+        "title": "GLUE: A MULTI-TASK BENCHMARK AND ANALYSIS PLATFORM FOR NATURAL LANGUAG",
+        "references_parsed": 40,
+        "matched_targets": 5,
+        "in_degree": 6,
+        "out_degree": 5,
+        "sample_evidence": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Advan"
+      }
+    ],
+    "zero_reference_papers": [],
+    "edges_total_in_library": 87,
+    "verdict": "passed",
+    "reason": "全部核心论文抽取到参考文献且存在可核对连边",
+    "method": "与引用图谱一致：References 段条目抽取 + 规范化标题匹配，边保留原文证据"
+  },
+  "translation": {
+    "units": [
+      {
+        "kind": "page",
+        "arxiv_id": "1706.03762",
+        "page": 1,
+        "output_excerpt": "# Attention Is All You Need\n\nAshish Vaswani*\nGoogle Brain\navaswani@google.com\n\nNoam Shazeer*\nGoogle Brain\nnoam@google.com\n\nNiki Parmar*\nGoogle Research\nnikip@google.com\n\nJakob Uszkoreit*\nGoogle Research\nusz@google.com\n\nLlion Jones*\nGoogle Research\nllion@google.com\n\nAidan N. Gomez*†\nUniversity of Tor",
+        "numbers_in_source": 16,
+        "numbers_missing_in_output": [],
+        "length_ratio": 0.46,
+        "ok": true
+      },
+      {
+        "kind": "page",
+        "arxiv_id": "1810.04805",
+        "page": 1,
+        "output_excerpt": "摘要\n\n我们提出了一种新的语言表示模型，称为 BERT，全称为来自 Transformer 的双向编码器表示（Bidirectional Encoder Representations from Transformers）。与近期的语言表示模型（Peters et al., 2018a; Radford et al., 2018）不同，BERT 的设计目标是通过在所有层中同时以左侧和右侧上下文为条件，从无标注文本中预训练深度双向表示。因此，预训练的 BERT 模型只需增加一个输出层即可进行微调，从而在广泛的任务上构建最先进的模型，例如问答和语言推理，而无需进行大量的任务特定架构修改。\n\n\n\nB",
+        "numbers_in_source": 22,
+        "numbers_missing_in_output": [],
+        "length_ratio": 0.43,
+        "ok": true
+      },
+      {
+        "kind": "page",
+        "arxiv_id": "1412.6980",
+        "page": 1,
+        "output_excerpt": "ICLR 2015 会议论文\n\nADAM：一种随机优化方法\n\nDiederik P. Kingma*\n阿姆斯特丹大学，OpenAI\ndpkingma@openai.com\n\nJimmy Lei Ba∗\n多伦多大学\njimmy@psi.utoronto.ca\n\n摘要\n\n我们提出Adam，一种基于随机目标函数的一阶梯度优化算法，该算法基于低阶矩的自适应估计。该方法实现简单，计算效率高，内存需求小，对梯度的对角缩放具有不变性，非常适合数据和/或参数规模较大的问题。该方法也适用于非平稳目标函数以及梯度非常嘈杂和/或稀疏的问题。超参数具有直观的解释，通常只需少量调参。我们讨论了Adam所借鉴的相关算法之",
+        "numbers_in_source": 11,
+        "numbers_missing_in_output": [],
+        "length_ratio": 0.35,
+        "ok": true
+      },
+      {
+        "kind": "text",
+        "target": "中文",
+        "output_excerpt": "我们在 WMT 2014 英语-德语数据集上对 Transformer 模型进行微调，使用 Adam，其中 β1 = 0.9，β2 = 0.98，ε = 10−9，并在 newstest2013 [1] 上报告 BLEU 分数。",
+        "numbers_in_source": 8,
+        "numbers_missing_in_output": [],
+        "length_ratio": 0.68,
+        "ok": true
+      }
+    ],
+    "passed_units": 4,
+    "total_units": 4,
+    "verdict": "passed",
+    "reason": "数字与公式保留、篇幅比例正常"
+  },
+  "all_passed": false
+}
