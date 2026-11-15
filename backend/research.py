@@ -382,7 +382,7 @@ ref 只能取候选证据的编号（E1、E2…）；quote 必须逐字来自对
 
 
 def judge_future_work(statement, candidates):
-    """LLM verdict with hard checks: '已解决'/'部分解决' require a verbatim quote from a listed candidate."""
+    """判断已解决或部分解决时，必须提供候选论文的逐字原文。"""
     if not candidates:
         return {'verdict': '未发现相关后续文献', 'ref': '', 'quote': '', 'reason': ''}
     labelled = [{**c, 'ref': f'E{i + 1}'} for i, c in enumerate(candidates)]

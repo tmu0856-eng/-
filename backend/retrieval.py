@@ -264,7 +264,7 @@ INSUFFICIENT_WORDS = ('不足', '无法', '未提供', '不能确定', '未找�
 
 
 def _parse_claim(line, allowed):
-    """One claim line: 结论文本 ||| S1,S2 (or ||| - for an unsourced insufficiency note)."""
+    """单条声明格式为：结论文本 ||| S1,S2；无来源的证据不足提示使用 ||| -。"""
     text, sep, ids_raw = line.rpartition('|||')
     if not sep:
         raise llm.ModelError('模型结论行缺少引用标注，已停止展示以免产生无来源回答。')
