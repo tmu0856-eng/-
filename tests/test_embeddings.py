@@ -122,6 +122,15 @@ def test_status_reports_current_model_coverage(library, monkeypatch):
     assert response.json()['pending_chunks'] == 0
 
 
+def test_disabling_encoder_keeps_cached_vectors_without_claiming_active_index(library,monkeypatch):
+    add_vectors()
+    monkeypatch.delenv('EMBEDDING_MODEL')
+    value=library.get('/api/embeddings/status').json()
+    assert not value['configured'] and value['indexed_chunks']==0
+    assert value['cached_chunks']==3 and value['pending_chunks']==3
+    assert db.one('SELECT COUNT(*) n FROM chunk_vectors')['n']==3
+
+
 def test_reindex_requires_configuration(library, monkeypatch):
     monkeypatch.delenv('EMBEDDING_MODEL')
     assert library.post('/api/embeddings/reindex').status_code == 422

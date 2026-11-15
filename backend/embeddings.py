@@ -133,6 +133,7 @@ def encode(texts):
 
 def status():
     total = db.one("SELECT COUNT(*) n FROM chunks c JOIN papers p ON p.id=c.paper_id WHERE p.status IN ('ready','partial')")['n']
+    cached = db.one("SELECT COUNT(*) n FROM chunk_vectors v JOIN chunks c ON c.id=v.chunk_id JOIN papers p ON p.id=c.paper_id WHERE p.status IN ('ready','partial')")['n']
     error, space, indexed = _INDEX_ERROR or _RUNTIME.get('error', ''), '', 0
     if configured():
         try:
@@ -143,6 +144,7 @@ def status():
     return {'configured': configured(), 'provider': provider(), 'model': os.getenv('EMBEDDING_MODEL', ''),
             'dimensions': 1024 if provider() == 'local' else None, 'space': space,
             'indexed_chunks': indexed, 'total_chunks': total, 'pending_chunks': total-indexed,
+            'cached_chunks': cached,
             'indexing': _THREAD is not None, 'runtime': dict(_RUNTIME), 'error': error}
 
 

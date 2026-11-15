@@ -39,6 +39,22 @@ def _context_passage(text):
     return bool(re.search(r'n_?ctx|context.{0,40}(?:length|window|\d)|sequences?.{0,65}(?:length|tokens)',text,re.I|re.S))
 
 
+def _named_scope(query,paper_ids):
+    """未选文献而明确写出完整题名时定位该文，避免其他论文参考条目占满召回。"""
+    if re.search(r'比较|对比|区别|哪些|谁.*引用|引用了|被引|关联|\b(?:compare|versus|vs|difference|cites|citing|reference)\b',query,re.I):
+        return query,paper_ids,False
+    compact=lambda value:re.sub(r'\W','',value).lower()
+    normalized=compact(query)
+    papers=db.rows("SELECT id,title FROM papers WHERE status IN ('ready','partial')")
+    matched=[p for p in papers if len(compact(p['title'] or ''))>=14 and compact(p['title']) in normalized
+             and (not paper_ids or p['id'] in paper_ids)]
+    if len({compact(p['title']) for p in matched})!=1:
+        return query,paper_ids,False
+    cleaned=re.sub(re.escape(matched[0]['title']),' ',query,flags=re.I).strip()
+    if len(compact(cleaned))<5:cleaned=query
+    return cleaned,paper_ids or [p['id'] for p in matched],not bool(paper_ids)
+
+
 def _preserve_coverage(candidates, paper_ids, limit, author_query, query=''):
     """保留作者首页，并为每篇所选论文保留至少一条可用证据。"""
     chosen, used = [], set()
@@ -90,6 +106,7 @@ def _page_context(query,sources):
 
 
 def retrieve(query, paper_ids=None, limit=8, *, use_reranker=None):
+    search_query,paper_ids,inferred_scope=_named_scope(query,paper_ids)
     warning = ''
     ranking = {'configured': reranker.configured(), 'applied': False, 'candidates': 0, 'elapsed_ms': 0, 'error': ''}
     want_rerank = ranking['configured'] and use_reranker is not False
@@ -114,7 +131,7 @@ def retrieve(query, paper_ids=None, limit=8, *, use_reranker=None):
     chunks = db.rows(sql, args)
     if not chunks:
         return [], {'mode': 'local', 'chunks': 0}
-    query_terms = set(tokens(expanded(query)))
+    query_terms = set(tokens(expanded(search_query)))
     documents = [Counter(tokens(c['text'])) for c in chunks]
     avg_length = max(1, sum(sum(d.values()) for d in documents) / len(documents))
     frequency = Counter(t for d in documents for t in d)
@@ -128,7 +145,7 @@ def retrieve(query, paper_ids=None, limit=8, *, use_reranker=None):
                 score += idf * tf * 2.5 / (tf + 1.5 * (.25 + .75 * length / avg_length))
         bm25.append(score)
     try:
-        matrix = TfidfVectorizer(tokenizer=tokens, token_pattern=None, lowercase=False, max_features=40000).fit_transform([expanded(query)] + [c['text'] for c in chunks])
+        matrix = TfidfVectorizer(tokenizer=tokens, token_pattern=None, lowercase=False, max_features=40000).fit_transform([expanded(search_query)] + [c['text'] for c in chunks])
         tfidf = cosine_similarity(matrix[0], matrix[1:]).ravel()
     except ValueError:
         tfidf = np.zeros(len(chunks))
@@ -228,7 +245,7 @@ def retrieve(query, paper_ids=None, limit=8, *, use_reranker=None):
         source['source_id'] = f'S{index}'
     ranking['returned'] = len(result)
     return result, {'mode': mode, 'chunks': len(chunks), 'indexed_chunks': len(with_embeddings),
-                    'warning': warning, 'reranker': ranking}
+                    'warning': warning, 'reranker': ranking,'inferred_paper_ids':paper_ids if inferred_scope else []}
 
 
 def answer_stream(query, paper_ids=None):
@@ -236,6 +253,8 @@ def answer_stream(query, paper_ids=None):
     evidence, info = retrieve(query, paper_ids, 10)
     trace = [{'tool': 'plan', 'message': '确定论文范围，检索原文证据，再组织回答'},
              {'tool': 'retrieve_evidence', 'message': f'{info["mode"]}，检索 {info["chunks"]} 个文本块，返回 {len(evidence)} 条证据'}]
+    if info.get('inferred_paper_ids'):
+        trace.insert(1,{'tool':'resolve_title','message':f'按问题中的完整题名定位 {len(info["inferred_paper_ids"])} 篇文献或版本。'})
     if info.get('warning'):
         trace.append({'tool': 'embedding_fallback', 'message': info['warning']})
     ranking = info.get('reranker', {})

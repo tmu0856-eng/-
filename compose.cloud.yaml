@@ -1,0 +1,44 @@
+services:
+  researchdock:
+    image: ${RESEARCHDOCK_IMAGE:-researchdock:cloud}
+    container_name: researchdock-cloud
+    ports:
+      - "127.0.0.1:8767:8765"
+    env_file:
+      - .env.cloud
+    environment:
+      APP_HOST: 0.0.0.0
+      APP_PORT: "8765"
+      RESEARCHDOCK_DATA: /app/data
+      DEMO_REQUIRE_LOGIN: "1"
+      DEMO_COOKIE_SECURE: "1"
+      EMBEDDING_PROVIDER: api
+      EMBEDDING_AUTO_INDEX: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MALLOC_ARENA_MAX: "2"
+      MPLCONFIGDIR: /tmp/matplotlib
+    volumes:
+      - ./data/cloud-public:/app/data
+    tmpfs:
+      - /tmp:size=64m
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 640m
+    memswap_limit: 1536m
+    pids_limit: 128
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8765/api/health',timeout=5)"]
+      interval: 30s
+      timeout: 8s
+      retries: 3
+      start_period: 30s

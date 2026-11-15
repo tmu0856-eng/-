@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-15",
+  "deployment": "server-docker-independent",
+  "url": "https://39.105.29.231",
+  "profile": {
+    "cpu": 2,
+    "memory": "1 GiB",
+    "container_memory": "640 MiB",
+    "host_swap": "2 GiB",
+    "generation": "mimo-v2.6-pro API",
+    "retrieval": "BM25 + TF-IDF",
+    "cached_vectors": 25464,
+    "embedding_api_enabled": false,
+    "reranker_enabled": false
+  },
+  "public_checks": {
+    "url": "https://39.105.29.231",
+    "checks": [
+      {
+        "name": "anonymous_blocked",
+        "passed": true
+      },
+      {
+        "name": "https_login_secure_cookie",
+        "passed": true
+      },
+      {
+        "name": "public_library",
+        "passed": true,
+        "documents": 40,
+        "pages": 2010
+      },
+      {
+        "name": "structure_and_abstract",
+        "passed": true
+      },
+      {
+        "name": "page_image",
+        "passed": true,
+        "bytes": 191022
+      },
+      {
+        "name": "pdf_range",
+        "passed": true,
+        "bytes": 512
+      },
+      {
+        "name": "bidirectional_citations",
+        "passed": true,
+        "entries": 40
+      },
+      {
+        "name": "reader_module",
+        "passed": true
+      },
+      {
+        "name": "remote_generation_with_preserved_cache",
+        "passed": true,
+        "model": "mimo-v2.6-pro",
+        "cached_vectors": 25464
+      },
+      {
+        "name": "agent_sse",
+        "passed": true,
+        "first_event_seconds": 0.06,
+        "total_seconds": 25.25,
+        "events": 56,
+        "source_pages": [
+          7,
+          2,
+          8
+        ]
+      },
+      {
+        "name": "logout",
+        "passed": true
+      }
+    ],
+    "passed": 11,
+    "total": 11
+  },
+  "uploads": [
+    {
+      "name": "native_pdf_parse",
+      "passed": true,
+      "status": "ready",
+      "page_sources": {
+        "1": "native"
+      },
+      "ocr_engines": [],
+      "seconds": 0.94
+    },
+    {
+      "name": "scan_pdf_parse",
+      "passed": true,
+      "status": "ready",
+      "page_sources": {
+        "1": "ocr"
+      },
+      "ocr_engines": [
+        "tesseract"
+      ],
+      "seconds": 5.62
+    }
+  ],
+  "all_library_question": {
+    "passed": true,
+    "seconds": 5.5,
+    "sources": [
+      {
+        "title": "Attention Is All You Need",
+        "page": 7
+      },
+      {
+        "title": "Attention Is All You Need",
+        "page": 7
+      },
+      {
+        "title": "Attention Is All You Need",
+        "page": 7
+      },
+      {
+        "title": "Attention Is All You Need",
+        "page": 2
+      },
+      {
+        "title": "Attention Is All You Need",
+        "page": 2
+      }
+    ]
+  },
+  "container_restart": {
+    "container_restart": true,
+    "papers": 40,
+    "cached_vectors": 25464,
+    "vector_sha256": "dd3157339531bab270c34966583ed024bc043ca81a956367293628809b874162",
+    "image": "sha256:b91256df9a373472c8c88cbd657570eb2a86e128b530fd0d179c5c8bd1aac5ee",
+    "restart_policy": "unless-stopped",
+    "oom_killed": false,
+    "memory_limit": 671088640,
+    "trusted_proxy_configured": true
+  },
+  "regression": {
+    "passed": 252,
+    "skipped": 1,
+    "seconds": 42.08,
+    "memory_limit": "640 MiB",
+    "skip_note": "基础镜像缺少 OpenCV 系统共享库；最终运行镜像补齐，公网扫描 OCR 与 RapidOCR 导入已验证。"
+  },
+  "initial_full_library_check": "首次全库题名问题被其他论文参考条目干扰，新增完整题名范围处理，保留首轮失败记录于本机并复测通过。",
+  "certificate_renewal": "systemd timer active; staging dry-run passed",
+  "independence": "原电脑 SSH 通道已撤销，HTTPS 上游为服务器自身 Docker 回环端口；不设置 Windows 自启动。"
+}

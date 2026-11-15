@@ -11,6 +11,8 @@ RUN if [ "$LOCAL_MODELS" = "1" ]; then pip install --no-cache-dir torch==2.6.0 -
 COPY backend ./backend
 COPY frontend ./frontend
 COPY run.py .
+# RapidOCR 的 OpenCV 导入需要此共享库，服务仍以无桌面方式运行。
+RUN apt-get update && apt-get install -y --no-install-recommends libgl1 && rm -rf /var/lib/apt/lists/*
 ENV APP_HOST=0.0.0.0 APP_PORT=8765
 EXPOSE 8765
 CMD ["python", "run.py"]

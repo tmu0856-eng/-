@@ -258,7 +258,7 @@ function renderWriting(){const kind=state.writingKind;$('#main').innerHTML=headi
 }
 
 function embeddingConfigHTML(info={}){
-  if(!info.configured)return '<p>语义检索尚未启用，当前使用 BM25 + TF-IDF。</p>';
+  if(!info.configured)return `<p>当前使用 BM25 + TF-IDF 检索。</p>${info.cached_chunks?`<p>已保留 ${Number(info.cached_chunks).toLocaleString()} 条文献向量；接入兼容的向量服务并验证后可用于语义检索。</p>`:'<p>尚未配置向量服务。</p>'}`;
   const indexed=info.indexed_chunks||0,total=info.total_chunks||0;
   const message=info.error?'索引需要处理':info.indexing?'正在后台建立语义索引':indexed===total?'语义索引已就绪':'部分文献等待建立索引';
   return `<p><strong>${esc(info.model)}</strong> · ${info.provider==='local'?'本地运行，无需向量 API 密钥':'远程向量服务'}${info.runtime?.device?' · '+esc(info.runtime.device):''}</p><p>${message}：${indexed.toLocaleString()} / ${total.toLocaleString()} 个文本块</p><progress class="embedding-progress" value="${indexed}" max="${Math.max(1,total)}" aria-label="语义索引完成进度"></progress>${info.error?`<div class="error-box">${esc(info.error)}</div>`:''}<p class="muted">问答结合语义与关键词检索。尚未索引的文献仍可按关键词搜索。</p><div class="btn-row"><button class="btn small" data-action="embedding-refresh">刷新进度</button><button class="btn small" data-action="embedding-reindex" ${info.indexing?'disabled':''}>补建语义索引</button></div>`;

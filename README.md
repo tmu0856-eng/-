@@ -4,7 +4,7 @@
 
 源码仓库：[GitHub](https://github.com/tmu0856-eng/-)。
 
-**当前为可运行的提交前校核版，尚未公网发布。** 资料包 39 份 PDF、1,986 页的 32 项真实流程检查通过；功能限制与补充实测见 [验收记录](docs/VALIDATION.md)。技术说明源稿见 [技术说明](docs/TECHNICAL_REPORT.md)。
+**云端演示已部署：[评审入口](https://39.105.29.231)（需要登录）。** 应用在服务器 Docker 中独立运行。资料包 39 份 PDF、1,986 页的 32 项真实流程检查通过；补充实测见 [验收记录](docs/VALIDATION.md)。技术说明源稿见 [技术说明](docs/TECHNICAL_REPORT.md)。
 
 ## 开始使用
 
@@ -35,6 +35,8 @@ LLM_MODEL=服务商实际支持的模型名
 本地配置使用 `mimo-v2.6-pro`，通过小米官方接口验证参数问答、缺少证据的问题、短文本翻译、单页翻译与简短论文框架。`.env.example` 提供不含密钥的 MiMo 配置示例；实际密钥只在被 Git 忽略的 `.env` 中。默认输出上限为 4096 Token，可使用 `LLM_MAX_COMPLETION_TOKENS` 调整；超过上限的回答将报错而不展示残缺 JSON。MiMo 的 JSON 模式仅保证 JSON 语法，不等于内容事实准确。[官方结构化输出说明](https://mimo.mi.com/docs/zh-CN/quick-start/usage-guide/text-generation/structured-output)
 
 没有配置模型时：文献管理、原文阅读、本地检索、版本差异、引用图谱、CSV 绘图可以使用；问答只显示原文证据，翻译与写作需要配置回答模型。
+
+当前小内存云端版使用 MiMo API 与 BM25 + TF-IDF，保留 25,464 条已有文献向量；暂未启用远程向量编码和精排。本地版仍可使用下述 BGE-M3 与 reranker 配置。服务器与电脑的运行相互独立，详见 [独立 Docker 部署](deploy/CLOUD_DOCKER.md)。
 
 arXiv 发现支持关键词、题名和新旧编号。接口连接失败时有限尝试两个官方入口，查询间隔至少 3.1 秒；限流时不立即重试。成功结果持久缓存在本地 SQLite，5 分钟内复用；上游连接失败时最多回退到 24 小时内的成功缓存，并在页面明确显示“非本次实时结果”和原抓取时间。没有有效缓存时显示 arXiv 专属错误，可重试、打开官网或导入手动下载的 PDF。
 
@@ -151,9 +153,9 @@ Docker 包含英文 OCR 引擎（Tesseract），数据目录挂载到宿主机�
 docker build -t researchdock . --build-arg APT_MIRROR=mirrors.aliyun.com --build-arg PIP_INDEX=https://mirrors.aliyun.com/pypi/simple/
 ```
 
-提交赛项要求公网演示，**尚未公网发布**。评审登录、请求限额和独立演示库已实现，可先运行 `python scripts/prepare_demo.py`、`python scripts/run_demo.py`，访问本机 8767。私有凭据保存在被忽略的 `.local/reviewer-access.txt`；主开发库与评审库分开。现有电脑加 ngrok、或 Linux 容器的配置、HTTPS/SSE 注意事项见 [部署说明](deploy/README.md)。
+公网演示已使用 `compose.cloud.yaml` 独立部署到服务器，采用 HTTPS、评审登录、请求限额和持久化独立文献库，详见 [云端部署说明](deploy/CLOUD_DOCKER.md) 与 [云端验证记录](docs/CLOUD_DOCKER_CHECK.json)。密钥和评审账号保存在私密运行配置中，不进入镜像或 Git。云端保留公开演示数据，与日常开发库分开。
 
-基础容器已完成实际登录、PDF 解析及页图核验；本地双模型 Compose 配置尚未完整构建验收。正式上线还需外网登录和 SSE 验证、持续在线、额度与备份；不把本机可用等同于公网已交付。
+已通过真实公网登录、PDF 页图、扫描 OCR、引用定位、MiMo Agent SSE 和容器重启后的数据校验。本地双模型 Compose 是另一种部署配置，其完整 CPU 镜像仍需单独验收。备用的本机隧道方案见 [部署说明](deploy/README.md)。
 
 ## 项目结构
 
