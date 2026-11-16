@@ -38,15 +38,32 @@ def _wait_for_arxiv():
     LAST_SEARCH = time.monotonic()
 
 
-def _query_params(query, count):
+def _query_params(query, count, sort='relevance', field='all'):
     identifier = query
     if query.startswith(('https://arxiv.org/abs/', 'https://export.arxiv.org/abs/')):
         identifier = httpx.URL(query).path.removeprefix('/abs/')
     if ARXIV_ID.fullmatch(identifier):
         return {'id_list':identifier, 'max_results':count}
-    expression = query if re.search(r'\b(?:ti|au|abs|all|cat|id):',query) else ' AND '.join('all:' + term for term in query.split())
+    # 保留显式字段与布尔表达式；普通输入按词拆分，同时保留引号短语。
+    advanced = re.search(r'\b(?:ti|au|abs|all|cat|id|submittedDate|lastUpdatedDate):',query)
+    if advanced:
+        expression=query
+    else:
+        prefix='ti' if field=='title' else 'all'
+        terms=re.findall(r'"[^"]+"|\S+',query)
+        safe_terms=[term if term.startswith('"') or re.fullmatch(r'\w+',term) else json.dumps(term,ensure_ascii=False) for term in terms]
+        expression=' AND '.join(prefix+':'+term for term in safe_terms)
+        if len(terms)>1 and '"' not in query:
+            # 连续题名保留为短语，避免常用词拆开后被上游分析器过滤而漏检。
+            phrase=prefix+':'+json.dumps(query,ensure_ascii=False)
+            expression=phrase+' OR ('+expression+')'
     return {'search_query':expression, 'start':0, 'max_results':count,
-            'sortBy':'submittedDate', 'sortOrder':'descending'}
+            'sortBy':'submittedDate' if sort=='newest' else 'relevance', 'sortOrder':'descending'}
+
+
+def _search_cache_key(query, sort='relevance', field='all'):
+    # 查询策略纳入缓存键，旧版按日期抓取的结果不冒充相关性检索。
+    return 'arxiv-search-v3:'+json.dumps([query,sort,field],ensure_ascii=False,separators=(',',':'))
 
 
 def _parse_arxiv(content):
@@ -102,8 +119,8 @@ def _read_search_cache(query,count):
     return {**cached,'age':age}
 
 
-def _request_arxiv(query,count):
-    params = _query_params(query,count)
+def _request_arxiv(query,count,sort='relevance',field='all'):
+    params = _query_params(query,count,sort,field)
     last_status = None
     # 最多尝试两次，均连接官方主机，不无限重试。
     with httpx.Client(timeout=httpx.Timeout(12,connect=8),trust_env=False,follow_redirects=False) as client:
@@ -138,14 +155,15 @@ def _request_arxiv(query,count):
                     raise
             except httpx.HTTPError as exc:
                 logging.getLogger(__name__).warning('arXiv request failed: %s; HTTP %s',type(exc).__name__,last_status)
-            params = _query_params(query,count)
+            params = _query_params(query,count,sort,field)
     raise DiscoveryError('暂时无法连接 arXiv，已尝试重连。请点击重试，或先在 arXiv 官网查找并下载 PDF 后导入。',
                          status_code=504 if last_status is None else 502)
 
 
 def _rank_results(entries,meta):
     result = []
-    library = db.rows("SELECT abstract,title FROM papers WHERE status IN ('ready','partial')")
+    personalized=meta.get('sort')=='recommended'
+    library = db.rows("SELECT abstract,title FROM papers WHERE status IN ('ready','partial')") if personalized else []
     local = '\n'.join(p['title']+' '+(p['abstract'] or '') for p in library)
     feedback = {x['arxiv_id']:x['value'] for x in db.rows('SELECT * FROM feedback')}
     for item in entries:
@@ -157,34 +175,41 @@ def _rank_results(entries,meta):
             except ValueError:
                 pass
         result.append({**item,'score':round(similarity,3),'feedback':feedback.get(item['id'],0),
-                       'reason':(f'与本地文献词频相似度 {similarity:.0%}' if local else '按最新提交时间检索')+
+                       'reason':(f'与文献库词频相似度 {similarity:.0%}' if local else '按首次提交时间排序' if meta.get('sort')=='newest' else 'arXiv 查询相关性排序')+
                                 ('；摘要/元数据包含 GitHub 链接（未验证可复现性）' if item['code_url'] else ''),
                        'retrieval':meta})
-    result.sort(key=lambda p:p['score']+bool(p['code_url'])*.03+p['feedback']*.015,reverse=True)
+    if personalized:
+        result.sort(key=lambda p:p['score']+bool(p['code_url'])*.03+p['feedback']*.015,reverse=True)
     return result
 
 
-def arxiv_search(query, count=12):
+def arxiv_search(query, count=12, *, sort='relevance', field='all'):
+    if sort not in ('relevance','newest','recommended') or field not in ('all','title'):
+        raise ValueError('请选择有效的检索排序与范围。')
     query = query.strip()
-    cached = _read_search_cache(query,count)
+    key=_search_cache_key(query,sort,field)
+    cached = _read_search_cache(key,count)
     state = 'cached'
+    def ranked():
+        return _rank_results(cached['results'],{'source':'arxiv','cache_state':state,
+                              'fetched_at':cached['fetched_at'],'sort':sort,'field':field})
     if cached and cached['age'] < FRESH_SECONDS:
-        return _rank_results(cached['results'],{'source':'arxiv','cache_state':state,'fetched_at':cached['fetched_at']})
+        return ranked()
     with SEARCH_LOCK:
-        cached = _read_search_cache(query,count)
+        cached = _read_search_cache(key,count)
         if not cached or cached['age'] >= FRESH_SECONDS:
             try:
-                entries = _request_arxiv(query,count)
+                entries = _request_arxiv(query,count,sort,field)
                 fetched_at = datetime.now(timezone.utc).isoformat()
                 cached = {'results':entries,'fetched_at':fetched_at}
-                CACHE[(query,count)] = cached
-                db.execute('INSERT OR REPLACE INTO discovery_cache VALUES(?,?,?,?)',(query,count,fetched_at,db.encode(entries)))
+                CACHE[(key,count)] = cached
+                db.execute('INSERT OR REPLACE INTO discovery_cache VALUES(?,?,?,?)',(key,count,fetched_at,db.encode(entries)))
                 state = 'fresh'
             except DiscoveryError as exc:
                 if not cached or not cached['results'] or exc.code=='arxiv_invalid_query':
                     raise
                 state = 'stale'
-    return _rank_results(cached['results'],{'source':'arxiv','cache_state':state,'fetched_at':cached['fetched_at']})
+    return ranked()
 
 
 def download_arxiv(paper_id):
@@ -422,7 +447,7 @@ def discover_later_work(statement,source_id):
         until=datetime.now(timezone.utc).strftime('%Y%m%d')+'2359'
         query+=' AND submittedDate:['+since+' TO '+until+']'
     try:
-        results=arxiv_search(query,5)
+        results=arxiv_search(query,5,sort='newest')
     except DiscoveryError as exc:
         return {'query':query,'candidates':[],'error':str(exc)}
     candidates=[]
@@ -528,7 +553,7 @@ def writing(kind, idea, ids, check_latest=False):
 
 def refresh_watch(watch):
     try:
-        result = arxiv_search(watch['query'])
+        result = arxiv_search(watch['query'],sort='newest')
         stale = bool(result and result[0].get('retrieval',{}).get('cache_state')=='stale')
         db.execute('UPDATE watches SET last_run=?,last_error=?,results=? WHERE id=?',
                    (datetime.now(timezone.utc).isoformat(), '连接暂不可用，显示最近成功抓取的缓存' if stale else '', db.encode(result), watch['id']))

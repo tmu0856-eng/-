@@ -33,7 +33,7 @@ def transport(monkeypatch,handler):
 
 def seed_cache(minutes=10):
     stamp=(datetime.now(timezone.utc)-timedelta(minutes=minutes)).isoformat()
-    db.execute('INSERT OR REPLACE INTO discovery_cache VALUES(?,?,?,?)',('attention',12,stamp,db.encode(research._parse_arxiv(FEED))))
+    db.execute('INSERT OR REPLACE INTO discovery_cache VALUES(?,?,?,?)',(research._search_cache_key('attention'),12,stamp,db.encode(research._parse_arxiv(FEED))))
     return stamp
 
 
@@ -168,7 +168,7 @@ def test_official_redirect_preserves_query(client,monkeypatch):
     assert response.status_code==200 and len(calls)==3
 
 
-def test_feedback_reranks_persistent_cache_without_remote_fetch(client,monkeypatch):
+def test_feedback_survives_persistent_cache_without_remote_fetch(client,monkeypatch):
     seed_cache(minutes=1)
     def handler(request):raise AssertionError('Fresh cache must not fetch remotely')
     transport(monkeypatch,handler)
@@ -192,15 +192,83 @@ def test_stopword_only_metadata_does_not_crash_ranking(client,monkeypatch):
     db.execute("INSERT INTO papers(id,title,abstract,status) VALUES('fixture','the and','or the','ready')")
     feed=FEED.replace(b'Attention Is All You Need',b'the and').replace(b'A real-format fixture about attention. https://github.com/example/project',b'or the')
     transport(monkeypatch,lambda r:httpx.Response(200,content=feed))
-    response=client.get('/api/discover',params={'query':'attention'})
+    response=client.get('/api/discover',params={'query':'attention','sort':'recommended'})
     assert response.status_code==200
     assert response.json()[0]['score']==0
 
 
 def test_invalid_cached_payload_is_refetched(client,monkeypatch):
     stamp=datetime.now(timezone.utc).isoformat()
-    db.execute('INSERT INTO discovery_cache VALUES(?,?,?,?)',('attention',12,stamp,'{"not":"a paper list"}'))
+    db.execute('INSERT INTO discovery_cache VALUES(?,?,?,?)',(research._search_cache_key('attention'),12,stamp,'{"not":"a paper list"}'))
     transport(monkeypatch,lambda r:httpx.Response(200,content=FEED))
     response=client.get('/api/discover',params={'query':'attention'})
     assert response.status_code==200
     assert response.json()[0]['retrieval']['cache_state']=='fresh'
+
+
+def test_default_requests_relevance_and_keeps_upstream_order(client,monkeypatch):
+    db.execute("INSERT INTO papers(id,title,abstract,status) VALUES('local','unrelated hardware','gpu accelerator','ready')")
+    extra=b'<entry><id>http://arxiv.org/abs/2601.00001</id><title>GPU accelerator</title><summary>unrelated hardware https://github.com/example/code</summary><published>2026-01-01T00:00:00Z</published></entry>'
+    def handler(request):
+        assert request.url.params['sortBy']=='relevance'
+        return httpx.Response(200,content=FEED.replace(b'</feed>',extra+b'</feed>'))
+    transport(monkeypatch,handler)
+    result=client.get('/api/discover',params={'query':'attention'}).json()
+    assert [p['id'] for p in result]==['1706.03762v7','2601.00001']
+    assert result[0]['retrieval']['sort']=='relevance'
+    assert '查询相关性' in result[0]['reason']
+
+
+def test_search_modes_and_fields_have_separate_persistent_caches(client,monkeypatch):
+    requests=[]
+    def handler(request):
+        requests.append(dict(request.url.params))
+        return httpx.Response(200,content=FEED)
+    transport(monkeypatch,handler)
+    for sort,field in [('relevance','all'),('newest','all'),('recommended','all'),('relevance','title')]:
+        params={'query':'attention','sort':sort,'field':field}
+        value=client.get('/api/discover',params=params).json()[0]
+        assert value['retrieval']['sort']==sort and value['retrieval']['field']==field
+        research.CACHE.clear()
+        assert client.get('/api/discover',params=params).json()[0]['retrieval']['cache_state']=='cached'
+    assert len(requests)==4
+    assert requests[1]['sortBy']=='submittedDate'
+    assert requests[3]['search_query']=='ti:attention'
+
+
+def test_old_date_sorted_cache_is_not_reused_as_relevance(client,monkeypatch):
+    db.execute('INSERT INTO discovery_cache VALUES(?,?,?,?)',('attention',12,datetime.now(timezone.utc).isoformat(),db.encode(research._parse_arxiv(FEED))))
+    calls=[]
+    transport(monkeypatch,lambda r:(calls.append(r) or httpx.Response(200,content=FEED)))
+    assert client.get('/api/discover',params={'query':'attention'}).status_code==200
+    assert len(calls)==1
+
+
+def test_recommendation_mode_can_use_library_without_changing_relevance(client,monkeypatch):
+    db.execute("INSERT INTO papers(id,title,abstract,status) VALUES('local','GPU accelerator','hardware gpu accelerator','ready')")
+    extra=b'<entry><id>http://arxiv.org/abs/2601.00001</id><title>GPU accelerator</title><summary>hardware gpu accelerator</summary><published>2026-01-01T00:00:00Z</published></entry>'
+    transport(monkeypatch,lambda r:httpx.Response(200,content=FEED.replace(b'</feed>',extra+b'</feed>')))
+    result=client.get('/api/discover',params={'query':'attention','sort':'recommended'}).json()
+    assert result[0]['id']=='2601.00001'
+    assert '文献库词频' in result[0]['reason']
+
+
+@pytest.mark.parametrize('query,field,expected',[
+    ('"Attention Is All You Need"','all','all:"Attention Is All You Need"'),
+    ('graph "neural networks"','title','ti:graph AND ti:"neural networks"'),
+    ('ti:attention AND cat:cs.CL','title','ti:attention AND cat:cs.CL')])
+def test_title_and_phrase_queries_preserve_query_structure(query,field,expected):
+    assert research._query_params(query,12,field=field)['search_query']==expected
+
+
+def test_full_title_includes_a_contiguous_phrase_and_escapes_punctuation():
+    value=research._query_params('Attention Is All You Need',12,field='title')['search_query']
+    assert value.startswith('ti:"Attention Is All You Need" OR (')
+    value=research._query_params('BERT: Pre-training',12,field='title')['search_query']
+    assert 'ti:"BERT:"' in value and 'ti:"Pre-training"' in value
+
+
+@pytest.mark.parametrize('params',[{'sort':'invalid'},{'field':'invalid'}])
+def test_invalid_search_mode_never_reaches_arxiv(client,monkeypatch,params):
+    transport(monkeypatch,lambda r:pytest.fail('无效检索模式不能请求外部服务'))
+    assert client.get('/api/discover',params={'query':'attention',**params}).status_code==422

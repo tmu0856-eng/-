@@ -1,8 +1,8 @@
 {
   "date": "2026-11-16",
   "regression": {
-    "passed": 265,
-    "seconds": 47.3
+    "passed": 275,
+    "seconds": 46.62
   },
   "formula": {
     "browser": [
@@ -15,10 +15,60 @@
     "original_preserved": true,
     "edit_model_calls": 0,
     "cloud_deploy": {
-      "image": "a8838a41ffe4",
+      "image": "32d5d81e3686",
       "container_recreated": true,
-      "loopback_health_after_update": 200,
-      "subsequent_public_verification": "SSH banner 与 HTTPS 握手超时，未完成本轮公网保存/重启复查"
+      "public_checks": [
+        {
+          "name": "anonymous_formula_rejected",
+          "passed": true
+        },
+        {
+          "name": "cached_formula_available",
+          "passed": true
+        },
+        {
+          "name": "save_keeps_original",
+          "passed": true
+        },
+        {
+          "name": "concurrent_overwrite_rejected",
+          "passed": true
+        },
+        {
+          "name": "save_survives_container_restart",
+          "passed": true
+        },
+        {
+          "name": "restore_original",
+          "passed": true
+        },
+        {
+          "name": "asset_/formula-tools.js",
+          "passed": true
+        },
+        {
+          "name": "asset_/vendor/katex/katex.min.js",
+          "passed": true
+        },
+        {
+          "name": "asset_/vendor/katex/katex.min.css",
+          "passed": true
+        },
+        {
+          "name": "asset_/vendor/katex/fonts/KaTeX_Main-Regular.woff2",
+          "passed": true
+        },
+        {
+          "name": "data_preserved",
+          "passed": true
+        }
+      ],
+      "passed": 11,
+      "total": 11,
+      "data": {
+        "pdfs": 40,
+        "cached_vectors": 25464
+      }
     }
   },
   "login": {
@@ -34,12 +84,18 @@
       "退出后返回独立登录页"
     ],
     "api_tests": "tests/test_demo_security.py",
-    "cloud_deploy": "待服务器连接恢复后部署"
+    "cloud_deploy": "已部署；公网 /login、匿名跳转、登录退出已通过"
   },
   "screenshots": [
     "screenshots/login-desktop.jpg",
     "screenshots/login-mobile.jpg",
     "screenshots/formula-edit-saved.jpg"
   ],
-  "secrets_in_report": false
+  "secrets_in_report": false,
+  "recovery": {
+    "action": "经用户确认正常重启主机，未强制重启或重装",
+    "observed_before": "VNC 显示 ssh 与 systemd-journald 启动失败",
+    "after": "SSH、Nginx、Docker 和 systemd-journald 正常；40 篇文献与 25464 条向量保留",
+    "root_cause": "尚未确定；不将容器 OOM 或磁盘满作为已证实原因"
+  }
 }

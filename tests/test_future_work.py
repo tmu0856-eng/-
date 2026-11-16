@@ -156,7 +156,8 @@ def test_model_bibliography_is_rebuilt_from_real_metadata(library,monkeypatch):
 
 def test_latest_search_filters_older_metadata_and_never_judges_abstract(library,monkeypatch):
     calls=[]
-    def search(query,count):
+    def search(query,count,**options):
+        assert options['sort']=='newest'
         calls.append(query)
         return [{'id':'2501.00001','title':'Later Work','published':'2025-01-02T00:00:00Z','summary':'We study this topic.','url':'https://arxiv.org/abs/2501.00001'},
                 {'id':'2301.00001','title':'Earlier Work','published':'2023-01-02T00:00:00Z','summary':'Earlier topic.','url':'https://arxiv.org/abs/2301.00001'}]
@@ -170,7 +171,7 @@ def test_latest_search_filters_older_metadata_and_never_judges_abstract(library,
 
 
 def test_latest_search_outage_is_explicit(library,monkeypatch):
-    def fail(*args):raise research.DiscoveryError('fixture network unavailable')
+    def fail(*args,**kwargs):raise research.DiscoveryError('fixture network unavailable')
     monkeypatch.setattr(research,'arxiv_search',fail)
     value=research.discover_later_work(STATEMENT,'alpha')
     assert value['error'] and not value['candidates']

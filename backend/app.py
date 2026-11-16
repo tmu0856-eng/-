@@ -548,10 +548,12 @@ def translate_text(body: TextTranslation):
 
 
 @app.get('/api/discover')
-def discover(query: str = '', count: int = 12):
+def discover(query: str = '', count: int = 12,
+             sort: Literal['relevance','newest','recommended'] = 'relevance',
+             field: Literal['all','title'] = 'all'):
     if not 2 <= len(query.strip()) <= 300 or count < 1 or count > 30:
         raise ValueError('请输入 2–300 字关键词，结果数量为 1–30')
-    return research.arxiv_search(query.strip(), count)
+    return research.arxiv_search(query.strip(), count, sort=sort, field=field)
 
 
 class ImportPaper(BaseModel):

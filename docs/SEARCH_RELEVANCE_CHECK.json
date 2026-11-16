@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-16",
+  "problem": "旧版只取最新提交的候选，再按文献库相似度重排，导致旧论文漏检或排序偏离查询",
+  "change": [
+    "默认保留 arXiv 相关性顺序",
+    "最新发表和文献库推荐单独选择",
+    "标题检索与连续题名表达式",
+    "检索模式、范围和策略版本隔离缓存"
+  ],
+  "checks": [
+    {
+      "name": "independent_login_and_anonymous_redirect",
+      "passed": true
+    },
+    {
+      "query": "Attention Is All You Need",
+      "field": "title",
+      "sort": "relevance",
+      "status": 200,
+      "seconds": 1.81,
+      "top_id": "1706.03762v7",
+      "target_first": true,
+      "metadata": {
+        "source": "arxiv",
+        "cache_state": "fresh",
+        "fetched_at": "2026-11-16T13:06:35.544254+00:00",
+        "sort": "relevance",
+        "field": "title"
+      }
+    },
+    {
+      "query": "1706.03762v7",
+      "field": "all",
+      "sort": "relevance",
+      "status": 200,
+      "seconds": 3.84,
+      "top_id": "1706.03762v7",
+      "target_first": true,
+      "metadata": {
+        "source": "arxiv",
+        "cache_state": "fresh",
+        "fetched_at": "2026-11-16T13:06:39.619896+00:00",
+        "sort": "relevance",
+        "field": "all"
+      }
+    }
+  ],
+  "regression": {
+    "passed": 275,
+    "seconds": 46.62
+  },
+  "screenshot": "screenshots/arxiv-relevance.jpg",
+  "official_api_docs": "https://info.arxiv.org/help/api/user-manual.html"
+}

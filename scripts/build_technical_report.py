@@ -98,7 +98,7 @@ def main():
     OUT.parent.mkdir(parents=True,exist_ok=True)
     story=[Spacer(1,68),p('研舟\nResearchDock','CoverCJK'),p('基于大模型与 Agent 的科研辅助工作台','SubCJK'),Spacer(1,26),
            p('技术说明 · 提交前校核稿','HeadingCJK'),p('版本日期：2026 年 11 月 16 日'),Spacer(1,24),
-           table([['文献实测','真实流程','自动回归'],['40 份 / 2,010 页','云端 Docker / HTTPS','265 项通过']],[163,163,163]),Spacer(1,30),
+           table([['文献实测','真实流程','自动回归'],['40 份 / 2,010 页','云端 Docker / HTTPS','275 项通过']],[163,163,163]),Spacer(1,30),
            p('支持 PDF 上传、正文检索、论文问答、翻译、引用分析和 CSV 绘图。'),
            p('本稿记录功能、实现和测试结果。公网评审入口：https://39.105.29.231；参赛信息待最终登记。','SmallCJK')]
     markdown=['# 研舟 ResearchDock 技术说明（提交前校核稿）','日期：2026-11-16','参赛信息和公网地址待最终登记。']
