@@ -1,0 +1,4 @@
+KaTeX 0.19.1
+官方 npm 包：https://registry.npmjs.org/katex/-/katex-0.19.1.tgz
+完整性：sha512-jG8uKntjSEcm2EpQOh0XturpPuuC9r3Sq5HLHdsFdWZT27E672SF19QEi+of0/YeOy15lDgRhKvr5614uRrEfA==
+本目录保留官方发行文件及 MIT 许可，用于离线公式排版。

@@ -24,6 +24,7 @@ async function api(url, options={}) {
   let data;
   try { data = await response.json(); } catch { throw new Error('服务返回格式异常，请检查后端是否运行'); }
   if (!response.ok) {
+    if(response.status===401)renderLogin();
     const detail = Array.isArray(data.detail) ? data.detail.map(x=>x.msg).join('；') : data.detail;
     const error = new Error(detail || '请求失败'); error.status=response.status; error.data=data; throw error;
   }
@@ -31,7 +32,7 @@ async function api(url, options={}) {
 }
 const post = (url,data) => api(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
 function toast(message) { const el=$('#toast'); el.textContent=message; el.classList.add('visible'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove('visible'),5000); }
-function modal(html) { $('#modal-content').innerHTML=html; if(!$('#modal').open) $('#modal').showModal(); }
+function modal(html) { $('#modal').classList.remove('formula-dialog'); $('#modal-content').innerHTML=html; if(!$('#modal').open) $('#modal').showModal(); }
 function closeModal() { $('#modal').close(); }
 function fail(error, target) { if(target) target.innerHTML=`<div class="error-box">${esc(error.message)}</div>`; else toast(error.message); }
 function loading(label='正在整理研究资料…') { return `<div class="loading"><span class="spinner"></span>${esc(label)}</div>`; }
@@ -177,8 +178,7 @@ async function showVisualPage(){
     modal('<h2>视觉解析</h2>'+loading('正在核读当前页面…'));
     try{
       const value=await post(`/api/papers/${pid}/visual-parse`,{page});
-      modal(`<h2>第 ${page} 页视觉转录${value.cached?' · 缓存':''}</h2><p class="notice">${esc(value.note)}</p><h3>公式 · ${value.formulas.length}</h3>${value.formulas.map(f=>`<p>${esc(f.label)}</p><pre class="visual-latex">${esc(f.latex)}</pre>${f.uncertainty?`<p class="muted">${esc(f.uncertainty)}</p>`:''}`).join('')||'<p>未识别到展示公式。</p>'}<h3>表格 · ${value.tables.length}</h3>${value.tables.map(t=>`<p>${esc(t.caption)}</p><div style="overflow:auto"><table><tbody>${t.rows.map(row=>`<tr>${row.map(cell=>`<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p class="muted">${esc(t.uncertainty)}</p>`).join('')||'<p>未识别到表格。</p>'}<h3>图与图注 · ${value.figures.length}</h3>${value.figures.map(f=>`<p><strong>${esc(f.caption)}</strong></p><p>${esc(f.description)}</p><p class="muted">${esc(f.uncertainty)}</p>`).join('')||'<p>未识别到图注。</p>'}<div class="modal-actions"><button class="btn" id="visual-original">回到原始页面</button><button class="btn primary" data-action="close-modal">关闭</button></div>`);
-      $('#visual-original').onclick=()=>{closeModal();readPaper(pid,page);};
+      showVisualPageResult(value,pid);
     }catch(error){fail(error,$('#modal-content'));}
   };
 }
@@ -338,10 +338,10 @@ $('#pdf-input').onchange=e=>uploadFiles(e.target.files);
 $('#modal').addEventListener('click',e=>{if(e.target===$('#modal'))closeModal();});
 window.addEventListener('hashchange',route);
 function renderLogin(){
-  $('#model-status').textContent='评审访问';
-  $('#main').innerHTML=heading(views[0],'登录后可体验文献管理、证据问答与研究工作流。')+`<section class="panel" style="max-width:440px;padding:30px;margin:45px auto"><h2>登录评审空间</h2><form id="login-form"><label for="login-user">账号</label><input class="field" id="login-user" autocomplete="username" required maxlength="100"><label for="login-password">密码</label><input class="field" id="login-password" type="password" autocomplete="current-password" required maxlength="200"><p class="error-box" id="login-error" hidden></p><button class="btn primary" style="width:100%;margin-top:20px" id="login-submit">登录</button></form><p class="muted">使用参赛者提供的评审账号，密码不会显示在源码或页面配置中。</p></section>`;
-  $('#login-form').onsubmit=async event=>{event.preventDefault();$('#login-submit').disabled=true;try{await post('/api/auth/login',{username:$('#login-user').value,password:$('#login-password').value});await init();}catch(error){const target=$('#login-error');if(target){target.hidden=false;target.textContent=error.message;}}finally{if($('#login-submit'))$('#login-submit').disabled=false;}};
+  const next=location.pathname+location.search+location.hash;
+  location.replace('/login?next='+encodeURIComponent(next));
 }
+
 async function init(){try{state.auth=await api('/api/auth/status');if(state.auth.enabled&&!state.auth.authenticated){renderLogin();return;}if(state.auth.enabled&&!$('#logout-button')){const button=document.createElement('button');button.id='logout-button';button.className='btn small';button.textContent='退出';button.onclick=async()=>{await post('/api/auth/logout',{});state.chat=[];state.papers=[];state.selected.clear();state.auth.authenticated=false;button.remove();renderLogin();};$('.top-actions').append(button);}await refresh();await route();}catch(error){fail(error,$('#main'));}}
 init();
 setInterval(async()=>{if(document.hidden)return;try{if($('#modal').open&&$('#embedding-config'))await refreshEmbeddingConfig();if($('#modal').open&&$('#reference-import-progress')&&state.referenceImportJob)await showReferenceImport();const wasProcessing=state.papers.some(p=>p.status==='processing');if(wasProcessing||state.view==='library'){await refresh();if(state.view==='library'){if($('#stats'))$('#stats').innerHTML=stats();if($('#paper-count'))$('#paper-count').textContent=state.papers.length+' 篇论文';if($('#library-rows'))$('#library-rows').innerHTML=libraryRows();await renderJobs();}}}catch{}},3500);

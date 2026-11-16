@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-16",
+  "regression": {
+    "passed": 265,
+    "seconds": 47.3
+  },
+  "formula": {
+    "browser": [
+      "真实注意力公式排版与原图对照",
+      "修改编号并保存",
+      "重新打开保留修改",
+      "恢复模型原始转录"
+    ],
+    "api_tests": "tests/test_formula_editing.py",
+    "original_preserved": true,
+    "edit_model_calls": 0,
+    "cloud_deploy": {
+      "image": "a8838a41ffe4",
+      "container_recreated": true,
+      "loopback_health_after_update": 200,
+      "subsequent_public_verification": "SSH banner 与 HTTPS 握手超时，未完成本轮公网保存/重启复查"
+    }
+  },
+  "login": {
+    "route": "/login",
+    "separate_from_workspace": true,
+    "browser": [
+      "1280 宽桌面页面检查",
+      "375 宽手机页面无横向溢出",
+      "错误密码提示",
+      "密码显隐",
+      "账号帮助展开",
+      "正确登录跳转文献库",
+      "退出后返回独立登录页"
+    ],
+    "api_tests": "tests/test_demo_security.py",
+    "cloud_deploy": "待服务器连接恢复后部署"
+  },
+  "screenshots": [
+    "screenshots/login-desktop.jpg",
+    "screenshots/login-mobile.jpg",
+    "screenshots/formula-edit-saved.jpg"
+  ],
+  "secrets_in_report": false
+}

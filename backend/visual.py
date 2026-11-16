@@ -18,6 +18,20 @@ _JOBS_LOCK = threading.Lock()
 NOTE = '模型视觉转录，尚未人工核对；符号、数字和单元格可能有误，请对照原始页面。此结果不自动写入问答证据。'
 
 
+class EditConflict(ValueError):
+    pass
+
+
+def present(value, from_cache=True):
+    """为旧缓存补充编辑元数据，不改变原始模型转录。"""
+    value.setdefault('revision',0)
+    for item in value.get('formulas',[]):
+        item.setdefault('original_latex',item['latex'])
+        item.setdefault('original_label',item.get('label',''))
+        item.setdefault('edited',False)
+    return {**value,'cached':from_cache}
+
+
 def _text(value, limit=4000):
     if not isinstance(value, str):
         raise llm.ModelError('视觉解析返回字段格式异常，未保存结果。')
@@ -68,7 +82,7 @@ def parse(pid, page):
     saved = db.one('SELECT content FROM visual_pages WHERE paper_id=? AND page=? AND model=?', (pid, page, key))
     if saved:
         import json
-        return {**json.loads(saved['content']), 'cached': True}
+        return present(json.loads(saved['content']))
     if not _LOCK.acquire(blocking=False):
         raise llm.ModelError('已有页面正在视觉解析，请稍后重试。')
     try:
@@ -93,7 +107,7 @@ LaTeX正确转义为JSON字符串，不加代码围栏；没有则返回空列�
                                  'image': f'/api/papers/{pid}/pages/{page}/image'}, 'verified': False})
         db.execute('INSERT OR REPLACE INTO visual_pages(paper_id,page,model,content) VALUES(?,?,?,?)',
                    (pid, page, key, db.encode(value)))
-        return {**value, 'cached': False}
+        return present(value,False)
     finally:
         _LOCK.release()
 
@@ -118,7 +132,30 @@ def cached(pid, page):
     if not paper or not 1<=page<=paper['page_count']:raise ValueError('页码超出文献范围。')
     key=_VERSION+':'+os.getenv('LLM_MODEL','')+':'+paper['sha']
     saved=db.one('SELECT content FROM visual_pages WHERE paper_id=? AND page=? AND model=?',(pid,page,key))
-    return {**json.loads(saved['content']),'cached':True} if saved else None
+    return present(json.loads(saved['content'])) if saved else None
+
+
+def update_formula(pid,page,index,latex,label,revision):
+    """仅修改当前缓存的单个公式，保存原始转录并防止并发覆盖。"""
+    if not latex.strip() or len(latex)>8000 or len(label)>120:
+        raise ValueError('公式不能为空，LaTeX 最多 8000 字符，编号最多 120 字符。')
+    with db.connect() as con:
+        con.execute('BEGIN IMMEDIATE')
+        paper=con.execute('SELECT sha,page_count FROM papers WHERE id=?',(pid,)).fetchone()
+        if not paper or not 1<=page<=paper['page_count']:raise ValueError('页码超出文献范围。')
+        key=_VERSION+':'+os.getenv('LLM_MODEL','')+':'+paper['sha']
+        saved=con.execute('SELECT content FROM visual_pages WHERE paper_id=? AND page=? AND model=?',(pid,page,key)).fetchone()
+        if not saved:raise ValueError('请先识别此页公式，再修改已有转录。')
+        value=present(json.loads(saved['content']))
+        if value['revision']!=revision:raise EditConflict('本页已在其他窗口修改，请保留当前草稿并重新加载后再保存。')
+        if not 0<=index<len(value['formulas']):raise ValueError('公式不存在，请重新加载识别结果。')
+        item=value['formulas'][index]
+        item.update(latex=latex.strip(),label=label.strip(),edited_at=datetime.now(timezone.utc).isoformat())
+        item['edited']=item['latex']!=item['original_latex'] or item['label']!=item['original_label']
+        value['revision']+=1
+        value.pop('cached',None)
+        con.execute('UPDATE visual_pages SET content=? WHERE paper_id=? AND page=? AND model=?',(db.encode(value),pid,page,key))
+    return present(value)
 
 
 def start_batch(pid, pages=None):

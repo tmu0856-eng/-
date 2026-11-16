@@ -70,6 +70,28 @@ def test_local_mode_keeps_existing_flow(client,monkeypatch):
     assert client.get('/api/papers').status_code==200
 
 
+def test_independent_login_route_and_workspace_redirect(client):
+    response=client.get('/',follow_redirects=False)
+    assert response.status_code==303 and response.headers['location']=='/login'
+    page=client.get('/login')
+    assert page.status_code==200 and page.headers['cache-control']=='no-store'
+    assert 'id="login-form"' in page.text and 'id="navigation"' not in page.text
+    assert 'fixture-password-only' not in page.text
+    assert client.get('/login.css').status_code==200
+    assert client.get('/login.js').status_code==200
+    sign_in(client)
+    response=client.get('/',follow_redirects=False)
+    assert response.status_code==200 and 'id="navigation"' in response.text
+    client.post('/api/auth/logout')
+    assert client.get('/',follow_redirects=False).status_code==303
+
+
+def test_workspace_stays_directly_available_in_local_mode(client,monkeypatch):
+    monkeypatch.delenv('DEMO_PASSWORD')
+    response=client.get('/',follow_redirects=False)
+    assert response.status_code==200 and 'id="navigation"' in response.text
+
+
 def test_cross_origin_login_is_rejected(client):
     value=client.post('/api/auth/login',headers={'Origin':'https://unrelated.example'},json={'username':'reviewer','password':'fixture-password-only'})
     assert value.status_code==403

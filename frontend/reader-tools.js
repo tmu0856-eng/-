@@ -171,6 +171,5 @@ async function showVisualResults(pid=state.reader) {
 
 async function showCachedVisual(page,pid=state.reader) {
   const value=await api(`/api/papers/${pid}/visual-cache/${page}`);
-  modal(`<h2>第 ${page} 页识别结果</h2><p class="notice">${esc(value.note)}</p><h3>公式 · ${value.formulas.length}</h3>${value.formulas.map(item=>`<p>${esc(item.label)}</p><pre class="visual-latex">${esc(item.latex)}</pre><p class="muted">${esc(item.uncertainty)}</p>`).join('')||'<p>当前页未返回公式。</p>'}<h3>表格 · ${value.tables.length}</h3>${value.tables.map(item=>`<p>${esc(item.caption)}</p><table>${item.rows.map(row=>`<tr>${row.map(cell=>`<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</table>`).join('')}<h3>图与图注 · ${value.figures.length}</h3>${value.figures.map(item=>`<p>${esc(item.caption)}<br>${esc(item.description)}</p>`).join('')}<div class="modal-actions"><button class="btn" data-action="visual-results" data-id="${esc(pid)}">返回结果列表</button><button class="btn primary" id="cached-visual-source">核对原图</button><button class="btn" data-action="close-modal">关闭</button></div>`);
-  $('#cached-visual-source').onclick=async()=>{closeModal();await readPaper(pid,page);};
+  showVisualPageResult(value,pid);
 }

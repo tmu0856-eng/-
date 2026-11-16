@@ -16,7 +16,7 @@ load_dotenv(Path(__file__).resolve().parent.parent / '.env')
 import pymupdf as fitz
 import httpx
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile, Request
-from fastapi.responses import FileResponse, JSONResponse, Response, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -197,6 +197,19 @@ def cached_visual_page(pid: str,page: int):
     result=visual.cached(pid,page)
     if result is None:raise HTTPException(404,'当前模型尚未识别此页。')
     return result
+
+
+class FormulaEdit(BaseModel):
+    latex: str = Field(min_length=1,max_length=8000)
+    label: str = Field(default='',max_length=120)
+    revision: int = Field(ge=0)
+
+
+@app.put('/api/papers/{pid}/visual-cache/{page}/formulas/{index}')
+def edit_formula(pid: str,page: int,index: int,body: FormulaEdit):
+    paper(pid)
+    try:return visual.update_formula(pid,page,index,body.latex,body.label,body.revision)
+    except visual.EditConflict as exc:raise HTTPException(409,str(exc))
 
 
 @app.post('/api/papers/{pid}/visual-batch')
@@ -629,6 +642,18 @@ def chart_file(name: str):
     if not path.is_file():
         raise HTTPException(404, '文件不存在')
     return FileResponse(path, filename=name, content_disposition_type='inline' if name.endswith(('.png', '.svg')) else 'attachment')
+
+
+@app.get('/login', include_in_schema=False)
+def login_page():
+    return FileResponse(db.ROOT / 'frontend' / 'login.html',headers={'Cache-Control':'no-store'})
+
+
+@app.get('/', include_in_schema=False)
+def workspace_page(request: Request):
+    if security.enabled() and not security.authenticated(request):
+        return RedirectResponse('/login',status_code=303)
+    return FileResponse(db.ROOT / 'frontend' / 'index.html',headers={'Cache-Control':'no-store'})
 
 
 app.mount('/', StaticFiles(directory=db.ROOT / 'frontend', html=True), name='frontend')
