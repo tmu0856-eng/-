@@ -2,7 +2,7 @@
 
 传智杯科研助手赛项项目，提供 PDF 管理、论文问答、双语阅读、arXiv 检索、引用图谱和写作绘图。
 
-源码仓库：[GitHub](https://github.com/tmu0856-eng/-)。
+源码仓库：[GitHub](https://github.com/tmu0856-eng/-)。参赛技术说明与材料对应关系见 [提交稿](docs/SUBMISSION_TECHNICAL_REPORT.md) 和 [提交说明](docs/SUBMISSION_GUIDE.md)。
 
 **云端演示已部署：[评审入口](https://39.105.29.231)（需要登录）。** 应用在服务器 Docker 中独立运行。资料包 39 份 PDF、1,986 页的 32 项真实流程检查通过；补充实测见 [验收记录](docs/VALIDATION.md)。技术说明源稿见 [技术说明](docs/TECHNICAL_REPORT.md)。
 
@@ -173,7 +173,7 @@ tests/                 集成与边界测试
 docs/                  技术说明与验收证据
 ```
 
-项目信息：个人参赛项目；姓名、学校与组别由参赛者提交前补充。开发与实测记录见 `docs/DEVELOPMENT_LOG.md`。
+参赛信息：穆宣廷，太原科技大学。开发与实测记录见 `docs/DEVELOPMENT_LOG.md`。
 
 公式结果可在阅读页的“查看已识别结果”打开，支持数学排版、原始页图对照、修改 LaTeX 与编号、保存及恢复原始转录。排版组件随应用提供，无需访问外部 CDN；修改不会重新调用模型。
 
